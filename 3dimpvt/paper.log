@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  14 JUN 2012 20:36
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  14 JUN 2012 21:09
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -333,16 +333,16 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
 
-Underfull \hbox (badness 7504) in paragraph at lines 95--96
+Underfull \hbox (badness 7504) in paragraph at lines 98--103
 []\OT1/ptm/m/n/10 Human-operated data ac-qui-si-tion sys-tems pro-vide
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 95--96
+Underfull \hbox (badness 1939) in paragraph at lines 98--103
 \OT1/ptm/m/n/10 unique ad-van-tages in terms of agility and porta-bil-ity
  []
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 102.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 136.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -350,90 +350,122 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<Projection.pdf, id=24, 371.72507pt x 334.35416pt>
+File: Projection.pdf Graphic file (type pdf)
+ <use Projection.pdf>
+<naive.png, id=25, 439.533pt x 274.626pt>
+File: naive.png Graphic file (type png)
+ <use naive.png> [2 <./Projection.pdf>] <panoMy.jpg, id=184, 1405.25pt x 329.23
+pt>
+File: panoMy.jpg Graphic file (type jpg)
+ <use panoMy.jpg>
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 169.
+LaTeX Warning: Citation `hz' on page 3 undefined on input line 263.
+
+
+LaTeX Warning: Citation `brown2007automatic' on page 3 undefined on input line 
+265.
+
+<Graph_crop.pdf, id=186, 308.5389pt x 105.02065pt>
+File: Graph_crop.pdf Graphic file (type pdf)
+ <use Graph_crop.pdf>
+
+LaTeX Warning: Citation `liu2010indoor' on page 3 undefined on input line 297.
+
+
+LaTeX Warning: Citation `liu2010indoor' on page 3 undefined on input line 300.
+
+
+LaTeX Warning: Citation `chen2010indoor' on page 3 undefined on input line 300.
+
+
+[3 <./naive.png (PNG copy)> <./panoMy.jpg> <./Graph_crop.pdf>]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 397.
 
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [2]
+) [4]
 
-LaTeX Warning: Citation `Authors12' on page 3 undefined on input line 243.
-
-
-LaTeX Warning: Citation `Authors12b' on page 3 undefined on input line 254.
-
-[3]
-
-LaTeX Warning: Citation `Alpher02' on page 4 undefined on input line 326.
+LaTeX Warning: Citation `Authors12' on page 5 undefined on input line 471.
 
 
-LaTeX Warning: Citation `Alpher03' on page 4 undefined on input line 328.
+LaTeX Warning: Citation `Authors12b' on page 5 undefined on input line 482.
 
 
-LaTeX Warning: Citation `Alpher04' on page 4 undefined on input line 329.
+Underfull \vbox (badness 1286) has occurred while \output is active []
+
+ [5]
+
+LaTeX Warning: Citation `Alpher02' on page 6 undefined on input line 554.
 
 
-LaTeX Warning: Citation `Alpher03' on page 4 undefined on input line 332.
+LaTeX Warning: Citation `Alpher03' on page 6 undefined on input line 556.
 
 
-LaTeX Warning: Citation `Alpher03' on page 4 undefined on input line 332.
+LaTeX Warning: Citation `Alpher04' on page 6 undefined on input line 557.
 
 
-LaTeX Warning: Citation `Alpher03' on page 4 undefined on input line 338.
+LaTeX Warning: Citation `Alpher03' on page 6 undefined on input line 560.
 
 
-LaTeX Warning: Citation `Alpher02' on page 4 undefined on input line 338.
+LaTeX Warning: Citation `Alpher03' on page 6 undefined on input line 560.
 
 
-LaTeX Warning: Citation `Authors12' on page 4 undefined on input line 338.
+LaTeX Warning: Citation `Alpher03' on page 6 undefined on input line 566.
 
 
-LaTeX Warning: Citation `Alpher02' on page 4 undefined on input line 339.
+LaTeX Warning: Citation `Alpher02' on page 6 undefined on input line 566.
 
 
-LaTeX Warning: Citation `Alpher03' on page 4 undefined on input line 339.
+LaTeX Warning: Citation `Authors12' on page 6 undefined on input line 566.
 
 
-LaTeX Warning: Citation `Authors12' on page 4 undefined on input line 339.
+LaTeX Warning: Citation `Alpher02' on page 6 undefined on input line 567.
 
 
-Underfull \vbox (badness 7081) has occurred while \output is active []
+LaTeX Warning: Citation `Alpher03' on page 6 undefined on input line 567.
 
- [4]
 
-LaTeX Warning: Citation `Authors12' on page 5 undefined on input line 435.
+LaTeX Warning: Citation `Authors12' on page 6 undefined on input line 567.
 
-(./paper.bbl) [5] (./paper.aux)
+
+LaTeX Warning: Citation `Authors12' on page 6 undefined on input line 663.
+
+[6] (./paper.bbl) [7
+
+] (./paper.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5524 strings out of 495061
- 76959 string characters out of 1182621
- 155758 words of memory out of 3000000
- 8544 multiletter control sequences out of 15000+50000
- 39350 words of font info for 90 fonts, out of 3000000 for 9000
+ 5570 strings out of 495061
+ 77583 string characters out of 1182621
+ 159384 words of memory out of 3000000
+ 8571 multiletter control sequences out of 15000+50000
+ 39857 words of font info for 91 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,9n,24p,1168b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,10n,24p,1189b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmmi9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf
--texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/u
-crr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
-hare/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texliv
-e/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (5 pages, 182766 bytes).
+ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
+are/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/
+fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/h
+elvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb><
+/usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-tex
+live/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (7 pages, 3135425 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 327 PDF objects out of 1000 (max. 8388607)
+ 44 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

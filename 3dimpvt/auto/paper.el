@@ -3,6 +3,15 @@
     (LaTeX-add-bibliographies
      "egbib")
     (LaTeX-add-labels
+     "sec:backpackSystem"
+     "sec:imageAssociation"
+     "sec:textureMappingOverview"
+     "fig:projection"
+     "sec:naive"
+     "fig:naive"
+     "fig:mosaic"
+     "fig:graph"
+     "sec:whydifferent"
      "fig:long"
      "fig:onecol"
      "fig:short")
