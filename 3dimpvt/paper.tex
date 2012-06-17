@@ -330,7 +330,7 @@ provides noticeable benefits while avoiding the error propagation
 problem.
 
 
-\section{Our Approach}
+\section{Our Approach Overview}
 Our approach begins with the naive projection of all our images onto separate copies of our plane, such that no projected data is lost. We then perform a series of preprocessing steps to rotate and shift each image's projection such that its overlapping regions with other projections are as seamless as possible. Following this, we perform a basic intensity-matching algorithm across all images, as images taken from different locations have different levels of overall brightness. From here, we assign textures to our planes using one of two methods, dependent on whether they are wall planes or ceiling/floor planes. The reasoning for this is explained in section \ref{sec:whydifferent}. Lastly, we apply alpha blending to smooth out any remaining seams.
 
 \subsection{Preprocessing}
@@ -418,9 +418,36 @@ distances. This major difference suggests we employ two strategies,
 one tailored for each scenario.
 
 
-\subsection{Texturing Walls}
-Because wall images in general are all good candidates for texturing due to their orientation and location, our goal is less about selecting good images for individual texturing, and more about selecting a set of images that together form a good texture.
+\section{Texturing Walls}
+Because wall images in general are all fairly good candidates for texturing due to their orientation and location, our goal is less about determining the best images to texture with individually, and more about selecting a set of images that together form the most seamless texture.
 
+In order to objectively decide which sets of images form the most seamless textures, we need to decide on a cost function. We may be interested in covering the plane while minimizing the sum of squared pixel differences of the blended seam regions. This would encourage seams to be placed either in featureless areas, such as blank walls, or in areas in which the images are very well aligned. Another possible cost function is edge energy, i.e. the sum of the smoothed gradient of the blended seam regions. This would encourage seams to be placed in featureless areas even more than the sum of squared pixel difference cost function. For the dataset whose results are used in this paper, the first cost function is used, as the regular occurrence of featureless areas is not guaranteed.
+
+\subsection{Image Selection}
+
+Now that we have a cost function defined, we need to mechanically select the set of images for which the overall cost function is minimized.
+By adding the constraint that we aim to cover the entirety of our plane, one could see how our problem generalizes to a graph coverage problem, as depicted in figure X. Returning again to the optimality of our situation when texturing walls however, we can make a quick simplification for the sake of efficiency. Given that our wall-texture candidate images were all taken from a head-on angle, we can reason that their projections onto the plane are approximately rectangular. By simply discarding any excess texture and cropping them all to be rectangular, our problem becomes the conceptually simpler problem of filling a polygon with rectangles, such that the sum of all edge costs between each pair of rectangles is minimal. 
+
+maybe i dunno
+
+Following the general scheme of Prim's algorithm for a minimum spanning tree, we can greedily add the minimal-cost image to our set until we have reached the desired coverage of our plane. This method can be applied on all manner of planes and images, howev this could be used for floors ceilings who knows
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=3in]{DynProg.pdf}
+\caption{Image Selection is done by constructing a graph of sorted images. Then we solve a shortest path problem where the edge weights represent the cost of a seam between two overlapping images.}
+\label{fig:DynProg}
+\end{figure}
+
+By taking one more shortcut we can simplify our problem down even further. Since care is taken such that our wall images generally contain the floor-to-ceiling range of walls, we generally do not have any wall images such that one should be projected vertically above the other. In essence, we need only to ensure horizontal coverage of our planes, as our images generally line up together at the same height. We can thus construct a DAG from the images, again with edge costs defined by our cost function above, and solve a simple shortest path problem to find an optimal subset of images with regard to the cost functions.
+
+Figure \ref{fig:DynProg} demonstrates the construction of a DAG from overlapping images of a long hallway. Images are sorted by location (e.g. left to right) and become nodes in a graph. Edges are placed in the graph between images that overlap. The weights of these edges are determined by a cost function, such as image energy, or the sum of squared pixel differences between the two images in the seam region. Next, we solve a shortest path problem from the first node in the graph to the last node. This provides a set of images that completely covers the plane, but minimizes the cost of the seams produced. Note that this only works when all the images completely cover one dimension. In this case the vertical dimension of the plane is covered by all images. 
+
+In cases where the vertical dimension of the plane is not entirely covered, generally due to suboptimal camera locations, we are left with a hole where no image was chosen to texture. Rather than reverting to a 2D-coverage problem, we can elect to simply fill the hole by repeatedly selecting images in a greedy fashion, with respect to our cost function.
+
+At this point, we have accounted for every location on our plane with an image or images that were selected. Before actually applying our textures, we will examine how to accomplish the same for ceilings and floors.
 
 \subsection{Texturing Ceilings and Floors}
 

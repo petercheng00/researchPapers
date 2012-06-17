@@ -12,6 +12,7 @@
      "fig:mosaic"
      "fig:graph"
      "sec:whydifferent"
+     "fig:DynProg"
      "fig:long"
      "fig:onecol"
      "fig:short")
