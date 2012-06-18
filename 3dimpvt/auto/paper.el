@@ -4,6 +4,8 @@
      "egbib")
     (LaTeX-add-labels
      "sec:backpackSystem"
+     "sec:backpackHardware"
+     "sec:environmentReconstruction"
      "sec:imageAssociation"
      "sec:textureMappingOverview"
      "fig:projection"
@@ -12,15 +14,11 @@
      "fig:mosaic"
      "fig:graph"
      "sec:whydifferent"
-     "fig:DynProg"
-     "fig:long"
-     "fig:onecol"
-     "fig:short")
+     "fig:DynProg")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")
     (TeX-run-style-hooks
-     "dvips"
      "hyperref"
      "colorlinks"
      "amssymb"

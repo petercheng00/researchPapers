@@ -15,79 +15,52 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}\hskip -1em.\nobreakspace  {}Backpack Modeling System}{1}{section.2}}
 \newlabel{sec:backpackSystem}{{2}{1}{\hskip -1em.~Backpack Modeling System\relax }{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}\hskip -1em.\nobreakspace  {}Data Acquisition Hardware}{1}{subsection.2.1}}
+\newlabel{sec:backpackHardware}{{2.1}{1}{\hskip -1em.~Data Acquisition Hardware\relax }{subsection.2.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}\hskip -1em.\nobreakspace  {}Environment Reconstruction}{1}{subsection.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}\hskip -1em.\nobreakspace  {}Image Subsampling}{2}{subsection.2.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The plane is specified in 3D space by the four corners $C_1$ to $C_4$. Images are related to the plane through the camera matrices $P_{1..M}$. }}{2}{figure.1}}
-\newlabel{fig:projection}{{1}{2}{The plane is specified in 3D space by the four corners $C_1$ to $C_4$. Images are related to the plane through the camera matrices $P_{1..M}$. \relax }{figure.1}{}}
+\newlabel{sec:environmentReconstruction}{{2.2}{1}{\hskip -1em.~Environment Reconstruction\relax }{subsection.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}\hskip -1em.\nobreakspace  {}Image Association}{2}{subsection.2.3}}
+\newlabel{sec:imageAssociation}{{2.3}{2}{\hskip -1em.~Image Association\relax }{subsection.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Planes are specified in 3D space by four corners $C_1$ to $C_4$. Images are related to each plane through the camera matrices $P_{1..M}$. }}{2}{figure.1}}
+\newlabel{fig:projection}{{1}{2}{Planes are specified in 3D space by four corners $C_1$ to $C_4$. Images are related to each plane through the camera matrices $P_{1..M}$. \relax }{figure.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace  {}Texture Mapping Overview}{2}{section.3}}
 \newlabel{sec:textureMappingOverview}{{3}{2}{\hskip -1em.~Texture Mapping Overview\relax }{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}\hskip -1em.\nobreakspace  {}Best-Candidate Mapping}{2}{subsection.3.1}}
 \citation{hz}
 \citation{brown2007automatic}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The result of naive texture mapping based on the imprecise camera matrices estimated by the localization system.}}{3}{figure.2}}
+\newlabel{fig:naive}{{2}{3}{The result of naive texture mapping based on the imprecise camera matrices estimated by the localization system}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}\hskip -1em.\nobreakspace  {}Naive Mapping}{3}{subsection.3.1}}
+\newlabel{sec:naive}{{3.1}{3}{\hskip -1em.~Naive Mapping\relax }{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}\hskip -1em.\nobreakspace  {}Mapping with Caching}{3}{subsection.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Image mosaicing. }}{3}{figure.3}}
+\newlabel{fig:mosaic}{{3}{3}{Image mosaicing. \relax }{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}\hskip -1em.\nobreakspace  {}Image Mosaicing}{3}{subsection.3.3}}
+\@writefile{brf}{\backcite{hz}{{3}{3.3}{figure.3}}}
+\@writefile{brf}{\backcite{brown2007automatic}{{3}{3.3}{figure.3}}}
 \citation{liu2010indoor}
 \citation{liu2010indoor}
 \citation{chen2010indoor}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The result of naive texture mapping based on the imprecise camera matrices estimated by the localization system.}}{3}{figure.2}}
-\newlabel{fig:naive}{{2}{3}{The result of naive texture mapping based on the imprecise camera matrices estimated by the localization system}{figure.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Image mosaicing. }}{3}{figure.3}}
-\newlabel{fig:mosaic}{{3}{3}{Image mosaicing. \relax }{figure.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}\hskip -1em.\nobreakspace  {}Image Mosaicing}{3}{subsection.3.2}}
-\@writefile{brf}{\backcite{hz}{{3}{3.2}{figure.3}}}
-\@writefile{brf}{\backcite{brown2007automatic}{{3}{3.2}{figure.3}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Using the graph-based localization refinement algorithm from [11] suffers from the problem of compounding errors. }}{3}{figure.4}}
-\newlabel{fig:graph}{{4}{3}{Using the graph-based localization refinement algorithm from [11] suffers from the problem of compounding errors. \relax }{figure.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}\hskip -1em.\nobreakspace  {}Image-Based 3D Localization Refinement}{3}{subsection.3.3}}
-\@writefile{brf}{\backcite{liu2010indoor}{{3}{3.3}{figure.4}}}
-\@writefile{brf}{\backcite{liu2010indoor,chen2010indoor}{{3}{3.3}{figure.4}}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}something}{3}{section.4}}
-\newlabel{sec:textureMappingMethods}{{4}{3}{\hskip -1em.~something\relax }{section.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}NOTES}{3}{section.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.\nobreakspace  {}EVERYTHING AFTER HERE IS TEMPLATE STUFF}{4}{section.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}\hskip -1em.\nobreakspace  {}Introduction}{4}{section.7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}\hskip -1em.\nobreakspace  {}Language}{4}{subsection.7.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}\hskip -1em.\nobreakspace  {}Dual submission}{4}{subsection.7.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}\hskip -1em.\nobreakspace  {}Paper length}{4}{subsection.7.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}\hskip -1em.\nobreakspace  {}The ruler}{4}{subsection.7.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}\hskip -1em.\nobreakspace  {}Mathematics}{4}{subsection.7.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}\hskip -1em.\nobreakspace  {}Blind review}{4}{subsection.7.6}}
-\citation{Authors12}
-\citation{Authors12b}
-\@writefile{brf}{\backcite{Authors12}{{5}{7.6}{subsection.7.6}}}
-\@writefile{brf}{\backcite{Authors12b}{{5}{7.6}{subsection.7.6}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \qopname  \relax o{sin}A = A \qopname  \relax o{sin}B$) may be included without an ugly clash.}}{5}{figure.5}}
-\newlabel{fig:long}{{5}{5}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash}{figure.5}{}}
-\newlabel{fig:onecol}{{5}{5}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash}{figure.5}{}}
-\citation{Alpher02}
-\citation{Alpher03}
-\citation{Alpher04}
-\citation{Alpher03}
-\citation{Alpher03}
-\citation{Alpher03}
-\citation{Alpher02}
-\citation{Authors12}
-\citation{Alpher02}
-\citation{Alpher03}
-\citation{Authors12}
-\citation{Authors12}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.7}\hskip -1em.\nobreakspace  {}Miscellaneous}{6}{subsection.7.7}}
-\@writefile{brf}{\backcite{Alpher02}{{6}{7.7}{subsection.7.7}}}
-\@writefile{brf}{\backcite{Alpher03}{{6}{7.7}{subsection.7.7}}}
-\@writefile{brf}{\backcite{Alpher04}{{6}{7.7}{subsection.7.7}}}
-\@writefile{brf}{\backcite{Alpher03}{{6}{7.7}{subsection.7.7}}}
-\@writefile{brf}{\backcite{Alpher03}{{6}{7.7}{subsection.7.7}}}
-\@writefile{brf}{\backcite{Alpher03,Alpher02,Authors12}{{6}{7.7}{subsection.7.7}}}
-\@writefile{brf}{\backcite{Alpher02,Alpher03,Authors12}{{6}{7.7}{subsection.7.7}}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}\hskip -1em.\nobreakspace  {}Formatting your paper}{6}{section.8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}\hskip -1em.\nobreakspace  {}Margins and page numbering}{6}{subsection.8.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}\hskip -1em.\nobreakspace  {}Type-style and fonts}{6}{subsection.8.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}\hskip -1em.\nobreakspace  {}Footnotes}{6}{subsection.8.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}\hskip -1em.\nobreakspace  {}References}{6}{subsection.8.4}}
-\@writefile{brf}{\backcite{Authors12}{{6}{8.4}{subsection.8.4}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}\hskip -1em.\nobreakspace  {}Illustrations, graphs, and photographs}{6}{subsection.8.5}}
+\citation{lowe1999object}
+\citation{fischler1981random}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Using the graph-based localization refinement algorithm from [11] suffers from the problem of compounding errors. }}{4}{figure.4}}
+\newlabel{fig:graph}{{4}{4}{Using the graph-based localization refinement algorithm from [11] suffers from the problem of compounding errors. \relax }{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}\hskip -1em.\nobreakspace  {}Image-Based 3D Localization Refinement}{4}{subsection.3.4}}
+\@writefile{brf}{\backcite{liu2010indoor}{{4}{3.4}{figure.4}}}
+\@writefile{brf}{\backcite{liu2010indoor,chen2010indoor}{{4}{3.4}{figure.4}}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}Our Approach Overview}{4}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.\nobreakspace  {}Hough Transforms}{4}{subsection.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.\nobreakspace  {}Localization Refinement}{4}{subsection.4.2}}
+\@writefile{brf}{\backcite{lowe1999object}{{4}{4.2}{subsection.4.2}}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Robust SIFT Distances using RANSAC}{4}{subsubsection.4.2.1}}
+\@writefile{brf}{\backcite{fischler1981random}{{4}{4.2.1}{subsubsection.4.2.1}}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Refining Image Positions using Least Squares}{4}{subsubsection.4.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.\nobreakspace  {}Ceiling/Floor Texturing vs. Wall Texturing}{5}{subsection.4.3}}
+\newlabel{sec:whydifferent}{{4.3}{5}{\hskip -1em.~Ceiling/Floor Texturing vs. Wall Texturing\relax }{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}\hskip -1em.\nobreakspace  {}Texturing Walls}{5}{subsection.4.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Cost Functions}{5}{subsubsection.4.4.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Image Selection}{6}{subsubsection.4.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Image Selection is done by constructing a graph of sorted images. Then we solve a shortest path problem where the edge weights represent the cost of a seam between two overlapping images.}}{6}{figure.5}}
+\newlabel{fig:DynProg}{{5}{6}{Image Selection is done by constructing a graph of sorted images. Then we solve a shortest path problem where the edge weights represent the cost of a seam between two overlapping images}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}\hskip -1em.\nobreakspace  {}Texturing Ceilings and Floors}{6}{subsection.4.5}}
 \bibstyle{ieee}
 \bibdata{egbib}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Example of a short caption, which should be centered.}}{7}{figure.6}}
-\newlabel{fig:short}{{6}{7}{Example of a short caption, which should be centered}{figure.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Results. Ours is better.}}{7}{table.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}\hskip -1em.\nobreakspace  {}Color}{7}{subsection.8.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}\hskip -1em.\nobreakspace  {}Final copy}{7}{section.9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}\hskip -1em.\nobreakspace  {}Blending}{7}{subsection.4.6}}
