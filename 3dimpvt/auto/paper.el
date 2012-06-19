@@ -3,14 +3,9 @@
     (LaTeX-add-bibliographies
      "egbib")
     (LaTeX-add-labels
-     "sec:backpackSystem"
-     "sec:backpackHardware"
-     "sec:environmentReconstruction"
-     "sec:imageAssociation"
-     "sec:textureMappingOverview"
      "fig:projection"
-     "sec:naive"
-     "fig:naive"
+     "fig:scoringFunction"
+     "fig:directMapping"
      "fig:mosaic"
      "fig:graph"
      "sec:whydifferent"

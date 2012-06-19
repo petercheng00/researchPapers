@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  18 JUN 2012 09:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  18 JUN 2012 09:56
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -356,59 +356,57 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 <Projection.pdf, id=21, 371.72507pt x 334.35416pt>
 File: Projection.pdf Graphic file (type pdf)
  <use Projection.pdf>
-[2 <./Projection.pdf>] <naive.png, id=178, 439.533pt x 274.626pt>
+[2] <naive.png, id=32, 439.533pt x 274.626pt>
 File: naive.png Graphic file (type png)
-
-<use naive.png> <panoMy.jpg, id=180, 1405.25pt x 329.23pt>
+ <use naive.png> [3 <./Projection.pdf> <./naive.png (PNG copy)>] <panoMy.jpg, i
+d=190, 1405.25pt x 329.23pt>
 File: panoMy.jpg Graphic file (type jpg)
- <use panoMy.jpg>
 
-LaTeX Warning: Citation `hz' on page 3 undefined on input line 309.
+<use panoMy.jpg>
+
+LaTeX Warning: Citation `hz' on page 4 undefined on input line 334.
 
 
-LaTeX Warning: Citation `brown2007automatic' on page 3 undefined on input line 
-311.
+LaTeX Warning: Citation `brown2007automatic' on page 4 undefined on input line 
+336.
 
-[3 <./naive.png (PNG copy)> <./panoMy.jpg>]
-<Graph_crop.pdf, id=194, 308.5389pt x 105.02065pt>
+<Graph_crop.pdf, id=192, 308.5389pt x 105.02065pt>
 File: Graph_crop.pdf Graphic file (type pdf)
  <use Graph_crop.pdf>
 
-LaTeX Warning: Citation `liu2010indoor' on page 4 undefined on input line 344.
+LaTeX Warning: Citation `liu2010indoor' on page 4 undefined on input line 369.
 
 
-LaTeX Warning: Citation `liu2010indoor' on page 4 undefined on input line 346.
+LaTeX Warning: Citation `liu2010indoor' on page 4 undefined on input line 371.
 
 
-LaTeX Warning: Citation `chen2010indoor' on page 4 undefined on input line 346.
-
-
-
-LaTeX Warning: Citation `lowe1999object' on page 4 undefined on input line 381.
+LaTeX Warning: Citation `chen2010indoor' on page 4 undefined on input line 371.
 
 
 
-LaTeX Warning: Reference `fig:matches' on page 4 undefined on input line 382.
+LaTeX Warning: Citation `lowe1999object' on page 4 undefined on input line 406.
+
+
+
+LaTeX Warning: Reference `fig:matches' on page 4 undefined on input line 407.
 
 
 LaTeX Warning: Citation `fischler1981random' on page 4 undefined on input line 
-388.
+413.
 
-[4 <./Graph_crop.pdf>]
-Overfull \hbox (16.04565pt too wide) detected at line 465
+[4 <./panoMy.jpg> <./Graph_crop.pdf>]
+Overfull \hbox (16.04565pt too wide) detected at line 490
 \OML/cmm/m/it/10 y[] \OT1/cmr/m/n/10 = []
  []
 
-[5] <DynProg.pdf, id=229, 499.8675pt x 236.885pt>
+[5] <DynProg.pdf, id=228, 499.8675pt x 236.885pt>
 File: DynProg.pdf Graphic file (type pdf)
- <use DynProg.pdf>
-Underfull \hbox (badness 1122) in paragraph at lines 626--633
+ <use DynProg.pdf> [6 <./DynProg.pdf>]
+Underfull \hbox (badness 1122) in paragraph at lines 651--658
 []\OT1/ptm/m/n/10 Such seg-men-ta-tion im-plies smaller units of tex-ture,
  []
 
-[6 <./DynProg.pdf>] (./paper.bbl) [7
-
-] (./paper.aux)
+(./paper.bbl) [7] (./paper.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -417,13 +415,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 5516 strings out of 495061
- 77026 string characters out of 1182621
- 162476 words of memory out of 3000000
+ 5517 strings out of 495061
+ 77040 string characters out of 1182621
+ 163476 words of memory out of 3000000
  8538 multiletter control sequences out of 15000+50000
  32834 words of font info for 77 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,10n,29p,407b,303s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,9n,24p,407b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/
@@ -438,9 +436,9 @@ ts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb><
 texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/
 urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pf
 b>
-Output written on paper.pdf (7 pages, 3290304 bytes).
+Output written on paper.pdf (7 pages, 3291143 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
- 34 named destinations out of 1000 (max. 500000)
+ 433 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
