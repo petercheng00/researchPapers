@@ -1,8 +1,7 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
     (LaTeX-add-labels
-     "fig:long"
-     "fig:onecol")
+     "fig:scoringFunction")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")

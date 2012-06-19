@@ -1,0 +1,43 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{brown2007automatic}
+M.~Brown and D.~Lowe.
+\newblock Automatic panoramic image stitching using invariant features.
+\newblock {\em International Journal of Computer Vision}, 74(1):59--73, 2007.
+
+\bibitem{chen2010indoor}
+G.~Chen, J.~Kua, S.~Shum, N.~Naikal, M.~Carlberg, and A.~Zakhor.
+\newblock Indoor localization algorithms for a human-operated backpack system.
+\newblock In {\em Int. Symp. on 3D Data, Processing, Visualization and
+  Transmission (3DPVT)}. Citeseer, 2010.
+
+\bibitem{fischler1981random}
+M.~Fischler and R.~Bolles.
+\newblock Random sample consensus: a paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock {\em Communications of the ACM}, 24(6):381--395, 1981.
+
+\bibitem{hz}
+R.~Hartley and A.~Zisserman.
+\newblock {\em Multiple view geometry in computer vision}, volume~2.
+\newblock Cambridge Univ Press, 2000.
+
+\bibitem{liu2010indoor}
+T.~Liu, M.~Carlberg, G.~Chen, J.~Chen, J.~Kua, and A.~Zakhor.
+\newblock Indoor localization and visualization using a human-operated backpack
+  system.
+\newblock In {\em Indoor Positioning and Indoor Navigation (IPIN), 2010
+  International Conference on}, pages 1--10. IEEE, 2010.
+
+\bibitem{lowe1999object}
+D.~Lowe.
+\newblock Object recognition from local scale-invariant features.
+\newblock In {\em Computer Vision, 1999. The Proceedings of the Seventh IEEE
+  International Conference on}, volume~2, pages 1150--1157. Ieee, 1999.
+
+\bibitem{sanchez2012point}
+V.~Sanchez and A.~Zakhor.
+\newblock Planar 3d modeling of building interiors from point cloud data.
+\newblock In {\em Internation Conference on Image Processing}, 2012.
+
+\end{thebibliography}

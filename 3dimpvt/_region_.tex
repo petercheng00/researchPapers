@@ -24,125 +24,23 @@
 \ifcvprfinal\pagestyle{empty}\fi
 \begin{document}
 
-\message{ !name(paper.tex) !offset(139) }
-\subsection{Blind review}
-
-Many authors misunderstand the concept of anonymizing for blind
-review.  Blind review does not mean that one must remove citations to
-one's own work---in fact it is often impossible to review a paper
-unless the previous citations are known and available.
-
-Blind review means that you do not use the words ``my'' or ``our''
-when citing previous work.  That is all.  (But see below for
-techreports)
-
-Saying ``this builds on the work of Lucy Smith [1]'' does not say that
-you are Lucy Smith, it says that you are building on her work.  If you
-are Smith and Jones, do not say ``as we show in [7]'', say ``as Smith
-and Jones show in [7]'' and at the end of the paper, include reference
-7 as you would any other cited work.
-
-An example of a bad paper just asking to be rejected:
-\begin{quote}
-  \begin{center}
-    An analysis of the frobnicatable foo filter.
-  \end{center}
-
-  In this paper we present a performance analysis of our previous
-  paper [1], and show it to be inferior to all previously known
-  methods.  Why the previous paper was accepted without this analysis
-  is beyond me.
-
-  [1] Removed for blind review
-\end{quote}
-
-
-An example of an acceptable paper:
-
-\begin{quote}
-  \begin{center}
-    An analysis of the frobnicatable foo filter.
-  \end{center}
-
-  In this paper we present a performance analysis of the paper of
-  Smith \etal [1], and show it to be inferior to all previously known
-  methods.  Why the previous paper was accepted without this analysis
-  is beyond me.
-
-  [1] Smith, L and Jones, C. ``The frobnicatable foo filter, a
-  fundamental contribution to human knowledge''.  Nature 381(12),
-  1-213.
-\end{quote}
-
-If you are making a submission to another conference at the same time,
-which covers similar or overlapping material, you may need to refer to
-that submission in order to explain the differences, just as you would
-if you had previously published related work.  In such cases, include
-the anonymized parallel submission~\cite{Authors12} as additional
-material and cite it as
-\begin{quote} [1] Authors. ``The frobnicatable foo filter'', F\&G 2012
-  Submission ID 324, Supplied as additional material {\tt fg324.pdf}.
-\end{quote}
-
-Finally, you may feel you need to tell the reader that more details
-can be found elsewhere, and refer them to a technical report.  For
-conference submissions, the paper must stand on its own, and not {\em
-  require} the reviewer to go to a techreport for further details.
-Thus, you may say in the body of the paper ``further details may be
-found in~\cite{Authors12b}''.  Then submit the techreport as
-additional material.  Again, you may not assume the reviewers will
-read this material.
-
-Sometimes your paper is about a problem which you tested using a tool
-which is widely known to be restricted to a single institution.  For
-example, let's say it's 1969, you have solved a key problem on the
-Apollo lander, and you believe that the CVPR70 audience would like to
-hear about your solution.  The work is a development of your
-celebrated 1968 paper entitled ``Zero-g frobnication: How being the
-only people in the world with access to the Apollo lander source code
-makes us a wow at parties'', by Zeus \etal.
-
-You can handle this paper like any other.  Don't write ``We show how
-to improve our previous work [Anonymous, 1968].  This time we tested
-the algorithm on a lunar lander [name of lander removed for blind
-review]''.  That would be silly, and would immediately identify the
-authors. Instead write the following:
-\begin{quotation}
-  \noindent
-  We describe a system for zero-g frobnication.  This system is new
-  because it handles the following cases: A, B.  Previous systems
-  [Zeus et al. 1968] didn't handle case B properly.  Ours handles it
-  by including a foo term in the bar integral.
-
-  ...
-
-  The proposed system was integrated with the Apollo lunar lander, and
-  went all the way to the moon, don't you know.  It displayed the
-  following behaviours which show how well we solved cases A and B:
-  ...
-\end{quotation}
-As you can see, the above text follows standard scientific convention,
-reads better than the first version, and does not explicitly name you
-as the authors.  A reviewer might think it likely that the new paper
-was written by Zeus \etal, but cannot make any decision based on that
-guess.  He or she would have to be sure that no other authors could
-have been contracted to solve problem B.
-
-FAQ: Are acknowledgements OK?  No.  Leave them for the final copy.
-
-
-\begin{figure}[t]
-  \begin{center}
-    \fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}
-    % \includegraphics[width=0.8\linewidth]{egfigure.eps}
-  \end{center}
-  \caption{Example of caption.  It is set in Roman so that mathematics
-    (always set in Roman: $B \sin A = A \sin B$) may be included
-    without an ugly clash.}
-  \label{fig:long}
-  \label{fig:onecol}
+\message{ !name(paper.tex) !offset(204) }
+\begin{figure}
+  \centering
+  \includegraphics[height=1.5in]{scoringFunction.pdf}
+  \caption{For each tile, we want to select an image such that $d$ and $\alpha$ are minimized}
+  \label{fig:scoringFunction}
 \end{figure}
 
-\message{ !name(paper.tex) !offset(325) }
+
+
+%\begin{figure}
+%  \centering
+%  \includegraphics[height=1.5in]{directMapping.png}
+%  \caption{The result of direct texture mapping based on locally
+%    optimized textures.}
+%  \label{fig:directMapping}
+%\end{figure}
+\message{ !name(paper.tex) !offset(699) }
 
 \end{document}

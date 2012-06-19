@@ -92,9 +92,9 @@ general problem of texture mapping and examines two simple mapping
 approaches and their problems.  Section 4 demonstrates previous
 attempts at localization refinement, and presents our new approach to
 image alignment. Section 5 combines our image alignment algorithm with
-a simple image selection approach, as well as with a new method for image selection that
-takes advantage of optimal projections. Section 6 contains results and
-conclusions.
+a simple image selection approach, as well as with a new method for
+image selection that takes advantage of optimal images. Section 6
+contains results.
 
 \section{Backpack Modeling System}
 Human-operated data acquisition systems provide unique advantages over
@@ -112,29 +112,30 @@ The backpack modeling system that captured our data contains five 2D
 laser range scanners, two cameras, an orientation sensor, and an
 IMU. The laser scanners are mounted orthogonally and have a 30-meter
 range and a 270$^{\circ}$ field of view. The two cameras are equipped
-with fisheye lenses, resulting in a 180$^{\circ}$ field of view, and
-are mounted with one facing left and one facing right. These cameras take images at the rate of 5 Hz. The orientation
-sensor provides orientation parameters at a rate of 180 Hz. The IMU
-provides highly accurate measurements of all 6 DOF at 200 Hz, and is
-used as a ground truth reference.
+with fisheye lenses, reaching an approximately 180$^{\circ}$ field of
+view, and are mounted with one facing left and one facing right. These
+cameras take images at the rate of 5 Hz. The orientation sensor
+provides orientation parameters at a rate of 180 Hz. The IMU provides
+highly accurate measurements of all 6 DOF at 200 Hz, and is used as a
+ground truth reference.
 
 With the backpack actively scanning, the human operator wearing it
-then takes great care to walk a path such that every wall in the
-desired indoor environment is passed and scanned lengthwise at least
-once.
+takes great care to walk a path such that every wall in the desired
+indoor environment is passed and scanned lengthwise at least once.
 
 \subsection{Environment Reconstruction}
 Using data gathered by the onboard sensors and multiple localization
-and loop-closure algorithms, the backpack is first localized over its data
-collection period, and a 3D point cloud of the surrounding environment
-is constructed based on the laser scanner readings relative to the backpack. Approximate normal
-vectors for each point in the point cloud are then calculated by
-gathering neighboring points within a small radius and processing them
-through principal component analysis. These normal vectors allow for
-the classification and grouping of adjacent points into structures
-such as walls, ceilings, floors, and staircases. A RANSAC algorithm is
-then employed to fit polygonal planes to these structured groupings of
-points, resulting in a fully planar model. This model,
+and loop-closure algorithms, the backpack is first localized over its
+data collection period, and a 3D point cloud of the surrounding
+environment is constructed based on the laser scanner readings
+relative to the backpack \cite{chen2010indoor}. Approximate normal vectors for
+each point in the point cloud are then calculated by gathering
+neighboring points within a small radius and processing them through
+principal component analysis. These normal vectors allow for the
+classification and grouping of adjacent points into structures such as
+walls, ceilings, floors, and staircases. A RANSAC algorithm is then
+employed to fit polygonal planes to these structured groupings of
+points, resulting in a fully planar model \cite{sanchez2012point}. This model,
 consisting of multiple 2D polygonal planes in 3D space, along with the
 set of images captured by the backpack's camera, can be considered the
 input to our texture mapping problem.
@@ -201,11 +202,17 @@ plane's texture was not composed of a single continuous image.
 
 
 Ignoring the fact that the camera matrices $P_{1..M}$ are inaccurate,
-we can texture the plane by discretizing it into small square
-tiles, generally about 5 pixels across, and picking an image to texture that tile with. In order to
-do this, we must first gather a list of candidate images for each tile
-$t$. These candidate images must contain all four corners of $t$,
-which we can quickly check using the projection method
+we can texture the plane by discretizing it into small square tiles,
+generally about 5 pixels across, and picking an image to texture each
+tile with. We choose to work with rectangular units to ensure that
+borders between any two distinct images in our final texture will be
+either horizontal or vertical. Since most environmental features
+inside buildings are horizontal or vertical, any seams in our texture
+will intersect them miniimally and be less noticeable.
+
+In order to select an image for texturing tile $t$, we must first
+gather a list of candidate images that contain all four of its
+corners, which we can quickly check using the projection method
 above. Furthermore, each candidate image must have been taken at a
 time when its camera had a clear line-of-sight to the center of $t$,
 which can be calculated using standard ray-polygon intersection tests
@@ -220,23 +227,22 @@ our plane. Additionally, we desire images that project squarely onto
 the plane, maximizing the resolution and amount of useful texture
 available in their projections.
 
-A scoring function to maximize these two criteria is as follows:
+A scoring function to maximize these two criteria is shown in figure \ref{fig:scoringFunction}.
 
 \begin{figure}
   \centering
-  \includegraphics[height=1.5in]{scoringFunction.png}
-  \caption{For each tile, we want to select an image such that the
-    function $abcdefg/awerw$ is maximized}
+  \includegraphics[height=1.5in]{scoringFunction.pdf}
+  \caption{For each tile, we find the image that minimizes $d$ and $\alpha$ by maximizing the following equation: $(1/d \cdot (-1 \cdot C) \cdot N)$}
   \label{fig:scoringFunction}
 \end{figure}
 
 
 
-
 \begin{figure}
   \centering
-  \includegraphics[height=1.5in]{directMapping.png}
-  \caption{The result of direct texture mapping based on locally optimized textures.}
+  \includegraphics[width=3in]{wall1_naive.jpg}
+  \caption{The result of direct texture mapping based on locally
+    optimized textures.}
   \label{fig:directMapping}
 \end{figure}
 
@@ -273,7 +279,7 @@ entire set of candidate images.
 
 \begin{figure}
   \centering
-  \includegraphics[height=1.5in]{caching.png}
+  \includegraphics[width=3in]{wall1_cache_full.jpg}
   \caption{The result of adding a caching system to locally optimized textures.}
   \label{fig:caching}
 \end{figure}
@@ -309,7 +315,7 @@ function, selected images are only good candidates for the tiles near
 their center of projection. Thus, there should be plenty of overlap
 between selected images, allowing for some degree of shifting as well
 as blending between them. With this set of images, we now examine two
-approaches towards refining and combining their projections.
+approaches towards refining and combining their projections, before demonstrating our own.
 
 \subsection{Image Mosaicing}
 
@@ -321,7 +327,7 @@ approaches towards refining and combining their projections.
 \end{figure}
 
 
-When images are taken of a plane from arbitrary overlapping positions,
+When images of a plane are taken from arbitrary overlapping positions,
 they are related by homography \cite{hz}. Thus, existing
 homography-based image mosaicing algorithms are applicable
 \cite{brown2007automatic}. However, errors can compound when long
@@ -339,8 +345,8 @@ package which does homography-based image mosaicing. This plane is
 nearly a best-case scenerio with many features spread uniformly across
 it. Even so, the mosaicing produces errors that causes straight lines
 to appear as waves on the plane. This image was generated after
-careful hand tuning. Many planes that had fewer features simply
-failed. This led to the conclusion that image mosaicing is not a
+careful hand tuning as well. Many planes that had fewer features simply
+failed outright. This leads to the conclusion that image mosaicing is not a
 robust enough solution for reliably texture mapping our dataset.
 
 \subsection{Image-Based 3D Localization Refinement}
@@ -355,7 +361,7 @@ robust enough solution for reliably texture mapping our dataset.
 
 Another approach is to refine the camera matrices using image
 correspondences to guide the process. Each image's camera matrix has 6
-degrees of freedom. Previous work has attempted to refine camera
+degrees of freedom that can be adjusted. Previous work on this problem attempted to refine camera
 matrices by solving a non-linear optimization problem
 \cite{liu2010indoor}. This process is specific to the backpack system
 which generated our dataset, as it must be run during backpack
@@ -366,52 +372,47 @@ placement of images using image correspondences. However, we do so in
 two dimensions on the plane whereas this previous work did so over all
 6 degrees of freedom. Refining in two dimensions on the plane is less
 flexible in that it does not address projection errors, however, it
-provides noticeable benefits while avoiding the error propagation
+provides significant benefits while avoiding the error propagation
 problem.
 
 
-\section{Our Approach}
+\subsection{Improved Localization through 2D Matching}
 Our approach begins with the projection of all our images onto
 separate copies of our plane, such that no projected data is covered
-and lost. Tis is done by discretizing the plane into an arbitrary
-density of points, and projecting each point into the image plane
-using the camera matrix $P_i$. We then perform a series of
-preprocessing steps to rotate and shift each image's projection such
-that its overlapping regions with other projections are as seamless as
-possible. From here, we assign textures to our planes using one of two
-methods, dependent on whether they are wall planes or ceiling/floor
-planes. The reasoning for this is explained in section
-\ref{sec:whydifferent}. Lastly, we apply two post-processing steps to
-smooth out any remaining seams.
+up and lost. This is done in the same way as the approaches in section
+3. We then perform Hough transforms to rotate these projections
+similarly, and then shift each image's projection such that its
+overlapping regions with other projections are as seamless as
+possible.
 
 \subsection{Hough Transforms}
-Our first step is to use Hough transforms to rotate the projected
-images such that any strong near-vertical features are made completely
-vertical. This is effective for indoor modeling, since many indoor
-scenes contain strong vertical lines from features such as doors, wall
-panels, or rectangular frames.
+Our first step is to use Hough transforms to adjust the rotation of
+projected images. Rather than try and match the orientation of
+features in each image, we simply apply rotations such that any strong
+near-vertical features are made completely vertical. This is effective
+for indoor modeling, since strong features in indoor scenes usually
+contain vertical lines corresponding to doors, wall panels,
+rectangular frames, etc. If features in the environment are not
+vertical, or there are few features overall, this step should be
+skipped.
 
 
-\subsection{Localization Refinement}
+\subsection{SIFT Feature Matching}
 Our next step is to try and fix misalignment between overlapping
-images.  We do this by fixing the locations in 2D. First we find
-corresponding points between all pairs of overlapping images using
-SIFT matches \cite{lowe1999object}. An illustration of this is given
-in Figure \ref{fig:matches}. The SIFT matches allow us to determine
+images. We do this by first searching for corresponding points between
+all pairs of overlapping images using SIFT feature matching
+\cite{lowe1999object}. An illustration of this is given in Figure
+\ref{fig:matches}. The SIFT matches allow us to determine
 feature-based $x$ and $y$ distances between two images on the plane,
-which we can compare against the $x$ and $y$ distances provided by the
-camera matrices. With these data points, we can reevaluate where each
-image should be projected.
+which will allow us to reevaluate where each image should be projected.
 
 \subsubsection{Robust SIFT Distances using RANSAC}
-
-First we need to ensure that the SIFT-based distances are
-reliable. Since SIFT matches frequently include outliers, the RANSAC
+Since indoor environments often contain repetitive features, such as floor tiles or doors, we need to ensure that our SIFT-based distances are
+reliable. In order to diminish the effect of incorrect matches and outliers, the RANSAC
 framework \cite{fischler1981random} is used for a robust estimate of
 the $x$ and $y$ distances between the two images. The RANSAC framework
-will attempt to build a consensus among the SIFT matches about what
-the true $x$ and $y$ distance is between the two images while ignoring
-the influence of outliers that may skew the results. The framework
+attempts to build a consensus among the SIFT matches between every pair of images, and tries to generate the horizontal and vertical distance between them while ignoring
+the influence of outliers that would skew the results. The framework
 handles the consensus-building machinery, and only requires that two
 functions be specified: the fitting function and the distance
 function. These functions are called for random subsets of the SIFT
@@ -423,20 +424,18 @@ be the same. Our distance function for a pair of points is the
 difference between those points' SIFT match distance and the average
 distance computed by the fitting function. We specified a 10 pixel
 outlier threshold to the framework. This means that a SIFT match is
-labeled as an outlier if its $x$ and $y$ distance is not within 10
+labeled as an outlier if its horizontal or vertical distance is not within 10
 pixels of the average distance computed by the fitting function.
 
 \subsubsection{Refining Image Positions using Least Squares}
 
-There are a total of $M^{2}$ possible pairs of images, however we can
-only measure distances between images that overlap at SIFT feature
+There are a total of $M^{2}$ possible pairs of images, though we only generate distances between images that overlap at SIFT feature
 points. Given these distances and the original image location
-estimates, we solve a least squares problem ($\textrm{min}_{\beta}
+estimates, we can solve a least squares problem ($\textrm{min}_{\beta}
 ||\beta X - y||_2^2 $) to estimate the correct location of the images
-on the plane. The vector $\beta$ of unknowns are the correct $x$ and
-$y$ locations of each image on the plane from $1 \dots M$. Finding the
-correct $x$ and $y$ locations are independent from one another so we
-will only consider the $x$ locations:
+on the plane. The vector $\beta$ of unknowns represent the correct $x$ and
+$y$ locations of each image on the plane from $1 \dots M$. The optimal $x$ and $y$ locations are calculated in the same way, so we
+will only consider the $x$ locations here:
 
 % Draw least squares problem here.
 
@@ -476,8 +475,7 @@ row with a $1$ in the first column and the rest zeros.
 Finally, the observation vector $y$ is constructed using the
 SIFT-based distances generated earlier in the matching stage. The
 distances are denoted as $d_1 \dots d_N$ for $N$ SIFT-based
-distances. The last element in the observation vector is the original
-location of the first image determined by the localization algorithm.
+distances. The last element in the observation vector is the location of the first image determined by its original localization.
 
 \[
 y^T =
@@ -486,10 +484,9 @@ y^T =
 \end{pmatrix}
 \]
 
-The $\beta$ that minimizes $||\beta X - y||_2^2$ tells us a set of
+The $\beta$ that minimizes $||\beta X - y||_2^2$ results in a set of
 image locations on the plane that best honors all the SIFT-based
-distance measurements between images. A similar problem is solved for
-the $y$ dimension. In practice there are often cases where there is a
+distance measurements between images. In practice there are often cases where there is a
 break in the chain of images, meaning that no SIFT matches were found
 between one segment of the plane and another. In this case we add rows
 to the $X$ matrix and observations to the $y$ vector that contain the
@@ -500,110 +497,140 @@ SIFT distances are given a higher weight i.e. 1, and the distances
 generated by the localization algorithm are given a smaller weight
 i.e. 0.01.
 
-At this point we now have our target plane associated with a list of
-images as well as their rotated and shifted projections upon the
-plane. We are ready to begin assigning these projections to areas of
-our plane for texturing.
+After completing this same process for the $y$ dimension as well, and making the resultant shifts, our image projections should overlap and match eachother with far greater accuracy. 
 
 
+\section{Improved Texture Mapping with Localization and Blending}
+Now that our images have been relocalized for much greater accuracy relative to eachother, we can revisit the cached mapping approach from section 3.2. Since we now have higher confidence in the quality of image boundaries, we can also explore an alternate method that greatly reduces seams in cases where we have an abundance of optimal images.
 
-\subsection{Ceiling/Floor Texturing vs. Wall Texturing}
-\label{sec:whydifferent}
-The backpack modeling system, as described in Section
-\ref{sec:backpackHardware}, was designed to prioritize for texturing
-walls. As mentioned previously, the backpack contains two fisheye
-cameras, one aimed directly to the left of the backpack operator, and
-one aimed directly to the right. Thus, in order to texture the ceiling
-above where the operator walked, images from both cameras must be
-combined, with their boundaries meeting overhead. Unlike walls, where
-one image generally spans the entire height of a wall, two images are
-required to span the width of a ceiling. Even more problematic, the
-floor beneath the backpack is physically obscured by the operator's
-body, and thus must be textured by images taken from behind the
-operator or from the side. This problem of distant cameras at poor
-angles is compounded by the fact that the operator's data acquisition
-path attempts to fully scan each wall, but not necessarily the
-entirety of a floor or ceiling. This means that large swaths of floors
-and ceilings are never walked directly over or under, and thus must be
-textured by sidelong images taken from further distances and at
-oblique angles. These effects are shown in the following figure.
-
-In short, these factors mean that wall planes are generally associated
-with a multitude of upright, uniform images, from a relatively close
-distance and taken head-on at regular intervals, while floors and
-ceilings are associated with images taken from all manner of
-orientations and distances. This major difference suggests we employ
-two strategies, one tailored for each scenario.
-
-
-\subsection{Texturing Walls}
-Because wall images tend to all be fairly good candidates for
-texturing due to their orientation and location, our goal is less
-about determining the best images, and more about selecting a set of
-images that together form the most seamless texture.
-
-\subsubsection{Cost Functions}
-
-In order to objectively decide which set of images accomplishes this,
-we need to decide on an overall cost function. As our goal is to
-reduce the seams that occur where two images meet, a simple cost
-function is the sum of squared pixel differences in overlapping
-regions between every pair of images. This encourages image boundaries
-to occur in featureless areas, such as bare walls, on in areas where
-images are very well aligned.
-
-Another possible cost function is edge energy, i.e. the sum of the
-smoothed gradient of the blended seam regions. Minimizing this
-encourages image boundaries to be placed in featureless areas even
-more than the first cost function. For the results shown throughout
-this paper, the first cost function was used, as the regular
-occurrence of featureless areas was not guaranteed in our datasets.
-
-\subsubsection{Image Selection}
-
-Now that we have a cost function defined, we need to mechanically
-select the set of images for which the overall cost function is
-minimized. Since we aim to cover the entirety of our plane, our
-problem is to minimally cover a polygon(our plane) using other
-polygons of arbitrary geometry (our image projections), with the added
-constraint of minimizing our cost function. This is a complex problem,
-though it can be generalized to a number of graph coverage problems,
-as depicted in figure X. Returning again to the optimality of our
-situation when texturing walls however, we can make a quick
-simplification for the sake of efficiency. Given that our wall-texture
-candidate images were all taken from a head-on angle, and assuming
-only minor rotations were made earlier, we can reason that their
-projections onto the plane are approximately rectangular. By
-discarding any excess texture and cropping them all to be rectangular,
-our problem becomes the conceptually simpler problem of filling a
-polygon with rectangles, such that the sum of all edge costs between
-each pair of rectangles is minimal. An additional benefit of working
-with rectangular units is that borders between any two distinct images
-in our final texture will be either horizontal or vertical. Since most
-environmental features inside buildings are horizontal or vertical,
-any seams in our texture will intersect them miniimally and be less
-noticeable.
-
-By taking one more shortcut we can simplify our problem down even
-further. Since care is taken such that our wall images contain the
-floor-to-ceiling range of walls, we generally do not have any wall
-images such that one should be projected vertically above the
-other. In essence, we need only to ensure horizontal coverage of our
-planes, as our images provide full vertical coverage. We can thus
-construct a Directed Acyclic Graph (DAG) from the images, again with
-edge costs defined by our cost function above, and solve a simple
-shortest path problem to find an optimal subset of images with regard
-to the cost functions.
+\subsection{Localized Mapping with Caching}
+In figure \ref{fig:shifted}, we see the same wall from section 3,
+texture mapped using the caching method, both without and with
+localization for comparison.
 
 \begin{figure}
   \centering
-  \includegraphics[width=3in]{DynProg.pdf}
-  \caption{Image Selection is done by constructing a graph of sorted
-    images. Then we solve a shortest path problem where the edge
-    weights represent the cost of a seam between two overlapping
-    images.}
-  \label{fig:DynProg}
+  \includegraphics[width=3in]{wall1_cache_full_shifted.jpg}
+  \caption{Localization refinement results in signifcantly fewer
+    discontinuities in the final texture.}
+  \label{fig:shifted}
 \end{figure}
+
+
+It should be evident that our localization adjustments resulted in a
+major improvement. A great strength of our tiling approach for image
+selection is that it runs regardless of plane geometry or orientation,
+and can handle images of all types. For example, here is the approach
+as run on a ceiling and floor plane, both of which contain a multitude
+of non-optimal images due to the camera locations on the backpack.
+
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=3in]{localized_caching_ceiling.png}
+%   \caption{Using the graph-based localization refinement algorithm
+%   from [11] suffers from the problem of compounding errors. }
+%   \label{fig:graph}
+% \end{figure}
+
+Given that the backpack system's hardware and the data collection
+process do strive to collect optimal images for walls however, we can
+be less reserved when texturing walls, and simply fall back to this
+more robust approach as needed.
+
+\subsection{Texture Mapping with Seam Minimization}
+The cached tile approach selected images based on individual quality
+and neighboring quality, in an effort to reduce seams between
+tiles. In a more optimal case, as the backpack system provides for
+walls, images all have near-rectangular projections and thus a great
+score according to the scoring function in figure
+\ref{fig:scoringFunction}. Thus, we can reason that rather than
+selecting the set of best images, since all images are good, we should
+instead select the best set of images, such that the selection results
+in the cleanest texture possible. We will accomplish this by using
+entire images where possible, defining a cost function between images,
+and seeking to maximize our total cost.
+
+\subsection{Occlusion Masking}
+Before we proceed with using our images, we need to ensure that they
+contain only content that should be mapped onto the target plane in
+question. The tiling approach used previously only checked occlusion
+for each tile as it was being textured, so we need to perform
+occlusion checks over the entirety of each image, so we know which
+areas are available for texture mapping. By performing the same
+intersection tests used for tiles, we can determine whether individual
+sections of an image are occluded.
+
+Fortunately, by virtue of our indoor environments, the vast majority
+of surface geometry is either horizontal or vertical, with high
+amounts of right angles. This means that after masking out occluded
+areas, our image projections will remain largely rectangular. We can
+thus recursively split each image into rectangular pieces, and perform
+occlusion checks, similar to the process done for tiles earlier. To
+actually occlude out rectangles, we simply remove their texture, as we
+will ensure that untextured areas are never chosen for texture
+mapping.
+
+\subsubsection{Inter-Image Cost Functions}
+In order to objectively decide which set of images results in the
+cleanest texture, we need a cost function such that we can evaluate
+the visibiilty of seams between images in our set. A straightforward
+cost function that accomplishes this is the sum of squared pixel
+differences in overlapping regions between all pairs of
+images. Minimizing this cost function encourages image boundaries to
+occur in featureless areas, such as bare walls, as well as in areas
+where images match extremely accurately.
+
+Another possible cost function is overall edge energy, i.e. the sum of
+the smoothed gradient over seams. Minimizing this encourages image
+boundaries to be placed in featureless areas even more than the first
+cost function. For the results shown throughout this paper, the first
+cost function was used, as the regular occurrence of featureless areas
+was not guaranteed in our datasets, and our image matches do in fact
+match at the pixel level in many cases.
+
+\subsubsection{Image Selection}
+
+Now that we have a cost function defined, we mechanically select the
+set of images for which the overall cost function is minimized. Since
+we aim to cover the entirety of our plane, our problem is to minimally
+cover a polygon(our plane), using other polygons of arbitrary geometry
+(our image projections), with the added constraint of minimizing our
+cost function between chosen images. This is a complex problem, though
+we can take a number of steps to simplify it. Returning again to the
+optimality of our situation when texturing walls however, we can make
+a quick simplification for the sake of efficiency. Given that our
+wall-texture candidate images were all taken from a head-on angle, and
+assuming only minor rotations were made during localization
+refinement, we can reason that their projections onto the plane are
+approximately rectangular. By discarding the minor excess texture and
+cropping them all to be rectangular, our problem becomes the
+conceptually simpler problem of filling a polygon with rectangles,
+such that the sum of all edge costs between each pair of rectangles is
+minimal. We thus also retain axis-aligned image boundaries, along with
+their advantages explained in section 3.
+
+By taking one more shortcut we can simplify our problem down even
+further. Since this approach is already assuming optimal images, we
+know it will be applied only on walls, which are the focus of the
+backpack modeling system. For wall planes, care is taken so that
+images contain the entirety of their floor-to-ceiling range, and thus
+we do not have wall images such that one should be projected
+vertically above the other. In essence, we need only to ensure
+horizontal coverage of our planes, as our images provide full vertical
+coverage themselves. We can thus construct a Directed Acyclic Graph
+(DAG) from the images, again with edge costs defined by our cost
+function above, and solve a simple shortest path problem to find an
+optimal subset of images with regard to the cost functions.
+
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=3in]{DynProg.pdf}
+%  \caption{Image Selection is done by constructing a graph of sorted
+%    images. Then we solve a shortest path problem where the edge
+%    weights represent the cost of a seam between two overlapping
+%    images.}
+%  \label{fig:DynProg}
+%\end{figure}
 
 Figure \ref{fig:DynProg} demonstrates the construction of a DAG from
 overlapping images of a long hallway. Images are sorted by horizontal
@@ -626,73 +653,112 @@ In rare cases where the vertical dimension of the plane is not
 entirely covered by a chosen image, we are left with a hole where no
 image was chosen to texture. Rather than reverting to a 2D-coverage
 problem, we can elect to simply fill the hole by selecting images in a
-greedy fashion, with respect to the same cost function.
+greedy fashion with respect to the same cost function.
 
-At this point, we have mapped every location on our plane to an image
-or images that were selected. Before applying these textures, we will
-examine how to accomplish the same mapping for ceilings and floors.
+With this completed, we have now mapped every location on our plane to
+at least one image, and have minimized the amount of images, as well
+as the discontinuity between their borders. In the next section, we
+will apply blending between images where they overlap, but for the
+sake of comparison with the unblended tile caching method in section
+5.1, we arbitrarily pick one image for texturing where images
+overlap. The following images compare the tile caching method against
+this seam minimization method.
 
-\subsection{Texturing Ceilings and Floors}
+%\begin{figure}
+%  \centering
+%  \includegraphics[height=2in]{compare_wall.png}
+%  \caption{Planes are specified in 3D space by four corners $C_1$ to
+%    $C_4$. Images are related to each plane through the camera
+%    matrices $P_{1..M}$. }
+  % \caption{The plane is specified in 3D space by the four corners
+  % $C_1$ to $C_4$. Images are related to the plane through the camera
+  % matrices $P_{1..M}$. For example, the 3D point X in the world
+  % coordinate system is related to the image point x shown in the
+  % figure as $x = P_i X$.}
+%  \label{fig:compare_wall}
+%\end{figure}
 
-Because the images associated with ceilings and floors are often
-captured by cameras at sidelong angles, we must be conservative when
-we texture map them. Since localization errors compound over distance,
-we often have candidate images that project well on areas near the
-camera itself, but much more poorly at the greater distances caused by
-higher angles. Using entire images to minimize seams is beneficial for
-wall texturing, but it becomes detrimental on ceilings and floors,
-since the quality of usable texture varies greatly across any one
-image. As evident in the following comparison, ceiling and floor
-images often have a very low amount of optimal texture relative to the
-projection size. This factor suggests that we should segment our
-images in some way, as many of our images contain both desired as well
-as undesired portions.
 
-Such segmentation implies smaller units of texture, which often leads
-to more images being chosen and unfortunately, more boundaries between
-different images as a result. This goes strongly against our approach
-for texturing walls, in which we attempted to minimize the number of
-images chosen. Nevertheless, boundaries on floors and ceilings are
-less problematic, since floors and ceilings tend to have fewer
-noticeable features.
+Though both methods provide quite accurate texturing thanks to the
+localization refinement process, the seam minimization approach
+results in fewer visible discontinuities, since it directly reduces
+the cost of each image boundary, while the tile caching method uses a
+scoring function that only approximates this effect. Furthermore, seam
+minimization guarantees the best selection of images, while the tile
+caching method may select images early on that turn out to be poor
+choices once subsequent tiles have been processed. This can be a
+problem when localization refinement does not work perfectly. Such an
+effect can be seen in the following image.
 
-As shown in the above figure, we define a tile length $l1$ as well as
-an overlap length $l2$, usually about 5 pixels for each. We then
-discretize our plane into rectangular tiles $l1$x$l1$ in size. Each
-tile is then associated with a square texture of size
-$(l1+2l2)$x$(l1+2l2)$, such that it shares a large overlapping region
-with its neighboring tiles, allowing for blending afterwards. As in
-wall texturing, rectangles, rather than triangles, are preferred for
-the high prevalence of horizontal and vertical features, generally
-light fixtures and floor and ceiling tiles.
-
-For the actual process of image association, we can reuse the caching
-method shown earlier. This method will balance selection of the best
-texture for each tile with some amount of image reuse. Coupled with
-image rotation and shifting, as well as the usage of rectangles
-instead of triangles, we end with a much more seamless texture, even
-without any blending applied yet, as seen below.
+In the context of the backpack modeling system, we apply the seam
+minimization approach on walls, due to its superior output when
+provided with optimal images. Floors and ceilings however, given their
+suboptimal images which require segmentation, are textured using the
+tile caching method.
 
 \subsection{Blending}
-Though our preprocessing steps and image selection attempts above
-attempted to minimize all mismatches between images, there are often
-cases, where due to geometry or projection inaccuracies, we simply
-have unavoidable discontinuities. These can however be partially
-treated by applying alpha blending over our seams.  Whether the units
-we are blending are rectangularly-cropped images for walls, or
-rectangular units for ceilings/floors, we can apply the same blending
-procedure.
+Until now, blending of images has not been used, for the sake of clear
+comparisons between texturing methods. We will now apply the same
+blending process on our two final texturing methods: localization
+refinement followed by either tile caching or seam minimization.
+
+Although our preprocessing steps and image selections in either method
+attempt to minimize all mismatches between images, there are cases,
+where due to different lighting conditions or inaccuracies in geometry
+or projection, where we simply have unavoidable discontinuities. These
+can however be treated and smoothed over by applying alpha blending
+over image seams.  Whether the units we are blending are
+rectangularly-cropped images or rectangular tiles, we can apply the
+same blending procedure, as long as we have a guaranteed overlap
+between units.
+
+For the tile caching method, we can ensure overlap by texturing a
+larger tile than we really have. For example, for a tile $l_1 x l_1$
+in size, we can make sure to associate it with a texture $(l_1 + l_2)
+x (l_1 + l_2)$ in size. For the seam minimization method, we have
+already ensured overlap between images. To enforce consistent blending
+however, it is beneficial to add a required overlap distance while
+solving the shortest path problem in section 5.2.3. If images do not
+overlap in a region at least the length of this overlap distance, we
+do not consider them to overlap at all. If images overlap in a region
+greater than the overlap distance, we will only apply blending over an
+area equal to the overlap distance.
 
 Our alpha blending technique is widely used, and blends pixels
-linearly across overlapping regions. For each pixel within an
-overlapping region, we simply multiply its intensity (by a factor from
-0 to 1), based on its distance from the image's border, with a cap set
-at some maximum blending distance. In this way, we interpolate between
-two overlapping images, providing a gradual transition between
-them. Increasing the overlapping and blending distance results in a
-smoother transition, but can also result in more blurriness. The final
-output is shown in Figure X.
+linearly across overlapping regions. For each pixel within such a
+region, we simply scale its intensity (by a factor from 0 to 1),
+based on its distance from the image's border, with a cap set at a fixed distance from the border. In this way, we interpolate between two
+overlapping images, providing a gradual transition between
+them. Increasing the blending distance results in a
+smoother transition, but can also result in more blurriness. A blended and unblended version of each method is shown below for comparison.
 
+%\begin{figure}
+%5  \centering
+ % \includegraphics[height=2in]{compare_blending.png}
+%  \caption{Planes are specified in 3D space by four corners $C_1$ to
+%    $C_4$. Images are related to each plane through the camera
+%    matrices $P_{1..M}$. }
+%  % \caption{The plane is specified in 3D space by the four corners
+  % $C_1$ to $C_4$. Images are related to the plane through the camera
+  % matrices $P_{1..M}$. For example, the 3D point X in the world
+  % coordinate system is related to the image point x shown in the
+  % figure as $x = P_i X$.}
+%  \label{fig:compare_blending}
+%\end{figure}
+
+\section{Conclusion and Results}
+In this paper, we have shown how to accurately texture map models,
+even when provided with imprecise camera localization data. We have
+generalized one approach to any manner of planes and images, and
+successfully textured both simple rectangular walls as well as complex
+floor and ceiling geometry. We have also presented an optimized
+texturing method that takes advantage of our localization refinement
+process and produces cleaner textures on planes where multiple head-on
+images are available. Ceilings and floors textured with the robust
+approach, and walls textured with the optimized approach, are
+displayed in the remainder of this paper. A more detailed walkthrough
+demonstrating fully textured models using the approaches in this paper
+can be seen in the accompanying video to this paper.
 
 {\small \bibliographystyle{ieee} \bibliography{egbib} }
 

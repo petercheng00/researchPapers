@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  18 JUN 2012 09:56
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  19 JUN 2012 03:01
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -333,19 +333,11 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
 
-
-LaTeX Warning: Reference `sec:textureMappingMethods' on page 1 undefined on inp
-ut line 89.
-
-
-LaTeX Warning: Reference `sec:results' on page 1 undefined on input line 91.
-
-
-Underfull \hbox (badness 7504) in paragraph at lines 96--105
+Underfull \hbox (badness 7504) in paragraph at lines 100--109
 []\OT1/ptm/m/n/10 Human-operated data ac-qui-si-tion sys-tems pro-vide
  []
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 138.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 142.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -353,75 +345,69 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 
 
 ]
-<Projection.pdf, id=21, 371.72507pt x 334.35416pt>
+<Projection.pdf, id=19, 371.72507pt x 334.35416pt>
 File: Projection.pdf Graphic file (type pdf)
  <use Projection.pdf>
-[2] <naive.png, id=32, 439.533pt x 274.626pt>
-File: naive.png Graphic file (type png)
- <use naive.png> [3 <./Projection.pdf> <./naive.png (PNG copy)>] <panoMy.jpg, i
-d=190, 1405.25pt x 329.23pt>
+<scoringFunction.pdf, id=21, 230.8625pt x 193.72375pt>
+File: scoringFunction.pdf Graphic file (type pdf)
+
+<use scoringFunction.pdf> [2 <./Projection.pdf>]
+<wall1_naive.jpg, id=184, 1828.8325pt x 289.08pt>
+File: wall1_naive.jpg Graphic file (type jpg)
+ <use wall1_naive.jpg>
+<wall1_cache_full.jpg, id=187, 1828.8325pt x 289.08pt>
+File: wall1_cache_full.jpg Graphic file (type jpg)
+
+<use wall1_cache_full.jpg> <panoMy.jpg, id=190, 1405.25pt x 329.23pt>
 File: panoMy.jpg Graphic file (type jpg)
 
-<use panoMy.jpg>
-
-LaTeX Warning: Citation `hz' on page 4 undefined on input line 334.
-
-
-LaTeX Warning: Citation `brown2007automatic' on page 4 undefined on input line 
-336.
-
-<Graph_crop.pdf, id=192, 308.5389pt x 105.02065pt>
+<use panoMy.jpg> [3 <./scoringFunction.pdf> <./wall1_naive.jpg> <./wall1_cache_
+full.jpg> <./panoMy.jpg>] <Graph_crop.pdf, id=228, 308.5389pt x 105.02065pt>
 File: Graph_crop.pdf Graphic file (type pdf)
- <use Graph_crop.pdf>
 
-LaTeX Warning: Citation `liu2010indoor' on page 4 undefined on input line 369.
+<use Graph_crop.pdf>
 
-
-LaTeX Warning: Citation `liu2010indoor' on page 4 undefined on input line 371.
+LaTeX Warning: Reference `fig:matches' on page 4 undefined on input line 405.
 
 
-LaTeX Warning: Citation `chen2010indoor' on page 4 undefined on input line 371.
+Underfull \vbox (badness 2027) has occurred while \output is active []
 
-
-
-LaTeX Warning: Citation `lowe1999object' on page 4 undefined on input line 406.
-
-
-
-LaTeX Warning: Reference `fig:matches' on page 4 undefined on input line 407.
-
-
-LaTeX Warning: Citation `fischler1981random' on page 4 undefined on input line 
-413.
-
-[4 <./panoMy.jpg> <./Graph_crop.pdf>]
-Overfull \hbox (16.04565pt too wide) detected at line 490
+ [4 <./Graph_crop.pdf>]
+Overfull \hbox (16.04565pt too wide) detected at line 485
 \OML/cmm/m/it/10 y[] \OT1/cmr/m/n/10 = []
  []
 
-[5] <DynProg.pdf, id=228, 499.8675pt x 236.885pt>
-File: DynProg.pdf Graphic file (type pdf)
- <use DynProg.pdf> [6 <./DynProg.pdf>]
-Underfull \hbox (badness 1122) in paragraph at lines 651--658
-[]\OT1/ptm/m/n/10 Such seg-men-ta-tion im-plies smaller units of tex-ture,
- []
+<wall1_cache_full_shifted.jpg, id=263, 1828.8325pt x 289.08pt>
+File: wall1_cache_full_shifted.jpg Graphic file (type jpg)
 
-(./paper.bbl) [7] (./paper.aux)
+<use wall1_cache_full_shifted.jpg> [5 <./wall1_cache_full_shifted.jpg>]
+Underfull \vbox (badness 3536) has occurred while \output is active []
+
+
+
+LaTeX Warning: Reference `fig:DynProg' on page 6 undefined on input line 635.
+
+[6] (./paper.bbl (./paper.brf)
+\tf@brf=\write3
+\openout3 = `paper.brf'.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
+ [7]) [8
+
+] (./paper.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 5517 strings out of 495061
- 77040 string characters out of 1182621
- 163476 words of memory out of 3000000
- 8538 multiletter control sequences out of 15000+50000
- 32834 words of font info for 77 fonts, out of 3000000 for 9000
+ 5575 strings out of 495061
+ 78125 string characters out of 1182621
+ 162396 words of memory out of 3000000
+ 8579 multiletter control sequences out of 15000+50000
+ 35037 words of font info for 80 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,9n,24p,407b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,9n,30p,364b,431s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/
@@ -430,15 +416,16 @@ cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></
 usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/f
 onts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb><
-/usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-
-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/
-urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pf
-b>
-Output written on paper.pdf (7 pages, 3291143 bytes).
+blic/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/sha
+re/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/
+fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/t
+imes/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></us
+r/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (8 pages, 1927997 bytes).
 PDF statistics:
- 433 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 367 PDF objects out of 1000 (max. 8388607)
+ 47 named destinations out of 1000 (max. 500000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

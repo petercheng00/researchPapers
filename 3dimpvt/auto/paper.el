@@ -9,8 +9,7 @@
      "fig:caching"
      "fig:mosaic"
      "fig:graph"
-     "sec:whydifferent"
-     "fig:DynProg")
+     "fig:shifted")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")

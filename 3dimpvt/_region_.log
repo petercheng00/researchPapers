@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2012.6.14)  14 JUN 2012 20:25
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2012.6.19)  19 JUN 2012 02:06
 entering extended mode
  %&-line parsing enabled.
 **&prv_paper _region_.tex
@@ -21,7 +21,7 @@ graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2009/08/28 v1.8 graphics configuration of TeX Live
-   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+  pdftex.def    2010/03/12 v0.04p Graphics/color for pdfTeX
  amsmath.sty    2000/07/18 v2.13 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
@@ -54,8 +54,7 @@ ifluatex.sty    2009/04/17 v1.2 Provides the ifluatex switch (HO)
  ltxcmds.sty    2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO)
 
 atbegshi.sty    2008/07/31 v1.9 At begin shipout hook (HO)
-  hdvips.def    2009/10/09 v6.79a Hyperref driver for dvips
- pdfmark.def    2009/10/09 v6.79a Hyperref definitions for pdfmark specials
+ hpdftex.def    2009/10/09 v6.79a Hyperref driver for pdfTeX
     umsa.fd    2009/06/22 v3.00 AMS symbols A
     umsb.fd    2009/06/22 v3.00 AMS symbols B
   ot1ptm.fd    2001/06/04 font definitions for OT1/ptm.
@@ -87,15 +86,16 @@ Package: preview 2010/02/14 CVS-1.126 (AUCTeX/preview-latex)
 No auxiliary output files.
 
 
-\hbadness=\count111
+\hbadness=\count112
 \hfuzz=\dimen123
 (/usr/local/share/texmf/tex/latex/preview/prauctex.cfg))
 (/usr/local/share/texmf/tex/latex/preview/prfootnotes.def)
-\pr@snippet=\count112
-\pr@box=\box31
-\pr@output=\toks24
+\pr@snippet=\count113
+\pr@box=\box30
+\pr@output=\toks21
 
 Preview: Fontsize 10pt
+Preview: PDFoutput 1
 ) ABD: EveryShipout initializing macros
 (/usr/share/texmf-texlive/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
@@ -103,83 +103,74 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 (/etc/texmf/tex/latex/config/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: dvips.def on input line 130.
-
-(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count114
+\scratchdimen=\dimen124
+\scratchbox=\box31
+\nofMPsegments=\count115
+\nofMParguments=\count116
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count117
+\MPscratchDim=\dimen125
+\MPnumerator=\count118
+\everyMPtoPDFconversion=\toks23
+)
 Package hyperref Info: Link coloring ON on input line 25.
-
-(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+ (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count113
+\c@section@level=\count119
 )
 LaTeX Info: Redefining \ref on input line 25.
 LaTeX Info: Redefining \pageref on input line 25.
 \AtBeginShipoutBox=\box32
 
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
- !name(paper.tex) !offset(139) 
+ !name(paper.tex) !offset(204) 
 ! Preview: Snippet 1 started.
 <-><->
       
-l.28 \subsection{Blind review}
-                              
+l.28 \begin{figure}
+                   
 Not a real error.
 
+<scoringFunction.pdf, id=3, 230.8625pt x 193.72375pt>
+File: scoringFunction.pdf Graphic file (type pdf)
+
+<use scoringFunction.pdf>
 Preview: Tightpage -32891 -32891 32891 32891
-! Preview: Snippet 1 ended.(489488+11534x15540941).
+! Preview: Snippet 1 ended.(8546222+6778x15540941).
 <-><->
       
-l.28 \subsection{Blind review}
-                              
+l.33 \end{figure}
+                 
 Not a real error.
 
 [1
 
-]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-LaTeX Warning: Citation `Authors12' on page 1 undefined on input line 81.
-
-
-LaTeX Warning: Citation `Authors12b' on page 1 undefined on input line 92.
-
-! Preview: Snippet 2 started.
-<-><->
-      
-l.134 \begin{figure}
-                    [t]
-Not a real error.
-
-! Preview: Snippet 2 ended.(12513443+127692x15540941).
-<-><->
-      
-l.144 \end{figure}
-                  
-Not a real error.
-
-[2
-
-
-
-]  !name(paper.tex) !offset(325) 
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ <./scoringFunction.pdf>]
+ !name(paper.tex) !offset(699)  ) 
 Here is how much of TeX's memory you used:
- 493 strings out of 490125
- 7638 string characters out of 1113493
- 153307 words of memory out of 3000000
- 8482 multiletter control sequences out of 15000+50000
- 14695 words of font info for 46 fonts, out of 3000000 for 9000
+ 655 strings out of 490104
+ 9333 string characters out of 1113161
+ 145404 words of memory out of 3000000
+ 8660 multiletter control sequences out of 15000+50000
+ 15773 words of font info for 47 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 35i,9n,31p,213b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,9n,23p,167b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base
+/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></us
+r/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
+Output written on _region_.pdf (1 page, 145332 bytes).
+PDF statistics:
+ 40 PDF objects out of 1000 (max. 8388607)
+ 1 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on _region_.dvi (2 pages, 2500 bytes).
