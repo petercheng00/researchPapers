@@ -6,6 +6,7 @@
      "fig:projection"
      "fig:scoringFunction"
      "fig:directMapping"
+     "fig:caching"
      "fig:mosaic"
      "fig:graph"
      "sec:whydifferent"

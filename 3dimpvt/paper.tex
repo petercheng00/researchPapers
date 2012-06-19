@@ -158,7 +158,7 @@ input to our texture mapping problem.
 
 In all subsequent sections, we will discuss the process of texture
 mapping a single plane, as the texturing of each of our planes is
-completely independent and can be completed in parallel.
+completely independent and can be completed in parallel. 
 
 The geometry of the texture mapping process for a plane is shown in
 Figure 1.  As described in the previous section, we are provided with
@@ -236,8 +236,7 @@ A scoring function to maximize these two criteria is as follows:
 \begin{figure}
   \centering
   \includegraphics[height=1.5in]{directMapping.png}
-  \caption{The result of naive texture mapping based on the imprecise
-    camera matrices estimated by the localization system.}
+  \caption{The result of direct texture mapping based on locally optimized textures.}
   \label{fig:directMapping}
 \end{figure}
 
@@ -249,45 +248,68 @@ misalignment between images.
 
 \subsection{Mapping with Caching}
 Since discontinuities occur where adjacent tiles select different
-images that do not match up well, it makes sense to take into account image choices made by neighboring tiles while selecting the best image for a tile. By using the same image across tile boundaries, we eliminate the discontinuity altogether. If this is not possible, using very similar images will result in less noticeable discontinuities.
+images that do not match up well, it makes sense to take into account
+image choices made by neighboring tiles while selecting the best image
+for a tile. By using the same image across tile boundaries, we
+eliminate the discontinuity altogether. If this is not possible, using
+very similar images will result in less noticeable discontinuities.
 
-Similar to a caching mechanism, we select the best image for a tile $t$ by searching through two subsets of images for a good candidate before searching through the entire set. The first subset of images is the set of images selected by adjacent tiles that have already been processed. We must first check which images can map to $t$, and then of those, we make a choice according to the same scoring function in figure \ref{fig:scoringFunction}. Rather than blindly reusing this image, we ensure it meets a predefined score threshold to be considered a good image. If no good image is found, we then check our second subset of images, which consists of images that were taken near the images in the first subset, both spatially and temporally. These images are not the same as the ones used for neighboring tiles, but they were taken at a similar location and time, suggesting that their localization and projection will be very similar. Again, if no good image is found according to a threshold, we then must search the entire set of candidate images.
+Similar to a caching mechanism, we select the best image for a tile
+$t$ by searching through two subsets of images for a good candidate
+before searching through the entire set. The first subset of images is
+the set of images selected by adjacent tiles that have already been
+processed. We must first check which images can map to $t$, and then
+of those, we make a choice according to the same scoring function in
+figure \ref{fig:scoringFunction}. Rather than blindly reusing this
+image, we ensure it meets a predefined score threshold to be
+considered a good image. If no good image is found, we then check our
+second subset of images, which consists of images that were taken near
+the images in the first subset, both spatially and temporally. These
+images are not the same as the ones used for neighboring tiles, but
+they were taken at a similar location and time, suggesting that their
+localization and projection will be very similar. Again, if no good
+image is found according to a threshold, we then must search the
+entire set of candidate images.
 
-
-
-
-In order to reduce the severity of discontinuities between adjacent
-tiles, one can texture them with the same image, if possible,
-eliminating the discontinuity outright, or by two images taken from
-similar positions, such that any texture mismatch is ideally less
-pronounced. This is accomplished by adding a 2-level cache to the
-native mapping approach, and sorting triangles in an order such that
-triangle $t_i$ is adjacent to triangle $t_{i+1}$. When a triangle is
-assigned a texture, the image it selected is added to the level 1
-cache, and other images that were taken nearby in time and location,
-within a predefined threshold, are added to the level 2 cache. Each
-subsequent triangle to be textured then searches through the level 1
-cache, selecting the best image according to the same scoring
-function, and comparing it to some pre-defined threshold. If the best
-image's score is below this threshold, the level 2 cache is then
-searched, and then finally if necessary, the set of all images is
-searched. In this way, the entire plane is textured, with image reuse
-prioritized, followed by a preference for nearby images.
-
-This approach is the method previously used by the modeling team
-associated with our dataset. Therefore, we will use it as our baseline
-when comparing other approaches.  The addition of the caching
-structure reduces discontinuities overall, as can be seen in the above
-image. Nevertheless, the amount of remaining discontinuities suggests
-that image selection alone cannot produce seamless textures.  In order
-to produce photorealistic texture mapping, either the camera matrices
-need to be refined such that the localization is pixel accurate,
-resulting in a perfect mapping, or image stitching techniques need to
-be applied to provide this illusion. A commonly-used technique for
-each approach is examined next.
+\begin{figure}
+  \centering
+  \includegraphics[height=1.5in]{caching.png}
+  \caption{The result of adding a caching system to locally optimized textures.}
+  \label{fig:caching}
+\end{figure}
 
 
+The results of this caching approach are shown above in figure
+\ref{fig:caching}.  Discontinuities have been reduced overall, but the
+amount of remaining seams suggests that image selection
+alone cannot produce seamless textures. The image projections themselves will have to be adjusted in order to reliably produce clean textures.
 
+
+\section{Localization Refinement}
+In order to produce photorealistic texture mapping, either camera
+matrices need to be refined such that their localization is pixel
+accurate, resulting in a perfect mapping, or image stitching
+techniques need to be applied to provide this illusion. Before
+examining these approaches, we first obtain a set of images to work
+with.
+
+Rather than perform camera or image adjustments across many thousands
+of images, we choose to work with the more limited set of images
+corresponding to those chosen by the direct mapping approach, without
+caching. This set of images constitutes a good candidate set for
+generating a final seamless texture, since it meets three important
+criteria. First, this set of images contains at least one image that
+covers each tile on our plane. Thus, unless extreme changes in
+localization occur, we can ensure that there will be no holes in our
+final texture. Second, since images are all selected according to the
+same scoring function in figure \ref{fig:scoringFunction}, we know
+that our images are all taken at a head-on angle and should project
+onto the plane in similar ways. Third, as a side result of the scoring
+function, selected images are only good candidates for the tiles near
+their center of projection. Thus, there should be plenty of overlap
+between selected images, allowing for some degree of shifting as well
+as blending between them. With this set of images, we now examine two
+approaches towards refining and combining their projections.
 
 \subsection{Image Mosaicing}
 
