@@ -9,13 +9,20 @@
      "fig:caching"
      "fig:mosaic"
      "fig:graph"
-     "fig:shifted")
+     "fig:matches"
+     "fig:shifted"
+     "fig:floor_suboptimal"
+     "fig:dagCreation"
+     "fig:compare_unblended"
+     "fig:pipeline"
+     "fig:results")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")
     (TeX-run-style-hooks
      "hyperref"
      "colorlinks"
+     "subfig"
      "amssymb"
      "amsmath"
      "graphicx"

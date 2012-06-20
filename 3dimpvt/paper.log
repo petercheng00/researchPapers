@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  19 JUN 2012 03:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  19 JUN 2012 17:48
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -143,7 +143,49 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen119
+\captionmargin@=\dimen120
+\captionwidth=\dimen121
+\caption@indent=\dimen122
+\caption@parindent=\dimen123
+\caption@hangindent=\dimen124
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used on input line 1068.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2-> \setbox \@tempboxa \hb
+ox {\small \noindent #1.~#2} \setlength {\@ctmp }{\hsize } \addtolength {\@ctmp
+ }{-\@figindent }\addtolength {\@ctmp }{-\@figindent } \ifdim \wd \@tempboxa >\
+@ctmp {\small #1.~#2\par } \else \hbox to\hsize {\hfil \box \@tempboxa \hfil } 
+\fi .
+\c@ContinuedFloat=\count105
+)
+\c@KVtest=\count106
+\sf@farskip=\skip48
+\sf@captopadj=\dimen125
+\sf@capskip=\skip49
+\sf@nearskip=\skip50
+\c@subfigure=\count107
+\c@subfigure@save=\count108
+\c@lofdepth=\count109
+\c@subtable=\count110
+\c@subtable@save=\count111
+\c@lotdepth=\count112
+\sf@top=\skip51
+\sf@bottom=\skip52
+) (/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
@@ -164,9 +206,9 @@ O)
 (/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
-\@linkdim=\dimen119
-\Hy@linkcounter=\count105
-\Hy@pagecounter=\count106
+\@linkdim=\dimen126
+\Hy@linkcounter=\count113
+\Hy@pagecounter=\count114
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -237,9 +279,9 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count107
-\Field@Width=\dimen120
-\Fld@charsize=\dimen121
+\Fld@menulength=\count115
+\Field@Width=\dimen127
+\Fld@charsize=\dimen128
 \Field@toks=\toks20
 Package hyperref Info: Hyper figures OFF on input line 4377.
 Package hyperref Info: Link nesting OFF on input line 4382.
@@ -252,32 +294,32 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count108
-\c@Item=\count109
-\c@Hfootnote=\count110
+\Hy@abspage=\count116
+\c@Item=\count117
+\c@Hfootnote=\count118
 )
 *hyperref using default driver hpdftex*
 (/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
-\Fld@listcount=\count111
+\Fld@listcount=\count119
 ) (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 23.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -293,51 +335,56 @@ Package color Info: Driver file: pdftex.def on input line 130.
 )
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
-\scratchdimen=\dimen122
+\scratchcounter=\count120
+\scratchdimen=\dimen129
 \scratchbox=\box30
-\nofMPsegments=\count113
-\nofMParguments=\count114
+\nofMPsegments=\count121
+\nofMParguments=\count122
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count115
-\MPscratchDim=\dimen123
-\MPnumerator=\count116
+\MPscratchCnt=\count123
+\MPscratchDim=\dimen130
+\MPnumerator=\count124
 \everyMPtoPDFconversion=\toks22
 )
-Package hyperref Info: Link coloring ON on input line 25.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 23.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 23.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count117
+\c@section@level=\count125
 )
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
 \AtBeginShipoutBox=\box31
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
-LaTeX Font Info:    Try loading font information for U+msa on input line 47.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 45.
+LaTeX Font Info:    Try loading font information for U+msa on input line 45.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 47.
+LaTeX Font Info:    Try loading font information for U+msb on input line 45.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
 
-Underfull \hbox (badness 7504) in paragraph at lines 100--109
+Underfull \hbox (badness 7504) in paragraph at lines 98--107
 []\OT1/ptm/m/n/10 Human-operated data ac-qui-si-tion sys-tems pro-vide
  []
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 142.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 141.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -348,84 +395,101 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 <Projection.pdf, id=19, 371.72507pt x 334.35416pt>
 File: Projection.pdf Graphic file (type pdf)
  <use Projection.pdf>
-<scoringFunction.pdf, id=21, 230.8625pt x 193.72375pt>
+[2 <./Projection.pdf>] <scoringFunction.pdf, id=179, 230.8625pt x 193.72375pt>
 File: scoringFunction.pdf Graphic file (type pdf)
 
-<use scoringFunction.pdf> [2 <./Projection.pdf>]
-<wall1_naive.jpg, id=184, 1828.8325pt x 289.08pt>
+<use scoringFunction.pdf> <wall1_naive.jpg, id=181, 1828.8325pt x 289.08pt>
 File: wall1_naive.jpg Graphic file (type jpg)
- <use wall1_naive.jpg>
-<wall1_cache_full.jpg, id=187, 1828.8325pt x 289.08pt>
+
+<use wall1_naive.jpg> <wall1_cache_full.jpg, id=184, 1828.8325pt x 289.08pt>
 File: wall1_cache_full.jpg Graphic file (type jpg)
 
-<use wall1_cache_full.jpg> <panoMy.jpg, id=190, 1405.25pt x 329.23pt>
+<use wall1_cache_full.jpg> <panoMy.jpg, id=187, 1405.25pt x 329.23pt>
 File: panoMy.jpg Graphic file (type jpg)
 
-<use panoMy.jpg> [3 <./scoringFunction.pdf> <./wall1_naive.jpg> <./wall1_cache_
-full.jpg> <./panoMy.jpg>] <Graph_crop.pdf, id=228, 308.5389pt x 105.02065pt>
+<use panoMy.jpg>
+Underfull \vbox (badness 8113) has occurred while \output is active []
+
+ [3 <./scoringFunction.pdf> <./wall1_naive.jpg> <./wall1_cache_full.jpg> <./pan
+oMy.jpg>]
+<Graph_crop.pdf, id=221, 308.5389pt x 105.02065pt>
 File: Graph_crop.pdf Graphic file (type pdf)
-
-<use Graph_crop.pdf>
-
-LaTeX Warning: Reference `fig:matches' on page 4 undefined on input line 405.
-
-
-Underfull \vbox (badness 2027) has occurred while \output is active []
-
- [4 <./Graph_crop.pdf>]
-Overfull \hbox (16.04565pt too wide) detected at line 485
+ <use Graph_crop.pdf>
+<matches.jpg, id=226, 914.41624pt x 408.52625pt>
+File: matches.jpg Graphic file (type jpg)
+ <use matches.jpg> [4 <./Graph_crop.pdf> <./matches.jpg>]
+Overfull \hbox (16.04565pt too wide) detected at line 510
 \OML/cmm/m/it/10 y[] \OT1/cmr/m/n/10 = []
  []
 
-<wall1_cache_full_shifted.jpg, id=263, 1828.8325pt x 289.08pt>
+<wall1_cache_full_shifted.jpg, id=261, 1828.8325pt x 289.08pt>
 File: wall1_cache_full_shifted.jpg Graphic file (type jpg)
 
-<use wall1_cache_full_shifted.jpg> [5 <./wall1_cache_full_shifted.jpg>]
-Underfull \vbox (badness 3536) has occurred while \output is active []
+<use wall1_cache_full_shifted.jpg> [5]
+<floor_suboptimal.jpg, id=271, 803.0pt x 803.0pt>
+File: floor_suboptimal.jpg Graphic file (type jpg)
+ <use floor_suboptimal.jpg>
+[6 <./wall1_cache_full_shifted.jpg> <./floor_suboptimal.jpg>]
+<dagCreation.pdf, id=282, 486.81876pt x 130.4875pt>
+File: dagCreation.pdf Graphic file (type pdf)
+ <use dagCreation.pdf>
+File: wall1_cache_full_shifted.jpg Graphic file (type jpg)
 
+<use wall1_cache_full_shifted.jpg>
+<wall1_dynprog_noblend.jpg, id=286, 1828.8325pt x 289.08pt>
+File: wall1_dynprog_noblend.jpg Graphic file (type jpg)
 
-
-LaTeX Warning: Reference `fig:DynProg' on page 6 undefined on input line 635.
-
-[6] (./paper.bbl (./paper.brf)
+<use wall1_dynprog_noblend.jpg> [7 <./dagCreation.pdf> <./wall1_dynprog_noblend
+.jpg>] <pipeline.pdf, id=310, 684.5575pt x 407.5225pt>
+File: pipeline.pdf Graphic file (type pdf)
+ <use pipeline.pdf>
+<4thfloor21.jpg, id=313, 3786.145pt x 389.455pt>
+File: 4thfloor21.jpg Graphic file (type jpg)
+ <use 4thfloor21.jpg>
+<4thfloor61.jpg, id=314, 2509.375pt x 275.0275pt>
+File: 4thfloor61.jpg Graphic file (type jpg)
+ <use 4thfloor61.jpg>
+<4thfloor8.jpg, id=315, 1415.2875pt x 311.1625pt>
+File: 4thfloor8.jpg Graphic file (type jpg)
+ <use 4thfloor8.jpg>
+<fullmodel.png, id=316, 1440.13031pt x 809.27344pt>
+File: fullmodel.png Graphic file (type png)
+ <use fullmodel.png>
+(./paper.bbl (./paper.brf)
 \tf@brf=\write3
 \openout3 = `paper.brf'.
 
+
+Underfull \vbox (badness 1132) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
- [7]) [8
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 43.
+ [8 <./pipeline.pdf> <./4thfloor21.jpg> <./4thfloor61.jpg> <./4thfloor8.jpg> <.
+/fullmodel.png (PNG copy)>]) [9
 
-] (./paper.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 5575 strings out of 495061
- 78125 string characters out of 1182621
- 162396 words of memory out of 3000000
- 8579 multiletter control sequences out of 15000+50000
+ 6678 strings out of 495061
+ 97802 string characters out of 1182621
+ 187400 words of memory out of 3000000
+ 9655 multiletter control sequences out of 15000+50000
  35037 words of font info for 80 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 42i,9n,30p,364b,431s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/sha
-re/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/
-fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/t
-imes/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></us
-r/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (8 pages, 1927997 bytes).
+ 44i,9n,42p,337b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
+/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fo
+nts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/tim
+es/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/
+share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (9 pages, 3838502 bytes).
 PDF statistics:
- 367 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 406 PDF objects out of 1000 (max. 8388607)
+ 54 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
