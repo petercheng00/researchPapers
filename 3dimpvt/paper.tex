@@ -198,7 +198,7 @@ tile with. We choose to work with rectangular units to ensure that
 borders between any two distinct images in our final texture are
 either horizontal or vertical. Since most environmental features
 inside buildings are horizontal or vertical, any seams in our texture
-intersect them miniimally and are likely to be less noticeable.
+intersect them minimally and are likely to be less noticeable.
 
 In order to select an image for texturing tile $t$, we must first
 gather a list of candidate images that contain all four of its
@@ -217,20 +217,15 @@ our plane. Additionally, we desire images that are projected
 perpendicularly onto the plane, maximizing the resolution and amount
 of useful texture available in their projections.
 
-These two criteria can be met by maximizing the function
-
-\[
-\frac{1}{d} \cdot (-1 \cdot C) \cdot N
-\]
-
-which minimizes camera angle $\alpha$ and distance $d$ as shown in
+These two criteria can be met by maximizing the function shown in
 Figure \ref{fig:scoringFunction}.
 
 \begin{figure}
   \centering
   \includegraphics[height=1.5in]{scoringFunction.pdf}
-  \caption{Images are selected by minimizing camera angle $\alpha$ and
-    distance $d$.}
+  \caption{Images with minimal camera angle $\alpha$ and distance $d$
+    are selected by maximizing the function}
+  \begin{center}$\frac{1}{d} \cdot (-1 \cdot C) \cdot N$ \end{center}
   \label{fig:scoringFunction}
 \end{figure}
 
@@ -256,27 +251,27 @@ Since discontinuities occur where adjacent tiles select different
 images that do not align, it makes sense to take into account image
 selections made by neighboring tiles while selecting the best image
 for a given tile. By using the same image across tile boundaries, we
-eliminate the discontinuity altogether. If a tile is not visible in
-images chosen by its neighbors, using similar images is likely to
-result in less noticeable discontinuities.
+eliminate the discontinuity altogether. If this is not possible
+because a tile is not visible in images chosen by its neighbors, using
+similar images is likely to result in less noticeable discontinuities.
 
 Similar to a caching mechanism, we select the best image for a tile
 $t$ by searching through two subsets of images for a good candidate,
 before searching through the entire set. The first subset of images is
 those selected by adjacent tiles that have already been textured. We
 must first check which images can map to $t$, and then of those, we
-make a choice according to the same scoring function in Figure
+make a choice according to the same scoring function in
 \ref{fig:scoringFunction}. Rather than blindly reusing this image, we
 ensure it meets a threshold, which we set to $\alpha < 45^\circ$, to
 be considered a good image.
 
-If no good image is found, we then check our second subset of images,
-which consists of images that were taken near the images in the first
-subset, both spatially and temporally. These images are not the same
-as the ones used for neighboring tiles, but they were taken at a
-similar location and time, suggesting that their localization and
+If no satisfactory image is found, we then check our second subset of
+images, which consists of images that were taken near the images in
+the first subset, both spatially and temporally. These images are not
+the same as the ones used for neighboring tiles, but they were taken
+at a similar location and time, suggesting that their localization and
 projection are very similar. Again, if no good image is found
-according to the same threshold, we then must search the entire set of
+according to the same threshold, we must then search the entire set of
 candidate images.
 
 \begin{figure}
@@ -288,8 +283,8 @@ candidate images.
 \end{figure}
 
 
-The result of this caching approach is shown in figure
-\ref{fig:caching}. As compared to \ref{fig:directMapping},
+The result of this caching approach is shown in Figure
+\ref{fig:caching}. As compared to Figure \ref{fig:directMapping},
 discontinuities have been reduced overall, but the amount of remaining
 seams suggests that image selection alone cannot produce seamless
 textures. Camera matrices, or the image projections themselves have to
@@ -308,16 +303,17 @@ thousands of images acquired in a typical data collection, we opt to
 work with the more limited set of images corresponding to those chosen
 by the direct mapping approach, without caching. This set of images
 constitutes a good candidate set for generating a final seamless
-texture since it meets three important criteria. First, it contains at least one image that covers each tile on our
-plane; this ensures no holes in our final texture. Second, since
-images are all selected according to the same scoring function in
-Figure \ref{fig:scoringFunction}, they are taken at as much of a head-on angle as possible and should project
-onto the plane in similar ways. Third, as a side result of the scoring
-function, selected images are only good candidates for the tiles near
-their center of projection. Thus, there should be plenty of overlap
-between selected images, allowing for some degree of shifting without
-resulting in holes, as well as area for blending between them. With
-this set of images, we now review two existing approaches towards refining and
+texture since it meets three important criteria. First, each tile on our planeis covered by at least one image in this set; this ensures no
+holes in our final texture. Second, since images are all selected
+according to the same scoring function in Figure
+\ref{fig:scoringFunction}, they are taken at as much of a head-on
+angle as possible and should project onto the plane in similar
+ways. Third, as a side result of the scoring function, selected images
+are only good candidates for the tiles near their center of
+projection. Thus, there should be plenty of overlap between selected
+images, allowing for some degree of shifting without resulting in
+holes, as well as area for blending between them. With this set of
+images, we now review two existing approaches towards refining and
 combining their projections.
 
 \subsection{Image Mosaicing}
@@ -357,7 +353,7 @@ solution for reliably texture mapping our dataset.
 \begin{figure}
   \centering
   \includegraphics[width=3in]{Graph_crop.pdf}
-  \caption{The graph-based localization refinement algorithm from [11]
+  \caption{The graph-based localization refinement algorithm from \cite{chen2010indoor}
     suffers from the problem of compounding errors. }
   \label{fig:graph}
 \end{figure}
@@ -369,20 +365,29 @@ attempted to refine camera matrices by solving a non-linear
 optimization problem \cite{liu2010indoor}. This process is specific to
 the backpack system which generated our dataset, as it must be run
 during backpack
-localization\cite{liu2010indoor,chen2010indoor}. Unfortunately, this
-approach suffers from a similar error propagation problem shown in
+localization\cite{liu2010indoor, chen2010indoor}. Unfortunately, this
+approach suffers from a similar error propagation problem as shown in
 Figure \ref{fig:graph}.
 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=3in]{pipeline.pdf}
+  \caption{Our proposed method for seamless texture mapping.}
+  \label{fig:pipeline}
+\end{figure}
 \section{Proposed Method for Seamless Texture Mapping}
 \label{sec:proposedApproach}
-Our proposed approach towards texture mapping is a two-step
-process. First, with the same input set of images as described in
-Section \ref{sec:existingApproaches}, we perform image rotation and
-shifting in order to maximize SIFT feature matches between images. We
-then project these images onto our plane, applying textures either
-with the tile caching method from Section
-\ref{sec:mappingWithCaching}, or with the more specialized method
-described in Section \ref{sec:seamMinimization}.
+In this section, we will describe our proposed method for seamless
+texture mapping. Our approach contains 4 steps, as seen in
+\ref{fig:pipeline}.  First, we obtain a set of images to work with, as
+already described in Section \ref{sec:existingApproaches}. Next, we perform
+image rotation and shifting in order to maximize SIFT feature matches
+in overlapping areas between images. We then project these images onto
+our plane, applying textures either with the tile caching method from
+Section \ref{sec:mappingWithCaching}, or with the more specialized
+method described in Section \ref{sec:seamMinimization}. We then finish
+by applying linear alphar blending to smooth out any remaining seams.
 
 \subsection{Image Projection and Rotation}
 \label{sec:projectionAndRotation}
@@ -444,12 +449,13 @@ of the average distance computed by the fitting function.
 There are a total of $M^{2}$ possible pairs of images, though we only
 generate distances between images that overlap at SIFT feature
 points. Given these distances and the original image location
-estimates, we can solve a least squares problem ($\textrm{min}_{\vec{\beta}}
-||X \vec{\beta} - \vec{\gamma}||_2^2 $) to estimate the correct location of the images
-on the plane. The $M$-dimensional vector $\vec{\beta}$ represents the unknown $x$
-and $y$ locations of each image on the plane from $1 \dots M$. The
-optimal $x$ and $y$ locations are obtained in the same way, so we
-only consider the $x$ locations here:
+estimates, we can solve a least squares problem
+($\textrm{min}_{\vec{\beta}} ||X \vec{\beta} - \vec{\gamma}||_2^2 $)
+to estimate the correct location of the images on the plane. The
+$M$-dimensional vector $\vec{\beta}$ represents the unknown $x$ and
+$y$ locations of each image on the plane from $1 \dots M$. The optimal
+$x$ and $y$ locations are obtained in the same way, so we only
+consider the $x$ locations here:
 
 % Draw least squares problem here.
 
@@ -459,12 +465,12 @@ only consider the $x$ locations here:
 \end{pmatrix}
 \]
 
-The $N$ by $(M+1)$ dimensional matrix $X$ is constructed with one row for each pair of images
-with measured distances produced by the SIFT matching stage. A row in
-the matrix has a $-1$ and $1$ in the columns corresponding to the two
-images in the pair. For example, the matrix below indicates that we
-generated a SIFT-based distance between images 1 and 2, images 1 and
-3, images 2 and 3, etc.
+The $N$ by $(M+1)$ dimensional matrix $X$ is constructed with one row
+for each pair of images with measured distances produced by the SIFT
+matching stage. A row in the matrix has a $-1$ and $1$ in the columns
+corresponding to the two images in the pair. For example, the matrix
+below indicates that we generated a SIFT-based distance between images
+1 and 2, images 1 and 3, images 2 and 3, etc.
 
 \[
 X =
@@ -486,11 +492,12 @@ to serve as the anchor for the rest, meaning all the absolute
 distances are based on its original location. This is done by adding a
 row with a $1$ in the first column and the rest zeros.
 
-Finally, the $N$-dimensional observation vector $\vec{\gamma}$ is constructed using the
-SIFT-based distances generated earlier in the matching stage. The
-distances are denoted as $d_1 \dots d_N$ for $N$ SIFT-based
-distances. The last element in the observation vector is the location
-of the first image determined by its original noisy localization, from \cite{chen2010indoor, liu2010indoor}:
+Finally, the $N$-dimensional observation vector $\vec{\gamma}$ is
+constructed using the SIFT-based distances generated earlier in the
+matching stage. The distances are denoted as $d_1 \dots d_N$ for $N$
+SIFT-based distances. The last element in the observation vector is
+the location of the first image determined by its original noisy
+localization, from \cite{chen2010indoor, liu2010indoor}:
 
 \[
 \vec{y}^T =
@@ -499,22 +506,27 @@ of the first image determined by its original noisy localization, from \cite{che
 \end{pmatrix}
 \]
 
-The $\vec{\beta}$ that minimizes $||X \vec{\beta} - \vec{\gamma}||_2^2$ results in a set of
-image locations on the plane that best honors all the SIFT-based
-distance measurements between images. In practice there are often
-cases where there is a break in the chain of images, meaning that no
-SIFT matches were found between one segment of the plane and
-another. In this case we add rows to the $X$ matrix and observations
-to the $\vec{\gamma}$ vector that contain the original noisy $x$ and $y$ distance
-estimates generated by the localization algorithm \cite{chen2010indoor, liu2010indoor}. Another way to do
-this is to add rows for all neighboring pairs of images and solve a
-weighted least squares problem where the SIFT distances are given a
-higher weight i.e. 1, and the noisy distances generated by the localization
-algorithm \cite{chen2010indoor, liu2010indoor} are given a smaller weight i.e. 0.01.
+The $\vec{\beta}$ that minimizes $||X \vec{\beta} -
+\vec{\gamma}||_2^2$ results in a set of image locations on the plane
+that best honors all the SIFT-based distance measurements between
+images. In practice there are often cases where there is a break in
+the chain of images, meaning that no SIFT matches were found between
+one segment of the plane and another. In this case we add rows to the
+$X$ matrix and observations to the $\vec{\gamma}$ vector that contain
+the original noisy $x$ and $y$ distance estimates generated by the
+localization algorithm \cite{chen2010indoor, liu2010indoor}. Another
+way to do this is to add rows for all neighboring pairs of images and
+solve a weighted least squares problem where the SIFT distances are
+given a higher weight i.e. 1, and the noisy distances generated by the
+localization algorithm \cite{chen2010indoor, liu2010indoor} are given
+a smaller weight i.e. 0.01.
 
 After completing this same process for the $y$ dimension as well, and
-making the resultant shifts, our images overlap and
-match each other with far greater accuracy. Applying the tile caching method from Section \ref{sec:mappingWithCaching} on these re-localized images, results in the significant improvements shown in Figure \ref{fig:shifted}.
+making the resultant shifts, our images overlap and match each other
+with far greater accuracy. Applying the tile caching method from
+Section \ref{sec:mappingWithCaching} on these re-localized images
+results in the significant improvements shown in Figure
+\ref{fig:shifted}, as compared to Figure \ref{fig:caching}.
 
 \begin{figure}
   \centering
@@ -529,16 +541,24 @@ match each other with far greater accuracy. Applying the tile caching method fro
 \subsection{Texture Mapping with Seam Minimization}
 \label{sec:seamMinimization}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=3in]{highCameraAngle.pdf}
+  \caption{The image on the left projects head-on not only onto point A, but most visible areas of the wall that point A is on. The image's projection onto point B will be at a high angle, but it will still be much more usable than the projection onto point C.}
+  \label{fig:highCameraAngle}
+\end{figure}
+
+
 As mentioned earlier, our backpack system has 2 cameras with
 $180^\circ$ fisheye lenses facing to the right and left. Since the
 backpack operator only takes care to fully scan each wall and not
 necessarily the entirety of each ceiling and floor, cameras at higher
 angles with respect to plane normal vectors must be used for texturing
 large areas of floor and ceiling planes. These high camera angles
-translate into images that span extremely large areas once projected
-onto their planes. Such image projections have good scores (from
-Figure \ref{fig:scoringFunction}) for certain areas on the plane, but
-much worse scores for other areas. This can be seen in Figure
+translate into images that span extremely large areas once
+projected. Such image projections have good scores (from Figure
+\ref{fig:scoringFunction}) for certain areas on the plane, but much
+worse scores for other areas. This can be seen in Figure
 \ref{fig:highCameraAngle}. The tiling approach used in Section
 \ref{sec:simpleTextureMapping} was thus a good choice for texturing,
 as it allowed us to only use the parts of image projections that were
@@ -564,7 +584,7 @@ visibility of seams in our final texture.
 To begin with, we need to ensure that our images contain only content
 that should be mapped onto the target plane in question. The tiling
 approach used previously only checks occlusion for each tile as it is
-being textured. For our new approach, we use entire images, so we need
+being textured. For our new approach, we prefer entire images, so we need
 to perform occlusion checks over the entirety of each image to
 determine available areas for texture mapping.
 
@@ -603,12 +623,12 @@ steps to simplify it. Given that our wall-texture candidate images are
 all taken from a head-on angle, and assuming only minor rotations are
 made during localization refinement, we can reason that their
 projections onto the plane are approximately rectangular, as in Figure
-\ref{sec:goodCameraAngle}. By discarding the minor excess texture and
+\ref{fig:highCameraAngle}. By discarding the minor excess texture and
 cropping them all to be rectangular, our problem becomes the
 conceptually simpler one of filling a polygon with rectangles, such
 that the sum of all edge costs between each pair of rectangles is
 minimal. We thus also retain the advantages of working with
-rectangular units, as explained in section
+rectangular units, as explained in Section
 \ref{sec:simpleTextureMapping}.
 
 The location and orientation of the cameras on our backpack is such
@@ -641,20 +661,14 @@ plane. The left(right) artificial node has directed edges with equal
 cost $C_0$ to(from) all images that meet the left(right) border of the
 plane.
 
-We now solve the shortest path problem from the start node to
-the end node \cite{dijkstra}. This provides a set of images
-completely covering the plane horizontally, while minimizing the cost
-of the seams between images.
+We now solve the shortest path problem from the start node to the end
+node \cite{dijkstra}. This provides a set of images completely
+covering the plane horizontally, while minimizing the cost of the
+seams between images.
 
 In rare cases where the vertical dimension of the plane is not
-entirely covered by a chosen image, we are left with a hole where no
-image is chosen to texture.
-
-SOMETHING HERE ABOUT CRAP CRAP
-
-Rather than reverting to a 2D-coverage problem, we can elect to simply
-fill the hole by selecting images to fill it in a greedy fashion with
-respect to edge costs of the same cost function.
+entirely covered by one or more chosen images, we are left with holes where no
+images are selected to texture. Rather than reverting to a 2D-coverage problem, we simply repeat the process, but first modify the edges chosen by our shortest path solution such that they have higher cost than all other edges in our DAG. This ensures that these edges will not be chosen again unless they are the only available option. After solving the shortest path problem with these modified edge costs, we receive a new set of chosen images, and only retain those that cover areas not covered by the first set. This process can be repeated as many times as needed, until holes are no longer present. This method is not as optimal as a 2D-coverage solution would be, but it is quick to run and adequately handles the few holes we run into.
 
 With this completed, we have now mapped every location on our plane to
 at least one image, and have minimized the number of images, as well
@@ -688,7 +702,9 @@ choices once subsequent tiles have been processed.
 In the context of the backpack modeling system, we apply the seam
 minimization approach on walls, due to its superior output when
 provided with head-on images. Floors and ceilings however, given their
-images taken at oblique angles, as shown in Figure \ref{fig:floor_suboptimal}, are textured using the tile caching method.
+many images taken at oblique angles, as shown in Figure
+\ref{fig:highCameraAngle}, are textured using the tile caching
+method.
 
 \subsection{Blending}
 \label{sec:blending}
@@ -716,17 +732,14 @@ while solving the shortest path problem in Section
 the overlap distance, we only apply blending over an area equal to the
 overlap distance.
 
-We apply alpha blending to blend pixels
-linearly across overlapping regions. Figure
-\ref{fig:pipeline} shows our entire texture mapping pipeline and demonstrates the
-final blended output of both approaches.
+After blending pixels linearly across overlapping
+regions using alpha blending, our texture mapping is complete. Figure \ref{fig:pipelineimages} shows each incremental step of our texture mapping approach, as well as the final blended output resulting from both of our methods.
 
 \begin{figure}
   \centering
-  \includegraphics[width=3in]{pipeline.pdf}
-  \caption{Our final texture processing pipeline, with the final
-    output of both approaches.}
-  \label{fig:pipeline}
+  \includegraphics[width=3in]{pipelineimages.pdf}
+  \caption{Textures corresponding to each step in our texture mapping pipeline.}
+  \label{fig:pipelineimages}
 \end{figure}
 
 
@@ -753,7 +766,9 @@ the accompanying video to this paper.
   \centering
   \includegraphics[width=3in]{4thfloor21.jpg}
   \includegraphics[width=3in]{4thfloor61.jpg}
+  \includegraphics[width=3in]{wall3final.jpg}
   \includegraphics[width=2in]{4thfloor8.jpg}
+  \includegraphics[width=3in]{floorfinal.jpg}
   \includegraphics[width=3in]{fullmodel.png}
   \caption{Examples of our final texture mapping output for walls,
     floors, and ceilings}

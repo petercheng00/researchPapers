@@ -2,11 +2,12 @@
 \backcite {sanchez2012point}{{1}{1}{section.1}}
 \backcite {hz}{{3}{3.1}{figure.caption.5}}
 \backcite {brown2007automatic}{{3}{3.1}{figure.caption.5}}
+\backcite {chen2010indoor}{{4}{6}{figure.caption.6}}
 \backcite {liu2010indoor}{{4}{3.2}{figure.caption.6}}
-\backcite {liu2010indoor,chen2010indoor}{{4}{3.2}{figure.caption.6}}
+\backcite {liu2010indoor, chen2010indoor}{{4}{3.2}{figure.caption.6}}
 \backcite {lowe1999object}{{4}{4.2}{subsection.4.2}}
-\backcite {fischler1981random}{{4}{4.2}{subsection.4.2}}
+\backcite {fischler1981random}{{5}{4.2}{subsection.4.2}}
 \backcite {chen2010indoor, liu2010indoor}{{5}{4.2.1}{subsubsection.4.2.1}}
 \backcite {chen2010indoor, liu2010indoor}{{5}{4.2.1}{subsubsection.4.2.1}}
 \backcite {chen2010indoor, liu2010indoor}{{5}{4.2.1}{subsubsection.4.2.1}}
-\backcite {dijkstra}{{6}{4.5}{figure.caption.9}}
+\backcite {dijkstra}{{7}{4.5}{figure.caption.11}}

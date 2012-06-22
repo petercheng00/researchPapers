@@ -16,6 +16,7 @@
      "fig:mosaic"
      "sec:imageBased3DRefinement"
      "fig:graph"
+     "fig:pipeline"
      "sec:proposedApproach"
      "sec:projectionAndRotation"
      "fig:matches"
@@ -23,12 +24,13 @@
      "sec:refiningImagePositions"
      "fig:shifted"
      "sec:seamMinimization"
+     "fig:highCameraAngle"
      "sec:occlusionMasking"
      "sec:imageSelection"
      "fig:dagCreation"
      "fig:compare_unblended"
      "sec:blending"
-     "fig:pipeline"
+     "fig:pipelineimages"
      "sec:resultsAndConclusions"
      "fig:results")
     (TeX-add-symbols

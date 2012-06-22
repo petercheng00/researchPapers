@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  21 JUN 2012 23:08
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  22 JUN 2012 04:18
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -408,97 +408,92 @@ File: panoMy.jpg Graphic file (type jpg)
 full.jpg> <./panoMy.jpg>] <Graph_crop.pdf, id=235, 308.5389pt x 105.02065pt>
 File: Graph_crop.pdf Graphic file (type pdf)
 
-<use Graph_crop.pdf>
-Underfull \hbox (badness 2142) in paragraph at lines 375--375
+<use Graph_crop.pdf> <pipeline.pdf, id=242, 721.69624pt x 471.7625pt>
+File: pipeline.pdf Graphic file (type pdf)
+
+<use pipeline.pdf>
+Underfull \hbox (badness 2142) in paragraph at lines 379--379
 [] \OT1/ptm/b/n/12 . Pro-posed Method for Seam-less Tex-ture
  []
 
-<matches.jpg, id=244, 914.41624pt x 408.52625pt>
+<matches.jpg, id=249, 914.41624pt x 408.52625pt>
 File: matches.jpg Graphic file (type jpg)
- <use matches.jpg> [4 <./Graph_crop.pdf> <./matches.jpg>]
-Overfull \hbox (16.04565pt too wide) detected at line 499
+ <use matches.jpg> [4 <./Graph_crop.pdf> <./pipeline.pdf> <./matches.jpg>]
+Overfull \hbox (16.04565pt too wide) detected at line 507
 [] \OT1/cmr/m/n/10 = []
  []
 
-<wall1_cache_full_shifted.jpg, id=281, 1828.8325pt x 289.08pt>
+<wall1_cache_full_shifted.jpg, id=298, 1828.8325pt x 289.08pt>
 File: wall1_cache_full_shifted.jpg Graphic file (type jpg)
 
 <use wall1_cache_full_shifted.jpg>
-
-LaTeX Warning: Reference `fig:highCameraAngle' on page 5 undefined on input lin
-e 541.
-
-[5 <./wall1_cache_full_shifted.jpg>]
-
-LaTeX Warning: Reference `sec:goodCameraAngle' on page 6 undefined on input lin
-e 605.
-
-<dagCreation.pdf, id=293, 486.81876pt x 130.4875pt>
+<highCameraAngle.pdf, id=299, 570.13pt x 594.22pt>
+File: highCameraAngle.pdf Graphic file (type pdf)
+ <use highCameraAngle.pdf>
+[5 <./wall1_cache_full_shifted.jpg>] [6 <./highCameraAngle.pdf>]
+<dagCreation.pdf, id=337, 486.81876pt x 130.4875pt>
 File: dagCreation.pdf Graphic file (type pdf)
  <use dagCreation.pdf>
-[6 <./dagCreation.pdf>]
 File: wall1_cache_full_shifted.jpg Graphic file (type jpg)
- <use wall1_cache_full_shifted.jpg>
-<wall1_dynprog_noblend.jpg, id=320, 1828.8325pt x 289.08pt>
+
+<use wall1_cache_full_shifted.jpg>
+<wall1_dynprog_noblend.jpg, id=343, 1828.8325pt x 289.08pt>
 File: wall1_dynprog_noblend.jpg Graphic file (type jpg)
 
-<use wall1_dynprog_noblend.jpg>
+<use wall1_dynprog_noblend.jpg> [7 <./dagCreation.pdf> <./wall1_dynprog_noblend
+.jpg>] <pipelineimages.pdf, id=370, 703.62875pt x 552.0625pt>
+File: pipelineimages.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `fig:floor_suboptimal' on page 7 undefined on input li
-ne 690.
-
-<pipeline.pdf, id=323, 684.5575pt x 407.5225pt>
-File: pipeline.pdf Graphic file (type pdf)
- <use pipeline.pdf>
-<4thfloor21.jpg, id=326, 3786.145pt x 389.455pt>
+<use pipelineimages.pdf> <4thfloor21.jpg, id=373, 3786.145pt x 389.455pt>
 File: 4thfloor21.jpg Graphic file (type jpg)
- <use 4thfloor21.jpg>
-<4thfloor61.jpg, id=327, 2509.375pt x 275.0275pt>
+
+<use 4thfloor21.jpg> <4thfloor61.jpg, id=374, 2509.375pt x 275.0275pt>
 File: 4thfloor61.jpg Graphic file (type jpg)
- <use 4thfloor61.jpg>
-<4thfloor8.jpg, id=328, 1415.2875pt x 311.1625pt>
+
+<use 4thfloor61.jpg> <wall3final.jpg, id=375, 1692.3225pt x 289.08pt>
+File: wall3final.jpg Graphic file (type jpg)
+
+<use wall3final.jpg> <4thfloor8.jpg, id=376, 1415.2875pt x 311.1625pt>
 File: 4thfloor8.jpg Graphic file (type jpg)
- <use 4thfloor8.jpg>
-<fullmodel.png, id=329, 1440.13031pt x 809.27344pt>
+
+<use 4thfloor8.jpg> <floorfinal.jpg, id=377, 2693.06125pt x 2531.4575pt>
+File: floorfinal.jpg Graphic file (type jpg)
+
+<use floorfinal.jpg> <fullmodel.png, id=378, 1440.13031pt x 809.27344pt>
 File: fullmodel.png Graphic file (type png)
- <use fullmodel.png>
-(./paper.bbl (./paper.brf)
+
+<use fullmodel.png> (./paper.bbl (./paper.brf)
 \tf@brf=\write3
 \openout3 = `paper.brf'.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 24.
- [7 <./wall1_dynprog_noblend.jpg> <./pipeline.pdf>])
-[8
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+ [8 <./pipelineimages.pdf> <./4thfloor21.jpg> <./4thfloor61.jpg> <./wall3final.
+jpg> <./4thfloor8.jpg> <./floorfinal.jpg> <./fullmodel.png (PNG copy)>]) [9
 
- <./4thfloor21.jpg> <./4thfloor61.jpg> <./4thfloor8.jpg> <./fullmodel.png (PNG 
-copy)>] (./paper.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 6690 strings out of 495061
- 98109 string characters out of 1182621
- 189189 words of memory out of 3000000
- 9675 multiletter control sequences out of 15000+50000
+ 6712 strings out of 495061
+ 98527 string characters out of 1182621
+ 189581 words of memory out of 3000000
+ 9690 multiletter control sequences out of 15000+50000
  33492 words of font info for 74 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,9n,42p,280b,437s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/
-fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/h
-elvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb><
-/usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-tex
-live/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (8 pages, 3665180 bytes).
+ 44i,10n,42p,763b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
+/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fo
+nts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/tim
+es/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/
+share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (9 pages, 4513102 bytes).
 PDF statistics:
- 425 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 468 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
