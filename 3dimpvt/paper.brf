@@ -1,8 +1,12 @@
-\backcite {chen2010indoor}{{2}{2.2}{subsection.2.2}}
-\backcite {sanchez2012point}{{2}{2.2}{subsection.2.2}}
-\backcite {hz}{{3}{4.1}{figure.caption.5}}
-\backcite {brown2007automatic}{{3}{4.1}{figure.caption.5}}
-\backcite {liu2010indoor}{{4}{4.2}{figure.caption.6}}
-\backcite {liu2010indoor,chen2010indoor}{{4}{4.2}{figure.caption.6}}
-\backcite {lowe1999object}{{4}{4.5}{subsection.4.5}}
-\backcite {fischler1981random}{{4}{4.5.1}{subsubsection.4.5.1}}
+\backcite {chen2010indoor, kua2012loopclosure, liu2010indoor}{{1}{1}{section.1}}
+\backcite {sanchez2012point}{{1}{1}{section.1}}
+\backcite {hz}{{3}{3.1}{figure.caption.5}}
+\backcite {brown2007automatic}{{3}{3.1}{figure.caption.5}}
+\backcite {liu2010indoor}{{4}{3.2}{figure.caption.6}}
+\backcite {liu2010indoor,chen2010indoor}{{4}{3.2}{figure.caption.6}}
+\backcite {lowe1999object}{{4}{4.2}{subsection.4.2}}
+\backcite {fischler1981random}{{4}{4.2}{subsection.4.2}}
+\backcite {chen2010indoor, liu2010indoor}{{5}{4.2.1}{subsubsection.4.2.1}}
+\backcite {chen2010indoor, liu2010indoor}{{5}{4.2.1}{subsubsection.4.2.1}}
+\backcite {chen2010indoor, liu2010indoor}{{5}{4.2.1}{subsubsection.4.2.1}}
+\backcite {dijkstra}{{6}{4.5}{figure.caption.9}}

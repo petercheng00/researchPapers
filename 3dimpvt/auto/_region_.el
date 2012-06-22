@@ -1,13 +1,43 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
+    (LaTeX-add-bibliographies
+     "egbib")
     (LaTeX-add-labels
-     "fig:scoringFunction")
+     "sec:introduction"
+     "sec:simpleTextureMapping"
+     "fig:projection"
+     "sec:directMapping"
+     "fig:scoringFunction"
+     "fig:directMapping"
+     "sec:mappingWithCaching"
+     "fig:caching"
+     "sec:existingApproaches"
+     "sec:imageMosaicing"
+     "fig:mosaic"
+     "sec:imageBased3DRefinement"
+     "fig:graph"
+     "sec:proposedApproach"
+     "sec:projectionAndRotation"
+     "fig:matches"
+     "sec:robustSIFTFeatureMatching"
+     "sec:refiningImagePositions"
+     "fig:shifted"
+     "sec:seamMinimization"
+     "sec:occlusionMasking"
+     "sec:imageSelection"
+     "fig:dagCreation"
+     "fig:compare_unblended"
+     "sec:blending"
+     "fig:pipeline"
+     "sec:resultsAndConclusions"
+     "fig:results")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")
     (TeX-run-style-hooks
      "hyperref"
      "colorlinks"
+     "subfig"
      "amssymb"
      "amsmath"
      "graphicx"

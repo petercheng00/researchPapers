@@ -11,6 +11,11 @@ G.~Chen, J.~Kua, S.~Shum, N.~Naikal, M.~Carlberg, and A.~Zakhor.
 \newblock In {\em Int. Symp. on 3D Data, Processing, Visualization and
   Transmission (3DPVT)}. Citeseer, 2010.
 
+\bibitem{dijkstra}
+E.~Dijkstra.
+\newblock A note on two problems in connexion graphs.
+\newblock {\em Numerische Mathematik}, 1:269--271, 1959.
+
 \bibitem{fischler1981random}
 M.~Fischler and R.~Bolles.
 \newblock Random sample consensus: a paradigm for model fitting with
@@ -21,6 +26,12 @@ M.~Fischler and R.~Bolles.
 R.~Hartley and A.~Zisserman.
 \newblock {\em Multiple view geometry in computer vision}, volume~2.
 \newblock Cambridge Univ Press, 2000.
+
+\bibitem{kua2012loopclosure}
+J.~Kua, N.~Corso, and A.~Zakhor.
+\newblock Automatic loop closure detection using multiple cameras for 3d indoor
+  localization.
+\newblock In {\em IS\&T/SPIE Electronic Imaging}, 2012.
 
 \bibitem{liu2010indoor}
 T.~Liu, M.~Carlberg, G.~Chen, J.~Chen, J.~Kua, and A.~Zakhor.

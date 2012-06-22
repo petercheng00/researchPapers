@@ -7,5 +7,7 @@
      "liu2010indoor"
      "chen2010indoor"
      "fischler1981random"
-     "sanchez2012point")))
+     "sanchez2012point"
+     "kua2012loopclosure"
+     "dijkstra")))
 
