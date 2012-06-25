@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  24 JUN 2012 17:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  25 JUN 2012 01:45
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -430,68 +430,75 @@ Underfull \hbox (badness 2142) in paragraph at lines 355--355
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4 <./pipeline.pdf>]
-Overfull \hbox (16.04565pt too wide) detected at line 472
+Overfull \hbox (16.5169pt too wide) detected at line 468
 [] \OT1/cmr/m/n/10 = []
  []
 
-<highCameraAngle.pdf, id=326, 570.13pt x 594.22pt>
-File: highCameraAngle.pdf Graphic file (type pdf)
- <use highCameraAngle.pdf>
-[5 <./highCameraAngle.pdf>]
-<dagCreation.pdf, id=359, 486.81876pt x 130.4875pt>
+<projectionWall.pdf, id=326, 355.3275pt x 311.1625pt>
+File: projectionWall.pdf Graphic file (type pdf)
+ <use projectionWall.pdf>
+<projectionCeiling.pdf, id=328, 489.83pt x 213.79875pt>
+File: projectionCeiling.pdf Graphic file (type pdf)
+
+<use projectionCeiling.pdf>
+<projectionWallCrop.pdf, id=330, 284.06125pt x 262.9825pt>
+File: projectionWallCrop.pdf Graphic file (type pdf)
+
+<use projectionWallCrop.pdf> [5 <./projectionWall.pdf> <./projectionCeiling.pdf
+> <./projectionWallCrop.pdf>]
+<dagCreation.pdf, id=381, 486.81876pt x 130.4875pt>
 File: dagCreation.pdf Graphic file (type pdf)
  <use dagCreation.pdf>
-[6 <./dagCreation.pdf>] <pipelineimages.pdf, id=389, 693.59125pt x 542.025pt>
+<pipelineimages.pdf, id=386, 693.59125pt x 542.025pt>
 File: pipelineimages.pdf Graphic file (type pdf)
-
-<use pipelineimages.pdf> [7 <./pipelineimages.pdf>]
-<4thfloor21.jpg, id=413, 3786.145pt x 389.455pt>
-File: 4thfloor21.jpg Graphic file (type jpg)
- <use 4thfloor21.jpg>
-<4thfloor61.jpg, id=414, 2509.375pt x 275.0275pt>
-File: 4thfloor61.jpg Graphic file (type jpg)
- <use 4thfloor61.jpg>
-<wall3final.jpg, id=415, 1692.3225pt x 289.08pt>
-File: wall3final.jpg Graphic file (type jpg)
- <use wall3final.jpg>
-<4thfloor8.jpg, id=416, 2007.5pt x 758.835pt>
+ <use pipelineimages.pdf>
+[6 <./dagCreation.pdf>] [7 <./pipelineimages.pdf>]
+<finalfloors.jpg, id=431, 3792.1675pt x 1441.385pt>
+File: finalfloors.jpg Graphic file (type jpg)
+ <use finalfloors.jpg>
+<4thfloor8.jpg, id=432, 2007.5pt x 758.835pt>
 File: 4thfloor8.jpg Graphic file (type jpg)
  <use 4thfloor8.jpg>
-<floorcropped.jpg, id=417, 2693.06125pt x 2148.025pt>
+<floorcropped.jpg, id=433, 2693.06125pt x 2148.025pt>
 File: floorcropped.jpg Graphic file (type jpg)
  <use floorcropped.jpg>
-<fullmodel.png, id=418, 1242.14063pt x 639.89063pt>
+<fullmodel.png, id=434, 1242.14063pt x 639.89063pt>
 File: fullmodel.png Graphic file (type png)
  <use fullmodel.png>
 (./paper.bbl (./paper.brf)
 \tf@brf=\write3
 \openout3 = `paper.brf'.
 
-) [8 <./4thfloor21.jpg> <./4thfloor61.jpg> <./wall3final.jpg> <./4thfloor8.jpg>
- <./floorcropped.jpg> <./fullmodel.png>] (./paper.aux) ) 
+)
+Underfull \vbox (badness 2012) has occurred while \output is active []
+
+ [8 <./finalfloors.jpg> <./4thfloor8.jpg> <./floorcropped.jpg> <./fullmodel.png
+>] [9
+
+]
+(./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 6706 strings out of 495061
- 98520 string characters out of 1182621
- 187285 words of memory out of 3000000
- 9684 multiletter control sequences out of 15000+50000
- 35676 words of font info for 72 fonts, out of 3000000 for 9000
+ 6708 strings out of 495061
+ 98574 string characters out of 1182621
+ 190105 words of memory out of 3000000
+ 9681 multiletter control sequences out of 15000+50000
+ 34569 words of font info for 71 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,45p,617b,379s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texli
-ve/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/tex
-mf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/
-uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/
-share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/
-fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/time
-s/utmri8a.pfb>
-Output written on paper.pdf (8 pages, 6190780 bytes).
+ 44i,10n,45p,617b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/t
+exmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/font
+s/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times
+/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/sh
+are/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (9 pages, 7789394 bytes).
 PDF statistics:
- 498 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 500000)
+ 524 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

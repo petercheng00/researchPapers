@@ -495,13 +495,14 @@ results in the significant improvements shown in Figure
 
 \begin{figure}
   \centering
-  \subfloat[][]{\includegraphics[width=3in]{projectionWall.jpg}}
+  \subfloat[][]{\includegraphics[width=1in]{projectionWall.pdf}}
   \centering
-  \subfloat[][]{\includegraphics[width=3in]{projectionCeiling.jpg}}
-  \caption{(a): Undistorted fisheye images for vertical planes such as
-    walls are tilted, but their effective camera axis is more or less
+  \subfloat[][]{\includegraphics[width=1.1in]{projectionCeiling.pdf}}
+  \centering
+  \subfloat[][]{\includegraphics[width=0.9in]{projectionWallCrop.pdf}}
+  \caption{(a): Undistorted fisheye images for vertical planes are tilted, but their effective camera axis is more or less
     normal to the plane. (b): The effective camera axis for ceilings
-    is at an angle with respect to the plane normal.}
+    is at an angle with respect to the plane normal. (c): Wall images are cropped to be rectangular.}
   \label{fig:projectionAngles}
 \end{figure}
 
@@ -627,6 +628,15 @@ minimization approach on walls, due to its superior output when
 provided with head-on images. Floors and ceilings however, given their
 many images taken at oblique angles, are textured using the tile caching method.
 
+\begin{figure*}
+  \centering
+  \includegraphics[width=6in]{pipelineimages.pdf}
+  \caption{Textures corresponding to each step in our texture mapping
+    pipeline.}
+  \label{fig:pipelineimages}
+\end{figure*}
+
+
 \subsection{Blending}
 \label{sec:blending}
 We now apply the same blending process to the two texturing methods:
@@ -660,13 +670,6 @@ blending, texture mapping is complete. Figure
 mapping approach for a different wall, as well as the final blended output resulting from
 both of our methods.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=3in]{pipelineimages.pdf}
-  \caption{Textures corresponding to each step in our texture mapping
-    pipeline.}
-  \label{fig:pipelineimages}
-\end{figure}
 
 
 \section{Results and Conclusions}
@@ -685,20 +688,44 @@ textured with the seam minimization approach, are displayed in Figure
 walkthrough of a fully textured 3D model are available in the
 accompanying video to this paper.
 
+
+
 \begin{figure}
   \centering
-  \includegraphics[width=3in]{4thfloor21.jpg}
-  \includegraphics[width=3in]{4thfloor61.jpg}
-  \includegraphics[width=3in]{wall3final.jpg}
-  \includegraphics[width=3in]{4thfloor8.jpg}
-  \includegraphics[width=3in]{floorcropped.jpg}
-  \includegraphics[width=3in]{fullmodel.png}
-  \caption{Examples of our final texture mapping output for walls, a
-    ceiling, an entire floor, as well as a fully textured model}
+  \subfloat[][]{\includegraphics[width=3in]{finalfloors.jpg}}
+
+  \centering
+  \subfloat[][]{\includegraphics[width=3in]{4thfloor8.jpg}}
+
+  \centering
+  \subfloat[][]{\includegraphics[width=3in]{floorcropped.jpg}}
+
+  \centering
+  \subfloat[][]{\includegraphics[width=3in]{fullmodel.png}}
+  \caption{Examples of our final texture mapping output for (a) walls, (b) a
+    ceiling, (c) an entire floor, (d) a full model}
   \label{fig:results}
 \end{figure}
 
 {\small \bibliographystyle{ieee} \bibliography{egbib} }
+
+\appendix
+\section{Occlusion Masking}
+\label{sec:occlusionMasking}
+For the seam minimization process, we need to ensure that our images contain only content
+that should be mapped onto the target plane in question. The tiling
+approach only checks occlusion for each tile as it is
+being textured. For seam minimization, entire images are used, so occlusion checks need to be performed over the entirety of each image to
+determine available areas for texture mapping.
+
+Fortunately, by virtue of our indoor environments, the vast majority
+of surface geometry is either horizontal or vertical, with high
+amounts of right angles. This means that after masking out occluded
+areas, image projections will remain largely rectangular. We can
+be efficient by recursively splitting each image into rectangular
+pieces, and performing the same occlusion checks used in the tiling
+process where needed. To occlude out rectangles, their texture is removed, as untextured areas are
+never used for texture mapping.
 
 
 \end{document}

@@ -21,10 +21,11 @@
      "sec:seamMinimization"
      "fig:projectionAngles"
      "fig:dagCreation"
-     "sec:blending"
      "fig:pipelineimages"
+     "sec:blending"
      "sec:resultsAndConclusions"
-     "fig:results")
+     "fig:results"
+     "sec:occlusionMasking")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")
