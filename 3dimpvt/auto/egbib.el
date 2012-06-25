@@ -2,6 +2,7 @@
  (lambda ()
     (LaTeX-add-bibitems
      "hz"
+     "rayintersection"
      "lowe1999object"
      "brown2007automatic"
      "liu2010indoor"
@@ -9,5 +10,6 @@
      "fischler1981random"
      "sanchez2012point"
      "kua2012loopclosure"
-     "dijkstra")))
+     "dijkstra"
+     "agarwalapanoramas")))
 

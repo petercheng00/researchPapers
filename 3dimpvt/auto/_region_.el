@@ -1,7 +1,7 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
     (LaTeX-add-labels
-     "fig:shifted")
+     "fig:scoringFunction")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2012.6.21)  22 JUN 2012 01:52
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2012.6.24)  24 JUN 2012 17:14
 entering extended mode
  %&-line parsing enabled.
 **&prv_paper _region_.tex
@@ -149,7 +149,7 @@ LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
 \AtBeginShipoutBox=\box32
 
- !name(paper.tex) !offset(505) 
+ !name(paper.tex) !offset(171) 
 ! Preview: Snippet 1 started.
 <-><->
       
@@ -157,15 +157,15 @@ l.26 \begin{figure}
                    
 Not a real error.
 
-<wall1_cache_full_shifted.jpg, id=3, 1828.8325pt x 289.08pt>
-File: wall1_cache_full_shifted.jpg Graphic file (type jpg)
+<scoringFunction.pdf, id=3, 230.8625pt x 193.72375pt>
+File: scoringFunction.pdf Graphic file (type pdf)
 
-<use wall1_cache_full_shifted.jpg>
+<use scoringFunction.pdf>
 Preview: Tightpage -32891 -32891 32891 32891
-! Preview: Snippet 1 ended.(4474080+0x15540941).
+! Preview: Snippet 1 ended.(9332654+0x15540941).
 <-><->
       
-l.32 \end{figure}
+l.31 \end{figure}
                  
 Not a real error.
 
@@ -174,21 +174,22 @@ Not a real error.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <./wall1_cache_full_shifted.jpg>]  !name(paper.tex) !offset(744)  ) 
+ <./scoringFunction.pdf>]
+ !name(paper.tex) !offset(712)  ) 
 Here is how much of TeX's memory you used:
- 653 strings out of 489077
- 9495 string characters out of 1094925
+ 652 strings out of 489077
+ 9446 string characters out of 1094925
  169577 words of memory out of 3000000
  9681 multiletter control sequences out of 15000+50000
  12164 words of font info for 34 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  35i,9n,34p,167b,338s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share
-/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type
-1/urw/times/utmr8a.pfb>
-Output written on _region_.pdf (1 page, 64609 bytes).
+{/usr/share/texmf-texlive/fonts/enc/dvips/base
+/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
+Output written on _region_.pdf (1 page, 250860 bytes).
 PDF statistics:
- 16 PDF objects out of 1000 (max. 8388607)
+ 48 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

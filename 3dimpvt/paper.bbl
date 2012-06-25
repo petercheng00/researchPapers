@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}\itemsep=-1pt
+\begin{thebibliography}{10}\itemsep=-1pt
 
 \bibitem{brown2007automatic}
 M.~Brown and D.~Lowe.
@@ -21,6 +21,11 @@ M.~Fischler and R.~Bolles.
 \newblock Random sample consensus: a paradigm for model fitting with
   applications to image analysis and automated cartography.
 \newblock {\em Communications of the ACM}, 24(6):381--395, 1981.
+
+\bibitem{rayintersection}
+A.~Glassner et~al.
+\newblock {\em An introduction to ray tracing}.
+\newblock Academic Press, 1989.
 
 \bibitem{hz}
 R.~Hartley and A.~Zisserman.
