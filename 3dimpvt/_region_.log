@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2012.6.24)  24 JUN 2012 17:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2012.6.25)  25 JUN 2012 12:56
 entering extended mode
  %&-line parsing enabled.
 **&prv_paper _region_.tex
@@ -149,7 +149,7 @@ LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
 \AtBeginShipoutBox=\box32
 
- !name(paper.tex) !offset(171) 
+ !name(paper.tex) !offset(509) 
 ! Preview: Snippet 1 started.
 <-><->
       
@@ -157,39 +157,44 @@ l.26 \begin{figure}
                    
 Not a real error.
 
-<scoringFunction.pdf, id=3, 230.8625pt x 193.72375pt>
-File: scoringFunction.pdf Graphic file (type pdf)
+<projectionWall.pdf, id=3, 362.35374pt x 311.1625pt>
+File: projectionWall.pdf Graphic file (type pdf)
+ <use projectionWall.pdf>
+<projectionCeiling.pdf, id=5, 489.83pt x 274.02374pt>
+File: projectionCeiling.pdf Graphic file (type pdf)
 
-<use scoringFunction.pdf>
+<use projectionCeiling.pdf>
+<projectionWallCrop.pdf, id=7, 284.06125pt x 262.9825pt>
+File: projectionWallCrop.pdf Graphic file (type pdf)
+
+<use projectionWallCrop.pdf>
 Preview: Tightpage -32891 -32891 32891 32891
-! Preview: Snippet 1 ended.(9332654+0x15540941).
+! Preview: Snippet 1 ended.(10073920+0x15540941).
 <-><->
       
-l.31 \end{figure}
+l.39 \end{figure}
                  
 Not a real error.
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <./scoringFunction.pdf>]
- !name(paper.tex) !offset(712)  ) 
+
+ <./projectionWall.pdf> <./projectionCeiling.pdf> <./projectionWallCrop.pdf>]
+ !name(paper.tex) !offset(734)  ) 
 Here is how much of TeX's memory you used:
- 652 strings out of 489077
- 9446 string characters out of 1094925
+ 669 strings out of 489077
+ 9808 string characters out of 1094925
  169577 words of memory out of 3000000
- 9681 multiletter control sequences out of 15000+50000
- 12164 words of font info for 34 fonts, out of 3000000 for 9000
+ 9692 multiletter control sequences out of 15000+50000
+ 13242 words of font info for 35 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 35i,9n,34p,167b,338s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,11n,45p,167b,412s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base
-/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-Output written on _region_.pdf (1 page, 250860 bytes).
+/8r.enc}</usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
+Output written on _region_.pdf (1 page, 294480 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 1 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 54 PDF objects out of 1000 (max. 8388607)
+ 4 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

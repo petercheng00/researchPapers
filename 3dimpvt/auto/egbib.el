@@ -11,5 +11,10 @@
      "sanchez2012point"
      "kua2012loopclosure"
      "dijkstra"
-     "agarwalapanoramas")))
+     "agarwalapanoramas"
+     "snavelyphototourism"
+     "wangmultipleviews"
+     "debevechybrid"
+     "debevecviewdependent"
+     "bernardinimultiplescans")))
 

@@ -22,13 +22,21 @@
 \ifcvprfinal\pagestyle{empty}\fi
 \begin{document}
 
-\message{ !name(paper.tex) !offset(171) }
+\message{ !name(paper.tex) !offset(509) }
 \begin{figure}
   \centering
-  \includegraphics[height=1.5in]{scoringFunction.pdf}
-  \caption{We wish to minimize camera angle $\alpha$ and distance $d$}
-  \label{fig:scoringFunction}
+  \subfloat[][]{\includegraphics[width=1in]{projectionWall.pdf}}
+  \centering
+  \subfloat[][]{\includegraphics[width=1.1in]{projectionCeiling.pdf}}
+  \centering
+  \subfloat[][]{\includegraphics[width=0.9in]{projectionWallCrop.pdf}}
+  \caption{(a): Undistorted fisheye images for vertical planes are
+    tilted, but their effective camera axis is more or less normal to
+    the plane. (b): The effective camera axis for ceilings is at an
+    angle with respect to the plane normal. (c): Wall images are
+    cropped to be rectangular.}
+  \label{fig:projectionAngles}
 \end{figure}
-\message{ !name(paper.tex) !offset(712) }
+\message{ !name(paper.tex) !offset(734) }
 
 \end{document}

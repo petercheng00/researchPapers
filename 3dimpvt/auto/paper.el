@@ -21,7 +21,6 @@
      "sec:seamMinimization"
      "fig:projectionAngles"
      "fig:dagCreation"
-     "fig:pipelineimages"
      "sec:blending"
      "sec:resultsAndConclusions"
      "fig:results"

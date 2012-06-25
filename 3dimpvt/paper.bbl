@@ -1,5 +1,17 @@
 \begin{thebibliography}{10}\itemsep=-1pt
 
+\bibitem{agarwalapanoramas}
+A.~Agarwala, M.~Agrawala, M.~Cohen, D.~Salesin, and R.~Szeliski.
+\newblock Photographing long scenes with multi-viewpoint panoramas.
+\newblock In {\em ACM Transactions on Graphics (Proceedings of SIGGRAPH 2006)},
+  2006.
+
+\bibitem{bernardinimultiplescans}
+F.~Bernardini, I.~Martin, and H.~Rushmeier.
+\newblock High-quality texture reconstruction from multiple scans.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics}, 7,
+  2001.
+
 \bibitem{brown2007automatic}
 M.~Brown and D.~Lowe.
 \newblock Automatic panoramic image stitching using invariant features.
@@ -10,6 +22,19 @@ G.~Chen, J.~Kua, S.~Shum, N.~Naikal, M.~Carlberg, and A.~Zakhor.
 \newblock Indoor localization algorithms for a human-operated backpack system.
 \newblock In {\em Int. Symp. on 3D Data, Processing, Visualization and
   Transmission (3DPVT)}. Citeseer, 2010.
+
+\bibitem{debevechybrid}
+P.~Debevec, C.~Taylor, and J.~Malik.
+\newblock Modeling and rendering architecture from photographs: a hybrid
+  geometry- and image- based approach.
+\newblock In {\em SIGGRAPH '96 Proceedings of the 23rd annual conference on
+  Computer graphics and interactive techniques}, 1996.
+
+\bibitem{debevecviewdependent}
+P.~Debevec, Y.~Yu, and G.~Borshukov.
+\newblock Efficient view-dependent image-based rendering with projective
+  texture-mapping.
+\newblock In {\em 9th Eurographics Rendering Workshop}, pages 105--116, 1998.
 
 \bibitem{dijkstra}
 E.~Dijkstra.
@@ -55,5 +80,15 @@ D.~Lowe.
 V.~Sanchez and A.~Zakhor.
 \newblock Planar 3d modeling of building interiors from point cloud data.
 \newblock In {\em Internation Conference on Image Processing}, 2012.
+
+\bibitem{snavelyphototourism}
+S.~Snavely, S.~Seitz, and R.~Szeliski.
+\newblock Phototourism: exploring photo collections in 3d.
+\newblock {\em ACM Transactions on Graphics}, 25:835--846, 2006.
+
+\bibitem{wangmultipleviews}
+L.~Wang.
+\newblock Optimal texture map reconstruction from multiple views.
+\newblock In {\em Computer Vision and Patter Recognition}, 2001.
 
 \end{thebibliography}

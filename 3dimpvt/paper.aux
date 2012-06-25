@@ -19,11 +19,23 @@
 \citation{kua2012loopclosure}
 \citation{liu2010indoor}
 \citation{sanchez2012point}
+\citation{bernardinimultiplescans}
+\citation{debevechybrid}
+\citation{liu2010indoor}
+\citation{bernardinimultiplescans}
+\citation{wangmultipleviews}
+\citation{agarwalapanoramas}
+\citation{bernardinimultiplescans}
+\citation{debevecviewdependent}
+\citation{agarwalapanoramas}
+\citation{debevechybrid}
+\citation{snavelyphototourism}
 \@writefile{toc}{\contentsline {section}{\numberline {1}\hskip -1em.\nobreakspace  {}Introduction}{1}{section.1}}
 \newlabel{sec:introduction}{{1}{1}{\hskip -1em.~Introduction\relax }{section.1}{}}
 \@writefile{brf}{\backcite{chen2010indoor, hz, kua2012loopclosure, liu2010indoor}{{1}{1}{section.1}}}
 \@writefile{brf}{\backcite{chen2010indoor, kua2012loopclosure, liu2010indoor}{{1}{1}{section.1}}}
 \@writefile{brf}{\backcite{sanchez2012point}{{1}{1}{section.1}}}
+\@writefile{brf}{\backcite{bernardinimultiplescans, debevechybrid, liu2010indoor}{{1}{1}{section.1}}}
 \citation{chen2010indoor}
 \citation{liu2010indoor}
 \citation{kua2012loopclosure}
@@ -31,86 +43,93 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Planes are specified in 3D space by four corners $C_1$ to $C_4$. Images are related to each plane through the camera matrices $P_{1..M}$. \relax }}{2}{figure.caption.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:projection}{{1}{2}{Planes are specified in 3D space by four corners $C_1$ to $C_4$. Images are related to each plane through the camera matrices $P_{1..M}$. \relax \relax }{figure.caption.1}{}}
+\@writefile{brf}{\backcite{bernardinimultiplescans, wangmultipleviews}{{2}{1}{section.1}}}
+\@writefile{brf}{\backcite{agarwalapanoramas, bernardinimultiplescans, debevecviewdependent}{{2}{1}{section.1}}}
+\@writefile{brf}{\backcite{agarwalapanoramas, debevechybrid, snavelyphototourism}{{2}{1}{section.1}}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}\hskip -1em.\nobreakspace  {}Tile-Based Texture Mapping}{2}{section.2}}
 \newlabel{sec:simpleTextureMapping}{{2}{2}{\hskip -1em.~Tile-Based Texture Mapping\relax }{section.2}{}}
 \@writefile{brf}{\backcite{chen2010indoor, liu2010indoor, kua2012loopclosure}{{2}{2}{figure.caption.1}}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}\hskip -1em.\nobreakspace  {}Direct Mapping}{2}{subsection.2.1}}
 \newlabel{sec:directMapping}{{2.1}{2}{\hskip -1em.~Direct Mapping\relax }{subsection.2.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces We wish to minimize camera angle $\alpha $ and distance $d$\relax }}{2}{figure.caption.2}}
-\newlabel{fig:scoringFunction}{{2}{2}{We wish to minimize camera angle $\alpha $ and distance $d$\relax \relax }{figure.caption.2}{}}
 \@writefile{brf}{\backcite{rayintersection}{{2}{2.1}{subsection.2.1}}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}\hskip -1em.\nobreakspace  {}Mapping with Caching}{2}{subsection.2.2}}
 \newlabel{sec:mappingWithCaching}{{2.2}{2}{\hskip -1em.~Mapping with Caching\relax }{subsection.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces We minimize camera angle $\alpha $ and distance $d$ by maximizing the scoring function $\frac  {1}{d} (-1 \cdot \mathaccentV {vec}17E{C}) \cdot \mathaccentV {vec}17E{N}$\relax }}{3}{figure.caption.2}}
+\newlabel{fig:scoringFunction}{{2}{3}{We minimize camera angle $\alpha $ and distance $d$ by maximizing the scoring function $\frac {1}{d} (-1 \cdot \vec {C}) \cdot \vec {N}$\relax \relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace  {}Existing Approaches to Image-Aligned Texture Mapping}{3}{section.3}}
+\newlabel{sec:existingApproaches}{{3}{3}{\hskip -1em.~Existing Approaches to Image-Aligned Texture Mapping\relax }{section.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces (a): Direct mapping. (b): Mapping with caching. (c): Mapping with caching after image alignment. (d): Seam minimization after image alignment). (e): (c) after blending. (f): (d) after blending.\relax }}{3}{figure.caption.3}}
+\newlabel{fig:compareAll}{{3}{3}{(a): Direct mapping. (b): Mapping with caching. (c): Mapping with caching after image alignment. (d): Seam minimization after image alignment). (e): (c) after blending. (f): (d) after blending.\relax \relax }{figure.caption.3}{}}
 \citation{chen2010indoor}
 \citation{chen2010indoor}
 \citation{hz}
 \citation{brown2007automatic}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces (a): Direct mapping. (b): Mapping with caching. (c): Mapping with caching after image alignment. (d): Seam minimization approach (including image alignment)\relax }}{3}{figure.caption.3}}
-\newlabel{fig:compareAll}{{3}{3}{(a): Direct mapping. (b): Mapping with caching. (c): Mapping with caching after image alignment. (d): Seam minimization approach (including image alignment)\relax \relax }{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Both image mosaicing (a) and the graph-based localization refinement algorithm from \cite  {chen2010indoor} (b) suffer from the problem of compounding errors.\relax }}{3}{figure.caption.4}}
-\@writefile{brf}{\backcite{chen2010indoor}{{3}{4}{figure.caption.4}}}
-\newlabel{fig:mosaic3D}{{4}{3}{Both image mosaicing (a) and the graph-based localization refinement algorithm from \cite {chen2010indoor} (b) suffer from the problem of compounding errors.\relax \relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace  {}Existing Approaches to Image-Aligned Texture Mapping}{3}{section.3}}
-\newlabel{sec:existingApproaches}{{3}{3}{\hskip -1em.~Existing Approaches to Image-Aligned Texture Mapping\relax }{section.3}{}}
 \citation{liu2010indoor}
 \citation{liu2010indoor}
 \citation{chen2010indoor}
-\citation{lowe1999object}
-\citation{fischler1981random}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Our proposed method for seamless texture mapping.\relax }}{4}{figure.caption.5}}
-\newlabel{fig:pipeline}{{5}{4}{Our proposed method for seamless texture mapping.\relax \relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Both image mosaicing (a) and the graph-based localization refinement algorithm from \cite  {chen2010indoor} (b) suffer from the problem of compounding errors.\relax }}{4}{figure.caption.4}}
+\@writefile{brf}{\backcite{chen2010indoor}{{4}{4}{figure.caption.4}}}
+\newlabel{fig:mosaic3D}{{4}{4}{Both image mosaicing (a) and the graph-based localization refinement algorithm from \cite {chen2010indoor} (b) suffer from the problem of compounding errors.\relax \relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}\hskip -1em.\nobreakspace  {}Image Mosaicing}{4}{subsection.3.1}}
 \newlabel{sec:imageMosaicing}{{3.1}{4}{\hskip -1em.~Image Mosaicing\relax }{subsection.3.1}{}}
 \@writefile{brf}{\backcite{hz}{{4}{3.1}{figure.caption.4}}}
 \@writefile{brf}{\backcite{brown2007automatic}{{4}{3.1}{figure.caption.4}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Our proposed method for seamless texture mapping.\relax }}{4}{figure.caption.5}}
+\newlabel{fig:pipeline}{{5}{4}{Our proposed method for seamless texture mapping.\relax \relax }{figure.caption.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}\hskip -1em.\nobreakspace  {}Image-Based 3D Localization Refinement}{4}{subsection.3.2}}
 \newlabel{sec:imageBased3DRefinement}{{3.2}{4}{\hskip -1em.~Image-Based 3D Localization Refinement\relax }{subsection.3.2}{}}
 \@writefile{brf}{\backcite{liu2010indoor}{{4}{3.2}{subsection.3.2}}}
 \@writefile{brf}{\backcite{liu2010indoor, chen2010indoor}{{4}{3.2}{subsection.3.2}}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}Proposed Method for Seamless Texture Mapping}{4}{section.4}}
 \newlabel{sec:proposedApproach}{{4}{4}{\hskip -1em.~Proposed Method for Seamless Texture Mapping\relax }{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.\nobreakspace  {}Image Projection and Rotation}{4}{subsection.4.1}}
-\newlabel{sec:projectionAndRotation}{{4.1}{4}{\hskip -1em.~Image Projection and Rotation\relax }{subsection.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.\nobreakspace  {}Image Pose Refinement}{4}{subsection.4.2}}
-\newlabel{sec:robustSIFTFeatureMatching}{{4.2}{4}{\hskip -1em.~Image Pose Refinement\relax }{subsection.4.2}{}}
-\@writefile{brf}{\backcite{lowe1999object}{{4}{4.2}{subsection.4.2}}}
-\@writefile{brf}{\backcite{fischler1981random}{{4}{4.2}{subsection.4.2}}}
+\citation{lowe1999object}
+\citation{fischler1981random}
 \citation{chen2010indoor}
 \citation{liu2010indoor}
 \citation{chen2010indoor}
 \citation{liu2010indoor}
 \citation{chen2010indoor}
 \citation{liu2010indoor}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.\nobreakspace  {}Image Projection and Rotation}{5}{subsection.4.1}}
+\newlabel{sec:projectionAndRotation}{{4.1}{5}{\hskip -1em.~Image Projection and Rotation\relax }{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.\nobreakspace  {}Image Pose Refinement}{5}{subsection.4.2}}
+\newlabel{sec:robustSIFTFeatureMatching}{{4.2}{5}{\hskip -1em.~Image Pose Refinement\relax }{subsection.4.2}{}}
+\@writefile{brf}{\backcite{lowe1999object}{{5}{4.2}{subsection.4.2}}}
+\@writefile{brf}{\backcite{fischler1981random}{{5}{4.2}{subsection.4.2}}}
 \@writefile{brf}{\backcite{chen2010indoor, liu2010indoor}{{5}{4.2}{subsection.4.2}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces (a): Undistorted fisheye images for vertical planes are tilted, but their effective camera axis is more or less normal to the plane. (b): The effective camera axis for ceilings is at an angle with respect to the plane normal. (c): Wall images are cropped to be rectangular.\relax }}{5}{figure.caption.6}}
-\newlabel{fig:projectionAngles}{{6}{5}{(a): Undistorted fisheye images for vertical planes are tilted, but their effective camera axis is more or less normal to the plane. (b): The effective camera axis for ceilings is at an angle with respect to the plane normal. (c): Wall images are cropped to be rectangular.\relax \relax }{figure.caption.6}{}}
 \@writefile{brf}{\backcite{chen2010indoor, liu2010indoor}{{5}{4.2}{subsection.4.2}}}
 \@writefile{brf}{\backcite{chen2010indoor, liu2010indoor}{{5}{4.2}{subsection.4.2}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.\nobreakspace  {}Seam Minimization}{5}{subsection.4.3}}
-\newlabel{sec:seamMinimization}{{4.3}{5}{\hskip -1em.~Seam Minimization\relax }{subsection.4.3}{}}
 \citation{dijkstra}
-\@writefile{brf}{\backcite{dijkstra}{{6}{4.3}{figure.caption.6}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces (a): Undistorted fisheye images for vertical planes are tilted, but their effective camera axis is more or less normal to the plane. (b): The effective camera axis for ceilings is at an angle with respect to the plane normal. (c): Wall images are cropped to be rectangular.\relax }}{6}{figure.caption.6}}
+\newlabel{fig:projectionAngles}{{6}{6}{(a): Undistorted fisheye images for vertical planes are tilted, but their effective camera axis is more or less normal to the plane. (b): The effective camera axis for ceilings is at an angle with respect to the plane normal. (c): Wall images are cropped to be rectangular.\relax \relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.\nobreakspace  {}Seam Minimization}{6}{subsection.4.3}}
+\newlabel{sec:seamMinimization}{{4.3}{6}{\hskip -1em.~Seam Minimization\relax }{subsection.4.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces DAG construction for the image selection process.\relax }}{6}{figure.caption.7}}
 \newlabel{fig:dagCreation}{{7}{6}{DAG construction for the image selection process.\relax \relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Textures corresponding to each step in our texture mapping pipeline.\relax }}{7}{figure.caption.8}}
-\newlabel{fig:pipelineimages}{{8}{7}{Textures corresponding to each step in our texture mapping pipeline.\relax \relax }{figure.caption.8}{}}
+\@writefile{brf}{\backcite{dijkstra}{{6}{4.3}{figure.caption.6}}}
+\bibstyle{ieee}
+\bibdata{egbib}
+\bibcite{agarwalapanoramas}{1}
+\bibcite{bernardinimultiplescans}{2}
+\bibcite{brown2007automatic}{3}
+\bibcite{chen2010indoor}{4}
+\bibcite{debevechybrid}{5}
+\bibcite{debevecviewdependent}{6}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}\hskip -1em.\nobreakspace  {}Blending}{7}{subsection.4.4}}
 \newlabel{sec:blending}{{4.4}{7}{\hskip -1em.~Blending\relax }{subsection.4.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}Results and Conclusions}{7}{section.5}}
 \newlabel{sec:resultsAndConclusions}{{5}{7}{\hskip -1em.~Results and Conclusions\relax }{section.5}{}}
-\bibstyle{ieee}
-\bibdata{egbib}
-\bibcite{brown2007automatic}{1}
-\bibcite{chen2010indoor}{2}
-\bibcite{dijkstra}{3}
-\bibcite{fischler1981random}{4}
-\bibcite{rayintersection}{5}
-\bibcite{hz}{6}
-\bibcite{kua2012loopclosure}{7}
-\bibcite{liu2010indoor}{8}
-\bibcite{lowe1999object}{9}
-\bibcite{sanchez2012point}{10}
+\bibcite{dijkstra}{7}
+\bibcite{fischler1981random}{8}
+\bibcite{rayintersection}{9}
+\bibcite{hz}{10}
+\bibcite{kua2012loopclosure}{11}
+\bibcite{liu2010indoor}{12}
+\bibcite{lowe1999object}{13}
+\bibcite{sanchez2012point}{14}
+\bibcite{snavelyphototourism}{15}
+\bibcite{wangmultipleviews}{16}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Examples of our final texture mapping output for (a) walls, (b) a ceiling, (c) an entire floor, (d) a full model\relax }}{8}{figure.caption.8}}
+\newlabel{fig:results}{{8}{8}{Examples of our final texture mapping output for (a) walls, (b) a ceiling, (c) an entire floor, (d) a full model\relax \relax }{figure.caption.8}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {A}\hskip -1em.\nobreakspace  {}Occlusion Masking}{8}{appendix.A}}
 \newlabel{sec:occlusionMasking}{{A}{8}{\hskip -1em.~Occlusion Masking\relax }{appendix.A}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Examples of our final texture mapping output for (a) walls, (b) a ceiling, (c) an entire floor, (d) a full model\relax }}{8}{figure.caption.9}}
-\newlabel{fig:results}{{9}{8}{Examples of our final texture mapping output for (a) walls, (b) a ceiling, (c) an entire floor, (d) a full model\relax \relax }{figure.caption.9}{}}
