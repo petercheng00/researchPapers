@@ -22,21 +22,31 @@
 \ifcvprfinal\pagestyle{empty}\fi
 \begin{document}
 
-\message{ !name(paper.tex) !offset(509) }
+\message{ !name(paper.tex) !offset(200) }
 \begin{figure}
   \centering
-  \subfloat[][]{\includegraphics[width=1in]{projectionWall.pdf}}
+  \subfloat[][]{\includegraphics[width=3in, clip=true]{wall1_naive.jpg}}
+
   \centering
-  \subfloat[][]{\includegraphics[width=1.1in]{projectionCeiling.pdf}}
+  \subfloat[][]{\includegraphics[width=3in, clip=true]{wall1_cache.jpg}}
+
   \centering
-  \subfloat[][]{\includegraphics[width=0.9in]{projectionWallCrop.pdf}}
-  \caption{(a): Undistorted fisheye images for vertical planes are
-    tilted, but their effective camera axis is more or less normal to
-    the plane. (b): The effective camera axis for ceilings is at an
-    angle with respect to the plane normal. (c): Wall images are
-    cropped to be rectangular.}
-  \label{fig:projectionAngles}
+  \subfloat[][]{\includegraphics[width=3in, clip=true]{wall1_cache_shift.jpg}}
+
+  \centering
+  \subfloat[][]{\includegraphics[width=3in, clip=true]{wall1_dynprog_noblend.jpg}}
+
+  \centering
+  \subfloat[][]{\includegraphics[width=3in, clip=true]{wall1_cache_shift_blend.jpg}}
+
+  \centering
+  \subfloat[][]{\includegraphics[width=3in, clip=true]{wall1_dynprog.jpg}}
+  \caption{(a) Direct mapping. (b) Mapping with caching. (c) Mapping
+    with caching after image alignment. (d) Seam minimization after
+    image alignment). (e) same as (c) with blending. (f) same as (d)
+    with blending.}
+  \label{fig:compareAll}
 \end{figure}
-\message{ !name(paper.tex) !offset(734) }
+\message{ !name(paper.tex) !offset(715) }
 
 \end{document}

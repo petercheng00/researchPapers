@@ -1,7 +1,7 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
     (LaTeX-add-labels
-     "fig:projectionAngles")
+     "fig:compareAll")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")

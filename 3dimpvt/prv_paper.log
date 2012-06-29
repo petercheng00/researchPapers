@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  25 JUN 2012 10:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  26 JUN 2012 17:39
 entering extended mode
  %&-line parsing enabled.
 **&pdflatex prv_paper.ini \nonstopmode\nofiles\PassOptionsToPackage{active,tigh
@@ -344,7 +344,7 @@ LaTeX Font Info:    Try loading font information for OT1+phv on input line 23.
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 ) )
 Beginning to dump on file prv_paper.fmt
- (format=prv_paper 2012.6.25)
+ (format=prv_paper 2012.6.26)
 10923 strings of total length 155075
 160612 memory locations dumped; current usage is 285&153862
 9069 multiletter control sequences

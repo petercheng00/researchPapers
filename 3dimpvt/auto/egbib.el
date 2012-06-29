@@ -14,7 +14,21 @@
      "agarwalapanoramas"
      "snavelyphototourism"
      "wangmultipleviews"
+     "coorg1997matching"
      "debevechybrid"
      "debevecviewdependent"
-     "bernardinimultiplescans")))
+     "bernardinimultiplescans"
+     "autostitch"
+     "matlabsift"
+     "szeliski2006image"
+     "mikolajczyk2004scale"
+     "mikolajczyk2005performance"
+     "ishikawa2002efficient"
+     "lai1999robust"
+     "lucas1981iterative"
+     "hager1998efficient"
+     "shum2000systems"
+     "cho2003automatic"
+     "yun2003comprehensive"
+     "szeliski1997creating")))
 
