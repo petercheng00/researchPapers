@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  28 JUN 2012 14:45
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  29 JUN 2012 19:36
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -378,8 +378,8 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 48.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 130.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 130.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 134.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 134.
 
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1phv.fd
@@ -388,76 +388,75 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 
 
 ]
-<Projection.pdf, id=36, 371.72507pt x 334.35416pt>
+<Projection.pdf, id=40, 371.72507pt x 334.35416pt>
 File: Projection.pdf Graphic file (type pdf)
  <use Projection.pdf>
-<scoringFunction.jpg, id=43, 230.5413pt x 193.6836pt>
+<scoringFunction.jpg, id=47, 230.5413pt x 193.6836pt>
 File: scoringFunction.jpg Graphic file (type jpg)
 
-<use scoringFunction.jpg> <wall2_naive.jpg, id=44, 701.62125pt x 294.09875pt>
+<use scoringFunction.jpg> <wall2_naive.jpg, id=48, 701.62125pt x 294.09875pt>
 File: wall2_naive.jpg Graphic file (type jpg)
 
-<use wall2_naive.jpg> <wall2_cache.jpg, id=45, 701.62125pt x 294.09875pt>
+<use wall2_naive.jpg> <wall2_cache.jpg, id=49, 701.62125pt x 294.09875pt>
 File: wall2_cache.jpg Graphic file (type jpg)
 
 <use wall2_cache.jpg>
-<wall2_cache_shift.jpg, id=46, 701.62125pt x 294.09875pt>
+<wall2_cache_shift.jpg, id=50, 701.62125pt x 294.09875pt>
 File: wall2_cache_shift.jpg Graphic file (type jpg)
 
 <use wall2_cache_shift.jpg>
-<wall2_dynprog_noblend.jpg, id=47, 701.62125pt x 294.09875pt>
+<wall2_dynprog_noblend.jpg, id=51, 701.62125pt x 294.09875pt>
 File: wall2_dynprog_noblend.jpg Graphic file (type jpg)
 
 <use wall2_dynprog_noblend.jpg>
-<wall2_cache_shift_blend.jpg, id=48, 701.62125pt x 294.09875pt>
+<wall2_cache_shift_blend.jpg, id=52, 701.62125pt x 294.09875pt>
 File: wall2_cache_shift_blend.jpg Graphic file (type jpg)
 
 <use wall2_cache_shift_blend.jpg>
-<wall2_dynprog.jpg, id=49, 701.62125pt x 294.09875pt>
+<wall2_dynprog.jpg, id=53, 701.62125pt x 294.09875pt>
 File: wall2_dynprog.jpg Graphic file (type jpg)
  <use wall2_dynprog.jpg>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2 <./Projection.pdf>] [3 <./scoringFunction.jpg> <./wall2_naive.jpg> <./wall2_
+[2 <./Projection.pdf> <./scoringFunction.jpg>] [3 <./wall2_naive.jpg> <./wall2_
 cache.jpg> <./wall2_cache_shift.jpg> <./wall2_dynprog_noblend.jpg> <./wall2_cac
 he_shift_blend.jpg> <./wall2_dynprog.jpg>]
-Underfull \vbox (badness 1496) has occurred while \output is active []
-
-
-<Graph_crop.pdf, id=254, 308.5389pt x 105.02065pt>
+<Graph_crop.pdf, id=267, 308.5389pt x 105.02065pt>
 File: Graph_crop.pdf Graphic file (type pdf)
  <use Graph_crop.pdf>
-<panoMy.jpg, id=255, 1405.25pt x 329.23pt>
+<panoMy.jpg, id=268, 1405.25pt x 329.23pt>
 File: panoMy.jpg Graphic file (type jpg)
  <use panoMy.jpg>
-<pipeline.pdf, id=258, 711.65875pt x 376.40625pt>
+<pipeline.pdf, id=271, 711.65875pt x 376.40625pt>
 File: pipeline.pdf Graphic file (type pdf)
  <use pipeline.pdf>
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (15.80905pt too wide) in paragraph at lines 353--354
+ [][] 
+ []
 
- [4 <./Graph_crop.pdf> <./panoMy.jpg> <./pipeline.pdf>]
-Overfull \hbox (16.5169pt too wide) detected at line 502
+[4 <./Graph_crop.pdf> <./panoMy.jpg> <./pipeline.pdf>]
+Overfull \hbox (16.5169pt too wide) detected at line 480
 [] \OT1/cmr/m/n/10 = []
  []
 
-[5] <projectionWall.pdf, id=344, 312.16624pt x 304.13625pt>
+<projectionWall.pdf, id=334, 312.16624pt x 304.13625pt>
 File: projectionWall.pdf Graphic file (type pdf)
 
 <use projectionWall.pdf>
-<projectionCeiling.pdf, id=346, 489.83pt x 274.02374pt>
+<projectionCeiling.pdf, id=336, 489.83pt x 274.02374pt>
 File: projectionCeiling.pdf Graphic file (type pdf)
 
 <use projectionCeiling.pdf>
-<projectionWallCrop.pdf, id=348, 272.01625pt x 287.0725pt>
+<projectionWallCrop.pdf, id=338, 272.01625pt x 287.0725pt>
 File: projectionWallCrop.pdf Graphic file (type pdf)
 
-<use projectionWallCrop.pdf>
-<dagCreation.pdf, id=361, 486.81876pt x 130.4875pt>
+<use projectionWallCrop.pdf> [5 <./projectionWall.pdf> <./projectionCeiling.pdf
+> <./projectionWallCrop.pdf>]
+<dagCreation.pdf, id=386, 486.81876pt x 130.4875pt>
 File: dagCreation.pdf Graphic file (type pdf)
  <use dagCreation.pdf>
-[6 <./projectionWall.pdf> <./projectionCeiling.pdf> <./projectionWallCrop.pdf> 
-<./dagCreation.pdf>] <finalfloors.jpg, id=425, 3792.1675pt x 1441.385pt>
+[6 <./dagCreation.pdf>] <finalfloors.jpg, id=425, 3792.1675pt x 1441.385pt>
 File: finalfloors.jpg Graphic file (type jpg)
 
 <use finalfloors.jpg> <4thfloor8.jpg, id=426, 2007.5pt x 758.835pt>
@@ -472,11 +471,6 @@ File: fullmodel.png Graphic file (type png)
 <use fullmodel.png> (./paper.bbl (./paper.brf)
 \tf@brf=\write3
 \openout3 = `paper.brf'.
-
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
- [7]
-Underfull \vbox (badness 1527) has occurred while \output is active []
 
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 19.
 
@@ -493,44 +487,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--19
 \OT1/pcr/m/n/9 / / www . cs . bath . ac . uk / brown / autostitch /
  []
 
-[8 <./finalfloors.jpg> <./4thfloor8.jpg> <./floorcropped.jpg> <./fullmodel.png>
-]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 83.
+[7]
+Underfull \vbox (badness 1527) has occurred while \output is active []
+
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 139.
 
- (/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 139.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 139.
-) [9
-
-] (./paper.aux) ) 
+) [8 <./finalfloors.jpg> <./4thfloor8.jpg> <./floorcropped.jpg> <./fullmodel.pn
+g>] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 6888 strings out of 495061
- 101963 string characters out of 1182621
- 189546 words of memory out of 3000000
- 9832 multiletter control sequences out of 15000+50000
+ 6886 strings out of 495061
+ 101935 string characters out of 1182621
+ 190492 words of memory out of 3000000
+ 9831 multiletter control sequences out of 15000+50000
  37148 words of font info for 80 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,45p,456b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-texli
-ve/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw
-/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.
-pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texm
-f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
-1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (9 pages, 7283178 bytes).
+ 44i,10n,45p,412b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-tex
+live/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/u
+rw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8
+a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
+xmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (8 pages, 7278805 bytes).
 PDF statistics:
- 558 PDF objects out of 1000 (max. 8388607)
- 74 named destinations out of 1000 (max. 500000)
+ 550 PDF objects out of 1000 (max. 8388607)
+ 73 named destinations out of 1000 (max. 500000)
  96 words of extra memory for PDF output out of 10000 (max. 10000000)
 

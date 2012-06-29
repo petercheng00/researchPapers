@@ -51,16 +51,16 @@
   mapping. Applying textures to these models is an important step in
   generating photorealistic visualizations of data collected by
   modeling systems. Camera pose recovery in such systems often suffers
-  from inaccuracies, resulting in visible discontinuties when images
-  are projected adjacently onto a plane for texturing. We propose two
-  approaches for reducing discontinuities in texture mapping 3D models
-  made of planar surfaces. The first one is tile based and can be used
-  for images and planes at arbitrary angles relative to each
-  other. The second one, which we refer to as our seam minimization
-  approach, results in a more seamless texture but is only applicable
-  where camera axes for images are closely aligned with plane normals
-  of the surfaces to be textured. The effectiveness of our approaches
-  are demonstrated on two indoor datasets.
+  from inaccuracies, resulting in visible discontinuties when
+  successive images are projected adjacently onto a plane for
+  texturing. We propose two approaches to reduce discontinuities in
+  texture mapping 3D models made of planar surfaces. The first one is
+  tile based and can be used for images and planes at arbitrary angles
+  relative to each other. The second one results in a more seamless
+  texture, but is only applicable where camera axes for images are
+  closely aligned with plane normals of the surfaces to be
+  textured. The effectiveness of our approaches are demonstrated on
+  two indoor datasets.
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
@@ -77,7 +77,7 @@ The first step in automated 3D modeling is the physical scanning of
 the environment's geometry. An indoor modeling system must be able to
 recover camera poses within an environment while simulatenously
 reconstructing the 3D structure of the environment itself
-\cite{chen2010indoor, hz, kua2012loopclosure, liu2010indoor}.This is
+\cite{chen2010indoor, hz, kua2012loopclosure, liu2010indoor}. This is
 known as the simultaneous localization and mapping (SLAM) problem, and
 is generally solved by taking readings from laser range scanners,
 cameras, and inertial measurement units (IMUs) at multiple locations
@@ -91,42 +91,32 @@ for texture mapping generally produce poor results.
 
 In this paper, we present a number of approaches to texture mapping 3D
 models of indoor environments made of planar surfaces in the presence
-of uncertainty and noise in camera poses. In particular, we consider a
-human-operated backpack system with a number of laser range scanners
-as well as 2 cameras facing left and right, each equipped with fisheye
-lenses reaching an approximately 180$^{\circ}$ field of view and
-taking photos at a rate of 5 Hz. With the cameras and laser scanners
-active, the human operator wearing the backpack takes great care to
-walk a path such that every wall in the desired indoor environment is
-traversed and scanned lengthwise at least once, resulting in many
-thousands of captured images.
-
-Applying multiple localization and loop-closure algorithms on the data
-collected by the ondoor sensors \cite{chen2010indoor,
-  kua2012loopclosure, liu2010indoor}, the backpack is
-localized\footnote{In this paper, we use the terms localization and
-  pose recovery interchangeably, in that they both refer to recovering
-  position and orientation.}  over its data collection period. This
-requires recovering the 6 degrees of freedom for the backpack as well
-as all its sensors, including the cameras rigidly mounted on it. Once
-this is complete, the data from the laser range scanners is used to
-generate a 3D point cloud of the surrounding environment and a 3D
-planar model is generated \cite{sanchez2012point}. To do so, we
-approximate normal vectors for each point in the point cloud by
-gathering neighboring points within a small radius and processing them
-through principal component analysis. These normal vectors allow for
-the classification and grouping of adjacent points into structures
-such as walls, ceilings, floors, and staircases. A RANSAC algorithm is
-then employed to fit polygonal planes to these structured groupings of
-points, resulting in a fully planar model. This model, consisting of
-multiple 2D polygonal planes in 3D space, along with the set of images
-captured by the backpack's cameras and their noisy 3D poses, can be
-considered the input to our texture mapping problem.
+of uncertainty and noise in camera poses. In particular, we consider
+data obtained from a human-operated backpack system with a number of
+laser range scanners as well as 2 cameras facing left and right, each
+equipped with fisheye lenses reaching an approximately 180$^{\circ}$
+field of view and taking photos at a rate of 5 Hz. Applying multiple
+localization and loop-closure algorithms on the raw data collected by
+the onboard sensors \cite{chen2010indoor, kua2012loopclosure,
+  liu2010indoor}, the backpack is localized\footnote{In this paper, we
+  use the terms localization and pose recovery interchangeably, in
+  that they both refer to recovering position and orientation.}  over
+its data collection period. This requires recovering the 6 degrees of
+freedom for the backpack as well as the cameras rigidly mounted on
+it. Once this is complete, the data from the laser range scanners is
+used to generate a 3D point cloud of the surrounding environment, from which a
+3D planar model is created \cite{sanchez2012point}. This model, consisting of 2D
+polygonal planes in 3D space, along with the set of images captured by
+the backpack's cameras and their noisy 3D poses, can be considered the
+input to our texture mapping problem.
 
 This problem straddles the fields of image-based localization
 refinement as well as image alignment and mosaicing, and thus our
 proposed solution shares many similarities with past research in those
-areas, which will be examined in Section \ref{sec:existingApproaches}. However, given our knowledge of approximate camera poses as well as the 3D geometry of the environment to be textured, we can more accurately and efficiently texture our planes.
+areas, which will be examined in Section
+\ref{sec:existingApproaches}. However, we can exploit known
+approximate camera poses as well as the 3D geometry of the environment
+to more accurately and efficiently texture the planes.
 
 The remainder of the paper is organized as follows. Section
 \ref{sec:simpleTextureMapping} describes two variants of a tile-based
@@ -139,8 +129,8 @@ approach to texture mapping. Section \ref{sec:resultsAndConclusions}
 contains results and conclusions.
 
 In all subsequent sections, we discuss the process of texture mapping
-a single plane, as the texturing of each of our planes is independent
-and can be completed in parallel.
+a single plane, as the texturing of each plane is independent and can
+be completed in parallel.
 
 \section{Tile-Based Texture Mapping}
 \label{sec:simpleTextureMapping}
@@ -155,7 +145,7 @@ and can be completed in parallel.
 
 The geometry of the texture mapping process for a plane is shown in
 Figure \ref{fig:projection}.  As described earlier, we are provided
-with a set of $M$ images with which we must texture the target
+with a set of $M$ images to texture the target
 plane. Each image has a camera matrix $P_i$ for $i=1..M$, which
 translates a 3D point in the world coordinate system to a 2D point or
 pixel in image $i$'s coordinates. A camera matrix $P_i$ is composed of
@@ -170,22 +160,26 @@ noisy.
 Because the backpack system takes photos at a rate of 5 Hz, thousands
 of images are available for texturing each plane. Our goal in creating
 a texture mapping process is to decide which of these images should be
-used, and where their contents should map onto the plane, in order to
-eliminate any visual discontinuities or seams that would suggest that
-the plane's final texture is not composed of a single continuous image.
+used, and where their contents should map onto the texture, in order
+to eliminate any visual discontinuities or seams that would suggest
+that the plane's final texture is not composed of a single continuous
+image.
 
 \subsection{Direct Mapping}
 \label{sec:directMapping}
 
-Ignoring the fact that the camera matrices $P_{1..M}$ are inaccurate, we can texture the plane by discretizing it into small square tiles, generally about 5 pixels across, and choosing an image to texture each tile.
+Ignoring the fact that the camera matrices $P_{1..M}$ are inaccurate,
+we can texture the plane by discretizing it into small square tiles,
+generally about 5 pixels across, and choosing an image to texture each
+tile.
 
 We choose to work with rectangular units to ensure that borders
-between any two distinct images in our final texture are either
+between any two distinct images in the final texture are either
 horizontal or vertical. Since most environmental features inside
 buildings are horizontal or vertical, any seams in our texture
 intersect them minimally and are likely to be less noticeable.
 
-In order to select an image for texturing tile $t$, we must first
+In order to select an image for texturing a tile $t$, we must first
 gather a list of candidate images that contain all four of its
 corners, which we can quickly check by projecting $t$ into each image
 using the $P_i$ camera matrices. Furthermore, each candidate image
@@ -200,10 +194,11 @@ pose errors compound over distance, we wish to minimize the distance
 between cameras and the plane they texture. Additionally, we desire
 images that are projected perpendicularly onto the plane, maximizing
 the resolution and amount of useful texture available in their
-projections, as well as minimizing any parallax effects. In other words, we wish to minimize the angle between the
-plane normal and the camera axis for images selected for texture
-mapping. These two criteria can be met by maximizing the function
-$\frac{1}{d} (-1 \cdot \vec{c}) \cdot \vec{n}$ as shown in Figure
+projections, as well as minimizing any parallax effects. In other
+words, we wish to minimize the angle between the plane normal and the
+camera axis for images selected for texture mapping. These two
+criteria can be met by maximizing the function $\frac{1}{d} (-1 \cdot
+\vec{c}) \cdot \vec{n}$ as shown in Figure
 \ref{fig:scoringFunction}. Specifically, $d$ is the distance between
 the centers of a camera and a tile, and $\vec{n}$ and $\vec{c}$ are
 the directions of the plane's normal and the camera axis respectively.
@@ -257,7 +252,8 @@ images, it makes sense to take into account image selections made by
 neighboring tiles while texture mapping a given tile. By using the
 same image across tile boundaries, we can eliminate a discontinuity
 altogether. If this is not possible because a tile is not visible in
-images chosen by its neighbors, using similar images across a tile boundary will result in minimal discontinuities.
+images chosen by its neighbors, using similar images across tile
+boundaries also leads to less noticeable discontinuities.
 
 Similar to a caching mechanism, we select the best image for a tile
 $t$ by searching through two subsets of images for a viable candidate,
@@ -273,9 +269,9 @@ viable image, with $\alpha$ as the camera angle as shown in Figure
 If no satisfactory image is found in the first subset, we check the
 second subset of images, consisting of those taken near the ones in
 the first subset, both spatially and temporally. These images are not
-the same as the ones used for neighboring tiles, but were taken at a
+the same as the ones used for neighboring tiles, but are taken at a
 similar location and time, suggesting that their localization and
-projection are very similar. Again, if no viable image is found
+projection are quite similar. Again, if no viable image is found
 according to the same criteria, we search the entire set of candidate
 images, selecting based on the same scoring function from Figure
 \ref{fig:scoringFunction}.
@@ -295,45 +291,21 @@ need to be refined such that their localization is pixel accurate, or
 image stitching techniques need to be applied to provide this
 illusion.
 
-Before examining these approaches, we first obtain a set of images to
-work with.  Rather than perform camera or image adjustments across the
-many thousands of images acquired in a typical data collection, we opt
-to work with the more limited set of images corresponding to those
-chosen by the direct mapping approach, without caching, of Section
-\ref{sec:directMapping}. This set of images constitutes a reasonable
-candidate set for generating a final seamless texture since it meets
-three important criteria. First, each tile on the plane is covered by
-at least one image in this set; this ensures no holes in the final
-texture. Second, images are all selected according to the scoring
-function in Figure \ref{fig:scoringFunction}, ensuring reasonable
-camera distances and angles. Third, as a side result of the scoring
-function, selected images are only viable for the tiles near their
-center of projection. Thus, there should be plenty of overlap between
-selected images, allowing for some degree of shifting without
-resulting in holes, as well as area for blending between them. With
-this set of images, we now review approaches towards refining and
-combining their projections.
+Image projections can be aligned by refining their noisy camera poses,
+using image correspondences to adjust each image's camera matrix over
+6 degrees of freedom (DOF) \cite{coorg1997matching, liu2010indoor,
+  shum2000systems, szeliski1997creating}. Applying such approaches to
+our datasets however results in error accumulation and drift as shown
+in Figure \ref{fig:mosaic3D}(a), as well as high complexity and
+runtime \cite{liu2010indoor}.
 
-One way to align image projections is to refine their noisy camera
-poses, such that they become pixel accurate. This can be done by using
-image correspondences to adjust each image's camera matrix over 6
-degrees of freedom (DOF) \cite{coorg1997matching,
-  liu2010indoor, shum2000systems, szeliski1997creating}. Using our same modeling datasets, recent work
-followed this approach by solving a non-linear optimization problem to
-refine camera poses during backpack localization \cite{liu2010indoor,
-  chen2010indoor}. This approach however suffers from error
-accumulation and drift as shown in Figure \ref{fig:mosaic3D}(a), as
-well as high complexity and runtime.
-
-Refining camera poses is analogous to image alignment or mosaicing,
-which perform translations on images in order to align them directly.
-One common approach to image alignment is to iteratively match images
-on intensity differences in selected patches, often in a spatial
-hierarchy \cite{hager1998efficient, lucas1981iterative,
-  shum2000systems, szeliski2006image}. Another widely-used approach is
-to perform feature matching, which requires the detection of visual
-features and their existence in multiple images
-\cite{brown2007automatic, cho2003automatic,
+Another common approach to image alignment is to
+iteratively match images on intensity differences in selected patches,
+often in a spatial hierarchy \cite{hager1998efficient,
+  lucas1981iterative, shum2000systems, szeliski2006image}. Another
+widely-used approach is to perform feature matching, which requires
+the detection of visual features and their existence in multiple
+images \cite{brown2007automatic, cho2003automatic,
   mikolajczyk2005performance, szeliski2006image,
   yun2003comprehensive}. Notably, both approaches rely on the presence
 of multiple visual references, as when texturing detailed objects at
@@ -355,9 +327,9 @@ propagated to all further images, resulting in drift. Figure
 package, which performs homography-based image mosaicing
 \cite{autostitch}. Even with many features spread across this plane,
 the mosaicing produces errors that causes straight lines to appear as
-waves on the plane, despite the fact that it was generated after
+waves on the plane, despite the fact that it is generated after
 careful hand tuning. Many planes with fewer features simply failed
-outright.
+outright using this approach.
 
 \begin{figure}
   \centering
@@ -378,7 +350,7 @@ outright.
 
 \begin{figure}
   \centering
-  \includegraphics[width=3in]{pipeline.pdf}
+  \includegraphics[width=3.5in]{pipeline.pdf}
   \caption{Our proposed method for seamless texture mapping.}
   \label{fig:pipeline}
 \end{figure}
@@ -401,45 +373,51 @@ any remaining seams.
 \subsection{Image Rotation}
 \label{sec:projectionAndRotation}
 We begin with the projection of all images onto the plane. This is
-done in the same way as the approaches in Section
-\ref{sec:simpleTextureMapping}. Rather than work with all 6 DOF, which is computationally intensive, we choose to work only in two dimensions, performing 2D rotations and translations on the image projections, as errors in either lead to the greatest discontinuities.
+done in the same way as in Section
+\ref{sec:simpleTextureMapping}. Rather than work with all 6 DOF, which
+is computationally intensive, we choose to work only in two
+dimensions, performing 2D rotations and translations on the image
+projections, as errors in either lead to the greatest discontinuities.
 
-We perform rotations using Hough transforms, which
-detect the presence and orientation of linear features in our
-images. Rather than match the orientation of such features in each
-image, we simply apply rotations such that the strongest near-vertical
-features are made completely vertical. This is effective for vertical
-planes in indoor models, since they usually consist of parallel
-vertical lines corresponding to doors, wall panels, rectangular
-frames, etc. If features in the environment are not vertical, e.g. for
-floors and ceilings, or are not parallel to each other, this step is
-skipped.
+We perform rotations using Hough transforms, which detect the presence
+and orientation of linear features in our images. Rather than match
+the orientation of such features in each image, we simply apply
+rotations such that the strongest near-vertical features are made
+completely vertical. This is effective for vertical planes in indoor
+models, since they usually consist of parallel vertical lines
+corresponding to doors, wall panels, rectangular frames, etc. If
+features in the area are not vertical, e.g. for floors and
+ceilings, this step is skipped.
 
 
 \subsection{Image Shifting}
 \label{sec:robustSIFTFeatureMatching}
 Our next step is to align overlapping images by searching for
-corresponding points between all pairs of overlapping images. We use SIFT features for their high detection rate, and choose to use feature alignment rather than intensity-based alignment due to the differences in lighting as well as possible occlusion among our images, both of which feature alignment is less sensitive to \cite{lai1999robust, lowe1999object, mikolajczyk2005performance, szeliski2006image}.
+corresponding points between all pairs of overlapping images. We use
+SIFT features for their high detection rate, and choose to use feature
+alignment rather than intensity-based alignment due to the differences
+in lighting as well as possible occlusion among our images, both of
+which feature alignment is less sensitive to \cite{lai1999robust,
+  lowe1999object, mikolajczyk2005performance, szeliski2006image}.
 
 SIFT matches determine $d^x$ and $d^y$ distances between each pair of
 features for two images on the plane, though these distances may not
-always be the same for different features.
-
-Since indoor environments often contain repetitive features such as
-floor tiles or doors, we need to ensure that SIFT-based distances are
-reliable. In order to mitigate the effect of incorrect matches and
-outliers, the RANSAC framework \cite{fischler1981random} is used for a
-robust estimate of the optimal $d^x_{i,j}$ and $d^y_{i,j}$ distances
-between two images $i$ and $j$. The RANSAC framework handles the
-consensus-building machinery, and requires a fitting function and a
-distance function. For this application, the fitting function simply
-finds the average distance between matches in a pair of images. The
-distance function for a pair of points is chosen to be the difference
-between those points' SIFT match distance and the average distance
-computed by the fitting function. We use a 10 pixel outlier threshold,
-so that SIFT matches are labeled as outliers if their horizontal or
-vertical distances are not within 10 pixels of the average distance
-computed by the fitting function.
+always be the same for different features. Since indoor environments
+often contain repetitive features such as floor tiles or doors, we
+need to ensure that SIFT-based distances are reliable. In order to
+mitigate the effect of incorrect matches and outliers, the RANSAC
+framework \cite{fischler1981random} is used for a robust estimate of
+the optimal $d^x_{i,j}$ and $d^y_{i,j}$ distances between two images
+$i$ and $j$. The RANSAC framework handles the consensus-building
+machinery, and requires a fitting function and a distance
+function. For this application, the fitting function simply finds the
+average distance between matches in a pair of images. The distance
+function for a pair of points is chosen to be the difference between
+those points' SIFT match distance and the average distance computed by
+the fitting function. We use a 10 pixel outlier threshold, so that
+SIFT matches are labeled as outliers if their horizontal or vertical
+distances are not within 10 pixels of the average distance computed by
+the fitting function.
 
 We now use the $d^x_{i,j}$ and $d^y_{i,j}$ distances between each pair
 of images to refine their positions using least squares. Recall that
@@ -464,8 +442,8 @@ The $N \times (M+1)$ dimensional matrix $A$ is constructed with one
 row for each pair of images with measured distances produced by the
 SIFT matching stage. A row in the matrix has a $-1$ and $1$ in the
 columns corresponding to the two images in the pair. For example, the
-matrix below indicates that we generated a SIFT-based distance between
-images 1 and 2, images 1 and 3, images 2 and 3, etc.
+matrix below indicates a SIFT-based distance between images 1 and 2,
+images 1 and 3, images 2 and 3, etc.
 
 \[
 A =
@@ -504,17 +482,17 @@ $\vec{\gamma}$ can be written as:
 The $\vec{\beta}$ that minimizes $||A \vec{\beta} -
 \vec{\gamma}||_2^2$ results in a set of image locations on the plane
 that best honors all the SIFT-based distance measurements between
-images. In practice there are often cases where there is a break in
+images. In practice there is often a break in
 the chain of images, meaning that no SIFT matches are found between
 one segment of the plane and another. In this case we add rows to the
 $A$ matrix and observations to the $\vec{\gamma}$ vector that contain
-the original noisy $x$ and $y$ distance estimates generated by the
-localization algorithm \cite{chen2010indoor, liu2010indoor}. Another
-way to do this is to add rows for all neighboring pairs of images and
-solve a weighted least squares problem where the SIFT distances are
-given a higher weight i.e. 1, and the noisy distances generated by the
-localization algorithm \cite{chen2010indoor, liu2010indoor} are given
-a smaller weight i.e. 0.01.
+the original noisy $x$ and $y$ distance estimates from the original
+camera poses. Another way to do this is to add rows for all
+neighboring pairs of images and solve a weighted least squares problem
+where the SIFT distances are given a higher weight i.e. 1, and the
+noisy distances generated by the original camera poses
+\cite{chen2010indoor, liu2010indoor} are given a smaller weight
+e.g. 0.01.
 
 After completing this same process for the $y$ dimension as well, and
 making the resultant shifts, our images overlap and match each other
@@ -552,31 +530,34 @@ the backpack in a perfectly upright position and are bent forwards at
 15 to 20 degrees with respect to the vertical direction, the
 undistorted fisheye images are head on with respect to vertical walls,
 but at an angle with respect to horizontal floors and ceilings. This
-is depicted in Figure \ref{fig:projectionAngles}. These oblique camera
-angles translate into textures that span extremely large areas once
-projected. Using the tile-based texture mapping criteria from Figure
-\ref{fig:scoringFunction}, such projections have high or low scores
-depending on the location on the plane, as shown in Figure
-\ref{fig:projectionAngles}(b). The tiling approach in Section
-\ref{sec:simpleTextureMapping} is thus a good choice for texturing
-floors and ceilings, as it uses the parts of image projections that
-are viable choices for their respective plane locations, e.g. areas
-near point A in Figure \ref{fig:projectionAngles}(b), but not near
-point B.
+is depicted for wall and ceiling planes in Figures
+\ref{fig:projectionAngles}(a) and \ref{fig:projectionAngles}(b)
+respectively. These oblique camera angles for ceilings translate into
+textures that span extremely large areas once projected, as shown in
+Figure \ref{fig:projectionAngles}(b). Using the tile-based texture
+mapping criteria from Figure \ref{fig:scoringFunction}, such
+projections have highly varying scores depending on the location on
+the plane, as shown in Figure \ref{fig:projectionAngles}(b). Thus, the
+tiling approach in Section \ref{sec:simpleTextureMapping} is a reasonable
+choice for texturing floors and ceilings, as it uses the parts of
+image projections that are viable choices for their respective plane
+locations, e.g. areas near point A in Figure
+\ref{fig:projectionAngles}(b), but not near point B.
 
 For wall planes however, most images are taken from close distances
 and more or less head-on angles, resulting in higher resolution
 fronto-parallel projections. As a result, for each tile on a wall
-plane, the cost function of Figure \ref{fig:scoringFunction} is
+plane, the scoring function of Figure \ref{fig:scoringFunction} is
 relatively flat with respect to a large number of captured images, as
-they are all more or less head on. Thus it is conceivable to use a
-different texturing strategy for walls so as to minimize the visible
-seams for texture mapped planes. One way to do so is to choose the
-smallest possible set of images that (a) covers the entire plane and
-(b) minimizes the amount of visible seams. A straigntforward cost
-function that accomplishes the latter is the Sum of Squared pixel
-Differences (SSD) in overlapping regions between all pairs of images,
-after they have been aligned as described in Section
+they are all more or less head on. Thus, the scoring function is less
+signifcant for walls, and it is conceivable to use a different
+texturing strategy for them so as to minimize visible seams in texture
+mapped planes. This can be done by choosing the smallest possible set
+of images that (a) covers the entire plane and (b) minimizes the
+amount of visible seams between them. A straigntforward cost function
+that accomplishes the latter is the Sum of Squared Differences (SSD)
+of pixels in overlapping regions between all pairs of images, after
+they have been rotated as described in Section
 \ref{sec:projectionAndRotation}. Minimizing this cost function
 encourages image boundaries to occur either in featureless areas, such
 as bare walls, or in areas where images match extremely well.
@@ -619,7 +600,7 @@ Figure \ref{fig:dagCreation} demonstrates the construction of a DAG
 from overlapping images of a long hallway. Images are sorted by
 horizontal location left to right, and become nodes in a
 graph. Directed edges are placed in the graph from left to right
-between images that overlap. The weights of these edges are determined
+between overlapping images. The weights of these edges are determined
 by the SSD cost function. Next, we add two artificial nodes, one start
 node representing the left border of the plane, and one end node
 representing the right border of the plane. The left(right) artificial
@@ -627,7 +608,7 @@ node has directed edges with equal cost $C_0$ to(from) all images that
 meet the left(right) border of the plane.
 
 We now solve the shortest path problem from the start node to the end
-node. This provides a set of images completely covering the plane
+node. This results in a set of images completely covering the plane
 horizontally, while minimizing the cost of seams between images.
 
 In rare cases where the vertical dimension of the plane is not
@@ -635,7 +616,7 @@ entirely covered by one or more chosen images, we are left with holes
 where no images are selected to texture. To address this, we solve for
 a new shortest path after modifying the edges chosen by the original
 shortest path solution such that they have higher cost than all other
-edges in our DAG, and solve for a new shortest path. This ensures that
+edges in the DAG, and solve for a new shortest path. This ensures that
 these edges are not chosen again unless they are the only available
 option. Our second shortest path solution results in a new set of
 chosen images, of which we only retain those that cover areas not
@@ -652,15 +633,26 @@ visible discontinuities than Figure \ref{fig:compareAll}(c)
 corresponding to the tile caching approach\footnote{In Figure
   \ref{fig:compareAll}(d), we arbitrarily chose one image for
   texturing where images overlap, as blending will be discussed in the
-  next section.}. This is especially evident when comparing the posters in the images, which have clear misalignment over seams in Figure \ref{fig:compareAll}(c), but are much more aligned in Figure \ref{fig:compareAll}(d). This is because the seam minimization approach
-directly reduces the cost of each image boundary, while the tile
-caching method uses a scoring function that only approximates this
-effect. Furthermore, seam minimization guarantees the best selection
-of images, while the sequential tile caching method may select images
-early on that turn out to be poor choices once subsequent tiles have
-been processed. The seam minimization approach is also far less
-intensive in terms of memory usage and runtime, as it does not require
-discretizing planes or images.
+  next section.}. This is especially evident when comparing the
+posters in the images, which have clear misalignment over seams in
+Figure \ref{fig:compareAll}(c), but are much more aligned in Figure
+\ref{fig:compareAll}(d). This is because the seam minimization
+approach directly reduces the cost of each image boundary, while the
+tile caching method uses a scoring function that only approximates
+this effect. Furthermore, seam minimization guarantees the best
+selection of images, while the sequential tile caching method may
+select images early on that turn out to be poor choices once
+subsequent tiles have been processed. The seam minimization approach
+is also far less intensive in terms of memory usage and runtime, both
+during texture generation and rendering, as it does not require
+discretizing planes or images\footnote{ For the seam minimization
+  process, it is important that images only contain content that
+  should be mapped onto the target plane in question. The tiling
+  approach checks occlusion for each tile as it is being textured,
+  whereas the seam minimization approach uses entire images.
+  Occlusion checks thus need to be performed over the entirety of each
+  image to determine available areas for texture mapping a given
+  plane.  }.
 
 In the context of texturing an entire 3D planar model, we choose to
 apply the seam minimization approach on walls, due to its superior
@@ -680,7 +672,7 @@ the tile caching method.
 \subsection{Blending}
 \label{sec:blending}
 We now apply the same blending process to the two texturing methods:
-localization refinement followed by either tile caching or seam
+image alignment followed by either tile caching or seam
 minimization.
 
 Although the preprocessing steps and image selection in both methods
@@ -729,7 +721,7 @@ locations based on feature matching, and robustly handle outliers. The
 tile-based mapping approach can be used to texture both simple
 rectangular walls as well as complex floor and ceiling geometry. We
 also presented a seam minimization texturing method that produces
-seamless textures on vertical planes where multiple head-on images are
+seamless textures on planes where multiple head-on images are
 available. Each of these approaches is highly modular, and easily
 tunable for different environments and acquisition hardware.
 
@@ -747,30 +739,12 @@ tunable for different environments and acquisition hardware.
 
   \centering \subfloat[][]{\includegraphics[width=3in]{fullmodel.png}}
   \caption{Examples of our final texture mapping output for (a) walls,
-    (b) a ceiling, (c) an entire floor, (d) a full model}
+    (b) a ceiling, (c) an entire floor, (d) a full model.}
   \label{fig:results}
 \end{figure}
 
 {\small \bibliographystyle{ieee} \bibliography{egbib} }
 
-\appendix
-\section*{Appendix A. Occlusion Masking}
-\label{sec:occlusionMasking}
-For the seam minimization process, it is important that images contain
-only content that should be mapped onto the target plane in
-question. The tiling approach checks occlusion for each tile as it is
-being textured, whereas the seam minimization approach uses entire
-images.  Occlusion checks thus need to be performed over the entirety
-of each image to determine available areas for texture mapping.
-
-Fortunately, by virtue of our indoor environments, the vast majority
-of surface geometry is either horizontal or vertical, with high
-amounts of right angles. This means that after masking out occluded
-areas, image projections will remain largely rectangular. We can be
-efficient by recursively splitting each image into rectangular pieces,
-and performing the same occlusion checks used in the tiling process
-where needed. To occlude out rectangular pieces, their texture is
-removed, as untextured areas are never used for texture mapping.
 
 
 \end{document}

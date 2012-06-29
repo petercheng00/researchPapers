@@ -21,8 +21,7 @@
      "fig:dagCreation"
      "sec:blending"
      "sec:resultsAndConclusions"
-     "fig:results"
-     "sec:occlusionMasking")
+     "fig:results")
     (TeX-add-symbols
      "cvprPaperID"
      "httilde")
