@@ -1,735 +1,289 @@
-\documentclass[10pt,twocolumn,letterpaper]{article}
+%  article.tex (Version 3.3, released 19 January 2008)
+%  Article to demonstrate format for SPIE Proceedings
+%  Special instructions are included in this file after the
+%  symbol %>>>>
+%  Numerous commands are commented out, but included to show how
+%  to effect various options, e.g., to print page numbers, etc.
+%  This LaTeX source file is composed for LaTeX2e.
 
-\usepackage{cvpr} \usepackage{times} \usepackage{epsfig}
-\usepackage{graphicx} \usepackage{amsmath} \usepackage{amssymb}
-\usepackage{subfig}
+%  The following commands have been added in the SPIE class 
+%  file (spie.cls) and will not be understood in other classes:
+%  \supit{}, \authorinfo{}, \skiplinehalf, \keywords{}
+%  The bibliography style file is called spiebib.bst, 
+%  which replaces the standard style unstr.bst.  
 
-% Include other packages here, before hyperref.
+\documentclass[]{spie}  %>>> use for US letter paper
+%%\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
+%%\documentclass[nocompress]{spie}  %>>> to avoid compression of citations
+%% \addtolength{\voffset}{9mm}   %>>> moves text field down
+%% \renewcommand{\baselinestretch}{1.65}   %>>> 1.65 for double spacing, 1.25 for 1.5 spacing 
+%  The following command loads a graphics package to include images 
+%  in the document. It may be necessary to specify a DVI driver option,
+%  e.g., [dvips], but that may be inappropriate for some LaTeX 
+%  installations. 
+\usepackage[]{graphicx}
 
-% If you comment hyperref and then uncomment it, you should delete
-% egpaper.aux before re-running latex.  (Or just hit 'q' on the first
-% latex run, let it finish, and you should be clear).
-\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
+\title{Texture mapping 3D planar models of indoor environments with noisy camera poses} 
 
+%>>>> The author is responsible for formatting the 
+%  author list and their institutions.  Use  \skiplinehalf 
+%  to separate author list from addresses and between each address.
+%  The correspondence between each author and his/her address
+%  can be indicated with a superscript in italics, 
+%  which is easily obtained with \supit{}.
 
- \cvprfinalcopy % *** Uncomment this line for the final submission
-
-\def\cvprPaperID{84} % *** Enter the 3DIMPVT Paper ID here
-\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
-
-% Pages are numbered in submission mode, and unnumbered in
-% camera-ready
-\ifcvprfinal\pagestyle{empty}\fi
-\begin{document}
-
-%%%%%%%%% TITLE
-\title{Texture Mapping 3D Planar Models of Indoor Environments with Noisy
-  Camera Poses}
-
-\author{Peter Cheng \hspace*{2em} Michael Anderson \hspace*{2em} Stewart He \hspace*{2em} Avideh Zakhor\\
-  UC Berkeley\\
+\author{Peter Cheng, Michael Anderson, Stewart He, Avideh Zakhor
+\skiplinehalf
+University of California, Berkeley\\
 }
-\maketitle
-% \thispagestyle{empty}
 
-%%%%%%%%% ABSTRACT
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%>>>> uncomment following for page numbers
+% \pagestyle{plain}    
+%>>>> uncomment following to start page numbering at 301 
+%\setcounter{page}{301} 
+ 
+  \begin{document} 
+  \maketitle 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{abstract}
-  Automated 3D modeling of building interiors is useful in
-  applications such as virtual reality and environment
-  mapping. Applying textures to these models is an important step in
-  generating photorealistic visualizations of data collected by
-  modeling systems. Camera pose recovery in such systems often suffers
-  from inaccuracies, resulting in visible discontinuities when
-  successive images are projected adjacently onto a plane for
-  texturing. We propose two approaches to reduce discontinuities in
-  texture mapping 3D models made of planar surfaces. The first one is
-  tile based and can be used for images and planes at arbitrary angles
-  relative to each other. The second one results in a more seamless
-  texture, but is only applicable where camera axes for images are
-  closely aligned with plane normals of the surfaces to be
-  textured. The effectiveness of our approaches are demonstrated on
-  two indoor datasets.
+abstract goes here and stuff
 \end{abstract}
 
-%%%%%%%%% BODY TEXT
-\section{Introduction}
-\label{sec:introduction}
-Three-dimensional modeling of indoor environments has a variety of
-applications such as training and simulation for disaster management,
-virtual heritage conservation, and mapping of hazardous sites. Manual
-construction of these digital models can be time consuming, and as
-such, automated 3D site modeling has garnered much interest in recent
-years.
-
-The first step in automated 3D modeling is the physical scanning of
-the environment's geometry. An indoor modeling system must be able to
-recover camera poses within an environment while simultaneously
-reconstructing the 3D structure of the environment itself
-\cite{chen2010indoor, hz, kua2012loopclosure, liu2010indoor}. This is
-known as the simultaneous localization and mapping (SLAM) problem, and
-is generally solved by taking readings from laser range scanners,
-cameras, and inertial measurement units (IMUs) at multiple locations
-within the environment.
-
-Mounting such devices on a platform carried by an ambulatory human
-provides unique advantages over vehicular-based systems on wheels in
-terms of agility and portability, but can also result in larger
-localization error \cite{liu2010indoor}. As a result, common methods
-for texture mapping generally produce poor results.
-
-In this paper, we present a number of approaches to texture mapping 3D
-models of indoor environments made of planar surfaces in the presence
-of uncertainty and noise in camera poses. In particular, we consider
-data obtained from a human-operated backpack system with a number of
-laser range scanners as well as 2 cameras facing left and right, each
-equipped with fisheye lenses reaching an approximately 180$^{\circ}$
-field of view and taking photos at a rate of 5 Hz. Applying multiple
-localization and loop-closure algorithms on the raw data collected by
-the onboard sensors \cite{chen2010indoor, kua2012loopclosure,
-  liu2010indoor}, the backpack is localized\footnote{In this paper, we
-  use the terms localization and pose recovery interchangeably, in
-  that they both refer to recovering position and orientation.}  over
-its data collection period. This requires recovering the 6 degrees of
-freedom for the backpack as well as the cameras rigidly mounted on
-it. Once this is complete, the data from the laser range scanners is
-used to generate a 3D point cloud of the surrounding environment, from which a
-3D planar model is created \cite{sanchez2012point}. This model, consisting of 2D
-polygonal planes in 3D space, along with the set of images captured by
-the backpack's cameras and their noisy 3D poses, can be considered the
-input to our texture mapping problem.
-
-This problem straddles the fields of image-based localization
-refinement as well as image alignment and mosaicing, and thus our
-proposed solution shares many similarities with past research in those
-areas, which will be examined in Section
-\ref{sec:existingApproaches}. However, we can exploit known
-approximate camera poses as well as the 3D geometry of the environment
-to more accurately and efficiently texture the planes.
-
-The remainder of the paper is organized as follows. Section
-\ref{sec:simpleTextureMapping} describes two variants of a tile-based
-mapping approach and their shortcomings.  Section
-\ref{sec:existingApproaches} discusses past research in related
-fields, demonstrates two previous attempts at improving texture
-alignment, and exhibits their inadequacies for our datasets. Section
-\ref{sec:proposedApproach} presents our proposed seam minimization
-approach to texture mapping. Section \ref{sec:resultsAndConclusions}
-contains results and conclusions.
-
-In all subsequent sections, we discuss the process of texture mapping
-a single plane, as the texturing of each plane is independent and can
-be completed in parallel.
-
-\section{Tile-Based Texture Mapping}
-\label{sec:simpleTextureMapping}
-\begin{figure}
-  \centering
-  \includegraphics[height=2in]{Projection.pdf}
-  \caption{Planes are specified in 3D space by four corners $C_1$ to
-    $C_4$. Images are related to each plane through the camera
-    matrices $P_{1..M}$. }
-  \label{fig:projection}
-\end{figure}
-
-The geometry of the texture mapping process for a plane is shown in
-Figure \ref{fig:projection}.  As described earlier, we are provided
-with a set of $M$ images to texture the target
-plane. Each image has a camera matrix $P_i$ for $i=1..M$, which
-translates a 3D point in the world coordinate system to a 2D point or
-pixel in image $i$'s coordinates. A camera matrix $P_i$ is composed of
-the camera's intrinsic parameters, such as focal length and image
-center, as well as extrinsic parameters which specify the rotation and
-translation of the camera's position in 3D world coordinates at the
-time that image $i$ is taken. These extrinsic parameters are
-determined by the backpack hardware and localization algorithms
-\cite{chen2010indoor, liu2010indoor, kua2012loopclosure} and are quite
-noisy.
-
-Because the backpack system takes photos at a rate of 5 Hz, thousands
-of images are available for texturing each plane. Our goal in creating
-a texture mapping process is to decide which of these images should be
-used, and where their contents should map onto the texture, in order
-to eliminate any visual discontinuities or seams that would suggest
-that the plane's final texture is not composed of a single continuous
-image.
-
-\subsection{Direct Mapping}
-\label{sec:directMapping}
-
-Ignoring the fact that the camera matrices $P_{1..M}$ are inaccurate,
-we can texture the plane by discretizing it into small square tiles,
-generally about 5 pixels across, and choosing an image to texture each
-tile.
-
-We choose to work with rectangular units to ensure that borders
-between any two distinct images in the final texture are either
-horizontal or vertical. Since most environmental features inside
-buildings are horizontal or vertical, any seams in our texture
-intersect them minimally and are likely to be less noticeable.
-
-In order to select an image for texturing a tile $t$, we must first
-gather a list of candidate images that contain all four of its
-corners, which we can quickly check by projecting $t$ into each image
-using the $P_i$ camera matrices. Furthermore, each candidate image
-must have been taken at a time when its camera had a clear
-line-of-sight to $t$, which can be calculated using standard
-ray-polygon intersection tests between the camera location, the center
-of $t$, and every other plane \cite{rayintersection}.
-
-Once we have a list of candidate images for $t$, we define a scoring
-function in order to objectively select the best image. Since camera
-pose errors compound over distance, we wish to minimize the distance
-between cameras and the plane they texture. Additionally, we desire
-images that are projected perpendicularly onto the plane, maximizing
-the resolution and amount of useful texture available in their
-projections, as well as minimizing any parallax effects. In other
-words, we wish to minimize the angle between the plane normal and the
-camera axis for images selected for texture mapping. These two
-criteria can be met by maximizing the function $\frac{1}{d} (-1 \cdot
-\vec{c}) \cdot \vec{n}$ as shown in Figure
-\ref{fig:scoringFunction}. Specifically, $d$ is the distance between
-the centers of a camera and a tile, and $\vec{n}$ and $\vec{c}$ are
-the directions of the plane's normal and the camera axis respectively.
-
-\begin{figure}
-  \centering
-  \includegraphics[height=1.5in]{scoringFunction.jpg}
-  \caption{We minimize camera angle $\alpha$ and distance $d$ by
-    maximizing the scoring function $\frac{1}{d} (-1 \cdot \vec{c})
-    \cdot \vec{n}$}
-  \label{fig:scoringFunction}
-\end{figure}
-
-
-
-\begin{figure}[h!]
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_naive.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_cache.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_cache_shift.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_dynprog_noblend.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_cache_shift_blend.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_dynprog.pdf}}
-  \caption{(a) Direct mapping. (b) Mapping with caching. (c) Mapping
-    with caching after image alignment. (d) Seam minimization after
-    image alignment). (e) same as (c) with blending. (f) same as (d)
-    with blending.}
-  \label{fig:compareAll}
-\end{figure}
-
-
-As Figure \ref{fig:compareAll}(a) demonstrates, this approach leads to
-the best texture for each tile independently, but overall results in
-many image boundaries with abrupt discontinuities, due to significant
-misalignment between images, as a result of camera pose inaccuracies.
-
-\subsection{Mapping with Caching}
-\label{sec:mappingWithCaching}
-Since discontinuities occur where adjacent tiles select non-aligned
-images, it makes sense to take into account image selections made by
-neighboring tiles while texture mapping a given tile. By using the
-same image across tile boundaries, we can eliminate a discontinuity
-altogether. If this is not possible because a tile is not visible in
-images chosen by its neighbors, using similar images across tile
-boundaries also leads to less noticeable discontinuities.
-
-Similar to a caching mechanism, we select the best image for a tile
-$t$ by searching through two subsets of images for a viable candidate,
-before searching through the entire set. The first subset of images is
-those selected by adjacent tiles that have already been textured. We
-must first check which of these images can map to $t$, and then of
-those, we make a choice according to the scoring function in Figure
-\ref{fig:scoringFunction}. Before reusing this image, we ensure it
-meets the criteria $\alpha < 45^\circ$, in order to be considered a
-viable image, with $\alpha$ as the camera angle as shown in Figure
-\ref{fig:scoringFunction}.
-
-If no satisfactory image is found in the first subset, we check the
-second subset of images, consisting of those taken near the ones in
-the first subset, both spatially and temporally. These images are not
-the same as the ones used for neighboring tiles, but are taken at a
-similar location and time, suggesting that their localization and
-projection are quite similar. Again, if no viable image is found
-according to the same criteria, we search the entire set of candidate
-images, selecting based on the same scoring function from Figure
-\ref{fig:scoringFunction}.
-
-The result of this caching approach is shown in Figure
-\ref{fig:compareAll}(b). As compared to Figure
-\ref{fig:compareAll}(a), discontinuities are reduced overall, but the
-amount of remaining seams suggests that image selection alone cannot
-produce seamless textures. Camera matrices, or the image projections
-themselves have to be adjusted in order to reliably generate clean
-textures.
-
-\section{Existing Approaches to Image Alignment}
-\label{sec:existingApproaches}
-In order to produce seamless texture mapping, either camera matrices
-need to be refined such that their localization is pixel accurate, or
-image stitching techniques need to be applied to provide this
-illusion.
-
-Image projections can be aligned by refining their noisy camera poses,
-using image correspondences to adjust each image's camera matrix over
-6 degrees of freedom (DOF) \cite{coorg1997matching, liu2010indoor,
-  shum2000systems, szeliski1997creating}. Applying such approaches to
-our datasets however results in error accumulation and drift as shown
-in Figure \ref{fig:mosaic3D}(a), as well as high complexity and
-runtime \cite{liu2010indoor}.
-
-Another common approach to image alignment is to
-iteratively match images on intensity differences in selected patches,
-often in a spatial hierarchy \cite{hager1998efficient,
-  lucas1981iterative, shum2000systems, szeliski2006image}. Another
-widely-used approach is to perform feature matching, which requires
-the detection of visual features and their existence in multiple
-images \cite{brown2007automatic, cho2003automatic,
-  mikolajczyk2005performance, szeliski2006image,
-  yun2003comprehensive}. Notably, both approaches rely on the presence
-of multiple visual references, as when texturing detailed objects at
-high resolutions \cite{bernardinimultiplescans, wangmultipleviews}, or
-when creating large scene panoramas \cite{agarwalapanoramas,
-  bernardinimultiplescans, debevecviewdependent,
-  snavelyphototourism}. In contrast, our indoor datasets have a high
-prevalence of bare walls and ceilings, resulting in few reference
-points that can be used to judge alignment.
-
-Additionally, our datasets often contain long chains of images, which
-leads to error accumulation when image correspondences are not
-accurate. For example, when matching a long chain of images through
-homography, a pixel in the $nth$ image must be translated into the
-first image's coordinates by multiplying by the $3\times3$ matrix $H_1
-H_2 H_3 ... H_n$. Any error in one of these homography matrices is
-propagated to all further images, resulting in drift. Figure
-\ref{fig:mosaic3D}(b) shows the output of the AutoStitch software
-package, which performs homography-based image mosaicing
-\cite{autostitch}. Even with many features spread across this plane,
-the mosaicing produces errors that causes straight lines to appear as
-waves on the plane, despite the fact that it is generated after
-careful hand tuning. Many planes with fewer features simply failed
-outright using this approach.
-
-\begin{figure}
-  \centering
-  \subfloat[][]{\includegraphics[width=3in]{Graph_crop.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in]{panoMy.jpg}}
-  \caption{Texture alignment via (a) the graph-based localization
-    refinement algorithm from \cite{chen2010indoor} and (b) image
-    mosaicing.}
-  \label{fig:mosaic3D}
-\end{figure}
-
-
-
-
-\section{Seamless Texture Mapping}
-\label{sec:proposedApproach}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=3in]{pipeline.pdf}
-  \caption{Our proposed method for seamless texture mapping.}
-  \label{fig:pipeline}
-\end{figure}
-
-
-In this section, we describe our proposed method for seamless texture
-mapping. Our approach consists of 4 steps, as seen in Figure
-\ref{fig:pipeline}.  First, we project all images onto the plane and
-rotate them for verticality. Next,we perform 2D shifting in order to
-maximize SIFT feature matches in overlapping areas between these
-projections. We then select which textures to be used either with the
-tile caching method from Section \ref{sec:mappingWithCaching}, or with
-the more specialized method to be described in Section
-\ref{sec:seamMinimization}. This choice depends on the availability of
-head-on images for a given plane. We then finish by applying linear
-alpha blending to smooth out any remaining seams.
-
-\subsection{Image Rotation}
-\label{sec:projectionAndRotation}
-We begin with the projection of all images onto the plane. This is
-done in the same way as in Section
-\ref{sec:simpleTextureMapping}. Rather than work with all 6 DOF, which
-is computationally intensive, we choose to work only in two
-dimensions, performing 2D rotations and translations on the image
-projections, as errors in either lead to the greatest discontinuities.
-
-We perform rotations using Hough transforms, which detect the presence
-and orientation of linear features in our images. Rather than match
-the orientation of such features in each image, we simply apply
-rotations such that the strongest near-vertical features are made
-completely vertical. This is effective for vertical planes in indoor
-models, since they usually consist of parallel vertical lines
-corresponding to doors, wall panels, rectangular frames, etc. If
-features in the area are not vertical, e.g. for floors and ceilings,
-this step is skipped.
-
-
-\subsection{Image Shifting}
-\label{sec:robustSIFTFeatureMatching}
-Our next step is to align overlapping images by searching for
-corresponding points between all pairs of overlapping images. We use
-SIFT features for their high detection rate, and choose to use feature
-alignment rather than intensity-based alignment due to the differences
-in lighting as well as possible occlusion among our images, both of
-which feature alignment is less sensitive to \cite{lai1999robust,
-  lowe1999object, mikolajczyk2005performance, szeliski2006image}.
-
-SIFT matches determine $d^x$ and $d^y$ distances between each pair of
-features for two images on the plane, though these distances may not
-always be the same for different features. Since indoor environments
-often contain repetitive features such as floor tiles or doors, we
-need to ensure that SIFT-based distances are reliable. In order to
-mitigate the effect of incorrect matches and outliers, the RANSAC
-framework \cite{fischler1981random} is used for a robust estimate of
-the optimal $d^x_{i,j}$ and $d^y_{i,j}$ distances between two images
-$i$ and $j$. The RANSAC framework handles the consensus-building
-machinery, and requires a fitting function and a distance
-function. For this application, the fitting function simply finds the
-average distance between matches in a pair of images. The distance
-function for a pair of points is chosen to be the difference between
-those points' SIFT match distance and the average distance computed by
-the fitting function. We use a 10 pixel outlier threshold, so that
-SIFT matches are labeled as outliers if their horizontal or vertical
-distances are not within 10 pixels of the average distance computed by
-the fitting function.
-
-We now use the $d^x_{i,j}$ and $d^y_{i,j}$ distances between each pair
-of images to refine their positions using least squares. Recall that
-there are a total of $M^{2}$ possible pairs of images, though we only
-generate distances between images that overlap at SIFT feature
-points. Given these distances and the original image location
-estimates, we can solve a least squares problem
-($\textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $)
-to estimate the location of the images on the plane. The
-$M$-dimensional vector $\vec{\beta}$ represents the unknown $x$
-location of each image on the plane for $1 \dots M$. The optimal $x$
-and $y$ locations are obtained in the same way, so we only consider
-the $x$ locations here:
-
-\[\vec{\beta} =
-\begin{pmatrix}
-  x_1, & x_2, & x_3, & \cdots & x_{M-1}, & x_M
-\end{pmatrix}
-\]
-
-The $N \times (M+1)$ dimensional matrix $A$ is constructed with one
-row for each pair of images with measured distances produced by the
-SIFT matching stage. A row in the matrix has a $-1$ and $1$ in the
-columns corresponding to the two images in the pair. For example, the
-matrix below indicates a SIFT-based distance between images 1 and 2,
-images 1 and 3, images 2 and 3, etc.
-\[
-A =
-\begin{pmatrix}
-  -1 & 1 & 0 & \cdots & 0 & 0\\
-  -1 & 0 & 1 & \cdots & 0 & 0\\
-  0 & -1 & 1 & \cdots & 0 & 0\\
-  \vdots  & \vdots & \vdots & \ddots & \vdots  & \vdots\\
-  0 & 0 & 0 & \cdots & 1 & 0 \\
-  0 & 0 & 0 & \cdots & -1 & 1 \\
-  1 & 0 & 0 & \cdots & 0 & 0 \\
-\end{pmatrix}
-\]
-If only relative distances between images are included then there is
-no way to determine the absolute location of any of the images and the
-matrix becomes rank deficient. To fix this we choose the first image
-to serve as the anchor for the rest, meaning all the absolute
-distances are based on its original location. This is done by adding a
-row with a $1$ in the first column and the rest zeros.
-
-Finally, the $N$-dimensional observation vector $\vec{\gamma}$ is
-constructed using the SIFT-based distances generated earlier in the
-RANSAC matching stage. The last element in the observation vector is
-the location of the first image determined by its original noisy
-localization, from \cite{chen2010indoor, liu2010indoor}. Thus
-$\vec{\gamma}$ can be written as:
-
-\[
-\vec{\gamma}^T =
-\begin{pmatrix}
-  d_{1,2}, &d_{1,3}, &d_{2,3}, &\hdots &d_{N-2,N-1}, &d_{N-1,N}, &x_1
-\end{pmatrix}
-\]
-
-The $\vec{\beta}$ that minimizes $||A \vec{\beta} -
-\vec{\gamma}||_2^2$ results in a set of image locations on the plane
-that best honors all the SIFT-based distance measurements between
-images. In practice there is often a break in the chain of images,
-meaning that no SIFT matches are found between one segment of the
-plane and another. In this case we add rows to the $A$ matrix and
-observations to the $\vec{\gamma}$ vector that contain the original
-noisy $x$ and $y$ distance estimates from the original camera
-poses. Another way to do this is to add rows for all neighboring pairs
-of images and solve a weighted least squares problem where the SIFT
-distances are given a higher weight i.e. 1, and the noisy distances
-generated by the original camera poses \cite{chen2010indoor,
-  liu2010indoor} are given a smaller weight e.g. 0.01.
-
-After completing this same process for the $y$ dimension as well, and
-making the resultant shifts, our images overlap and match each other
-with far greater accuracy. Applying the tile caching method from
-Section \ref{sec:mappingWithCaching} on these rotated and shifted
-images results in the significant improvements shown in Figure
-\ref{fig:compareAll}(c), as compared to Figure
-\ref{fig:compareAll}(b).
-
-
-\subsection{Seam Minimization}
-\label{sec:seamMinimization}
-
-\begin{figure}
-  \centering
-  \subfloat[][]{\includegraphics[width=1in]{projectionWall.pdf}}
-  \centering
-  \subfloat[][]{\includegraphics[width=1.1in]{projectionCeiling.pdf}}
-  \centering
-  \subfloat[][]{\includegraphics[width=0.9in]{projectionWallCrop.pdf}}
-  \caption{(a) Undistorted fisheye images for vertical planes are
-    tilted, but their effective camera axis is more or less normal to
-    the plane. (b) The effective camera axis for ceilings is at an
-    angle with respect to the plane normal. (c) Wall images are
-    cropped to be rectangular.}
-  \label{fig:projectionAngles}
-\end{figure}
-
-
-
-As mentioned earlier, the mobile backpack system used to capture data
-in this paper contains 2 cameras with $180^\circ$ fisheye lenses
-facing to the right and left. Since most human operators do not carry
-the backpack in a perfectly upright position and are bent forwards at
-15 to 20 degrees with respect to the vertical direction, the
-undistorted fisheye images are head on with respect to vertical walls,
-but at an angle with respect to horizontal floors and ceilings. This
-is depicted for wall and ceiling planes in Figures
-\ref{fig:projectionAngles}(a) and \ref{fig:projectionAngles}(b)
-respectively. These oblique camera angles for ceilings translate into
-textures that span extremely large areas once projected, as shown in
-Figure \ref{fig:projectionAngles}(b). Using the tile-based texture
-mapping criteria from Figure \ref{fig:scoringFunction}, such
-projections have highly varying scores depending on the location on
-the plane, as shown in Figure \ref{fig:projectionAngles}(b). Thus, the
-tiling approach in Section \ref{sec:simpleTextureMapping} is a
-reasonable choice for texturing floors and ceilings, as it uses the
-parts of image projections that are viable choices for their
-respective plane locations, e.g. areas near point A in Figure
-\ref{fig:projectionAngles}(b), but not near point B.
-
-For wall planes however, most images are taken from close distances
-and more or less head-on angles, resulting in higher resolution
-fronto-parallel projections. As a result, for each tile on a wall
-plane, the scoring function of Figure \ref{fig:scoringFunction} is
-relatively flat with respect to a large number of captured images, as
-they are all more or less head on. Thus, the scoring function is less
-significant for walls, and it is conceivable to use a different
-texturing strategy for them so as to minimize visible seams in texture
-mapped planes. This can be done by choosing the smallest possible set
-of images that (a) covers the entire plane and (b) minimizes the
-amount of visible seams between them. A straightforward cost function
-that accomplishes the latter is the Sum of Squared Differences (SSD)
-of pixels in overlapping regions between all pairs of images, after
-they have been rotated as described in Section
-\ref{sec:projectionAndRotation}. Minimizing this cost function
-encourages image boundaries to occur either in featureless areas, such
-as bare walls, or in areas where images match extremely well.
-
-To cover the entirety of a plane, our problem can be defined as
-minimally covering a polygon i.e. the plane, using other polygons of
-arbitrary geometry i.e. image projections, with the added constraint
-of minimizing the cost function between chosen images.  This is a
-complex problem, though we can take a number of steps to simplify it.
-
-Given that wall-texture candidate images are taken from more or less
-head-on angles, and assuming only minor rotations are made in Section
-\ref{sec:projectionAndRotation}, we can reason that their projections
-onto the plane are approximately rectangular. By cropping them all to
-be rectangular, as shown in Figure \ref{fig:projectionAngles}(c), our
-problem becomes the conceptually simpler one of filling a polygon with
-rectangles, such that the sum of all costs between each pair of
-rectangles is minimal. We thus also retain the advantages of working
-with rectangular units, as explained in Section
-\ref{sec:simpleTextureMapping}.
-
-The location and orientation of the cameras and the fisheye lenses on
-the acquisition backpack is such that images nearly always contain the
-entirety of the floor to ceiling range of wall planes. Images are
-therefore rarely projected with one above another when texturing wall
-planes. In essence, we need only to ensure lateral coverage of wall
-planes, e.g. from left to right, as our images provide full vertical
-coverage themselves. We can thus construct a Directed Acyclic Graph
-(DAG) from the images, with edge costs defined by the SSD cost
-function, and solve a simple shortest path problem to find an optimal
-subset of images with regard to the cost function \cite{dijkstra}.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=3in]{dagCreation.pdf}
-  \caption{DAG construction for the image selection process. \\}
-  \label{fig:dagCreation}
-\end{figure}
-
-Figure \ref{fig:dagCreation} demonstrates the construction of a DAG
-from overlapping images of a long hallway. Images are sorted by
-horizontal location left to right, and become nodes in a
-graph. Directed edges are placed in the graph from left to right
-between overlapping images. The weights of these edges are determined
-by the SSD cost function. Next, we add two artificial nodes, one start
-node representing the left border of the plane, and one end node
-representing the right border of the plane. The left(right) artificial
-node has directed edges with equal cost $C_0$ to(from) all images that
-meet the left(right) border of the plane.
-
-We now solve the shortest path problem from the start node to the end
-node. This results in a set of images completely covering the plane
-horizontally, while minimizing the cost of seams between images.
-
-In rare cases where the vertical dimension of the plane is not
-entirely covered by one or more chosen images, we are left with holes
-where no images are selected to texture. To address this, we solve for
-a new shortest path after modifying the edges chosen by the original
-shortest path solution such that they have higher cost than all other
-edges in the DAG, and solve for a new shortest path. This ensures that
-these edges are not chosen again unless they are the only available
-option. Our second shortest path solution results in a new set of
-chosen images, of which we only retain those that cover areas not
-covered by the first set. This process can be repeated as many times
-as needed, until holes are no longer present. This method is not as
-optimal as a 2D-coverage solution would be, but it is a fast
-approximation, and adequately handles the few holes we encounter.
-
-With this completed, we have now mapped every location on the plane to
-at least one image, and have minimized the number of images, as well
-as the discontinuities between their borders. As seen in Figure
-\ref{fig:compareAll}(d), this seam minimization method has fewer
-visible discontinuities than Figure \ref{fig:compareAll}(c)
-corresponding to the tile caching approach\footnote{In Figure
-  \ref{fig:compareAll}(d), we arbitrarily chose one image for
-  texturing where images overlap, as blending will be discussed in the
-  next section.}. This is especially evident when comparing the
-posters in the images, which have clear misalignment over seams in
-Figure \ref{fig:compareAll}(c), but are much more aligned in Figure
-\ref{fig:compareAll}(d). This is because the seam minimization
-approach directly reduces the cost of each image boundary, while the
-tile caching method uses a scoring function that only approximates
-this effect. Furthermore, seam minimization guarantees the best
-selection of images, while the sequential tile caching method may
-select images early on that turn out to be poor choices once
-subsequent tiles have been processed. The seam minimization approach
-is also far less intensive in terms of memory usage and runtime, both
-during texture generation and rendering, as it does not require
-discretizing planes or images\footnote {For the seam minimization
-  approach, occlusion checks are performed over the entirety of each
-  image to determine available areas for texture mapping. Since indoor
-  environments mostly consist of vertical or horizontal surfaces with
-  high amounts of right angles, image projections remain largely
-  rectangular after masking out occluded areas. Therefore, as a
-  preprocessing step, we can recursively split each image into
-  rectangular pieces and check for occlusions in a similar manner as
-  in the tiling process.  }.
-
-In the context of texturing an entire 3D planar model, we choose to
-apply the seam minimization approach on walls, due to its superior
-output when provided with head-on images. Floors and ceilings however,
-given their many images taken at oblique angles, are textured using
-the tile caching method.
-
-% \begin{figure*}
-%   \centering
-%   \includegraphics[width=6in]{pipelineimages.pdf}
-%   \caption{Textures corresponding to each step in our texture
-%   mapping pipeline.}
-%   \label{fig:pipelineimages}
-% \end{figure*}
-
-
-\subsection{Blending}
-\label{sec:blending}
-We now apply the same blending process to the two texturing methods:
-image alignment followed by either tile caching or seam minimization.
-
-Although the preprocessing steps and image selection in both methods
-attempt to minimize all mismatches between images, there are
-occasional unavoidable discontinuities in the final texture due to
-different lighting conditions or inaccuracies in planar geometry or
-projection. These can however be treated and smoothed over by applying
-alpha blending over image seams.  Whether the units we are blending
-are rectangularly-cropped images or rectangular tiles, we can apply
-the same blending procedure, as long as we have a guaranteed overlap
-between units to blend over.
-
-For the tile caching method, we can ensure overlap by texturing a
-larger tile than needed for display. For example, for a rendered tile
-$l_1 \times l_1$, we can associate it with a texture $(l_1 + l_2)
-\times (l_1 + l_2)$ in size. For the seam minimization method, we have
-already ensured overlap between images. To enforce consistent blending
-however, we add a minimum required overlap distance while solving the
-shortest path problem in Section
-\ref{sec:seamMinimization}. Additionally, if images overlap in a
-region greater than the overlap distance, we only apply blending over
-an area equal to the overlap distance.
-
-After blending pixels linearly across overlapping regions using alpha
-blending, texture mapping is complete. Figures \ref{fig:compareAll}(e)
-and \ref{fig:compareAll}(f) show the blended versions of Figures
-\ref{fig:compareAll}(c) and \ref{fig:compareAll}(d) respectively. It
-is clear that the seam minimization approach still exhibits better
-alignment and fewer seams than the tile-caching method, as Figure
-\ref{fig:compareAll}(f) has the best visual quality among the textures
-in Figure \ref{fig:compareAll}.
-
-
-
-\section{Results and Conclusions}
-\label{sec:resultsAndConclusions}
-Examples of ceilings and floors textured with the tile caching
-approach, and walls textured with the seam minimization approach, are
-displayed in Figure \ref{fig:results}. High resolution texture
-comparisons, as well as a walkthrough of a fully textured 3D model are
-available in the accompanying video to this paper.
-
-In this paper, we have developed an approach to texture map models
-with noisy camera localization data. We are able to refine image
-locations based on feature matching, and robustly handle outliers. The
-tile-based mapping approach can be used to texture both simple
-rectangular walls as well as complex floor and ceiling geometry. We
-also presented a seam minimization texturing method that produces
-seamless textures on planes where multiple head-on images are
-available. Each of these approaches is highly modular, and easily
-tunable for different environments and acquisition hardware.
-
-
-
-
-\begin{figure*}
-  \centering
-  \subfloat[][]{\includegraphics[width=3in]{finalfloors.jpg}}
-  ~~~~~~
-  \centering
-  \subfloat[][]{\includegraphics[width=3in]{finalceilings.jpg}}
-
-  \centering
-  \subfloat[][]{\includegraphics[height=2in, width=3in]{floorcropped.jpg}}
-  ~~~~~~~~
-  \centering \subfloat[][]{\includegraphics[width=3in]{fullmodel.png}}
-  \caption{Examples of our final texture mapping output for (a) walls,
-    (b) ceilings, (c) an entire floor, (d) a full model.}
-  \label{fig:results}
-\end{figure*}
-
-{\small \bibliographystyle{ieee} \bibliography{egbib} }
-
-
-
-\end{document}
+%>>>> Include a list of keywords after the abstract 
+
+\keywords{Texture Mapping, Reconstruction, Image Stitching, Mosaicing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{INTRODUCTION}
+\label{sec:intro}  % \label{} allows reference to this section
+
+This document shows the desired format and appearance of a manuscript prepared for the Proceedings of the SPIE.\footnote{The basic format was developed in 1995 by Rick Herman (SPIE) and Ken Hanson (Los Alamos National Lab.).} It is prepared using LaTeX2e\cite{Lamport94} with the class file {\tt spie.cls}.  The LaTeX source file used to create this document is {\tt article.tex}, which contains important formatting information embedded in it.  These files are available on the Internet at {\tt http://home.lanl.gov/kmh/spie/}.  The font used throughout is the LaTeX default font, Computer Modern Roman, which is equivalent to the Times Roman font available on many systems.  If this font is not available, use a similar serif font.  Normal text has a font size of 10 points\footnote{Font sizes are specified in points, abbreviated pt., which is a unit of length.  One inch = 72.27 pt.; one cm = 28.4 pt.} for which the actual height of a capital E is about 2.4 mm (7 pt.) and the line-to-line spacing is about 4.2 mm (12 pt.).  The font attributes for other parts of the manuscript, summarized in Table~\ref{tab:fonts}, are described in the following sections.  Normal text should be justified to both the left and right margins.  Appendix~\ref{sec:latex} has information about PostScript fonts.
+
+To be properly reproduced in the Proceedings, all text and figures must fit inside a rectangle 6.75-in.\ wide by 8.75-in.\ high or 17.15 cm by 22.23 cm.  The text width and height are set in {\tt spie.cls} to match this requirement.
+%% This table is carefully placed in the source file to make 
+%% it appear at bottom of page, but above the footnotes.  
+%% Use of [h] in following command forces table to appear "here".
+\begin{table}[h]
+\caption{Fonts sizes to be used for various parts of the manuscript.  All fonts are Computer Modern Roman or an equivalent.  Table captions should be centered above the table.  When the caption is too long to fit on one line, it should be justified to the right and left margins of the body of the text.} 
+\label{tab:fonts}
+\begin{center}       
+\begin{tabular}{|l|l|} %% this creates two columns
+%% |l|l| to left justify each column entry
+%% |c|c| to center each column entry
+%% use of \rule[]{}{} below opens up each row
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Article title & 16 pt., bold, centered  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Author names and affiliations & 12 pt., normal, centered   \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Section heading & 11 pt., bold, centered (all caps)  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Subsection heading & 11 pt., bold, left justified  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Sub-subsection heading & 10 pt., bold, left justified  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Normal text & 10 pt., normal  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Figure and table captions & \, 9 pt., normal \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Footnote & \, 9 pt., normal \\
+\hline 
+\end{tabular}
+\end{center}
+\end{table} 
+The text should begin 1.00 in.\ or 2.54 cm from the top of the page.  The right and left margins should be 0.875~in.\ or 2.22 cm for US letter-size paper (8.5 in.\ by 11 in.) or 1.925 cm for A4 paper (210 mm by 297 mm) to horizontally center the text on the page.  See Appendix~\ref{sec:latex} for guidance regarding paper-size specification. 
+
+Authors are encouraged to follow the principles of sound technical writing, as described in Refs.~\citenum{Alred03} and \citenum{Perelman97}, for example.  Many aspects of technical writing are addressed in the {\em AIP Style Manual}, published by the American Institute of Physics.  It is available on line at {\tt http://www.aip.org/pubservs/style/4thed/toc.html} or {\tt http://public.lanl.gov/kmh/AIP\verb+_+Style\verb+_+4thed.pdf}. A spelling checker is helpful for finding misspelled words. 
+
+An author may use this LaTeX source file as a template by substituting his/her own text in each field.  This document is not meant to be a complete guide on how to use LaTeX.  For that, refer to books on LaTeX usage, such as the definitive work by Lamport\cite{Lamport94} or the very useful compendium by Mittelbach et al.\cite{Mittelbach04}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{PARTS OF MANUSCRIPT} 
+
+This section describes the normal structure of a manuscript and how each part should be handled.  The appropriate vertical spacing between various parts of this document is achieved in LaTeX through the proper use of defined constructs, such as \verb|\section{}|.  In LaTeX, paragraphs are separated by blank lines in the source file. 
+
+At times it may be desired, for formatting reasons, to break a line without starting a new paragraph.  This situation may occur, for example, when formatting the article title, author information, or section headings.  Line breaks are inserted in LaTeX by entering \verb|\\| or \verb|\linebreak| in the LaTeX source file at the desired location.  
+
+%%%%%Sometimes it is necessary to precede the double slash 
+%%%%%by \verb|\protect| to get the desired result, 
+%%%%%for example, in article titles.
+
+%%-----------------------------------------------------------
+\subsection{Title and Author Information} 
+\label{sec:title}
+
+The article title appears centered at the top of the first page.  The title font is 16 point, bold.  The rules for capitalizing the title are the same as for sentences; only the first word, proper nouns, and acronyms should be capitalized.  Avoid using acronyms in the title.  Keep in mind that people outside your area of expertise might read your article.  Appendix~\ref{sec:misc} contains more about acronyms.
+
+The list of authors immediately follows the title after a blank vertical space of about 7 mm.  The font is 12 point, normal with each line centered.  The authors' affiliations and addresses follow the author list after another blank space of about 4 mm, also in 12-point, normal font and centered.  Do not use acronyms in affiliations and addresses. For multiple affiliations, each affiliation should appear on a new line, separated from the following address by a semicolon.  Italicized superscripts may be used to identify the correspondence between the authors and their respective affiliations.  Further author information, such as e-mail address, complete postal address, and web-site location, may be provided in a footnote by using \verb|\authorinfo{}|, as demonstrated above.
+
+When the abbreviated title or author information is too long to fit on one line, multiple lines may be used; insert line breaks appropriately to achieve a visually pleasing format.  The proper spacing of one and one-half lines between the title, author list, and their affiliations is achieved with the command \verb|\skiplinehalf| defined in {\tt spie.cls}.
+
+%%-----------------------------------------------------------
+\subsection{Abstract and Keywords} 
+The title and author information is immediately followed by the Abstract. The Abstract should concisely summarize the key findings of the paper.  It should consist of a single paragraph containing no more than 200 words.  The Abstract does not have a section number.  A list of up to ten keywords should immediately follow the Abstract after a blank line.  These keywords will be included in a searchable database at SPIE.
+
+%%-----------------------------------------------------------
+\subsection{Body of Paper} 
+The body of the paper consists of numbered sections that present the main findings.  These sections should be organized to best present the material.  See Sec.~\ref{sec:sections} for formatting instructions.
+
+%%-----------------------------------------------------------
+\subsection{Appendices} 
+Auxiliary material that is best left out of the main body of the paper, for example, derivations of equations, proofs of theorems, and details of algorithms, may be included in appendices.  Appendices are enumerated with uppercase Latin letters in alphabetic order, and appear just before the Acknowledgments and References.
+
+%%-----------------------------------------------------------
+\subsection{Acknowledgments} 
+In the Acknowledgments section, appearing just before the References, the authors may credit others for their guidance or help.  Also, funding sources may be stated.  The Acknowledgments section does not have a section number.
+
+%%-----------------------------------------------------------
+\subsection{References} 
+The References section lists books, articles, and reports that are cited in the paper.  It does not have a section number.  The references are numbered in the order in which they are cited.  Examples of the format to be followed are given at the end of this document.  
+
+The reference list at the end of this document is created using BibTeX, which looks through the file {\tt report.bib} for the entries cited in the LaTeX source file.  The format of the reference list is determined by the bibliography style file {\tt spiebib.bst}, as specified in the \verb|\bibliographystyle{spiebib}| command.  Alternatively, the references may be directly formatted in the LaTeX source file.
+
+For books\cite{Lamport94,Alred03,Goossens97} the listing includes the list of authors, book title (in italics), page or chapter numbers, publisher, city, and year of publication.  A reference to a journal article\cite{Metropolis53} includes the author list, title of the article (in quotes), journal name (in italics, properly abbreviated), volume number (in bold), inclusive page numbers, and year.  By convention\cite{Lamport94}, article titles are capitalized as described in Sec.~\ref{sec:title}.  A reference to a proceedings paper or a chapter in an edited book\cite{Gull89a} includes the author list, title of the article (in quotes), conference name (in italics), if appropriate, editors, volume or series title (in italics), volume number (in bold), if applicable, inclusive page numbers, publisher, city, and year.  References to an article in the SPIE Proceedings may include the conference name, as shown in Ref.~\citenum{Hanson93c}.
+
+Citations to the references are made using superscript numerals, as demonstrated in the preceding paragraph.  One may also directly refer to a reference within the text, e.g., ``as shown in Ref.~\citenum{Metropolis53} ..." 
+
+%%-----------------------------------------------------------
+\subsection{Footnotes} 
+Footnotes\footnote{Footnotes are indicated as superscript symbols to avoid confusion with citations.} may be used to provide auxiliary information that doesn't need to appear in the text, e.g., to explain measurement units.  They should be used sparingly, however.  
+
+Only nine footnote symbols are available in LaTeX. If you have more than nine footnotes, you will need to restart the sequence using the command  \verb|\footnote[1]{Your footnote text goes here.}|. If you don't, LaTeX will provide the error message {\tt Counter too large.}, followed by the offending footnote command.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{SECTION FORMATTING} \label{sec:sections}
+
+Section headings are centered and formatted completely in uppercase 11-point bold font.  Sections should be numbered sequentially, starting with the first section after the Abstract.  The heading starts with the section number, followed by a period.  In LaTeX, a new section is created with the \verb|\section{}| command, which automatically numbers the sections.
+
+Paragraphs that immediately follow a section heading are leading paragraphs and should not be indented, according to standard publishing style\cite{Lamport94}.  The same goes for leading paragraphs of subsections and sub-subsections.  Subsequent paragraphs are standard paragraphs, with 14-pt.\ (5 mm) indentation.  An extra half-line space should be inserted between paragraphs.  In LaTeX, this spacing is specified by the parameter \verb|\parskip|, which is set in {\tt spie.cls}.  Indentation of the first line of a paragraph may be avoided by starting it with \verb|\noindent|.
+ 
+%%-----------------------------------------------------------
+\subsection{Subsection Attributes} 
+
+The subsection heading is left justified and set in 11-point, bold font.  Capitalization rules are the same as those for book titles.  The first word of a subsection heading is capitalized.  The remaining words are also capitalized, except for minor words with fewer than four letters, such as articles (a, an, and the), short prepositions (of, at, by, for, in, etc.), and short conjunctions (and, or, as, but, etc.).  Subsection numbers consist of the section number, followed by a period, and the subsection number within that section.  
+
+%%-----------
+\subsubsection{Sub-subsection attributes} 
+The sub-subsection heading is left justified and its font is 10 point, bold.  Capitalize as for sentences.  The first word of a sub-subsection heading is capitalized.  The rest of the heading is not capitalized, except for acronyms and proper names.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{FIGURES AND TABLES} 
+
+Figures are numbered in the order of their first citation.  They should appear in numerical order and on or after the same page as their first reference in the text.  Alternatively, all figures may be placed at the end of the manuscript, that is, after the Reference section.  It is preferable to have figures appear at the top or bottom of the page.  Figures, along with their captions, should be separated from the main text by at least 0.2 in.\ or 5 mm.  
+
+Figure captions are centered below the figure or graph.  Figure captions start with the figure number in 9-point bold font, followed by a period; the text is in 9-point normal font; for example, ``{\footnotesize{Figure 3.}  Original image...}".  See Fig.~\ref{fig:example} for an example of a figure caption.  When the caption is too long to fit on one line, it should be justified to the right and left margins of the body of the text.  
+
+Tables are handled identically to figures, except that their captions appear above the table. 
+%%  Use following command to specify that graphics file is in 
+%%  a directory other than this LaTeX source file.
+%%  Note use of / to separate subdirectories, for UNIX and Windows OS.
+%%\graphicspath{{H:/HANSON/SPIESTY/}}
+%% tabular environment useful for creating an array of images  
+%-------------
+   \begin{figure}
+   \begin{center}
+   \begin{tabular}{c}
+   \includegraphics[height=7cm]{naive.jpg}
+   \end{tabular}
+   \end{center}
+   \caption[example] 
+%>>>> use \label inside caption to get Fig. number with \ref{}
+   { \label{fig:example} 
+Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
+   \end{figure} 
+%-------------
+
+For further details concerning the inclusion of grayscale and color images, consult SPIE's {\it Author Guide for Publication and Presentation}.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix    %>>>> this command starts appendixes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{MISCELLANEOUS FORMATTING DETAILS} \label{sec:misc}
+
+It is often useful to refer back (or forward) to other sections in the article.  Such references are made by section number.  When a section reference starts a sentence, Section is spelled out; otherwise use its abbreviation, for example, ``In Sec.~2 we showed..." or ``Section~2.1 contained a description...".  References to figures, tables, and theorems are handled the same way.
+
+At the first occurrence of an acronym, spell it out, followed by the acronym in parentheses, e.g., noise power spectrum (NPS).  
+ 
+%%-----------------------------------------------
+\subsection{Formatting Equations} 
+Equations may appear in line with the text, if they are simple, short, and not of major importance; e.g., $\beta = b/r$.  Important equations appear on their own line.  Such equations are centered.  For example, ``The expression for the minus-log-posterior is
+	\begin{equation}
+	\label{eq:alpha}
+\phi = |{\rm\bf y} - {\rm\bf A}{\rm\bf x}|^2 + \alpha \log p({\rm\bf x}) \, ,
+	\end{equation}
+where $\alpha$ determines the strength of ..."  Principal equations are numbered, with the equation number placed within parentheses and right justified.  
+
+Equations are considered to be part of a sentence and should be punctuated accordingly. In the above example, a comma follows the equation because the next line is a subordinate clause.  If the equation ends the sentence, a period should follow the equation.  The line following an equation should not be indented unless it is meant to start a new paragraph.  Indentation after an equation is avoided in LaTeX by not leaving a blank line between the equation and the subsequent text.
+
+References to equations include the equation number in parentheses, for example, ``Equation~(\ref{eq:alpha}) shows ..." or ``Combining Eqs.~(2) and (3), we obtain..."  Using a tilde in the LaTeX source file between two characters avoids unwanted line breaks.
+
+%%-----------------------------------------------------------
+\subsection{Formatting Theorems} 
+
+To include theorems in a formal way, the theorem identification should appear in a 10-point, bold font, left justified and followed by a period.  The text of the theorem continues on the same line in normal, 10-point font.  For example, 
+
+\noindent{\bf Theorem 1.} For any unbiased estimator...
+
+Formal statements of lemmas and algorithms receive a similar treatment.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{SOME LATEX GUIDANCE} \label{sec:latex}
+
+%%-----------------------------------------------------------
+\subsection{Margins and PostScript Fonts}
+ 
+Manuscripts submitted electronically to as PostScript (PS) files must have the correct margins. LaTeX margins are related to the document's paper size. The paper size is set at two separate places in the process of creating a PS file. The first place is in {\tt latex}. The default in {\tt article.tex}, on which {\tt spie.cls} is based, is USA letter paper. To format a document for A4 paper, the first line of the LaTeX source file should be \verb|\documentclass[a4paper]{spie}|.   
+
+The output of the LaTeX utility is a file with the extension DVI (for Device Independent), which encodes the formatted document.  The application DVIPS is typically used to convert the DVI file to a PS file.  DVIPS has its own default paper size, which can be overridden with the option ``{\tt -t letter}" or ``{\tt -t a4}".  
+If the foregoing steps do not produce the correct top margin, you can move the text lower on the page (by 9 mm) with the command \verb|\addtolength{\voffset}{9mm}|, placed right after the \verb|\documentclass| command, for example.
+
+Another DVIPS option specifies the incorporation of (scalable) PostScript Type 1 fonts in its output PS file. This feature is important for obtaining a subsequent PDF file that will be clearly displayed on a computer monitor by Adobe Acrobat Reader.  The option ``{\tt -P pdf}" makes DVIPS include these fonts in its output PS file.
+
+%%-----------------------------------------------------------
+\subsection{Bold Math Symbols} 
+
+The math package from the American Mathematical Society allows one to easily produce bold math symbols, well beyond what is available in LaTeX. It also provides many useful capabilities for creating elaborate mathematical expressions. You need to load the AMS math package near the top of the LaTeX source file, right after the \verb+\documentclass+ command:\\[1ex]
+\verb+\usepackage[]{amsmath}+ \\[1ex]
+Then for bold math symbols use \verb+\boldsymbol+ in equations, e.g., 
+\verb+$\boldsymbol{\pi}$+ 
+yields a bold pi.  You can make it easier to use by defining a command:\\[1ex]
+\verb+\newcommand{\bm}[1]{\boldsymbol{#1}}+ \\[1ex]
+and then using it like so \verb+$\bm{\pi}$+.
+
+Not all math symbols are available in bold.  In a pinch, you can use \verb+\pmb+ ("poor man's bold"), which is defined in \verb+amsmath+. This command approximates a bold character with a superposition of several, slightly displaced unbold characters.
+
+If you want a Greek symbol in the article title, it should be both larger and bold. The easiest thing is to load the AMS math package as described above. 
+Then, in the title, use something like:\\[1ex]
+\verb+\title{Estimation of {\LARGE$\boldsymbol\alpha$} by a Monte Carlo technique}+ \\[1ex]
+Note that the command to create the alpha character is enclosed within braces to form a self-contained environment. The use of \verb+\LARGE+ in this example may not be needed when using nondefault font packages, such as the {\tt times} package, because of how the article title is handled in {\tt spie.cls}.
+
+%%-----------------------------------------------------------
+\subsection{Uppercase letters and special symbols in BibTex} 
+
+BibTeX tries to enforce standard publishing rules regarding article titles and authors' names; it sometimes changes uppercase letters to lower case. BibTeX also has trouble with umlauts, generally created in LaTeX with \verb+\"{o}+, because it is looking for the \verb+"+ to end the input line. 
+
+The general rule for overriding LaTeX's and BibTex's reinterpretation of your input text is to put the items you wish to be unchanged in braces. Thus, to obtain an umlaut in an author's name or in an article title, or to force an uppercase letter, do something like the following: \\[1ex]
+\verb+ @article{Kaczmarz37,+ \\ 
+\verb+ author = "S. Kaczmarz",+ \\ 
+\verb+ title  = "Angen{\"{a}}hrte {A}ufl{\"{o}}sung von {S}ystemen linearer {G}leichungen",+ \\ 
+\verb+ journal= "Bull. Acad. Polon. Sci. Lett.",+ \\ 
+\verb+ volume = "A35",+ \\ 
+\verb+ pages  = "355-357",+ \\	
+\verb+ year   = "1937"	} + \\[1ex]
+This example shows the use of both umlauts and uppercase letters.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\acknowledgments     %>>>> equivalent to \section*{ACKNOWLEDGMENTS}       
+ 
+This unnumbered section is used to identify those who have aided the authors in understanding or accomplishing the work presented and to acknowledge sources of funding.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% References %%%%%
+
+\bibliography{report}   %>>>> bibliography data in report.bib
+\bibliographystyle{spiebib}   %>>>> makes bibtex use spiebib.bst
+
+\end{document} 

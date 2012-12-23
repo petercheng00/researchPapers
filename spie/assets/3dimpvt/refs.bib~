@@ -1,0 +1,57 @@
+@book{hz,
+  title={Multiple view geometry in computer vision},
+  author={Hartley, R. and Zisserman, A.},
+  volume={2},
+  year={2000},
+  publisher={Cambridge Univ Press}
+}
+
+@inproceedings{lowe1999object,
+  title={Object recognition from local scale-invariant features},
+  author={Lowe, D.G.},
+  booktitle={Computer Vision, 1999. The Proceedings of the Seventh IEEE International Conference on},
+  volume={2},
+  pages={1150--1157},
+  year={1999},
+  organization={Ieee}
+}
+
+@article{brown2007automatic,
+  title={Automatic panoramic image stitching using invariant features},
+  author={Brown, M. and Lowe, D.G.},
+  journal={International Journal of Computer Vision},
+  volume={74},
+  number={1},
+  pages={59--73},
+  year={2007},
+  publisher={Springer}
+}
+
+@inproceedings{liu2010indoor,
+  title={Indoor localization and visualization using a human-operated backpack system},
+  author={Liu, T. and Carlberg, M. and Chen, G. and Chen, J. and Kua, J. and Zakhor, A.},
+  booktitle={Indoor Positioning and Indoor Navigation (IPIN), 2010 International Conference on},
+  pages={1--10},
+  year={2010},
+  organization={IEEE}
+}
+@inproceedings{chen2010indoor,
+  title={Indoor localization algorithms for a human-operated backpack system},
+  author={Chen, G. and Kua, J. and Shum, S. and Naikal, N. and Carlberg, M. and Zakhor, A.},
+  booktitle={Int. Symp. on 3D Data, Processing, Visualization and Transmission (3DPVT)},
+  year={2010},
+  organization={Citeseer}
+}
+
+@article{fischler1981random,
+  title={Random sample consensus: a paradigm for model fitting with applications to image analysis and automated cartography},
+  author={Fischler, M.A. and Bolles, R.C.},
+  journal={Communications of the ACM},
+  volume={24},
+  number={6},
+  pages={381--395},
+  year={1981},
+  publisher={ACM}
+}
+
+

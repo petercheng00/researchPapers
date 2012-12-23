@@ -1,0 +1,57 @@
+
+As done previously, it is
+simple to calculate which images can be used for texturing any given
+tile $t$ by calculating image projections. With this list of candidate
+images, we determine the best one by taking two factors into
+account. The first is camera distance relative to the center of tile
+$t$, as well as camera angle from the plane's normal. After all, the
+main motivation for a separate approach when texturing ceilings and
+floors is to obtain good camera distances and angles across the whole
+plane, not just for a handful of areas. We objectively calculate these
+two factors with the following equation:
+
+XIWORHEOWIEr
+
+The second factor we consider is image reuse. Though image seams are
+less problematic with ceilings and floor, it is always preferable to
+minimize them where possible. Before finding the best candidate image
+using the above equation, we first consider the best candidate image
+among those chosen by neighboring tiles. Of course, since our aim is
+to only use images where they contribute good textures, we do not want
+to blindly use the same texture as neighboring tiles. As a result, we
+can set a threshold at which point the images selected by neighboring
+tiles will not be reused for the current tile. We generally set this
+threshold such that the camera vector must be at under 45 degrees from
+the tile's normal vector.  With these two factors balanced, we have
+now assigned textures to all parts of our plane, such that each area
+of the plane is locally textured by the best camera for its area, with
+some preference given for image reuse.
+
+
+
+
+\subsection{Occlusion Masking}
+not sure where this section should go. it happens after projections,
+discussed in texture mapping overview, but it's definitely more of a
+preprocessing step.  Before we proceed with texturing our planes, we
+need to ensure that each plane's associated images contain only
+content that should be mapped onto the target plane in question. From
+the above process, images were chosen such that they had an unoccluded
+view of one or more trianglular sections upon a plane. This may not
+necessarily hold true however for all areas of the plane, as
+demonstrated in figure SOMETHING. If images are not modified to mask
+out occluded areas, different images could attempt to cover the same
+location on a plane with drastically different textures, inevitably
+leading to undesireable discontinuities in our final texture.
+
+Fortunately, by virtue of our indoor environments, the vast majority
+of surface geometry is either horizontal or vertical, with high
+amounts of right angles. This means that the areas we wish to mask out
+of our images due to occlusion are nearly always rectangular
+areas. Similar to the triangular tesselation performed for image
+association above, we split our image into
+
+
+
+
+
