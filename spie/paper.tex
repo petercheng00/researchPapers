@@ -45,159 +45,298 @@ University of California, Berkeley\\
 %>>>> uncomment following to start page numbering at 301 
 %\setcounter{page}{301} 
  
-  \begin{document} 
-  \maketitle 
+\begin{document}
+\maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{abstract}
-abstract goes here and stuff
+  Automated 3D modeling of building interiors is used in applications
+  such as virtual reality and environment mapping. Incorporating
+  images and texture mapping these models allows for photorealistic
+  visualizations of the data collected by such modeling systems. Pose
+  estimates obtained by these systems often suffer from inaccuracies,
+  resulting in visible discontinuities when successive images are
+  projected adjacently onto a surface for texturing. Existing methods
+  to stitch images together are often computationally expensive and
+  work independently of pose estimates and geometry information. We
+  propose a method to refine camera poses using both existing
+  estimates and geometry information, followed by two different
+  methods to composite images together, based on the uniformity of
+  available images. The effectiveness of our methods are demonstrated
+  on a number of disparate indoor environments.
 \end{abstract}
 
-%>>>> Include a list of keywords after the abstract 
+% >>>> Include a list of keywords after the abstract
 
 \keywords{Texture Mapping, Reconstruction, Image Stitching, Mosaicing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
-\label{sec:intro}  % \label{} allows reference to this section
+\label{sec:introduction} % \label{} allows reference to this section
+Three-dimensional modeling of indoor environments has a variety of
+applications such as training and simulation for disaster management,
+virtual heritage conservation, and mapping of hazardous sites. Manual
+construction of these digital models can be time-consuming, and as a
+result, automated 3D site modeling has garnered much interest in
+recent years. CITATION
 
-This document shows the desired format and appearance of a manuscript prepared for the Proceedings of the SPIE.\footnote{The basic format was developed in 1995 by Rick Herman (SPIE) and Ken Hanson (Los Alamos National Lab.).} It is prepared using LaTeX2e\cite{Lamport94} with the class file {\tt spie.cls}.  The LaTeX source file used to create this document is {\tt article.tex}, which contains important formatting information embedded in it.  These files are available on the Internet at {\tt http://home.lanl.gov/kmh/spie/}.  The font used throughout is the LaTeX default font, Computer Modern Roman, which is equivalent to the Times Roman font available on many systems.  If this font is not available, use a similar serif font.  Normal text has a font size of 10 points\footnote{Font sizes are specified in points, abbreviated pt., which is a unit of length.  One inch = 72.27 pt.; one cm = 28.4 pt.} for which the actual height of a capital E is about 2.4 mm (7 pt.) and the line-to-line spacing is about 4.2 mm (12 pt.).  The font attributes for other parts of the manuscript, summarized in Table~\ref{tab:fonts}, are described in the following sections.  Normal text should be justified to both the left and right margins.  Appendix~\ref{sec:latex} has information about PostScript fonts.
+The first step in automated 3D modeling is the physical scanning of
+the environment's geometry. An indoor modeling system must recover its
+own poses within an environment while simultaneously reconstructing
+the 3D structure of the environment itself. CITATION. This is known as
+the simultaneous localization and mapping (SLAM) problem, and is
+generally solved by taking readings from laser range scanners,
+cameras, and inertial measurement units (IMUs) at multiple locations
+within the environment.
 
-To be properly reproduced in the Proceedings, all text and figures must fit inside a rectangle 6.75-in.\ wide by 8.75-in.\ high or 17.15 cm by 22.23 cm.  The text width and height are set in {\tt spie.cls} to match this requirement.
-%% This table is carefully placed in the source file to make 
-%% it appear at bottom of page, but above the footnotes.  
-%% Use of [h] in following command forces table to appear "here".
-\begin{table}[h]
-\caption{Fonts sizes to be used for various parts of the manuscript.  All fonts are Computer Modern Roman or an equivalent.  Table captions should be centered above the table.  When the caption is too long to fit on one line, it should be justified to the right and left margins of the body of the text.} 
-\label{tab:fonts}
-\begin{center}       
-\begin{tabular}{|l|l|} %% this creates two columns
-%% |l|l| to left justify each column entry
-%% |c|c| to center each column entry
-%% use of \rule[]{}{} below opens up each row
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Article title & 16 pt., bold, centered  \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Author names and affiliations & 12 pt., normal, centered   \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Section heading & 11 pt., bold, centered (all caps)  \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Subsection heading & 11 pt., bold, left justified  \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Sub-subsection heading & 10 pt., bold, left justified  \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Normal text & 10 pt., normal  \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Figure and table captions & \, 9 pt., normal \\
-\hline
-\rule[-1ex]{0pt}{3.5ex}  Footnote & \, 9 pt., normal \\
-\hline 
-\end{tabular}
-\end{center}
-\end{table} 
-The text should begin 1.00 in.\ or 2.54 cm from the top of the page.  The right and left margins should be 0.875~in.\ or 2.22 cm for US letter-size paper (8.5 in.\ by 11 in.) or 1.925 cm for A4 paper (210 mm by 297 mm) to horizontally center the text on the page.  See Appendix~\ref{sec:latex} for guidance regarding paper-size specification. 
+In this paper, we work with data obtained from a backpack-mounted
+system, carried by an ambulatory human. Such a system provides
+advantages over more common wheel-mounted systems in terms of agility
+and portability, but results in much higher localization error and
+uncertainty overall. CITATION. As a result, common methods for texture
+mapping generally produce poor results, leading to the development of
+the approaches contained in this paper. Besides localization
+information and images, environment geometry is required as well for
+texture mapping. In this paper we work mainly with models obtained
+through plane-fitting surfaces to point clouds generated by the
+backpack system. CITATION. We have also developed an appropriate
+method to work with near-planar models, as described in APPENDIX
+SOMETHING.
 
-Authors are encouraged to follow the principles of sound technical writing, as described in Refs.~\citenum{Alred03} and \citenum{Perelman97}, for example.  Many aspects of technical writing are addressed in the {\em AIP Style Manual}, published by the American Institute of Physics.  It is available on line at {\tt http://www.aip.org/pubservs/style/4thed/toc.html} or {\tt http://public.lanl.gov/kmh/AIP\verb+_+Style\verb+_+4thed.pdf}. A spelling checker is helpful for finding misspelled words. 
+Though our texture mapping procedure was designed with the
+aforementioned system in mind, it is easily generalizable to any other
+system, provided the required inputs of surface geometry, images with
+rough extrinsic pose estimates, and either provided or estimated
+intrinsic camera calibration matrices. An added benefit of our method
+is its relatively fast running time and modularity of each step,
+allowing for quick tuning of parameters and easy accomodation of new
+input data given updates in localization or model-generation
+algorithms.
 
-An author may use this LaTeX source file as a template by substituting his/her own text in each field.  This document is not meant to be a complete guide on how to use LaTeX.  For that, refer to books on LaTeX usage, such as the definitive work by Lamport\cite{Lamport94} or the very useful compendium by Mittelbach et al.\cite{Mittelbach04}
-
+The remainder of the paper is organized as follows. Section X explains
+how input images are projected onto our geometry and simple approaches
+towards texturing. Section X covers more sophisticated existing
+approaches to image matching and stitching, and their performance on
+our datasets. Section X contains our approach towards image matching,
+followed by Section X, which describes compositing approaches. Section
+X contains further results and conclusions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{PARTS OF MANUSCRIPT} 
+\section{PARTS OF MANUSCRIPT}
 
-This section describes the normal structure of a manuscript and how each part should be handled.  The appropriate vertical spacing between various parts of this document is achieved in LaTeX through the proper use of defined constructs, such as \verb|\section{}|.  In LaTeX, paragraphs are separated by blank lines in the source file. 
+This section describes the normal structure of a manuscript and how
+each part should be handled.  The appropriate vertical spacing between
+various parts of this document is achieved in LaTeX through the proper
+use of defined constructs, such as \verb|\section{}|.  In LaTeX,
+paragraphs are separated by blank lines in the source file.
 
-At times it may be desired, for formatting reasons, to break a line without starting a new paragraph.  This situation may occur, for example, when formatting the article title, author information, or section headings.  Line breaks are inserted in LaTeX by entering \verb|\\| or \verb|\linebreak| in the LaTeX source file at the desired location.  
+At times it may be desired, for formatting reasons, to break a line
+without starting a new paragraph.  This situation may occur, for
+example, when formatting the article title, author information, or
+section headings.  Line breaks are inserted in LaTeX by entering
+\verb|\\| or \verb|\linebreak| in the LaTeX source file at the desired
+location.
 
-%%%%%Sometimes it is necessary to precede the double slash 
-%%%%%by \verb|\protect| to get the desired result, 
-%%%%%for example, in article titles.
+%%%%% Sometimes it is necessary to precede the double slash by
+%%%%% \verb|\protect| to get the desired result, for example, in
+%%%%% article titles.
 
-%%-----------------------------------------------------------
-\subsection{Title and Author Information} 
+%% -----------------------------------------------------------
+\subsection{Title and Author Information}
 \label{sec:title}
 
-The article title appears centered at the top of the first page.  The title font is 16 point, bold.  The rules for capitalizing the title are the same as for sentences; only the first word, proper nouns, and acronyms should be capitalized.  Avoid using acronyms in the title.  Keep in mind that people outside your area of expertise might read your article.  Appendix~\ref{sec:misc} contains more about acronyms.
+The article title appears centered at the top of the first page.  The
+title font is 16 point, bold.  The rules for capitalizing the title
+are the same as for sentences; only the first word, proper nouns, and
+acronyms should be capitalized.  Avoid using acronyms in the title.
+Keep in mind that people outside your area of expertise might read
+your article.  Appendix~\ref{sec:misc} contains more about acronyms.
 
-The list of authors immediately follows the title after a blank vertical space of about 7 mm.  The font is 12 point, normal with each line centered.  The authors' affiliations and addresses follow the author list after another blank space of about 4 mm, also in 12-point, normal font and centered.  Do not use acronyms in affiliations and addresses. For multiple affiliations, each affiliation should appear on a new line, separated from the following address by a semicolon.  Italicized superscripts may be used to identify the correspondence between the authors and their respective affiliations.  Further author information, such as e-mail address, complete postal address, and web-site location, may be provided in a footnote by using \verb|\authorinfo{}|, as demonstrated above.
+The list of authors immediately follows the title after a blank
+vertical space of about 7 mm.  The font is 12 point, normal with each
+line centered.  The authors' affiliations and addresses follow the
+author list after another blank space of about 4 mm, also in 12-point,
+normal font and centered.  Do not use acronyms in affiliations and
+addresses. For multiple affiliations, each affiliation should appear
+on a new line, separated from the following address by a semicolon.
+Italicized superscripts may be used to identify the correspondence
+between the authors and their respective affiliations.  Further author
+information, such as e-mail address, complete postal address, and
+web-site location, may be provided in a footnote by using
+\verb|\authorinfo{}|, as demonstrated above.
 
-When the abbreviated title or author information is too long to fit on one line, multiple lines may be used; insert line breaks appropriately to achieve a visually pleasing format.  The proper spacing of one and one-half lines between the title, author list, and their affiliations is achieved with the command \verb|\skiplinehalf| defined in {\tt spie.cls}.
+When the abbreviated title or author information is too long to fit on
+one line, multiple lines may be used; insert line breaks appropriately
+to achieve a visually pleasing format.  The proper spacing of one and
+one-half lines between the title, author list, and their affiliations
+is achieved with the command \verb|\skiplinehalf| defined in {\tt
+  spie.cls}.
 
-%%-----------------------------------------------------------
-\subsection{Abstract and Keywords} 
-The title and author information is immediately followed by the Abstract. The Abstract should concisely summarize the key findings of the paper.  It should consist of a single paragraph containing no more than 200 words.  The Abstract does not have a section number.  A list of up to ten keywords should immediately follow the Abstract after a blank line.  These keywords will be included in a searchable database at SPIE.
+%% -----------------------------------------------------------
+\subsection{Abstract and Keywords}
+The title and author information is immediately followed by the
+Abstract. The Abstract should concisely summarize the key findings of
+the paper.  It should consist of a single paragraph containing no more
+than 200 words.  The Abstract does not have a section number.  A list
+of up to ten keywords should immediately follow the Abstract after a
+blank line.  These keywords will be included in a searchable database
+at SPIE.
 
-%%-----------------------------------------------------------
-\subsection{Body of Paper} 
-The body of the paper consists of numbered sections that present the main findings.  These sections should be organized to best present the material.  See Sec.~\ref{sec:sections} for formatting instructions.
+%% -----------------------------------------------------------
+\subsection{Body of Paper}
+The body of the paper consists of numbered sections that present the
+main findings.  These sections should be organized to best present the
+material.  See Sec.~\ref{sec:sections} for formatting instructions.
 
-%%-----------------------------------------------------------
-\subsection{Appendices} 
-Auxiliary material that is best left out of the main body of the paper, for example, derivations of equations, proofs of theorems, and details of algorithms, may be included in appendices.  Appendices are enumerated with uppercase Latin letters in alphabetic order, and appear just before the Acknowledgments and References.
+%% -----------------------------------------------------------
+\subsection{Appendices}
+Auxiliary material that is best left out of the main body of the
+paper, for example, derivations of equations, proofs of theorems, and
+details of algorithms, may be included in appendices.  Appendices are
+enumerated with uppercase Latin letters in alphabetic order, and
+appear just before the Acknowledgments and References.
 
-%%-----------------------------------------------------------
-\subsection{Acknowledgments} 
-In the Acknowledgments section, appearing just before the References, the authors may credit others for their guidance or help.  Also, funding sources may be stated.  The Acknowledgments section does not have a section number.
+%% -----------------------------------------------------------
+\subsection{Acknowledgments}
+In the Acknowledgments section, appearing just before the References,
+the authors may credit others for their guidance or help.  Also,
+funding sources may be stated.  The Acknowledgments section does not
+have a section number.
 
-%%-----------------------------------------------------------
-\subsection{References} 
-The References section lists books, articles, and reports that are cited in the paper.  It does not have a section number.  The references are numbered in the order in which they are cited.  Examples of the format to be followed are given at the end of this document.  
+%% -----------------------------------------------------------
+\subsection{References}
+The References section lists books, articles, and reports that are
+cited in the paper.  It does not have a section number.  The
+references are numbered in the order in which they are cited.
+Examples of the format to be followed are given at the end of this
+document.
 
-The reference list at the end of this document is created using BibTeX, which looks through the file {\tt report.bib} for the entries cited in the LaTeX source file.  The format of the reference list is determined by the bibliography style file {\tt spiebib.bst}, as specified in the \verb|\bibliographystyle{spiebib}| command.  Alternatively, the references may be directly formatted in the LaTeX source file.
+The reference list at the end of this document is created using
+BibTeX, which looks through the file {\tt report.bib} for the entries
+cited in the LaTeX source file.  The format of the reference list is
+determined by the bibliography style file {\tt spiebib.bst}, as
+specified in the \verb|\bibliographystyle{spiebib}| command.
+Alternatively, the references may be directly formatted in the LaTeX
+source file.
 
-For books\cite{Lamport94,Alred03,Goossens97} the listing includes the list of authors, book title (in italics), page or chapter numbers, publisher, city, and year of publication.  A reference to a journal article\cite{Metropolis53} includes the author list, title of the article (in quotes), journal name (in italics, properly abbreviated), volume number (in bold), inclusive page numbers, and year.  By convention\cite{Lamport94}, article titles are capitalized as described in Sec.~\ref{sec:title}.  A reference to a proceedings paper or a chapter in an edited book\cite{Gull89a} includes the author list, title of the article (in quotes), conference name (in italics), if appropriate, editors, volume or series title (in italics), volume number (in bold), if applicable, inclusive page numbers, publisher, city, and year.  References to an article in the SPIE Proceedings may include the conference name, as shown in Ref.~\citenum{Hanson93c}.
+For books\cite{Lamport94,Alred03,Goossens97} the listing includes the
+list of authors, book title (in italics), page or chapter numbers,
+publisher, city, and year of publication.  A reference to a journal
+article\cite{Metropolis53} includes the author list, title of the
+article (in quotes), journal name (in italics, properly abbreviated),
+volume number (in bold), inclusive page numbers, and year.  By
+convention\cite{Lamport94}, article titles are capitalized as
+described in Sec.~\ref{sec:title}.  A reference to a proceedings paper
+or a chapter in an edited book\cite{Gull89a} includes the author list,
+title of the article (in quotes), conference name (in italics), if
+appropriate, editors, volume or series title (in italics), volume
+number (in bold), if applicable, inclusive page numbers, publisher,
+city, and year.  References to an article in the SPIE Proceedings may
+include the conference name, as shown in Ref.~\citenum{Hanson93c}.
 
-Citations to the references are made using superscript numerals, as demonstrated in the preceding paragraph.  One may also directly refer to a reference within the text, e.g., ``as shown in Ref.~\citenum{Metropolis53} ..." 
+Citations to the references are made using superscript numerals, as
+demonstrated in the preceding paragraph.  One may also directly refer
+to a reference within the text, e.g., ``as shown in
+Ref.~\citenum{Metropolis53} ..."
 
-%%-----------------------------------------------------------
-\subsection{Footnotes} 
-Footnotes\footnote{Footnotes are indicated as superscript symbols to avoid confusion with citations.} may be used to provide auxiliary information that doesn't need to appear in the text, e.g., to explain measurement units.  They should be used sparingly, however.  
+%% -----------------------------------------------------------
+\subsection{Footnotes}
+Footnotes\footnote{Footnotes are indicated as superscript symbols to
+  avoid confusion with citations.} may be used to provide auxiliary
+information that doesn't need to appear in the text, e.g., to explain
+measurement units.  They should be used sparingly, however.
 
-Only nine footnote symbols are available in LaTeX. If you have more than nine footnotes, you will need to restart the sequence using the command  \verb|\footnote[1]{Your footnote text goes here.}|. If you don't, LaTeX will provide the error message {\tt Counter too large.}, followed by the offending footnote command.
+Only nine footnote symbols are available in LaTeX. If you have more
+than nine footnotes, you will need to restart the sequence using the
+command \verb|\footnote[1]{Your footnote text goes here.}|. If you
+don't, LaTeX will provide the error message {\tt Counter too large.},
+followed by the offending footnote command.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SECTION FORMATTING} \label{sec:sections}
 
-Section headings are centered and formatted completely in uppercase 11-point bold font.  Sections should be numbered sequentially, starting with the first section after the Abstract.  The heading starts with the section number, followed by a period.  In LaTeX, a new section is created with the \verb|\section{}| command, which automatically numbers the sections.
+Section headings are centered and formatted completely in uppercase
+11-point bold font.  Sections should be numbered sequentially,
+starting with the first section after the Abstract.  The heading
+starts with the section number, followed by a period.  In LaTeX, a new
+section is created with the \verb|\section{}| command, which
+automatically numbers the sections.
 
-Paragraphs that immediately follow a section heading are leading paragraphs and should not be indented, according to standard publishing style\cite{Lamport94}.  The same goes for leading paragraphs of subsections and sub-subsections.  Subsequent paragraphs are standard paragraphs, with 14-pt.\ (5 mm) indentation.  An extra half-line space should be inserted between paragraphs.  In LaTeX, this spacing is specified by the parameter \verb|\parskip|, which is set in {\tt spie.cls}.  Indentation of the first line of a paragraph may be avoided by starting it with \verb|\noindent|.
+Paragraphs that immediately follow a section heading are leading
+paragraphs and should not be indented, according to standard
+publishing style\cite{Lamport94}.  The same goes for leading
+paragraphs of subsections and sub-subsections.  Subsequent paragraphs
+are standard paragraphs, with 14-pt.\ (5 mm) indentation.  An extra
+half-line space should be inserted between paragraphs.  In LaTeX, this
+spacing is specified by the parameter \verb|\parskip|, which is set in
+{\tt spie.cls}.  Indentation of the first line of a paragraph may be
+avoided by starting it with \verb|\noindent|.
  
-%%-----------------------------------------------------------
-\subsection{Subsection Attributes} 
+%% -----------------------------------------------------------
+\subsection{Subsection Attributes}
 
-The subsection heading is left justified and set in 11-point, bold font.  Capitalization rules are the same as those for book titles.  The first word of a subsection heading is capitalized.  The remaining words are also capitalized, except for minor words with fewer than four letters, such as articles (a, an, and the), short prepositions (of, at, by, for, in, etc.), and short conjunctions (and, or, as, but, etc.).  Subsection numbers consist of the section number, followed by a period, and the subsection number within that section.  
+The subsection heading is left justified and set in 11-point, bold
+font.  Capitalization rules are the same as those for book titles.
+The first word of a subsection heading is capitalized.  The remaining
+words are also capitalized, except for minor words with fewer than
+four letters, such as articles (a, an, and the), short prepositions
+(of, at, by, for, in, etc.), and short conjunctions (and, or, as, but,
+etc.).  Subsection numbers consist of the section number, followed by
+a period, and the subsection number within that section.
 
-%%-----------
-\subsubsection{Sub-subsection attributes} 
-The sub-subsection heading is left justified and its font is 10 point, bold.  Capitalize as for sentences.  The first word of a sub-subsection heading is capitalized.  The rest of the heading is not capitalized, except for acronyms and proper names.  
+%% -----------
+\subsubsection{Sub-subsection attributes}
+The sub-subsection heading is left justified and its font is 10 point,
+bold.  Capitalize as for sentences.  The first word of a
+sub-subsection heading is capitalized.  The rest of the heading is not
+capitalized, except for acronyms and proper names.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{FIGURES AND TABLES} 
+\section{FIGURES AND TABLES}
 
-Figures are numbered in the order of their first citation.  They should appear in numerical order and on or after the same page as their first reference in the text.  Alternatively, all figures may be placed at the end of the manuscript, that is, after the Reference section.  It is preferable to have figures appear at the top or bottom of the page.  Figures, along with their captions, should be separated from the main text by at least 0.2 in.\ or 5 mm.  
+Figures are numbered in the order of their first citation.  They
+should appear in numerical order and on or after the same page as
+their first reference in the text.  Alternatively, all figures may be
+placed at the end of the manuscript, that is, after the Reference
+section.  It is preferable to have figures appear at the top or bottom
+of the page.  Figures, along with their captions, should be separated
+from the main text by at least 0.2 in.\ or 5 mm.
 
-Figure captions are centered below the figure or graph.  Figure captions start with the figure number in 9-point bold font, followed by a period; the text is in 9-point normal font; for example, ``{\footnotesize{Figure 3.}  Original image...}".  See Fig.~\ref{fig:example} for an example of a figure caption.  When the caption is too long to fit on one line, it should be justified to the right and left margins of the body of the text.  
+Figure captions are centered below the figure or graph.  Figure
+captions start with the figure number in 9-point bold font, followed
+by a period; the text is in 9-point normal font; for example,
+``{\footnotesize{Figure 3.}  Original image...}".  See
+Fig.~\ref{fig:example} for an example of a figure caption.  When the
+caption is too long to fit on one line, it should be justified to the
+right and left margins of the body of the text.
 
-Tables are handled identically to figures, except that their captions appear above the table. 
-%%  Use following command to specify that graphics file is in 
-%%  a directory other than this LaTeX source file.
-%%  Note use of / to separate subdirectories, for UNIX and Windows OS.
-%%\graphicspath{{H:/HANSON/SPIESTY/}}
-%% tabular environment useful for creating an array of images  
-%-------------
-   \begin{figure}
-   \begin{center}
-   \begin{tabular}{c}
-   \includegraphics[height=7cm]{naive.jpg}
-   \end{tabular}
-   \end{center}
-   \caption[example] 
-%>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:example} 
-Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
-   \end{figure} 
-%-------------
+Tables are handled identically to figures, except that their captions
+appear above the table.
+%% Use following command to specify that graphics file is in a
+%% directory other than this LaTeX source file.  Note use of / to
+%% separate subdirectories, for UNIX and Windows OS.
+%% \graphicspath{{H:/HANSON/SPIESTY/}} tabular environment useful for
+%% creating an array of images
+% -------------
+\begin{figure}
+  \begin{center}
+    \begin{tabular}{c}
+      \includegraphics[height=7cm]{naive.jpg}
+    \end{tabular}
+  \end{center}
+  \caption[example]
+  % >>>> use \label inside caption to get Fig. number with \ref{}
+  { \label{fig:example} Figure captions are used to describe the
+    figure and help the reader understand it's significance.  The
+    caption should be centered underneath the figure and set in
+    9-point font.  It is preferable for figures and tables to be
+    placed at the top or bottom of the page. LaTeX tends to adhere to
+    this standard.}
+\end{figure}
+% -------------
 
-For further details concerning the inclusion of grayscale and color images, consult SPIE's {\it Author Guide for Publication and Presentation}.
+For further details concerning the inclusion of grayscale and color
+images, consult SPIE's {\it Author Guide for Publication and
+  Presentation}.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix    %>>>> this command starts appendixes

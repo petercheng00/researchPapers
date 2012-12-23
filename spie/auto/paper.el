@@ -3,8 +3,7 @@
     (LaTeX-add-bibliographies
      "report")
     (LaTeX-add-labels
-     "sec:intro"
-     "tab:fonts"
+     "sec:introduction"
      "sec:title"
      "sec:sections"
      "fig:example"
