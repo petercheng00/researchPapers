@@ -121,6 +121,222 @@ our datasets. Section X contains our approach towards image matching,
 followed by Section X, which describes compositing approaches. Section
 X contains further results and conclusions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Simple Texture Mapping}
+\label{sec:simpleTextureMapping}
+\begin{figure}
+  \centering
+  \includegraphics[height=2in]{Projection.pdf}
+  \caption{Planes are specified in 3D space by four corners $C_1$ to
+    $C_4$. Images are related to each plane through the camera matrics
+    $P_{1..m}$. }
+  \label{fig:projection}
+\end{figure}
+
+The geometry of the texture mapping process for a plane is shown in
+Figure \ref{fig:projection}.  As described earlier, we are provided
+with a set of $M$ images to texture the target plane. Each image has a
+camera matrix $P_i$ for $i=1..M$, which translates a 3D point in the
+world coordinate system to a 2D point or pixel in image $i$'s
+coordinates. A camera matrix $P_i$ is composed of the camera's
+intrinsic parameters, such as focal length and image center, as well
+as extrinsic parameters which specify the rotation and translation of
+the camera's position in 3D world coordinates at the time that image
+$i$ is taken. These extrinsic parameters are determined by the
+backpack hardware and localization algorithms \cite{chen2010indoor,
+  liu2010indoor, kua2012loopclosure} and are quite noisy.
+
+Because our backpack system takes photos at a rate of 5 Hz, thousands
+of images are available for texturing each surface in our model. Our
+goal in designing a texture mapping process is to decide which of
+these images should be used, and where their contents should map onto
+the texture, in order to minimize any visual discontinuities or seams
+that would suggest that the plane's final texture is not composed of a
+single continuous image.
+
+\subsection{Direct Mapping}
+\label{sec:directMapping}
+
+Ignoring the fact that the camera matrices $P_{1..M}$ are inaccurate,
+we can texture the plane by discretizing it into small square tiles,
+in our case 5 pixels across, and choosing an image to texture each
+tile.
+
+We choose to work with rectangular units to ensure that borders
+between any two distinct images in the final texture are either
+horizontal or vertical. Since most strong environmental features
+inside buildings are horizontal or vertical, any visible seams in our
+texture intersect them minimally and are less noticeable.
+
+In order to select an image for texturing a tile $t$, we must first
+gather a list of candidate images that contain all four of its
+corners, which we can quickly check by projecting $t$ into each image
+using the $P_i$ camera matrices. Furthermore, each candidate image
+must have been taken at a time when its camera had a clear
+line-of-sight to $t$, which can be calculated using standard
+ray-polygon intersection tests between the camera location, $t$, and
+every other plane \cite{rayintersection}.
+
+Once we have a list of candidate images for $t$, we define a scoring
+function in order to objectively select the best image for texturing
+$t$. Since camera pose errors compound over distance, we wish to
+minimize the distance between cameras and the surfaces they
+texture. Additionally, we desire images that are projected
+perpendicularly onto the plane, maximizing the resolution and amount
+of useful texture available in their projections, as well as
+minimizing any parallax effects due to real-world geometry not
+represented by our digital model. In other words, we wish to minimize
+the angle between the tile's normal vector and the camera axis for
+images selected for texture mapping. These two criteria can be met by
+maximizing the function $\frac{1}{d} (-1 \cdot \vec{c}) \cdot \vec{n}$
+as shown in Figure \ref{fig:scoringFunction}. Specifically, $d$ is the
+distance between the centers of a camera and a tile, and $\vec{n}$ and
+$\vec{c}$ are the directions of the plane's normal and the camera axis
+respectively.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=1.5in]{scoringFunction.jpg}
+  \caption{We minimize camera angle $\alpha$ and distance $d$ by
+    maximizing the scoring function $\frac{1}{d} (-1 \cdot \vec{c})
+    \cdot \vec{n}$}
+  \label{fig:scoringFunction}
+\end{figure}
+
+
+
+\begin{figure}[h!]
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_naive.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_cache.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_cache_shift.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_dynprog_noblend.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_cache_shift_blend.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_dynprog.pdf}}
+  \caption{(a) Direct mapping. (b) Mapping with caching. (c) Mapping
+    with caching after image alignment. (d) Seam minimization after
+    image alignment). (e) same as (c) with blending. (f) same as (d)
+    with blending.}
+  \label{fig:compareAll}
+\end{figure}
+
+
+As Figure \ref{fig:compareAll}(a) demonstrates, this approach leads to
+the best texture for each tile independently, but overall results in
+many image boundaries with abrupt discontinuities, due to significant
+misalignment between images, as a result of camera pose inaccuracies.
+
+\subsection{Mapping with Caching}
+\label{sec:mappingWithCaching}
+Since discontinuities occur where adjacent tiles select non-aligned
+images, it makes sense to take into account image selections made by
+neighboring tiles while texture mapping a given tile. By using the
+same image across tile boundaries, we can eliminate a discontinuity
+altogether. If this is not possible because a tile is not visible in
+images used by neighboring tiles, using similar images across tile
+boundaries also leads to less noticeable discontinuities.
+
+Essentially a caching mechanism, we select the best image for a tile
+$t$ by searching through two subsets of images for a viable candidate,
+before searching through the entire set of valid images. The first
+subset of images is the images selected by adjacent tiles that have
+already been textured. We must first check which of these images can
+map to $t$, and then of those, we make a choice according to the
+scoring function in Figure \ref{fig:scoringFunction}. Before reusing
+this image, we ensure it meets the criteria $\alpha < 45^\circ$, in
+order to be considered a viable image, with $\alpha$ as the camera
+angle as shown in Figure \ref{fig:scoringFunction}.
+
+If no satisfactory image is found in the first subset, we check the
+second subset of images, consisting of those taken near the ones in
+the first subset, both spatially and temporally. These images are not
+the same as the ones used for neighboring tiles, but are taken at a
+similar location and time, suggesting that their localization and
+projection are quite similar, allowing us to minimize any differences
+in localization error as well as a parallax effects. Again, if no
+viable image is found according to the same criteria, we search the
+entire set of candidate images, selecting based on the same scoring
+function from Figure \ref{fig:scoringFunction}.
+
+The result of this caching approach is shown in Figure
+\ref{fig:compareAll}(b). As compared to Figure
+\ref{fig:compareAll}(a), discontinuities are reduced overall, but the
+amount of remaining seams suggests that despite our high volume of
+images, image selection alone cannot produce seamless textures. Camera
+matrices, or the image projections themselves, have to be adjusted in
+order to reliably generate clean textures.
+
+
+\section{Existing Approaches to Image Alignment}
+\label{sec:existingApproaches}
+Stitching together multiple images to produce a larger image is a
+commonly performed task, with many successful approaches over the past
+few decades. Parts of images are first matched to eachother, through
+direct pixel comparisons, or more commonly through feature detection
+and matching. Images are then adjusted to maximize matches, either by
+directly calculating homographies between pairs of images, or by
+modifying camera poses from 1 to 6 degrees of freedom.
+
+Feature detection and matching works best when multiple unique visual
+references exist in the environment and are present within multiple
+images. This allows for accurate matching when texturing detailed
+objects at high resolutions CiTATION, or when creating outdoor
+panoramas CITATION. In contrast, our indoor environments have a high
+prevalence of bare surfaces, as well as repeating textures that cause
+difficulty in distinguishing features. The lack of strong reference
+points results in high uncertainty when matching images together.
+
+Additionally, our datasets often contain long chains of images, which
+leads to error accumulation when image correspondences are not
+accurate. For example, when matching a long chain of images through
+homographies, a pixel in the $nth$ image must be translated into the
+first image's coordinates by multiplying by the $3\times3$ matrix $H_1
+H_2 H_3 ... H_n$. Any error in one of these homography matrices is
+propagated to all further images, resulting in drift. Figure
+\ref{fig:mosaic3D}(b) shows the output of the AutoStitch software
+package, which performs homography-based image mosaicing
+\cite{autostitch}. Even with many features spread across this surface,
+the mosaicing produces errors that cause straight lines to appear as
+distorted, despite the fact that it was generated after careful hand
+tuning. Many areas with fewer visual features simply failed outright
+using this approach.
+
+\begin{figure}
+  \centering
+  \subfloat[][]{\includegraphics[width=3in]{Graph_crop.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in]{panoMy.jpg}}
+  \caption{Texture alignment via (a) the graph-based localization
+    refinement algorithm from \cite{chen2010indoor} and (b) image
+    mosaicing.}
+  \label{fig:mosaic3D}
+\end{figure}
+
+Image projections can also be aligned by iteratively adjusting camera poses to maximize matches. This is generally done over 6 degrees of freedom. CITATION. Applying the approach in the LIU2010INDOOR paper however, results again in error accumulation and drift as shown in Figure \ref{fig:mosaic3D}(a). Furthermore, such nonlinear optimization approaches have an extremely high complexity and runtime, and the entire solution must be recomputed given any changes in input data.
+
+
+
+
+
+
+
+\section{Our Image Alignment with Cool Name}
+\section{Image Compositing}
+\section{Results and Conclusions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%poop below
 \section{PARTS OF MANUSCRIPT}
 
 This section describes the normal structure of a manuscript and how

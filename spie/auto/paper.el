@@ -4,6 +4,14 @@
      "report")
     (LaTeX-add-labels
      "sec:introduction"
+     "sec:simpleTextureMapping"
+     "fig:projection"
+     "sec:directMapping"
+     "fig:scoringFunction"
+     "fig:compareAll"
+     "sec:mappingWithCaching"
+     "sec:existingApproaches"
+     "fig:mosaic3D"
      "sec:title"
      "sec:sections"
      "fig:example"

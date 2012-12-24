@@ -34,15 +34,9 @@
 
 \author{Peter Cheng, Michael Anderson, Stewart He, Avideh Zakhor
 \skiplinehalf
-University of California, Berkeley ; \\
+University of California, Berkeley\\
 }
 
-%>>>> Further information about the authors, other than their 
-%  institution and addresses, should be included as a footnote, 
-%  which is facilitated by the \authorinfo{} command.
-
-\authorinfo{Further author information: (Send correspondence to A.A.A.)\\A.A.A.: E-mail: aaa@tbk2.edu, Telephone: 1 505 123 1234\\  B.B.A.: E-mail: bba@cmp.com, Telephone: +33 (0)1 98 76 54 32}
-%%>>>> when using amstex, you need to use @@ instead of @
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -51,48 +45,93 @@ University of California, Berkeley ; \\
 %>>>> uncomment following to start page numbering at 301 
 %\setcounter{page}{301} 
  
-  \begin{document} 
+\begin{document}
 
-\message{ !name(paper.tex) !offset(-42) }
-\documentclass[]{spie}  %>>> use for US letter paper
-%%\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
-%%\documentclass[nocompress]{spie}  %>>> to avoid compression of citations
-%% \addtolength{\voffset}{9mm}   %>>> moves text field down
-%% \renewcommand{\baselinestretch}{1.65}   %>>> 1.65 for double spacing, 1.25 for 1.5 spacing 
-%  The following command loads a graphics package to include images 
-%  in the document. It may be necessary to specify a DVI driver option,
-%  e.g., [dvips], but that may be inappropriate for some LaTeX 
-%  installations. 
-\usepackage[]{graphicx}
+\message{ !name(paper.tex) !offset(106) }
+\subsection{Direct Mapping}
+\label{sec:directMapping}
 
-\title{Texture mapping 3D planar models of indoor environments with noisy camera poses} 
+Ignoring the fact that the camera matrices $P_{1..M}$ are inaccurate,
+we can texture the plane by discretizing it into small square tiles,
+in our case 5 pixels across, and choosing an image to texture each
+tile.
 
-%>>>> The author is responsible for formatting the 
-%  author list and their institutions.  Use  \skiplinehalf 
-%  to separate author list from addresses and between each address.
-%  The correspondence between each author and his/her address
-%  can be indicated with a superscript in italics, 
-%  which is easily obtained with \supit{}.
+We choose to work with rectangular units to ensure that borders
+between any two distinct images in the final texture are either
+horizontal or vertical. Since most strong environmental features
+inside buildings are horizontal or vertical, any visible seams in our
+texture intersect them minimally and are less noticeable.
 
-\author{Peter Cheng, Michael Anderson, Stewart He, Avideh Zakhor
-\skiplinehalf
-University of California, Berkeley ; \\
-}
+In order to select an image for texturing a tile $t$, we must first
+gather a list of candidate images that contain all four of its
+corners, which we can quickly check by projecting $t$ into each image
+using the $P_i$ camera matrices. Furthermore, each candidate image
+must have been taken at a time when its camera had a clear
+line-of-sight to $t$, which can be calculated using standard
+ray-polygon intersection tests between the camera location, $t$, and
+every other plane \cite{rayintersection}.
 
-%>>>> Further information about the authors, other than their 
-%  institution and addresses, should be included as a footnote, 
-%  which is facilitated by the \authorinfo{} command.
+Once we have a list of candidate images for $t$, we define a scoring
+function in order to objectively select the best image for texturing
+$t$. Since camera pose errors compound over distance, we wish to
+minimize the distance between cameras and the surfaces they
+texture. Additionally, we desire images that are projected
+perpendicularly onto the plane, maximizing the resolution and amount
+of useful texture available in their projections, as well as
+minimizing any parallax effects due to real-world geometry not
+represented by our digital model. In other words, we wish to minimize
+the angle between the tile's normal vector and the camera axis for
+images selected for texture mapping. These two criteria can be met by
+maximizing the function $\frac{1}{d} (-1 \cdot \vec{c}) \cdot \vec{n}$
+as shown in Figure \ref{fig:scoringFunction}. Specifically, $d$ is the
+distance between the centers of a camera and a tile, and $\vec{n}$ and
+$\vec{c}$ are the directions of the plane's normal and the camera axis
+respectively.
 
-\authorinfo{Further author information: (Send correspondence to A.A.A.)\\A.A.A.: E-mail: aaa@tbk2.edu, Telephone: 1 505 123 1234\\  B.B.A.: E-mail: bba@cmp.com, Telephone: +33 (0)1 98 76 54 32}
-%%>>>> when using amstex, you need to use @@ instead of @
- 
+\begin{figure}
+  \centering
+  \includegraphics[height=1.5in]{scoringFunction.jpg}
+  \caption{We minimize camera angle $\alpha$ and distance $d$ by
+    maximizing the scoring function $\frac{1}{d} (-1 \cdot \vec{c})
+    \cdot \vec{n}$}
+  \label{fig:scoringFunction}
+\end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%>>>> uncomment following for page numbers
-% \pagestyle{plain}    
-%>>>> uncomment following to start page numbering at 301 
-%\setcounter{page}{301} 
- 
-\message{ !name(paper.tex) !offset(197) }
+
+
+\begin{figure}[h!]
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_naive.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_cache.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_cache_shift.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_dynprog_noblend.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_cache_shift_blend.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=3in,
+    height=0.97in]{wall2_dynprog.pdf}}
+  \caption{(a) Direct mapping. (b) Mapping with caching. (c) Mapping
+    with caching after image alignment. (d) Seam minimization after
+    image alignment). (e) same as (c) with blending. (f) same as (d)
+    with blending.}
+  \label{fig:compareAll}
+\end{figure}
+
+
+As Figure \ref{fig:compareAll}(a) demonstrates, this approach leads to
+the best texture for each tile independently, but overall results in
+many image boundaries with abrupt discontinuities, due to significant
+misalignment between images, as a result of camera pose inaccuracies.
+
+
+
+\message{ !name(paper.tex) !offset(416) }
 
 \end{document} 
