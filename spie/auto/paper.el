@@ -6,23 +6,18 @@
      "sec:introduction"
      "sec:simpleTextureMapping"
      "fig:projection"
-     "sec:directMapping"
      "fig:scoringFunction"
      "fig:compareAll"
-     "sec:mappingWithCaching"
      "sec:existingApproaches"
      "fig:mosaic3D"
-     "sec:title"
-     "sec:sections"
-     "fig:example"
-     "sec:misc"
-     "eq:alpha"
-     "sec:latex")
-    (TeX-add-symbols
-     '("bm" 1))
+     "sec:projectionAndRotation"
+     "sec:robustSIFTFeatureMatching"
+     "fig:projectionAngles"
+     "sec:mappingWithCaching"
+     "fig:dagCreation"
+     "sec:blending"
+     "sec:resultsAndConclusions")
     (TeX-run-style-hooks
-     "amsmath"
-     "a4paper"
      "graphicx"
      "latex2e"
      "spie10"
