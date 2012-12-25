@@ -12,8 +12,8 @@
      "fig:mosaic3D"
      "sec:projectionAndRotation"
      "sec:robustSIFTFeatureMatching"
-     "fig:projectionAngles"
      "sec:mappingWithCaching"
+     "fig:projectionAngles"
      "fig:dagCreation"
      "sec:blending"
      "sec:resultsAndConclusions")

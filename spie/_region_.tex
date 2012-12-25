@@ -47,91 +47,43 @@ University of California, Berkeley\\
  
 \begin{document}
 
-\message{ !name(paper.tex) !offset(106) }
-\subsection{Direct Mapping}
-\label{sec:directMapping}
+\message{ !name(paper.tex) !offset(594) }
+\subsection{Blending}
+\label{sec:blending}
+We now apply the same blending process to the two texturing methods:
+tile caching or seam minimization.
 
-Ignoring the fact that the camera matrices $P_{1..M}$ are inaccurate,
-we can texture the plane by discretizing it into small square tiles,
-in our case 5 pixels across, and choosing an image to texture each
-tile.
+Although the image alignment steps and image selection in both methods
+attempt to minimize all mismatches between images, there are
+occasional unavoidable discontinuities in the final texture due to
+different lighting conditions or inaccuracies in planar geometry or
+projection. These can however be treated and smoothed over by applying
+alpha blending over image seams.  Whether the units we are blending
+are rectangularly-cropped images or rectangular tiles, we can apply
+the same blending procedure, as long as we have a guaranteed overlap
+between units to blend over.
 
-We choose to work with rectangular units to ensure that borders
-between any two distinct images in the final texture are either
-horizontal or vertical. Since most strong environmental features
-inside buildings are horizontal or vertical, any visible seams in our
-texture intersect them minimally and are less noticeable.
+For the tile caching method, we can ensure overlap by texturing a
+larger tile than needed for display. For example, for a rendered tile
+$l_1 \times l_1$, we can associate it with a texture $(l_1 + l_2)
+\times (l_1 + l_2)$ in size. We have found $l_2 = \frac{l_1}{2}$ to provide a
+good amount of blending without blurring features. For the seam
+minimization method, we have already ensured overlap between
+images. To enforce consistent blending however, we add a minimum
+required overlap distance while solving the shortest path problem in
+Section \ref{sec:seamMinimization}. Additionally, if images overlap in
+a region greater than the overlap distance, we only apply blending
+over an area equal to the overlap distance.
 
-In order to select an image for texturing a tile $t$, we must first
-gather a list of candidate images that contain all four of its
-corners, which we can quickly check by projecting $t$ into each image
-using the $P_i$ camera matrices. Furthermore, each candidate image
-must have been taken at a time when its camera had a clear
-line-of-sight to $t$, which can be calculated using standard
-ray-polygon intersection tests between the camera location, $t$, and
-every other plane \cite{rayintersection}.
+After blending pixels linearly across overlapping regions using alpha
+blending, texture mapping is complete. Figures \ref{fig:compareAll}(e)
+and \ref{fig:compareAll}(f) show the blended versions of Figures
+\ref{fig:compareAll}(c) and \ref{fig:compareAll}(d) respectively. It
+is clear that the seam minimization approach still exhibits better
+alignment and fewer seams than the tile-caching method, as Figure
+\ref{fig:compareAll}(f) has the best visual quality among the textures
+in Figure \ref{fig:compareAll}.
 
-Once we have a list of candidate images for $t$, we define a scoring
-function in order to objectively select the best image for texturing
-$t$. Since camera pose errors compound over distance, we wish to
-minimize the distance between cameras and the surfaces they
-texture. Additionally, we desire images that are projected
-perpendicularly onto the plane, maximizing the resolution and amount
-of useful texture available in their projections, as well as
-minimizing any parallax effects due to real-world geometry not
-represented by our digital model. In other words, we wish to minimize
-the angle between the tile's normal vector and the camera axis for
-images selected for texture mapping. These two criteria can be met by
-maximizing the function $\frac{1}{d} (-1 \cdot \vec{c}) \cdot \vec{n}$
-as shown in Figure \ref{fig:scoringFunction}. Specifically, $d$ is the
-distance between the centers of a camera and a tile, and $\vec{n}$ and
-$\vec{c}$ are the directions of the plane's normal and the camera axis
-respectively.
-
-\begin{figure}
-  \centering
-  \includegraphics[height=1.5in]{scoringFunction.jpg}
-  \caption{We minimize camera angle $\alpha$ and distance $d$ by
-    maximizing the scoring function $\frac{1}{d} (-1 \cdot \vec{c})
-    \cdot \vec{n}$}
-  \label{fig:scoringFunction}
-\end{figure}
-
-
-
-\begin{figure}[h!]
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_naive.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_cache.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_cache_shift.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_dynprog_noblend.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_cache_shift_blend.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3in,
-    height=0.97in]{wall2_dynprog.pdf}}
-  \caption{(a) Direct mapping. (b) Mapping with caching. (c) Mapping
-    with caching after image alignment. (d) Seam minimization after
-    image alignment). (e) same as (c) with blending. (f) same as (d)
-    with blending.}
-  \label{fig:compareAll}
-\end{figure}
-
-
-As Figure \ref{fig:compareAll}(a) demonstrates, this approach leads to
-the best texture for each tile independently, but overall results in
-many image boundaries with abrupt discontinuities, due to significant
-misalignment between images, as a result of camera pose inaccuracies.
-
-
-
-\message{ !name(paper.tex) !offset(416) }
+\message{ !name(paper.tex) !offset(604) }
 
 \end{document} 
