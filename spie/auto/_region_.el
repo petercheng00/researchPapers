@@ -1,7 +1,10 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
     (LaTeX-add-labels
-     "sec:blending")
+     "sec:simpleTextureMapping"
+     "fig:projection"
+     "fig:scoringFunction"
+     "fig:compareAll")
     (TeX-run-style-hooks
      "graphicx"
      "latex2e"

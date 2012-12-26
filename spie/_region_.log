@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  25 DEC 2012 12:28
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  25 DEC 2012 13:26
 entering extended mode
  %&-line parsing enabled.
 **\nonstopmode\nofiles\PassOptionsToPackage{active,tightpage,auctex}{preview}\A
@@ -105,20 +105,20 @@ Preview: PDFoutput 1
 \MPscratchDim=\dimen108
 \MPnumerator=\count95
 \everyMPtoPDFconversion=\toks17
-)  !name(paper.tex) !offset(594) 
+)  !name(paper.tex) !offset(76) 
 ! Preview: Snippet 1 started.
 <-><->
       
-l.51 \subsection
-                {Blending}
+l.51 \section
+             {bla}
 Not a real error.
 
 Preview: Tightpage -32891 -32891 32891 32891
-! Preview: Snippet 1 ended.(546132+152916x31969935).
+! Preview: Snippet 1 ended.(539580+0x31969935).
 <-><->
       
-l.51 \subsection{Blending}
-                          
+l.51 \section{bla}
+                  
 Not a real error.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
@@ -127,104 +127,558 @@ Not a real error.
 ! Preview: Snippet 2 started.
 <-><->
       
-l.68 $
-      l_1 \times l_1$, we can associate it with a texture $(l_1 + l_2)
+l.54 \begin{figure}
+                   
 Not a real error.
 
+<Projection.pdf, id=6, 371.72507pt x 334.35416pt>
+File: Projection.pdf Graphic file (type pdf)
+ <use Projection.pdf>
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 68.
+(Font)              <8> on input line 59.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 68.
-! Preview: Snippet 2 ended.(455111+98303x1780088).
+(Font)              <6> on input line 59.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 59.
+
+! Preview: Snippet 2 ended.(10790574+0x31969935).
 <-><->
       
-l.68 $l_1 \times l_1$
-                     , we can associate it with a texture $(l_1 + l_2)
+l.61 \end{figure}
+                 
 Not a real error.
 
-[2]
+[2
+
+
+ <./Projection.pdf>]
+
+LaTeX Warning: Reference `fig:projection' on page 1 undefined on input line 64.
+
+
 ! Preview: Snippet 3 started.
 <-><->
       
-l.68 ...l_1$, we can associate it with a texture $
-                                                  (l_1 + l_2)
+l.65 with a set of $
+                    M$ images to texture the target plane. Each image has a
 Not a real error.
 
-! Preview: Snippet 3 ended.(491520+163840x5380618).
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 65.
+! Preview: Snippet 3 ended.(447828+0x707242).
 <-><->
       
-l.69 \times (l_1 + l_2)$
-                         in size. We have found $l_2 = \frac{l_1}{2}$ to pro...
-
+l.65 with a set of $M$
+                       images to texture the target plane. Each image has a
 Not a real error.
 
 [3]
 ! Preview: Snippet 4 started.
 <-><->
       
-l.69 \times (l_1 + l_2)$ in size. We have found $
-                                                 l_2 = \frac{l_1}{2}$ to pro...
-
+l.66 camera matrix $
+                    P_i$ for $i=1..M$, which translates a 3D point in the
 Not a real error.
 
-! Preview: Snippet 4 ended.(587273+225995x1942153).
+! Preview: Snippet 4 ended.(447828+98303x638938).
 <-><->
       
-l.69 ... size. We have found $l_2 = \frac{l_1}{2}$
-                                                   to provide a
+l.66 camera matrix $P_i$
+                         for $i=1..M$, which translates a 3D point in the
 Not a real error.
 
 [4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.66 camera matrix $P_i$ for $
+                              i=1..M$, which translates a 3D point in the
+Not a real error.
 
-LaTeX Warning: Reference `sec:seamMinimization' on page 1 undefined on input li
-ne 74.
+! Preview: Snippet 5 ended.(447828+0x2498599).
+<-><->
+      
+l.66 camera matrix $P_i$ for $i=1..M$
+                                     , which translates a 3D point in the
+Not a real error.
+
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.67 ...e system to a 2D point or pixel in image $
+                                                  i$'s
+Not a real error.
+
+! Preview: Snippet 6 ended.(432226+0x225780).
+<-><->
+      
+l.67 ...system to a 2D point or pixel in image $i$
+                                                  's
+Not a real error.
+
+[6]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.68 coordinates. A camera matrix $
+                                   P_i$ is composed of the camera's
+Not a real error.
+
+! Preview: Snippet 7 ended.(447828+98303x638938).
+<-><->
+      
+l.68 coordinates. A camera matrix $P_i$
+                                        is composed of the camera's
+Not a real error.
+
+[7]
+! Preview: Snippet 8 started.
+<-><->
+      
+l.72 $
+      i$ is taken. These extrinsic parameters are determined by the
+Not a real error.
+
+! Preview: Snippet 8 ended.(432226+0x225780).
+<-><->
+      
+l.72 $i$
+         is taken. These extrinsic parameters are determined by the
+Not a real error.
+
+[8]
+
+LaTeX Warning: Citation `chen2010indoor' on page 1 undefined on input line 74.
 
 
-LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 79.
+LaTeX Warning: Citation `liu2010indoor' on page 1 undefined on input line 74.
 
 
+LaTeX Warning: Citation `kua2012loopclosure' on page 1 undefined on input line 
+74.
 
-LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 80.
+! Preview: Snippet 9 started.
+<-><->
+      
+l.84 Ignoring the fact that the camera matrices $
+                                                 P_{1..M}$ are inaccurate,
+Not a real error.
+
+! Preview: Snippet 9 ended.(447828+98303x1575005).
+<-><->
+      
+l.84 ...e fact that the camera matrices $P_{1..M}$
+                                                   are inaccurate,
+Not a real error.
+
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.95 ... to select an image for texturing a tile $
+                                                  t$, we must first
+Not a real error.
+
+! Preview: Snippet 10 ended.(403098+0x236658).
+<-><->
+      
+l.95 ...o select an image for texturing a tile $t$
+                                                  , we must first
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.97 ...which we can quickly check by projecting $
+                                                  t$ into each image
+Not a real error.
+
+! Preview: Snippet 11 ended.(403098+0x236658).
+<-><->
+      
+l.97 ...ich we can quickly check by projecting $t$
+                                                   into each image
+Not a real error.
+
+[11]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.98 using the $
+                P_i$ camera matrices. Furthermore, each candidate image
+Not a real error.
+
+! Preview: Snippet 12 ended.(447828+98303x638938).
+<-><->
+      
+l.98 using the $P_i$
+                     camera matrices. Furthermore, each candidate image
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.100 line-of-sight to $
+                        t$, which can be calculated using standard
+Not a real error.
+
+! Preview: Snippet 13 ended.(403098+0x236658).
+<-><->
+      
+l.100 line-of-sight to $t$
+                          , which can be calculated using standard
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.101 ...tion tests between the camera location, $
+                                                  t$, and
+Not a real error.
+
+! Preview: Snippet 14 ended.(403098+0x236658).
+<-><->
+      
+l.101 ...on tests between the camera location, $t$
+                                                  , and
+Not a real error.
+
+[14]
+
+LaTeX Warning: Citation `rayintersection' on page 1 undefined on input line 102
+.
+
+! Preview: Snippet 15 started.
+<-><->
+      
+l.104 ... we have a list of candidate images for $
+                                                  t$, we define a scoring
+Not a real error.
+
+! Preview: Snippet 15 ended.(403098+0x236658).
+<-><->
+      
+l.104 ...e have a list of candidate images for $t$
+                                                  , we define a scoring
+Not a real error.
+
+[15]
+! Preview: Snippet 16 started.
+<-><->
+      
+l.106 $
+       t$. Since camera pose errors compound over distance, we wish to
+Not a real error.
+
+! Preview: Snippet 16 ended.(403098+0x236658).
+<-><->
+      
+l.106 $t$
+         . Since camera pose errors compound over distance, we wish to
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.115 be met by maximizing the function $
+                                         \frac{1}{d} (-1 \cdot \vec{c})
+Not a real error.
+
+! Preview: Snippet 17 ended.(553676+225995x3400836).
+<-><->
+      
+l.116 \cdot \vec{n}$
+                     as shown in Figure
+Not a real error.
+
+[17]
+
+LaTeX Warning: Reference `fig:scoringFunction' on page 1 undefined on input lin
+e 117.
+
+! Preview: Snippet 18 started.
+<-><->
+      
+l.117 \ref{fig:scoringFunction}. Specifically, $
+                                                d$ is the distance between
+Not a real error.
+
+! Preview: Snippet 18 ended.(455111+0x341106).
+<-><->
+      
+l.117 \ref{fig:scoringFunction}. Specifically, $d$
+                                                   is the distance between
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.118 the centers of a camera and a tile, and $
+                                               \vec{n}$ and $\vec{c}$ are
+Not a real error.
+
+! Preview: Snippet 19 ended.(468218+0x393370).
+<-><->
+      
+l.118 ...ers of a camera and a tile, and $\vec{n}$
+                                                   and $\vec{c}$ are
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.118 ... a camera and a tile, and $\vec{n}$ and $
+                                                  \vec{c}$ are
+Not a real error.
+
+! Preview: Snippet 20 ended.(468218+0x283611).
+<-><->
+      
+l.118 ...a and a tile, and $\vec{n}$ and $\vec{c}$
+                                                   are
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.121 \begin{figure}
+                    
+Not a real error.
 
 
-
-LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 81.
-
+LaTeX Warning: File `scoringFunction.jpg' not found on input line 123.
 
 
-LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 81.
+! Package pdftex.def Error: File `scoringFunction.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.123 ...aphics[height=1.5in]{scoringFunction.jpg}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Preview: Snippet 21 ended.(8096470+0x31969935).
+<-><->
+      
+l.128 \end{figure}
+                  
+Not a real error.
+
+[21
 
 
+]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.132 \begin{figure}
+                    [h!]
+Not a real error.
 
-LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 84.
+! Undefined control sequence.
+l.133   \centering \subfloat
+                            [][]{\includegraphics[width=3in,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
+LaTeX Warning: File `wall2_naive.pdf' not found on input line 134.
 
-LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 85.
+
+! Package pdftex.def Error: File `wall2_naive.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.134     height=0.97in]{wall2_naive.pdf}
+                                         }
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.136   \centering \subfloat
+                            [][]{\includegraphics[width=3in,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
- !name(paper.tex) !offset(604) 
+LaTeX Warning: File `wall2_cache.pdf' not found on input line 137.
+
+
+! Package pdftex.def Error: File `wall2_cache.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.137     height=0.97in]{wall2_cache.pdf}
+                                         }
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.139   \centering \subfloat
+                            [][]{\includegraphics[width=3in,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: File `wall2_cache_shift.pdf' not found on input line 140.
+
+
+! Package pdftex.def Error: File `wall2_cache_shift.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.140     height=0.97in]{wall2_cache_shift.pdf}
+                                               }
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.142   \centering \subfloat
+                            [][]{\includegraphics[width=3in,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: File `wall2_dynprog_noblend.pdf' not found on input line 143.
+
+
+! Package pdftex.def Error: File `wall2_dynprog_noblend.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.143 ...height=0.97in]{wall2_dynprog_noblend.pdf}
+                                                  }
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.145   \centering \subfloat
+                            [][]{\includegraphics[width=3in,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: File `wall2_cache_shift_blend.pdf' not found on input line 146.
+
+
+! Package pdftex.def Error: File `wall2_cache_shift_blend.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.146 ...ight=0.97in]{wall2_cache_shift_blend.pdf}
+                                                  }
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.148   \centering \subfloat
+                            [][]{\includegraphics[width=3in,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: File `wall2_dynprog.pdf' not found on input line 149.
+
+
+! Package pdftex.def Error: File `wall2_dynprog.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.149     height=0.97in]{wall2_dynprog.pdf}
+                                           }
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Preview: Snippet 22 ended.(30089656+0x31969935).
+<-><->
+      
+l.155 \end{figure}
+                  
+Not a real error.
+
+[22
+
+
+]
+
+LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 158
+.
+
+ !name(paper.tex) !offset(539) 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 1238 strings out of 495061
- 15350 string characters out of 1182621
- 65838 words of memory out of 3000000
- 4451 multiletter control sequences out of 15000+50000
- 4553 words of font info for 17 fonts, out of 3000000 for 9000
+ 1274 strings out of 495061
+ 15815 string characters out of 1182621
+ 68838 words of memory out of 3000000
+ 4470 multiletter control sequences out of 15000+50000
+ 6854 words of font info for 25 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 29i,4n,22p,424b,128s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,6n,22p,424b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on _region_.pdf (4 pages, 57615 bytes).
+xlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
+ts/cm/cmtt10.pfb>
+Output written on _region_.pdf (22 pages, 1474422 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
+ 265 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
