@@ -3,23 +3,6 @@
     (LaTeX-add-bibliographies
      "egbib")
     (LaTeX-add-labels
-     "sec:introduction"
-     "sec:simpleTextureMapping"
-     "fig:projection"
-     "sec:directMapping"
-     "fig:scoringFunction"
-     "fig:compareAll"
-     "sec:mappingWithCaching"
-     "sec:existingApproaches"
-     "fig:mosaic3D"
-     "sec:proposedApproach"
-     "fig:pipeline"
-     "sec:projectionAndRotation"
-     "sec:robustSIFTFeatureMatching"
-     "sec:seamMinimization"
-     "fig:projectionAngles"
-     "fig:dagCreation"
-     "sec:blending"
      "sec:resultsAndConclusions"
      "fig:results")
     (TeX-add-symbols

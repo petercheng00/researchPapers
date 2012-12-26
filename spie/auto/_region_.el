@@ -1,11 +1,13 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
+    (LaTeX-add-bibliographies
+     "report")
     (LaTeX-add-labels
-     "sec:simpleTextureMapping"
-     "fig:projection"
-     "fig:scoringFunction"
-     "fig:compareAll")
+     "fig:results")
     (TeX-run-style-hooks
+     "subcaption"
+     "caption"
+     "subfig"
      "graphicx"
      "latex2e"
      "spie10"
