@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  26 DEC 2012 04:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  30 DEC 2012 04:05
 entering extended mode
  %&-line parsing enabled.
 **\nonstopmode\nofiles\PassOptionsToPackage{active,tightpage,auctex}{preview}\A
@@ -102,72 +102,237 @@ ip .
 \c@lotdepth=\count96
 \sf@top=\skip46
 \sf@bottom=\skip47
-) (/usr/share/texmf-texlive/tex/latex/caption/subcaption.sty
-Package: subcaption 2008/08/31 v1.0b Adding subcaptions (AR)
+) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip48
 
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
 
-! LaTeX Error: Command \subfloat already defined.
-               Or name \end... illegal, see p.192 of the manual.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen112
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen113
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count97
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count98
+\leftroot@=\count99
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count100
+\DOTSCASE@=\count101
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen114
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count102
+\c@MaxMatrixCols=\count103
+\dotsspace@=\muskip10
+\c@parentequation=\count104
+\dspbrk@lvl=\count105
+\tag@help=\toks16
+\row@=\count106
+\column@=\count107
+\maxfields@=\count108
+\andhelp@=\toks17
+\eqnshift@=\dimen115
+\alignsep@=\dimen116
+\tagshift@=\dimen117
+\tagwidth@=\dimen118
+\totwidth@=\dimen119
+\lineht@=\dimen120
+\@envbody=\toks18
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.91   \@ifnextchar[\@subfloat\subfloat@}
-                                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
-LaTeX Info: Redefining \subref on input line 127.
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen121
+\Hy@linkcounter=\count109
+\Hy@pagecounter=\count110
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 3428.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
+\Fld@menulength=\count111
+\Field@Width=\dimen122
+\Fld@charsize=\dimen123
+\Field@toks=\toks20
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring OFF on input line 4397.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count112
+\c@Item=\count113
+\c@Hfootnote=\count114
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count115
 )
 No file _region_.aux.
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
 (/usr/local/share/texmf/tex/latex/preview/preview.sty
 Package: preview 2010/02/14 CVS-1.126 (AUCTeX/preview-latex)
 
 (/usr/local/share/texmf/tex/latex/preview/prtightpage.def
-\PreviewBorder=\dimen112
+\PreviewBorder=\dimen124
 )
 (/usr/local/share/texmf/tex/latex/preview/prauctex.def
 No auxiliary output files.
 
 
-\hbadness=\count97
-\hfuzz=\dimen113
+\hbadness=\count116
+\hfuzz=\dimen125
 (/usr/local/share/texmf/tex/latex/preview/prauctex.cfg))
 (/usr/local/share/texmf/tex/latex/preview/prfootnotes.def)
-\pr@snippet=\count98
-\pr@box=\box26
-\pr@output=\toks15
+\pr@snippet=\count117
+\pr@box=\box28
+\pr@output=\toks21
 
 Preview: Fontsize 10pt
 Preview: PDFoutput 1
 ) (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count99
-\scratchdimen=\dimen114
-\scratchbox=\box27
-\nofMPsegments=\count100
-\nofMParguments=\count101
-\everyMPshowfont=\toks16
-\MPscratchCnt=\count102
-\MPscratchDim=\dimen115
-\MPnumerator=\count103
-\everyMPtoPDFconversion=\toks17
+\scratchcounter=\count118
+\scratchdimen=\dimen126
+\scratchbox=\box29
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen127
+\MPnumerator=\count122
+\everyMPtoPDFconversion=\toks23
 )
 Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 52.
 Package caption Info: Incompatible package detected (regarding \caption).
 (caption)             \caption = \protected\long macro:->\pr@protect@domacro {}
 {##1{}}\pr@\caption .
@@ -178,241 +343,459 @@ Package caption Warning: \caption will not be redefined since it's already
 (caption)                unknown to the caption package.
 See the caption package documentation for explanation.
 
+Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
- !name(paper.tex) !offset(674) 
+Package hyperref Info: Link coloring OFF on input line 52.
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count123
+)
+LaTeX Info: Redefining \ref on input line 52.
+LaTeX Info: Redefining \pageref on input line 52.
+\AtBeginShipoutBox=\box30
+
+ !name(paper.tex) !offset(80) 
 ! Preview: Snippet 1 started.
 <-><->
       
-l.54 \subsection
-                {Future stuff}
+l.55 \section
+             {Simple Texture Mapping}
 Not a real error.
 
 Preview: Tightpage -32891 -32891 32891 32891
-! Preview: Snippet 1 ended.(546132+0x31969935).
+! Preview: Snippet 1 ended.(539580+0x31969935).
 <-><->
       
-l.54 \subsection{Future stuff}
-                              
+l.55 \section{Simple Texture Mapping}
+                                     
 Not a real error.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
+
+LaTeX Warning: Reference `fig:projection' on page 1 undefined on input line 59.
+
+
 ! Preview: Snippet 2 started.
 <-><->
       
-l.59 \begin{figure*}
+l.60 with a set of $
+                    M$ images to texture the target plane. Each image has a
+Not a real error.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 60.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 60.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+! Preview: Snippet 2 ended.(447828+0x707242).
+<-><->
+      
+l.60 with a set of $M$
+                       images to texture the target plane. Each image has a
+Not a real error.
+
+[2]
+! Preview: Snippet 3 started.
+<-><->
+      
+l.61 camera matrix $
+                    P_i$ for $i=1..M$, which translates a 3D point in the
+Not a real error.
+
+! Preview: Snippet 3 ended.(447828+98303x638938).
+<-><->
+      
+l.61 camera matrix $P_i$
+                         for $i=1..M$, which translates a 3D point in the
+Not a real error.
+
+[3]
+! Preview: Snippet 4 started.
+<-><->
+      
+l.61 camera matrix $P_i$ for $
+                              i=1..M$, which translates a 3D point in the
+Not a real error.
+
+! Preview: Snippet 4 ended.(447828+0x2498599).
+<-><->
+      
+l.61 camera matrix $P_i$ for $i=1..M$
+                                     , which translates a 3D point in the
+Not a real error.
+
+[4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.62 ...e system to a 2D point or pixel in image $
+                                                  i$'s
+Not a real error.
+
+! Preview: Snippet 5 ended.(432226+0x225780).
+<-><->
+      
+l.62 ...system to a 2D point or pixel in image $i$
+                                                  's
+Not a real error.
+
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.63 coordinates. A camera matrix $
+                                   P_i$ is composed of the camera's
+Not a real error.
+
+! Preview: Snippet 6 ended.(447828+98303x638938).
+<-><->
+      
+l.63 coordinates. A camera matrix $P_i$
+                                        is composed of the camera's
+Not a real error.
+
+[6]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.67 $
+      i$ is taken. These extrinsic parameters are determined by the
+Not a real error.
+
+! Preview: Snippet 7 ended.(432226+0x225780).
+<-><->
+      
+l.67 $i$
+         is taken. These extrinsic parameters are determined by the
+Not a real error.
+
+[7]
+
+LaTeX Warning: Citation `chen2010indoor' on page 1 undefined on input line 69.
+
+
+LaTeX Warning: Citation `liu2010indoor' on page 1 undefined on input line 69.
+
+
+LaTeX Warning: Citation `kua2012loopclosure' on page 1 undefined on input line 
+69.
+
+! Preview: Snippet 8 started.
+<-><->
+      
+l.79 \begin{figure}
+                   [ht]
+Not a real error.
+
+<Projection.pdf, id=30, 371.72507pt x 334.35416pt>
+File: Projection.pdf Graphic file (type pdf)
+ <use Projection.pdf>
+<scoringFunction.jpg, id=31, 230.5413pt x 193.6836pt>
+File: scoringFunction.jpg Graphic file (type jpg)
+
+<use scoringFunction.jpg>
+! Preview: Snippet 8 ended.(11831869+0x30141991).
+<-><->
+      
+l.97 \end{figure}
+                 
+Not a real error.
+
+[8
+
+
+
+
+
+ <./Projection.pdf> <./scoringFunction.jpg>]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.100 \subsection
+                 {Tile-based Texture Mapping}
+Not a real error.
+
+! Preview: Snippet 9 ended.(546132+152916x31969935).
+<-><->
+      
+l.100 \subsection{Tile-based Texture Mapping}
+                                             
+Not a real error.
+
+[9
+
+]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.102 Ignoring the fact that the camera matrices $
+                                                  P_{1..M}$ are inaccurate,
+Not a real error.
+
+! Preview: Snippet 10 ended.(447828+98303x1575005).
+<-><->
+      
+l.102 ... fact that the camera matrices $P_{1..M}$
+                                                   are inaccurate,
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.113 ...to select an image for texturing a tile $
+                                                  t$, we must first
+Not a real error.
+
+! Preview: Snippet 11 ended.(403098+0x236658).
+<-><->
+      
+l.113 ... select an image for texturing a tile $t$
+                                                  , we must first
+Not a real error.
+
+[11]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.115 ...hich we can quickly check by projecting $
+                                                  t$ into each image
+Not a real error.
+
+! Preview: Snippet 12 ended.(403098+0x236658).
+<-><->
+      
+l.115 ...ch we can quickly check by projecting $t$
+                                                   into each image
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.116 using the $
+                 P_i$ camera matrices. Furthermore, each candidate image
+Not a real error.
+
+! Preview: Snippet 13 ended.(447828+98303x638938).
+<-><->
+      
+l.116 using the $P_i$
+                      camera matrices. Furthermore, each candidate image
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.118 line-of-sight to $
+                        t$, which can be calculated using standard
+Not a real error.
+
+! Preview: Snippet 14 ended.(403098+0x236658).
+<-><->
+      
+l.118 line-of-sight to $t$
+                          , which can be calculated using standard
+Not a real error.
+
+[14]
+! Preview: Snippet 15 started.
+<-><->
+      
+l.119 ...tion tests between the camera location, $
+                                                  t$, and
+Not a real error.
+
+! Preview: Snippet 15 ended.(403098+0x236658).
+<-><->
+      
+l.119 ...on tests between the camera location, $t$
+                                                  , and
+Not a real error.
+
+[15]
+
+LaTeX Warning: Citation `rayintersection' on page 1 undefined on input line 120
+.
+
+! Preview: Snippet 16 started.
+<-><->
+      
+l.122 ... we have a list of candidate images for $
+                                                  t$, we define a scoring
+Not a real error.
+
+! Preview: Snippet 16 ended.(403098+0x236658).
+<-><->
+      
+l.122 ...e have a list of candidate images for $t$
+                                                  , we define a scoring
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.124 $
+       t$. Since camera pose errors compound over distance, we wish to
+Not a real error.
+
+! Preview: Snippet 17 ended.(403098+0x236658).
+<-><->
+      
+l.124 $t$
+         . Since camera pose errors compound over distance, we wish to
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.133 be met by maximizing the function $
+                                         \frac{1}{d} (-1 \cdot \vec{c})
+Not a real error.
+
+! Preview: Snippet 18 ended.(553676+225995x3400836).
+<-><->
+      
+l.134 \cdot \vec{n}$
+                     as shown in Figure
+Not a real error.
+
+[18]
+
+LaTeX Warning: Reference `fig:scoringFunction' on page 1 undefined on input lin
+e 135.
+
+! Preview: Snippet 19 started.
+<-><->
+      
+l.135 \ref{fig:scoringFunction}. Specifically, $
+                                                d$ is the distance between
+Not a real error.
+
+! Preview: Snippet 19 ended.(455111+0x341106).
+<-><->
+      
+l.135 \ref{fig:scoringFunction}. Specifically, $d$
+                                                   is the distance between
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.136 the centers of a camera and a tile, and $
+                                               \vec{n}$ and $\vec{c}$ are
+Not a real error.
+
+! Preview: Snippet 20 ended.(468218+0x393370).
+<-><->
+      
+l.136 ...ers of a camera and a tile, and $\vec{n}$
+                                                   and $\vec{c}$ are
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.136 ... a camera and a tile, and $\vec{n}$ and $
+                                                  \vec{c}$ are
+Not a real error.
+
+! Preview: Snippet 21 ended.(468218+0x283611).
+<-><->
+      
+l.136 ...a and a tile, and $\vec{n}$ and $\vec{c}$
+                                                   are
+Not a real error.
+
+[21]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.140 \begin{figure}
                     
 Not a real error.
 
+<wall2_naive.pdf, id=224, 701.62125pt x 294.09875pt>
+File: wall2_naive.pdf Graphic file (type pdf)
+ <use wall2_naive.pdf>
+<wall2_naive_shift.pdf, id=225, 481.8pt x 154.5775pt>
+File: wall2_naive_shift.pdf Graphic file (type pdf)
 
-! Package caption Error: No float type 'subfloat' defined.
+<use wall2_naive_shift.pdf>
+<wall2_cache_shift.pdf, id=227, 701.62125pt x 294.09875pt>
+File: wall2_cache_shift.pdf Graphic file (type pdf)
 
-See the caption package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.61   \subfloat
-                [][]{\includegraphics[width=3in]{finalfloors.jpg}}
-If you do not understand this error, please take a closer look
-at the documentation of the `caption' package, especially the
-section about errors.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+<use wall2_cache_shift.pdf>
+<wall2_shortest_shift.pdf, id=228, 701.62125pt x 294.09875pt>
+File: wall2_shortest_shift.pdf Graphic file (type pdf)
 
+<use wall2_shortest_shift.pdf>
+<wall2_cache_shift_blend.pdf, id=229, 701.62125pt x 294.09875pt>
+File: wall2_cache_shift_blend.pdf Graphic file (type pdf)
 
-! LaTeX Error: No counter 'subsubfigure' defined.
+<use wall2_cache_shift_blend.pdf>
+<wall2_shortest_shift_blend.pdf, id=230, 701.62125pt x 294.09875pt>
+File: wall2_shortest_shift_blend.pdf Graphic file (type pdf)
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.61   \subfloat
-                [][]{\includegraphics[width=3in]{finalfloors.jpg}}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: No counter 'subsubfigure@save' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.61   \subfloat
-                [][]{\includegraphics[width=3in]{finalfloors.jpg}}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-<finalfloors.jpg, id=6, 3792.1675pt x 1441.385pt>
-File: finalfloors.jpg Graphic file (type jpg)
- <use finalfloors.jpg>
-
-! Package caption Error: No float type 'subfloat' defined.
-
-See the caption package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.64   \subfloat
-                [][]{\includegraphics[width=3in]{finalceilings.jpg}}
-If you do not understand this error, please take a closer look
-at the documentation of the `caption' package, especially the
-section about errors.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: No counter 'subsubfigure' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.64   \subfloat
-                [][]{\includegraphics[width=3in]{finalceilings.jpg}}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: No counter 'subsubfigure@save' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.64   \subfloat
-                [][]{\includegraphics[width=3in]{finalceilings.jpg}}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-<finalceilings.jpg, id=7, 2308.625pt x 1104.125pt>
-File: finalceilings.jpg Graphic file (type jpg)
- <use finalceilings.jpg>
-
-! Package caption Error: No float type 'subfloat' defined.
-
-See the caption package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.67   \subfloat
-                [][]{\includegraphics[height=2in, width=3in]{floorcropped.jpg}}
-
-If you do not understand this error, please take a closer look
-at the documentation of the `caption' package, especially the
-section about errors.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: No counter 'subsubfigure' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.67   \subfloat
-                [][]{\includegraphics[height=2in, width=3in]{floorcropped.jpg}}
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: No counter 'subsubfigure@save' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.67   \subfloat
-                [][]{\includegraphics[height=2in, width=3in]{floorcropped.jpg}}
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-<floorcropped.jpg, id=8, 2693.06125pt x 2148.025pt>
-File: floorcropped.jpg Graphic file (type jpg)
- <use floorcropped.jpg>
-
-! Package caption Error: No float type 'subfloat' defined.
-
-See the caption package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.70   \subfloat
-                [][]{\includegraphics[width=3in]{fullmodel.png}}
-If you do not understand this error, please take a closer look
-at the documentation of the `caption' package, especially the
-section about errors.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: No counter 'subsubfigure' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.70   \subfloat
-                [][]{\includegraphics[width=3in]{fullmodel.png}}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: No counter 'subsubfigure@save' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.70   \subfloat
-                [][]{\includegraphics[width=3in]{fullmodel.png}}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-<fullmodel.png, id=9, 1242.14063pt x 639.89063pt>
-File: fullmodel.png Graphic file (type png)
- <use fullmodel.png>
-! Preview: Snippet 2 ended.(20656299+0x31969935).
+<use wall2_shortest_shift_blend.pdf>
+! Preview: Snippet 22 ended.(20893203+0x31969935).
 <-><->
       
-l.74 \end{figure*}
+l.158 \end{figure}
                   
 Not a real error.
 
-[2
+[22
 
 
+ <./wall2_naive.pdf> <./wall2_naive_shift.pdf> <./wall2_cache_shift.pdf> <./wal
+l2_shortest_shift.pdf> <./wall2_cache_shift_blend.pdf> <./wall2_shortest_shift_
+blend.pdf>]
 
- <./finalfloors.jpg> <./finalceilings.jpg> <./floorcropped.jpg> <./fullmodel.pn
-g>]
-No file _region_.bbl.
- !name(paper.tex) !offset(672)  ) 
+LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 161
+.
+
+
+LaTeX Warning: Reference `sec:imageCompositing' on page 1 undefined on input li
+ne 166.
+
+ !name(paper.tex) !offset(613) 
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2376 strings out of 495061
- 35352 string characters out of 1182621
- 95300 words of memory out of 3000000
- 5571 multiletter control sequences out of 15000+50000
- 4245 words of font info for 16 fonts, out of 3000000 for 9000
+ 6409 strings out of 495061
+ 93442 string characters out of 1182621
+ 170178 words of memory out of 3000000
+ 9482 multiletter control sequences out of 15000+50000
+ 6861 words of font info for 27 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,45p,436b,316s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmr10.pfb>
-Output written on _region_.pdf (2 pages, 5257550 bytes).
+ 44i,10n,45p,474b,406s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on _region_.pdf (22 pages, 1697340 bytes).
 PDF statistics:
- 23 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 302 PDF objects out of 1000 (max. 8388607)
+ 11 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

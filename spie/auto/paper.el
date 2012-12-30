@@ -7,6 +7,7 @@
      "sec:simpleTextureMapping"
      "fig:projection"
      "fig:scoringFunction"
+     "sec:tileBasedMapping"
      "fig:compareAll"
      "sec:existingApproaches"
      "fig:mosaic3D"
@@ -24,6 +25,9 @@
      "sec:resultsAndConclusions"
      "fig:results")
     (TeX-run-style-hooks
+     "hyperref"
+     "amssymb"
+     "amsmath"
      "subfig"
      "graphicx"
      "latex2e"
