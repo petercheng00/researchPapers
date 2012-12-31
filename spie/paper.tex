@@ -125,7 +125,7 @@ The remainder of the paper is organized as follows. Section
 onto our geometry and simple approaches towards texturing. Section
 \ref{sec:existingApproaches} covers more sophisticated existing
 approaches to image matching and stitching, and their performance on
-our datasets. Section \ref{sec:imageAlignment} contains our approach
+our datasets. Section \ref{sec:2dAlignment} contains our approach
 towards image alignment, followed by Section
 \ref{sec:imageCompositing}, which describes compositing
 approaches. Section \ref{sec:resultsAndConclusions} contains further
@@ -344,14 +344,9 @@ wall's boundaries, for example in areas with a slanted roof.
 
 \begin{figure}
   \centering
-  \includegraphics[height=1.5in]{geometryFeature.jpg}
-  \includegraphics[height=1.5in]{imageCorner.jpg}
-  \includegraphics[height=1.5in]{geometryImageAlign.jpg}
-  \caption{(a) The red lines indidcate geometry-based lines,
-    consisting of boundaries and intersections. (b) A matching
-    image-based line, corresponding to a corner. (c) The image rotated
-    and shifted such that the matched lines align align with
-    geometry.}
+  \includegraphics[height=1.5in]{geometryAlign_planes.png}
+  \includegraphics[height=1.5in]{geometryAlignment.jpg}
+  \caption{(a) When texturing the red surface, it makes sense to align images to surface boundaries and intersections. (b) Red lines are geometry-based lines, while green lines are detected in the image via Hough transform. Above is the original projection, and below is the image adjusted for alignment.}
   \label{fig:geometryAlignment}
 \end{figure}
 
@@ -464,7 +459,7 @@ A =
 \]
 If only relative distances between images are included, the absolute
 location of the images can not be calculated, and the matrix is rank
-deficient. From Section \ref{geometryBasedAlignemtn}, a number of
+deficient. From Section \ref{sec:geometryAlignment}, a number of
 images are anchored to geometry points, in one or both dimensions, and
 thus their locations can be used to fix the rest in place. In case no
 anchor images exist, we simply arbitrarily pick an image, as we have

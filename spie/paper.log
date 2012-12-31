@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  30 DEC 2012 04:07
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  30 DEC 2012 23:48
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -343,93 +343,81 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 93.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)
-
-LaTeX Warning: Reference `sec:imageAlignment' on page 1 undefined on input line
- 128.
-
-[1
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Projection.pdf, id=89, 371.72507pt x 334.35416pt>
+<Projection.pdf, id=90, 371.72507pt x 334.35416pt>
 File: Projection.pdf Graphic file (type pdf)
  <use Projection.pdf>
-<scoringFunction.jpg, id=90, 230.5413pt x 193.6836pt>
+<scoringFunction.jpg, id=91, 230.5413pt x 193.6836pt>
 File: scoringFunction.jpg Graphic file (type jpg)
 
-<use scoringFunction.jpg> <wall2_naive.pdf, id=93, 701.62125pt x 294.09875pt>
+<use scoringFunction.jpg> <wall2_naive.pdf, id=94, 701.62125pt x 294.09875pt>
 File: wall2_naive.pdf Graphic file (type pdf)
 
-<use wall2_naive.pdf> <wall2_naive_shift.pdf, id=94, 481.8pt x 154.5775pt>
+<use wall2_naive.pdf> <wall2_naive_shift.pdf, id=95, 481.8pt x 154.5775pt>
 File: wall2_naive_shift.pdf Graphic file (type pdf)
 
 <use wall2_naive_shift.pdf>
-<wall2_cache_shift.pdf, id=96, 701.62125pt x 294.09875pt>
+<wall2_cache_shift.pdf, id=97, 701.62125pt x 294.09875pt>
 File: wall2_cache_shift.pdf Graphic file (type pdf)
 
 <use wall2_cache_shift.pdf>
-<wall2_shortest_shift.pdf, id=97, 701.62125pt x 294.09875pt>
+<wall2_shortest_shift.pdf, id=98, 701.62125pt x 294.09875pt>
 File: wall2_shortest_shift.pdf Graphic file (type pdf)
 
 <use wall2_shortest_shift.pdf>
-<wall2_cache_shift_blend.pdf, id=98, 701.62125pt x 294.09875pt>
+<wall2_cache_shift_blend.pdf, id=99, 701.62125pt x 294.09875pt>
 File: wall2_cache_shift_blend.pdf Graphic file (type pdf)
 
 <use wall2_cache_shift_blend.pdf>
-<wall2_shortest_shift_blend.pdf, id=99, 701.62125pt x 294.09875pt>
+<wall2_shortest_shift_blend.pdf, id=100, 701.62125pt x 294.09875pt>
 File: wall2_shortest_shift_blend.pdf Graphic file (type pdf)
 
 <use wall2_shortest_shift_blend.pdf> [2 <./Projection.pdf> <./scoringFunction.j
-pg>] <Graph_crop.pdf, id=256, 308.5389pt x 105.02065pt>
+pg>] <Graph_crop.pdf, id=257, 308.5389pt x 105.02065pt>
 File: Graph_crop.pdf Graphic file (type pdf)
  <use Graph_crop.pdf>
-<panoMy.jpg, id=257, 1405.25pt x 329.23pt>
+<panoMy.jpg, id=258, 1405.25pt x 329.23pt>
 File: panoMy.jpg Graphic file (type jpg)
  <use panoMy.jpg> [3 <./wall2_naive.pdf> <./wall2_naive_shift.pdf> <./wall2_cac
 he_shift.pdf> <./wall2_shortest_shift.pdf> <./wall2_cache_shift_blend.pdf> <./w
 all2_shortest_shift_blend.pdf>]
-<geometryFeature.jpg, id=312, 230.5413pt x 193.6836pt>
-File: geometryFeature.jpg Graphic file (type jpg)
+<geometryAlign_planes.png, id=313, 268.75406pt x 207.77625pt>
+File: geometryAlign_planes.png Graphic file (type png)
 
-<use geometryFeature.jpg> <imageCorner.jpg, id=313, 230.5413pt x 193.6836pt>
-File: imageCorner.jpg Graphic file (type jpg)
+<use geometryAlign_planes.png>
+<geometryAlignment.jpg, id=315, 3861.42625pt x 1302.8675pt>
+File: geometryAlignment.jpg Graphic file (type jpg)
 
-<use imageCorner.jpg>
-<geometryImageAlign.jpg, id=314, 230.5413pt x 193.6836pt>
-File: geometryImageAlign.jpg Graphic file (type jpg)
-
-<use geometryImageAlign.jpg> [4 <./Graph_crop.pdf> <./panoMy.jpg>] [5 <./geomet
-ryFeature.jpg> <./imageCorner.jpg> <./geometryImageAlign.jpg>]
-
-LaTeX Warning: Reference `geometryBasedAlignemtn' on page 6 undefined on input 
-line 467.
-
-[6] <projectionWall.pdf, id=367, 312.16624pt x 304.13625pt>
+<use geometryAlignment.jpg> [4 <./Graph_crop.pdf> <./panoMy.jpg>] [5 <./geometr
+yAlign_planes.png> <./geometryAlignment.jpg>] [6]
+<projectionWall.pdf, id=370, 312.16624pt x 304.13625pt>
 File: projectionWall.pdf Graphic file (type pdf)
 
 <use projectionWall.pdf>
-<projectionCeiling.pdf, id=369, 479.7925pt x 295.1025pt>
+<projectionCeiling.pdf, id=372, 479.7925pt x 295.1025pt>
 File: projectionCeiling.pdf Graphic file (type pdf)
 
 <use projectionCeiling.pdf>
-<projectionWallCrop.pdf, id=371, 272.01625pt x 287.0725pt>
+<projectionWallCrop.pdf, id=374, 272.01625pt x 287.0725pt>
 File: projectionWallCrop.pdf Graphic file (type pdf)
 
 <use projectionWallCrop.pdf> [7 <./projectionWall.pdf> <./projectionCeiling.pdf
-> <./projectionWallCrop.pdf>] <dagCreation.pdf, id=417, 481.8pt x 154.5775pt>
+> <./projectionWallCrop.pdf>] <dagCreation.pdf, id=420, 481.8pt x 154.5775pt>
 File: dagCreation.pdf Graphic file (type pdf)
 
 <use dagCreation.pdf> [8 <./dagCreation.pdf>]
-<finalfloors.jpg, id=458, 3792.1675pt x 1441.385pt>
+<finalfloors.jpg, id=461, 3792.1675pt x 1441.385pt>
 File: finalfloors.jpg Graphic file (type jpg)
  <use finalfloors.jpg>
-<finalceilings.jpg, id=459, 2308.625pt x 1104.125pt>
+<finalceilings.jpg, id=462, 2308.625pt x 1104.125pt>
 File: finalceilings.jpg Graphic file (type jpg)
  <use finalceilings.jpg>
-<floorcropped.jpg, id=460, 2693.06125pt x 2148.025pt>
+<floorcropped.jpg, id=463, 2693.06125pt x 2148.025pt>
 File: floorcropped.jpg Graphic file (type jpg)
  <use floorcropped.jpg>
-<fullmodel.png, id=461, 1242.14063pt x 639.89063pt>
+<fullmodel.png, id=464, 1242.14063pt x 639.89063pt>
 File: fullmodel.png Graphic file (type png)
  <use fullmodel.png>
 (./paper.bbl [9]
@@ -443,35 +431,32 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
 ) [10 <./finalfloors.jpg> <./finalceilings.jpg> <./floorcropped.jpg> <./fullmod
 el.png>]
-[11] (./paper.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[11] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 6463 strings out of 495061
- 94649 string characters out of 1182621
- 177078 words of memory out of 3000000
- 9464 multiletter control sequences out of 15000+50000
+ 6456 strings out of 495061
+ 94531 string characters out of 1182621
+ 177129 words of memory out of 3000000
+ 9458 multiletter control sequences out of 15000+50000
  10476 words of font info for 41 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,45p,391b,395s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/
-texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy
-7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on paper.pdf (11 pages, 7667447 bytes).
+ 44i,10n,45p,435b,395s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr
+5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pf
+b>
+Output written on paper.pdf (11 pages, 7853507 bytes).
 PDF statistics:
- 552 PDF objects out of 1000 (max. 8388607)
+ 554 PDF objects out of 1000 (max. 8388607)
  64 named destinations out of 1000 (max. 500000)
- 226 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 221 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,11 +1,8 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
     (LaTeX-add-labels
-     "sec:simpleTextureMapping"
-     "fig:projection"
-     "fig:scoringFunction"
-     "sec:tileBasedMapping"
-     "fig:compareAll")
+     "sec:geometryAlignment"
+     "fig:geometryAlignment")
     (TeX-run-style-hooks
      "hyperref"
      "amssymb"
