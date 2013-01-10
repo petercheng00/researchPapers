@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  30 DEC 2012 23:42
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  10 JAN 2013 15:19
 entering extended mode
  %&-line parsing enabled.
 **\nonstopmode\nofiles\PassOptionsToPackage{active,tightpage,auctex}{preview}\A
@@ -358,82 +358,122 @@ LaTeX Info: Redefining \ref on input line 52.
 LaTeX Info: Redefining \pageref on input line 52.
 \AtBeginShipoutBox=\box30
 
- !name(paper.tex) !offset(278) 
+ !name(paper.tex) !offset(690) 
 ! Preview: Snippet 1 started.
 <-><->
       
-l.55 \subsection
-                {Geometry-based Alignment}
+l.55 \section
+             {Results and Conclusions}
 Not a real error.
 
 Preview: Tightpage -32891 -32891 32891 32891
-! Preview: Snippet 1 ended.(546132+152916x31969935).
+! Preview: Snippet 1 ended.(539580+0x31969935).
 <-><->
       
-l.55 \subsection{Geometry-based Alignment}
-                                          
+l.55 \section{Results and Conclusions}
+                                      
 Not a real error.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 
-LaTeX Warning: Reference `sec:simpleTextureMapping' on page 1 undefined on inpu
-t line 58.
+LaTeX Warning: Reference `fig:results' on page 1 undefined on input line 59.
+
+
+LaTeX Warning: Reference `fig:results' on page 1 undefined on input line 64.
 
 ! Preview: Snippet 2 started.
 <-><->
       
-l.67 \begin{figure}
+l.64 ...{fig:results}(a) was generated with 7543 $
+                                                  \times$ 776
+Not a real error.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 64.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 64.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+! Preview: Snippet 2 ended.(382293+54613x509726).
+<-><->
+      
+l.64 ...sults}(a) was generated with 7543 $\times$
+                                                   776
+Not a real error.
+
+[2]
+! Preview: Snippet 3 started.
+<-><->
+      
+l.84 \begin{figure}
                    
 Not a real error.
 
-<geometryAlign_planes.png, id=8, 421.575pt x 316.18124pt>
-File: geometryAlign_planes.png Graphic file (type png)
+<finalfloors.jpg, id=12, 3792.1675pt x 1441.385pt>
+File: finalfloors.jpg Graphic file (type jpg)
+ <use finalfloors.jpg>
+<finalceilings.jpg, id=13, 2308.625pt x 1104.125pt>
+File: finalceilings.jpg Graphic file (type jpg)
+ <use finalceilings.jpg>
+<floorcropped.jpg, id=14, 2693.06125pt x 2148.025pt>
+File: floorcropped.jpg Graphic file (type jpg)
+ <use floorcropped.jpg>
+<pier15floor.jpg, id=15, 3608.48125pt x 2465.21pt>
+File: pier15floor.jpg Graphic file (type jpg)
+ <use pier15floor.jpg>
+<fullmodel.png, id=16, 1242.14063pt x 639.89063pt>
+File: fullmodel.png Graphic file (type png)
+ <use fullmodel.png>
+<threestoryfull2.png, id=18, 1169.11781pt x 676.02562pt>
+File: threestoryfull2.png Graphic file (type png)
 
-<use geometryAlign_planes.png>
-<geometryAlignment.jpg, id=9, 3861.42625pt x 1302.8675pt>
-File: geometryAlignment.jpg Graphic file (type jpg)
+<use threestoryfull2.png> <pier15.png, id=19, 768.62157pt x 389.20406pt>
+File: pier15.png Graphic file (type png)
 
-<use geometryAlignment.jpg>
-! Preview: Snippet 2 ended.(9463726+0x31969935).
+<use pier15.png> <threestoryfull.png, id=20, 1028.34187pt x 588.69937pt>
+File: threestoryfull.png Graphic file (type png)
+
+<use threestoryfull.png>
+! Preview: Snippet 3 ended.(43706696+0x31969935).
 <-><->
       
-l.73 \end{figure}
-                 
+l.106 \end{figure}
+                  
 Not a real error.
 
-[2
+[3
 
 
 
- <./geometryAlign_planes.png (PNG copy)> <./geometryAlignment.jpg>]
-
-LaTeX Warning: Reference `fig:geometryAlignment' on page 1 undefined on input l
-ine 83.
-
-
-LaTeX Warning: Reference `sec:robustSIFTFeatureMatching' on page 1 undefined on
- input line 97.
-
- !name(paper.tex) !offset(679) 
+ <./finalfloors.jpg> <./finalceilings.jpg> <./floorcropped.jpg> <./pier15floor.
+jpg> <./fullmodel.png> <./threestoryfull2.png (PNG copy)> <./pier15.png (PNG co
+py)> <./threestoryfull.png (PNG copy)>]
+No file _region_.bbl.
+ !name(paper.tex) !offset(688) 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6332 strings out of 495061
- 91996 string characters out of 1182621
- 166178 words of memory out of 3000000
- 9434 multiletter control sequences out of 15000+50000
- 4553 words of font info for 17 fonts, out of 3000000 for 9000
+ 6397 strings out of 495061
+ 93005 string characters out of 1182621
+ 165178 words of memory out of 3000000
+ 9474 multiletter control sequences out of 15000+50000
+ 6551 words of font info for 26 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,6n,42p,574b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,45p,474b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on _region_.pdf (2 pages, 266630 bytes).
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb>
+Output written on _region_.pdf (3 pages, 8796259 bytes).
 PDF statistics:
- 24 PDF objects out of 1000 (max. 8388607)
- 2 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 47 PDF objects out of 1000 (max. 8388607)
+ 6 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

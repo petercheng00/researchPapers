@@ -51,51 +51,67 @@ University of California, Berkeley\\
  
 \begin{document}
 
-\message{ !name(paper.tex) !offset(278) }
-\subsection{Geometry-based Alignment}
-\label{sec:geometryAlignment}
-After computing each image's projection onto the target surface, as
-described in Section \ref{sec:simpleTextureMapping}, we detect lines
-in the projections using Hough transforms. Experience and intuition
-show that walls in indoor environments contain linear features that
-are either horizontal or vertical, often corresponding to doors,
-windows, posters, etc. Thus, when texturing walls, we rotate images in
-2D such that dominant lines are made to be horizontal or
-vertical. This can be further extrapolated by orienting lines with a
-wall's boundaries, for example in areas with a slanted roof.
+\message{ !name(paper.tex) !offset(690) }
+\section{Results and Conclusions}
+\label{sec:resultsAndConclusions}
+Examples of ceilings and floors textured with the tile caching
+approach, and walls textured with the shortest path approach, are
+displayed in Figure \ref{fig:results}. High resolution texture
+comparisons, as well as a walkthrough of a fully textured 3D model are
+available in the accompanying video to this paper.
+
+As mentioned earlier, our approach is quite efficient. The top wall in
+Figure \ref{fig:results}(a) was generated with 7543 $\times$ 776
+pixels, and spans a 40-meter long wall. Given 41000 input images, a
+2.8GHz consumer-grade laptop takes approximately a minute to pick 36
+candidate images, followed by another minute to perform both image alignment and the shortest
+path texturing method, with the majority of computation time spent
+calculating SIFT matches within the SiftGPU framework. While not quite
+real-time visualization, the process is capable of generating quick
+updates after changes in various parameters or modifications to input
+data.
+
+In this paper, we have developed two approaches to texture map models
+with noisy camera localization data. We are able to refine image
+locations based on geometry references and feature matching, and
+robustly handle outliers. The tile-based mapping approach can be used
+to texture both simple rectangular walls as well as complex floor and
+ceiling geometry. We also developed a shortest path texturing method
+that produces seamless textures on planes where multiple head-on
+images are available. Both of these approaches are highly modular, and
+easily tunable for different environments and acquisition systems.
 
 \begin{figure}
   \centering
-  \includegraphics[height=1.5in]{geometryAlign_planes.png}
-  \includegraphics[height=1.5in]{geometryAlignment.jpg}
-  \caption{(a) When texturing the red surface, it makes sense to align images to surface boundaries and intersections. (b) Red lines are geometry-based lines, while green lines are detected in the image via Hough transform. Above is the original projection, and below is the image adjusted for alignment.}
-  \label{fig:geometryAlignment}
+  \subfloat[][]{\includegraphics[width=3in]{finalfloors.jpg}} ~~~~~~~~
+  \centering
+  \subfloat[][]{\includegraphics[width=3in]{finalceilings.jpg}}
+
+  \centering \subfloat[][]{
+    \includegraphics[height=2in, width=3in]{floorcropped.jpg} ~~~~~~~~
+    \includegraphics[width=3in]{pier15floor.jpg}
+  }
+
+  \centering{
+    \includegraphics[width=1.9in]{fullmodel.png}
+    \includegraphics[width=1.9in]{threestoryfull2.png}
+    \includegraphics[width=1.9in]{pier15.png} \\
+    \includegraphics[width=6in]{threestoryfull.png}
+  }
+
+  \centering \subfloat[][]{ }
+  \caption{Examples of our final texture mapping output for (a) walls,
+    (b) ceilings, (c) floors, (d) full models.}
+  \label{fig:results}
 \end{figure}
 
 
-At this point in time, image occlusions have not been accounted
-for. As a result, some image projections contain texture that should
-project to an adjacent surface, generally with a linear boundary where
-the two surfaces meet. If this linear boundary is detected by Hough
-transform, the image is rotated and shifted in 2D such that the visual
-boundary between two surfaces matches the physical boundary in our
-digital model. An example of such an adjustment is in Figure
-\ref{fig:geometryAlignment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% References %%%%%
 
-To perform the rotation and alignment, one method would be to detect
-all line matches and solve for an optimal homography. In nearly all
-cases however, we find that a single 2D rotation is sufficient to
-properly align lines in an image. We also rarely have more than one
-linear geometry feature to match to in each orthogonal
-direction. Thus, for a rotation angle, we simply take all angles
-between image-based and geometry-based lines under 5 degrees, and
-average them. After the image is rotated, we find the horizontal and
-vertical image-based and geometry-based line segments with minimum
-orthogonal distance between them. For both distances, if it is under 5
-mm, we apply the corresponding shift, and indicate that the image was
-aligned to geometry in one or both dimensions, which reduces further
-shifting in Section \ref{sec:robustSIFTFeatureMatching}.
+\bibliography{report} %>>>> bibliography data in report.bib
+\bibliographystyle{spiebib} %>>>> makes bibtex use spiebib.bst
 
-\message{ !name(paper.tex) !offset(679) }
+\message{ !name(paper.tex) !offset(688) }
 
 \end{document} 

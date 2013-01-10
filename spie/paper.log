@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  30 DEC 2012 23:48
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  10 JAN 2013 15:24
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -346,81 +346,106 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Projection.pdf, id=90, 371.72507pt x 334.35416pt>
+<Projection.pdf, id=82, 371.72507pt x 334.35416pt>
 File: Projection.pdf Graphic file (type pdf)
  <use Projection.pdf>
-<scoringFunction.jpg, id=91, 230.5413pt x 193.6836pt>
+<scoringFunction.jpg, id=83, 230.5413pt x 193.6836pt>
 File: scoringFunction.jpg Graphic file (type jpg)
 
-<use scoringFunction.jpg> <wall2_naive.pdf, id=94, 701.62125pt x 294.09875pt>
-File: wall2_naive.pdf Graphic file (type pdf)
+<use scoringFunction.jpg> <wall2_naive.jpg, id=86, 1403.2425pt x 587.19376pt>
+File: wall2_naive.jpg Graphic file (type jpg)
 
-<use wall2_naive.pdf> <wall2_naive_shift.pdf, id=95, 481.8pt x 154.5775pt>
-File: wall2_naive_shift.pdf Graphic file (type pdf)
+<use wall2_naive.jpg>
+<wall2_naive_shift.jpg, id=87, 1403.2425pt x 587.19376pt>
+File: wall2_naive_shift.jpg Graphic file (type jpg)
 
-<use wall2_naive_shift.pdf>
-<wall2_cache_shift.pdf, id=97, 701.62125pt x 294.09875pt>
-File: wall2_cache_shift.pdf Graphic file (type pdf)
+<use wall2_naive_shift.jpg>
+<wall2_cache_shift.jpg, id=88, 1403.2425pt x 587.19376pt>
+File: wall2_cache_shift.jpg Graphic file (type jpg)
 
-<use wall2_cache_shift.pdf>
-<wall2_shortest_shift.pdf, id=98, 701.62125pt x 294.09875pt>
+<use wall2_cache_shift.jpg>
+<wall2_shortest_shift.pdf, id=89, 701.62125pt x 294.09875pt>
 File: wall2_shortest_shift.pdf Graphic file (type pdf)
 
 <use wall2_shortest_shift.pdf>
-<wall2_cache_shift_blend.pdf, id=99, 701.62125pt x 294.09875pt>
+<wall2_cache_shift_blend.pdf, id=90, 701.62125pt x 294.09875pt>
 File: wall2_cache_shift_blend.pdf Graphic file (type pdf)
 
 <use wall2_cache_shift_blend.pdf>
-<wall2_shortest_shift_blend.pdf, id=100, 701.62125pt x 294.09875pt>
+<wall2_shortest_shift_blend.pdf, id=91, 701.62125pt x 294.09875pt>
 File: wall2_shortest_shift_blend.pdf Graphic file (type pdf)
 
 <use wall2_shortest_shift_blend.pdf> [2 <./Projection.pdf> <./scoringFunction.j
-pg>] <Graph_crop.pdf, id=257, 308.5389pt x 105.02065pt>
-File: Graph_crop.pdf Graphic file (type pdf)
- <use Graph_crop.pdf>
-<panoMy.jpg, id=258, 1405.25pt x 329.23pt>
-File: panoMy.jpg Graphic file (type jpg)
- <use panoMy.jpg> [3 <./wall2_naive.pdf> <./wall2_naive_shift.pdf> <./wall2_cac
-he_shift.pdf> <./wall2_shortest_shift.pdf> <./wall2_cache_shift_blend.pdf> <./w
-all2_shortest_shift_blend.pdf>]
-<geometryAlign_planes.png, id=313, 268.75406pt x 207.77625pt>
+pg>] [3 <./wall2_naive.jpg> <./wall2_naive_shift.jpg> <./wall2_cache_shift.jpg>
+ <./wall2_shortest_shift.pdf> <./wall2_cache_shift_blend.pdf> <./wall2_shortest
+_shift_blend.pdf>] <autostitchResult.jpg, id=272, 1375.1375pt x 150.5625pt>
+File: autostitchResult.jpg Graphic file (type jpg)
+
+<use autostitchResult.jpg>
+<graphApproach.jpg, id=273, 1535.7375pt x 150.5625pt>
+File: graphApproach.jpg Graphic file (type jpg)
+ <use graphApproach.jpg>
+<finalLong.jpg, id=274, 5977.33125pt x 577.15625pt>
+File: finalLong.jpg Graphic file (type jpg)
+ <use finalLong.jpg>
+[4 <./autostitchResult.jpg> <./graphApproach.jpg> <./finalLong.jpg>]
+<geometryAlign_planes.png, id=291, 268.75406pt x 207.77625pt>
 File: geometryAlign_planes.png Graphic file (type png)
 
 <use geometryAlign_planes.png>
-<geometryAlignment.jpg, id=315, 3861.42625pt x 1302.8675pt>
+<geometryAlignment.jpg, id=293, 3861.42625pt x 1302.8675pt>
 File: geometryAlignment.jpg Graphic file (type jpg)
 
-<use geometryAlignment.jpg> [4 <./Graph_crop.pdf> <./panoMy.jpg>] [5 <./geometr
-yAlign_planes.png> <./geometryAlignment.jpg>] [6]
-<projectionWall.pdf, id=370, 312.16624pt x 304.13625pt>
+<use geometryAlignment.jpg> [5 <./geometryAlign_planes.png> <./geometryAlignmen
+t.jpg>] [6] <projectionWall.pdf, id=332, 312.16624pt x 304.13625pt>
 File: projectionWall.pdf Graphic file (type pdf)
 
 <use projectionWall.pdf>
-<projectionCeiling.pdf, id=372, 479.7925pt x 295.1025pt>
+<projectionCeiling.pdf, id=334, 479.7925pt x 295.1025pt>
 File: projectionCeiling.pdf Graphic file (type pdf)
 
 <use projectionCeiling.pdf>
-<projectionWallCrop.pdf, id=374, 272.01625pt x 287.0725pt>
+<projectionWallCrop.pdf, id=336, 272.01625pt x 287.0725pt>
 File: projectionWallCrop.pdf Graphic file (type pdf)
 
 <use projectionWallCrop.pdf> [7 <./projectionWall.pdf> <./projectionCeiling.pdf
-> <./projectionWallCrop.pdf>] <dagCreation.pdf, id=420, 481.8pt x 154.5775pt>
+> <./projectionWallCrop.pdf>] <dagCreation.pdf, id=382, 481.8pt x 154.5775pt>
 File: dagCreation.pdf Graphic file (type pdf)
 
-<use dagCreation.pdf> [8 <./dagCreation.pdf>]
-<finalfloors.jpg, id=461, 3792.1675pt x 1441.385pt>
+<use dagCreation.pdf> [8 <./dagCreation.pdf>] [9]
+<finalfloors.jpg, id=433, 3792.1675pt x 1441.385pt>
 File: finalfloors.jpg Graphic file (type jpg)
  <use finalfloors.jpg>
-<finalceilings.jpg, id=462, 2308.625pt x 1104.125pt>
+<finalceilings.jpg, id=434, 2308.625pt x 1104.125pt>
 File: finalceilings.jpg Graphic file (type jpg)
  <use finalceilings.jpg>
-<floorcropped.jpg, id=463, 2693.06125pt x 2148.025pt>
+<floorcropped.jpg, id=435, 2693.06125pt x 2148.025pt>
 File: floorcropped.jpg Graphic file (type jpg)
  <use floorcropped.jpg>
-<fullmodel.png, id=464, 1242.14063pt x 639.89063pt>
+<pier15floor.jpg, id=436, 3608.48125pt x 2465.21pt>
+File: pier15floor.jpg Graphic file (type jpg)
+ <use pier15floor.jpg>
+<fullmodel.png, id=437, 1242.14063pt x 639.89063pt>
 File: fullmodel.png Graphic file (type png)
  <use fullmodel.png>
-(./paper.bbl [9]
+<threestoryfull2.png, id=438, 1169.11781pt x 676.02562pt>
+File: threestoryfull2.png Graphic file (type png)
+
+<use threestoryfull2.png> <pier15.png, id=439, 768.62157pt x 389.20406pt>
+File: pier15.png Graphic file (type png)
+
+<use pier15.png> <threestoryfull.png, id=440, 1028.34187pt x 588.69937pt>
+File: threestoryfull.png Graphic file (type png)
+
+<use threestoryfull.png>
+Overfull \hbox (8.99992pt too wide) in paragraph at lines 792--792
+[]\OT1/cmr/m/n/9 (d)|| 
+ []
+
+
+LaTeX Warning: Float too large for page by 39.77112pt on input line 796.
+
+(./paper.bbl
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 46.
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -429,34 +454,35 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
-) [10 <./finalfloors.jpg> <./finalceilings.jpg> <./floorcropped.jpg> <./fullmod
-el.png>]
-[11] (./paper.aux) ) 
+) [10] [11 <./finalfloors.jpg> <./finalceilings.jpg> <./floorcropped.jpg> <./pi
+er15floor.jpg> <./fullmodel.png> <./threestoryfull2.png (PNG copy)> <./pier15.p
+ng (PNG copy)> <./threestoryfull.png (PNG copy)>] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 6456 strings out of 495061
- 94531 string characters out of 1182621
- 177129 words of memory out of 3000000
- 9458 multiletter control sequences out of 15000+50000
- 10476 words of font info for 41 fonts, out of 3000000 for 9000
+ 6483 strings out of 495061
+ 95083 string characters out of 1182621
+ 178225 words of memory out of 3000000
+ 9477 multiletter control sequences out of 15000+50000
+ 10643 words of font info for 42 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,45p,435b,395s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-bx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr
-5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pf
-b>
-Output written on paper.pdf (11 pages, 7853507 bytes).
+ 44i,10n,45p,501b,374s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on paper.pdf (11 pages, 13036477 bytes).
 PDF statistics:
- 554 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
- 221 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 527 PDF objects out of 1000 (max. 8388607)
+ 66 named destinations out of 1000 (max. 500000)
+ 230 words of extra memory for PDF output out of 10000 (max. 10000000)
 
