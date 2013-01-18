@@ -4,12 +4,13 @@
      "report")
     (LaTeX-add-labels
      "sec:introduction"
+     "sec:background"
+     "sec:existingApproaches"
      "sec:simpleTextureMapping"
      "fig:projection"
      "fig:scoringFunction"
      "sec:tileBasedMapping"
      "fig:compareAll"
-     "sec:existingApproaches"
      "fig:mosaic3D"
      "sec:2dAlignment"
      "sec:geometryAlignment"

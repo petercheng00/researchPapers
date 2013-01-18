@@ -1,287 +1,63 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  10 JAN 2013 15:19
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2013.1.17)  17 JAN 2013 21:50
 entering extended mode
  %&-line parsing enabled.
-**\nonstopmode\nofiles\PassOptionsToPackage{active,tightpage,auctex}{preview}\A
-tBeginDocument{\ifx\ifPreview\undefined\RequirePackage[displaymath,floats,graph
-ics,textmath,sections,footnotes]{preview}[2004/11/05]\fi} \input _region_.tex
-(./_region_.tex  !name(paper.tex) (./spie.cls
-Document Class: spie 2008/01/19 v3.3 SPIE Proceedings class
-(/usr/share/texmf-texlive/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texmf-texlive/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+**&prv_paper _region_.tex
+(./_region_.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+CUSTOMISED FORMAT. Preloaded files:
+        .
+    spie.cls    2008/01/19 v3.3 SPIE Proceedings class
+ article.cls    2007/10/19 v1.4h Standard LaTeX document class
+  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+    cite.sty    2009/08/29  v 5.2
+graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2009/08/28 v1.8 graphics configuration of TeX Live
+   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+  subfig.sty    2005/06/28 ver: 1.3 subfig package
+ caption.sty    2009/10/09 v3.1k Customizing captions (AR)
+caption3.sty    2009/10/09 v3.1k caption3 kernel (AR)
+ amsmath.sty    2000/07/18 v2.13 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+ amssymb.sty    2009/06/22 v3.00
+amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+hyperref.sty    2009/10/09 v6.79a Hypertext links for LaTeX
+   ifpdf.sty    2009/04/10 v2.0 Provides the ifpdf switch (HO)
+  ifvtex.sty    2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+ ifxetex.sty    2009/01/23 v0.5 Provides ifxetex conditional
+ hycolor.sty    2009/10/02 v1.5 Code for color options of hyperref/bookmark (HO
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
-)
-ten-point font
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-)
-(/usr/share/texmf-texlive/tex/latex/cite/cite.sty
-LaTeX Info: Redefining \cite on input line 285.
-LaTeX Info: Redefining \nocite on input line 356.
-Package: cite 2009/08/29  v 5.2
-LaTeX Info: Redefining \cite on input line 437.
-)
-\c@theorem=\count87
-)
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+xcolor-patch.sty    2009/10/02 xcolor patch
+  pd1enc.def    2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+etexcmds.sty    2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+infwarerr.sty    2007/09/09 v1.2 Providing info/warning/message (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+kvoptions.sty    2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+kvsetkeys.sty    2009/07/30 v1.5 Key value parser with default handler support 
+(HO)
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+  bitset.sty    2007/09/28 v1.0 Data type bit set (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable integer calculations (HO)
+bigintcalc.sty    2007/11/11 v1.1 Expandable big integer calculations (HO)
+pdftexcmds.sty    2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions (
+HO)
+ifluatex.sty    2009/04/17 v1.2 Provides the ifluatex switch (HO)
+ ltxcmds.sty    2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks14
-)
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(/etc/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
-)
-Package graphics Info: Driver file: pdftex.def on input line 91.
-
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
-\Gread@gobject=\count88
-))
-\Gin@req@height=\dimen103
-\Gin@req@width=\dimen104
-)
-(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
-Package: subfig 2005/06/28 ver: 1.3 subfig package
-
-(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
-Package: caption 2009/10/09 v3.1k Customizing captions (AR)
-
-(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
-Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
-\captionmargin=\dimen105
-\captionmargin@=\dimen106
-\captionwidth=\dimen107
-\caption@indent=\dimen108
-\caption@parindent=\dimen109
-\caption@hangindent=\dimen110
-Package caption Info: Unknown document class (or package),
-(caption)             standard defaults will be used on input line 1068.
-)
-
-Package caption Warning: Unsupported document class (or package) detected,
-(caption)                usage of the caption package is not recommended.
-See the caption package documentation for explanation.
-
-Package caption Info: \@makecaption = \long macro:#1#2->\vskip \abovecaptionski
-p \sbox \@tempboxa {{\footnotesize #1.\ }{\footnotesize #2}}\ifdim \wd \@tempbo
-xa >\hsize {\footnotesize #1.\ }{\footnotesize #2 \par } \else \global \@minipa
-gefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }\fi \vskip \belowcaptionsk
-ip .
-\c@ContinuedFloat=\count89
-)
-\c@KVtest=\count90
-\sf@farskip=\skip43
-\sf@captopadj=\dimen111
-\sf@capskip=\skip44
-\sf@nearskip=\skip45
-\c@subfigure=\count91
-\c@subfigure@save=\count92
-\c@lofdepth=\count93
-\c@subtable=\count94
-\c@subtable@save=\count95
-\c@lotdepth=\count96
-\sf@top=\skip46
-\sf@bottom=\skip47
-) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2000/07/18 v2.13 AMS math features
-\@mathmargin=\skip48
-
-For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01
-
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks15
-\ex@=\dimen112
-))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen113
-)
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
-Package: amsopn 1999/12/14 v2.01 operator names
-)
-\inf@bad=\count97
-LaTeX Info: Redefining \frac on input line 211.
-\uproot@=\count98
-\leftroot@=\count99
-LaTeX Info: Redefining \overline on input line 307.
-\classnum@=\count100
-\DOTSCASE@=\count101
-LaTeX Info: Redefining \ldots on input line 379.
-LaTeX Info: Redefining \dots on input line 382.
-LaTeX Info: Redefining \cdots on input line 467.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
-\big@size=\dimen114
-LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
-\macc@depth=\count102
-\c@MaxMatrixCols=\count103
-\dotsspace@=\muskip10
-\c@parentequation=\count104
-\dspbrk@lvl=\count105
-\tag@help=\toks16
-\row@=\count106
-\column@=\count107
-\maxfields@=\count108
-\andhelp@=\toks17
-\eqnshift@=\dimen115
-\alignsep@=\dimen116
-\tagshift@=\dimen117
-\tagwidth@=\dimen118
-\totwidth@=\dimen119
-\lineht@=\dimen120
-\@envbody=\toks18
-\multlinegap=\skip49
-\multlinetaggap=\skip50
-\mathdisplay@stack=\toks19
-LaTeX Info: Redefining \[ on input line 2666.
-LaTeX Info: Redefining \] on input line 2667.
-)
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2009/06/22 v3.00
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
-))
-(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
-
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode detected.
-)
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
-Package ifvtex Info: VTeX not detected.
-)
-(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
-)
-(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
-Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
-O)
-
-(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
-Package: xcolor-patch 2009/10/02 xcolor patch
-))
-\@linkdim=\dimen121
-\Hy@linkcounter=\count109
-\Hy@pagecounter=\count110
-
-(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
-)
-(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
-
-(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)
-(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
-File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
-)
-(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
-
-(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
-t (HO)
-))
-Package hyperref Info: Hyper figures OFF on input line 2975.
-Package hyperref Info: Link nesting OFF on input line 2980.
-Package hyperref Info: Hyper index ON on input line 2983.
-Package hyperref Info: Plain pages OFF on input line 2990.
-Package hyperref Info: Backreferencing OFF on input line 2995.
-
-Implicit mode ON; LaTeX internals redefined
-Package hyperref Info: Bookmarks ON on input line 3191.
-(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
-\Urlmuskip=\muskip11
-Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
-)
-LaTeX Info: Redefining \url on input line 3428.
-
-(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
-Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
-
-(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
-Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
-)
-(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
-Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
-
-(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
- (HO)
-
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
-)
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-)))
-\Fld@menulength=\count111
-\Field@Width=\dimen122
-\Fld@charsize=\dimen123
-\Field@toks=\toks20
-Package hyperref Info: Hyper figures OFF on input line 4377.
-Package hyperref Info: Link nesting OFF on input line 4382.
-Package hyperref Info: Hyper index ON on input line 4385.
-Package hyperref Info: backreferencing OFF on input line 4392.
-Package hyperref Info: Link coloring OFF on input line 4397.
-Package hyperref Info: Link coloring with OCG OFF on input line 4402.
-Package hyperref Info: PDF/A mode OFF on input line 4407.
-
-(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
-Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
-)
-\Hy@abspage=\count112
-\c@Item=\count113
-\c@Hfootnote=\count114
-)
-*hyperref using default driver hpdftex*
-(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
-\Fld@listcount=\count115
-)
+atbegshi.sty    2008/07/31 v1.9 At begin shipout hook (HO)
+  hdvips.def    2009/10/09 v6.79a Hyperref driver for dvips
+ pdfmark.def    2009/10/09 v6.79a Hyperref definitions for pdfmark specials
+    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsb.fd    2009/06/22 v3.00 AMS symbols B
+        .
 No file _region_.aux.
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
@@ -307,28 +83,15 @@ Package: preview 2010/02/14 CVS-1.126 (AUCTeX/preview-latex)
 No auxiliary output files.
 
 
-\hbadness=\count116
+\hbadness=\count115
 \hfuzz=\dimen125
 (/usr/local/share/texmf/tex/latex/preview/prauctex.cfg))
 (/usr/local/share/texmf/tex/latex/preview/prfootnotes.def)
-\pr@snippet=\count117
-\pr@box=\box28
-\pr@output=\toks21
+\pr@snippet=\count116
+\pr@box=\box29
+\pr@output=\toks24
 
 Preview: Fontsize 10pt
-Preview: PDFoutput 1
-) (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count118
-\scratchdimen=\dimen126
-\scratchbox=\box29
-\nofMPsegments=\count119
-\nofMParguments=\count120
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count121
-\MPscratchDim=\dimen127
-\MPnumerator=\count122
-\everyMPtoPDFconversion=\toks23
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
@@ -352,128 +115,571 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count123
+\c@section@level=\count117
 )
 LaTeX Info: Redefining \ref on input line 52.
 LaTeX Info: Redefining \pageref on input line 52.
 \AtBeginShipoutBox=\box30
 
- !name(paper.tex) !offset(690) 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+ !name(paper.tex) !offset(357) 
 ! Preview: Snippet 1 started.
 <-><->
       
-l.55 \section
-             {Results and Conclusions}
+l.55 \subsection
+                {2D Feature Alignment}
 Not a real error.
 
 Preview: Tightpage -32891 -32891 32891 32891
-! Preview: Snippet 1 ended.(539580+0x31969935).
+! Preview: Snippet 1 ended.(546132+152916x31969935).
 <-><->
       
-l.55 \section{Results and Conclusions}
+l.55 \subsection{2D Feature Alignment}
                                       
 Not a real error.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+[1
 
 ]
 
-LaTeX Warning: Reference `fig:results' on page 1 undefined on input line 59.
+LaTeX Warning: Citation `lowe1999object' on page 1 undefined on input line 63.
 
 
-LaTeX Warning: Reference `fig:results' on page 1 undefined on input line 64.
+LaTeX Warning: Citation `mikolajczyk2005performance' on page 1 undefined on inp
+ut line 63.
+
+
+LaTeX Warning: Citation `szeliski2006image' on page 1 undefined on input line 6
+3.
+
+
+LaTeX Warning: Citation `siftgpu' on page 1 undefined on input line 64.
 
 ! Preview: Snippet 2 started.
 <-><->
       
-l.64 ...{fig:results}(a) was generated with 7543 $
-                                                  \times$ 776
+l.65 ...irwise matching. These matches determine $
+                                                  d^x$
 Not a real error.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 64.
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 64.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)
-! Preview: Snippet 2 ended.(382293+54613x509726).
+! Preview: Snippet 2 ended.(455111+0x671062).
 <-><->
       
-l.64 ...sults}(a) was generated with 7543 $\times$
-                                                   776
+l.65 ...se matching. These matches determine $d^x$
+                                                  
 Not a real error.
 
 [2]
 ! Preview: Snippet 3 started.
 <-><->
       
-l.84 \begin{figure}
-                   
+l.66 and $
+          d^y$ distances between each pair of features for two image
 Not a real error.
 
-<finalfloors.jpg, id=12, 3792.1675pt x 1441.385pt>
-File: finalfloors.jpg Graphic file (type jpg)
- <use finalfloors.jpg>
-<finalceilings.jpg, id=13, 2308.625pt x 1104.125pt>
-File: finalceilings.jpg Graphic file (type jpg)
- <use finalceilings.jpg>
-<floorcropped.jpg, id=14, 2693.06125pt x 2148.025pt>
-File: floorcropped.jpg Graphic file (type jpg)
- <use floorcropped.jpg>
-<pier15floor.jpg, id=15, 3608.48125pt x 2465.21pt>
-File: pier15floor.jpg Graphic file (type jpg)
- <use pier15floor.jpg>
-<fullmodel.png, id=16, 1242.14063pt x 639.89063pt>
-File: fullmodel.png Graphic file (type png)
- <use fullmodel.png>
-<threestoryfull2.png, id=18, 1169.11781pt x 676.02562pt>
-File: threestoryfull2.png Graphic file (type png)
-
-<use threestoryfull2.png> <pier15.png, id=19, 768.62157pt x 389.20406pt>
-File: pier15.png Graphic file (type png)
-
-<use pier15.png> <threestoryfull.png, id=20, 1028.34187pt x 588.69937pt>
-File: threestoryfull.png Graphic file (type png)
-
-<use threestoryfull.png>
-! Preview: Snippet 3 ended.(43706696+0x31969935).
+! Preview: Snippet 3 ended.(455111+0x656121).
 <-><->
       
-l.106 \end{figure}
-                  
+l.66 and $d^y$
+               distances between each pair of features for two image
 Not a real error.
 
-[3
+[3]
+
+LaTeX Warning: Citation `fischler1981random' on page 1 undefined on input line 
+75.
+
+! Preview: Snippet 4 started.
+<-><->
+      
+l.75 ...m} is again used to estimate the optimal $
+                                                  d^x_{i,j}$
+Not a real error.
+
+! Preview: Snippet 4 ended.(455111+259786x958314).
+<-><->
+      
+l.75 ...n used to estimate the optimal $d^x_{i,j}$
+                                                  
+Not a real error.
+
+[4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.76 and $
+          d^y_{i,j}$ distances between two images $i$ and $j$. For this
+Not a real error.
+
+! Preview: Snippet 5 ended.(512453+271877x958314).
+<-><->
+      
+l.76 and $d^y_{i,j}$
+                     distances between two images $i$ and $j$. For this
+Not a real error.
+
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.76 ...$d^y_{i,j}$ distances between two images $
+                                                  i$ and $j$. For this
+Not a real error.
+
+! Preview: Snippet 6 ended.(432226+0x225780).
+<-><->
+      
+l.76 ...^y_{i,j}$ distances between two images $i$
+                                                   and $j$. For this
+Not a real error.
+
+[6]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.76 ...j}$ distances between two images $i$ and $
+                                                  j$. For this
+Not a real error.
+
+! Preview: Snippet 7 ended.(432226+127431x307396).
+<-><->
+      
+l.76 ...$ distances between two images $i$ and $j$
+                                                  . For this
+Not a real error.
+
+[7]
+! Preview: Snippet 8 started.
+<-><->
+      
+l.86 We now use the RANSAC-calculated $
+                                       d^x_{i,j}$ and $d^y_{i,j}$ distances
+Not a real error.
+
+! Preview: Snippet 8 ended.(455111+259786x958314).
+<-><->
+      
+l.86 We now use the RANSAC-calculated $d^x_{i,j}$
+                                                  and $d^y_{i,j}$ distances
+Not a real error.
+
+[8]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.86 ...se the RANSAC-calculated $d^x_{i,j}$ and $
+                                                  d^y_{i,j}$ distances
+Not a real error.
+
+! Preview: Snippet 9 ended.(512453+271877x958314).
+<-><->
+      
+l.86 ...SAC-calculated $d^x_{i,j}$ and $d^y_{i,j}$
+                                                   distances
+Not a real error.
+
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.88 linear least squares. There are a total of $
+                                                 M^{2}$ possible pairs of
+Not a real error.
+
+! Preview: Snippet 10 ended.(533465+0x1001245).
+<-><->
+      
+l.88 ...east squares. There are a total of $M^{2}$
+                                                   possible pairs of
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.92 ($
+       \textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $)
+Not a real error.
+
+! Preview: Snippet 11 ended.(641161+314244x4541458).
+<-><->
+      
+l.92 ...a}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $
+                                                  )
+Not a real error.
+
+[11]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.94 $
+      M$-dimensional vector $\vec{\beta}$ represents the unknown $x$
+Not a real error.
+
+! Preview: Snippet 12 ended.(447828+0x707242).
+<-><->
+      
+l.94 $M$
+        -dimensional vector $\vec{\beta}$ represents the unknown $x$
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.94 $M$-dimensional vector $
+                             \vec{\beta}$ represents the unknown $x$
+Not a real error.
+
+! Preview: Snippet 13 ended.(641161+127431x405276).
+<-><->
+      
+l.94 $M$-dimensional vector $\vec{\beta}$
+                                          represents the unknown $x$
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.94 ...tor $\vec{\beta}$ represents the unknown $
+                                                  x$
+Not a real error.
+
+! Preview: Snippet 14 ended.(282168+0x374556).
+<-><->
+      
+l.94 ...r $\vec{\beta}$ represents the unknown $x$
+                                                  
+Not a real error.
+
+[14]
+! Preview: Snippet 15 started.
+<-><->
+      
+l.95 location of each image on the plane for $
+                                              1 \dots M$. The optimal $x$
+Not a real error.
+
+! Preview: Snippet 15 ended.(447828+0x2017954).
+<-><->
+      
+l.95 ...of each image on the plane for $1 \dots M$
+                                                  . The optimal $x$
+Not a real error.
+
+[15]
+! Preview: Snippet 16 started.
+<-><->
+      
+l.95 ...n the plane for $1 \dots M$. The optimal $
+                                                  x$
+Not a real error.
+
+! Preview: Snippet 16 ended.(282168+0x374556).
+<-><->
+      
+l.95 ...the plane for $1 \dots M$. The optimal $x$
+                                                  
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.96 and $
+          y$ locations are obtained in the same way, so we only consider
+Not a real error.
+
+! Preview: Snippet 17 ended.(282168+127431x344824).
+<-><->
+      
+l.96 and $y$
+             locations are obtained in the same way, so we only consider
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.97 the $
+          x$ locations here:
+Not a real error.
+
+! Preview: Snippet 18 ended.(282168+0x374556).
+<-><->
+      
+l.97 the $x$
+             locations here:
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.99 \[
+       \vec{\beta} =
+Not a real error.
+
+! Preview: Snippet 19 ended.(870541+0x21658814).
+<-><->
+      
+l.103 \]
+        
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.105 The $
+           N \times M$ matrix $A$ is constructed with one row for each pair
+Not a real error.
+
+! Preview: Snippet 20 ended.(447828+54613x2106246).
+<-><->
+      
+l.105 The $N \times M$
+                       matrix $A$ is constructed with one row for each pair
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.105 The $N \times M$ matrix $
+                               A$ is constructed with one row for each pair
+Not a real error.
+
+! Preview: Snippet 21 ended.(447828+0x491521).
+<-><->
+      
+l.105 The $N \times M$ matrix $A$
+                                  is constructed with one row for each pair
+Not a real error.
+
+[21]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.107 stage. A row in the matrix has a $
+                                        -1$ and $1$ in the columns
+Not a real error.
+
+! Preview: Snippet 22 ended.(422343+54613x837407).
+<-><->
+      
+l.107 stage. A row in the matrix has a $-1$
+                                            and $1$ in the columns
+Not a real error.
+
+[22]
+! Preview: Snippet 23 started.
+<-><->
+      
+l.107 stage. A row in the matrix has a $-1$ and $
+                                                 1$ in the columns
+Not a real error.
+
+! Preview: Snippet 23 ended.(422343+0x327681).
+<-><->
+      
+l.107 ...e. A row in the matrix has a $-1$ and $1$
+                                                   in the columns
+Not a real error.
+
+[23]
+! Preview: Snippet 24 started.
+<-><->
+      
+l.111 \[
+        
+Not a real error.
+
+! Preview: Snippet 24 ended.(5941204+0x20900167).
+<-><->
+      
+l.122 \]
+        
+Not a real error.
+
+[24]
+
+LaTeX Warning: Reference `sec:geometryAlignment' on page 1 undefined on input l
+ine 125.
+
+! Preview: Snippet 25 started.
+<-><->
+      
+l.130 ... be such an anchor, simply by placing a $
+                                                  1$ in its
+Not a real error.
+
+! Preview: Snippet 25 ended.(422343+0x327681).
+<-><->
+      
+l.130 ...e such an anchor, simply by placing a $1$
+                                                   in its
+Not a real error.
+
+[25]
+! Preview: Snippet 26 started.
+<-><->
+      
+l.133 The $
+           N$-dimensional observation vector $\vec{\gamma}$ is constructed
+Not a real error.
+
+! Preview: Snippet 26 ended.(447828+0x598014).
+<-><->
+      
+l.133 The $N$
+             -dimensional observation vector $\vec{\gamma}$ is constructed
+Not a real error.
+
+[26]
+! Preview: Snippet 27 started.
+<-><->
+      
+l.133 The $N$-dimensional observation vector $
+                                              \vec{\gamma}$ is constructed
+Not a real error.
+
+! Preview: Snippet 27 ended.(468218+127431x375708).
+<-><->
+      
+l.133 ...nsional observation vector $\vec{\gamma}$
+                                                   is constructed
+Not a real error.
+
+[27]
+! Preview: Snippet 28 started.
+<-><->
+      
+l.137 localization. Thus a $
+                            \vec{\gamma}$ corresponding to the above matrix
+Not a real error.
+
+! Preview: Snippet 28 ended.(468218+127431x375708).
+<-><->
+      
+l.137 localization. Thus a $\vec{\gamma}$
+                                          corresponding to the above matrix
+Not a real error.
+
+[28]
+! Preview: Snippet 29 started.
+<-><->
+      
+l.140 \[
+        
+Not a real error.
+
+! Preview: Snippet 29 ended.(813454+0x24296664).
+<-><->
+      
+l.145 \]
+        
+Not a real error.
+
+[29]
+! Preview: Snippet 30 started.
+<-><->
+      
+l.147 The $
+           \vec{\beta}$ that minimizes $||A \vec{\beta} -
+Not a real error.
+
+! Preview: Snippet 30 ended.(641161+127431x405276).
+<-><->
+      
+l.147 The $\vec{\beta}$
+                        that minimizes $||A \vec{\beta} -
+Not a real error.
+
+[30]
+! Preview: Snippet 31 started.
+<-><->
+      
+l.147 The $\vec{\beta}$ that minimizes $
+                                        ||A \vec{\beta} -
+Not a real error.
+
+! Preview: Snippet 31 ended.(641161+163840x3095678).
+<-><->
+      
+l.148 \vec{\gamma}||_2^2$
+                          results in a set of image locations on the plane
+Not a real error.
+
+[31]
+! Preview: Snippet 32 started.
+<-><->
+      
+l.153 the $
+           A$ matrix and observations to the $\vec{\gamma}$ vector
+Not a real error.
+
+! Preview: Snippet 32 ended.(447828+0x491521).
+<-><->
+      
+l.153 the $A$
+              matrix and observations to the $\vec{\gamma}$ vector
+Not a real error.
+
+[32]
+! Preview: Snippet 33 started.
+<-><->
+      
+l.153 the $A$ matrix and observations to the $
+                                              \vec{\gamma}$ vector
+Not a real error.
+
+! Preview: Snippet 33 ended.(468218+127431x375708).
+<-><->
+      
+l.153 ...ix and observations to the $\vec{\gamma}$
+                                                   vector
+Not a real error.
+
+[33]
+! Preview: Snippet 34 started.
+<-><->
+      
+l.159 After completing this same process for the $
+                                                  y$ dimension as well, and
+Not a real error.
+
+! Preview: Snippet 34 ended.(282168+127431x344824).
+<-><->
+      
+l.159 ... completing this same process for the $y$
+                                                   dimension as well, and
+Not a real error.
+
+[34]
+
+LaTeX Warning: Reference `sec:tileBasedMapping' on page 1 undefined on input li
+ne 162.
 
 
+LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 163
+.
 
- <./finalfloors.jpg> <./finalceilings.jpg> <./floorcropped.jpg> <./pier15floor.
-jpg> <./fullmodel.png> <./threestoryfull2.png (PNG copy)> <./pier15.png (PNG co
-py)> <./threestoryfull.png (PNG copy)>]
-No file _region_.bbl.
- !name(paper.tex) !offset(688) 
+ !name(paper.tex) !offset(650) 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6397 strings out of 495061
- 93005 string characters out of 1182621
- 165178 words of memory out of 3000000
- 9474 multiletter control sequences out of 15000+50000
- 6551 words of font info for 26 fonts, out of 3000000 for 9000
+ 319 strings out of 489314
+ 4934 string characters out of 1098929
+ 173321 words of memory out of 3000000
+ 9144 multiletter control sequences out of 15000+50000
+ 8039 words of font info for 31 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,45p,474b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb>
-Output written on _region_.pdf (3 pages, 8796259 bytes).
-PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26i,11n,37p,167b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+Output written on _region_.dvi (34 pages, 7068 bytes).

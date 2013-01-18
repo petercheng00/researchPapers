@@ -51,67 +51,119 @@ University of California, Berkeley\\
  
 \begin{document}
 
-\message{ !name(paper.tex) !offset(690) }
-\section{Results and Conclusions}
-\label{sec:resultsAndConclusions}
-Examples of ceilings and floors textured with the tile caching
-approach, and walls textured with the shortest path approach, are
-displayed in Figure \ref{fig:results}. High resolution texture
-comparisons, as well as a walkthrough of a fully textured 3D model are
-available in the accompanying video to this paper.
+\message{ !name(paper.tex) !offset(357) }
+\subsection{2D Feature Alignment}
+\label{sec:robustSIFTFeatureMatching}
+Our next step is to align overlapping images by searching for
+corresponding points between all pairs of overlapping images. We use
+SIFT features for their high detection rate, and choose to use feature
+alignment rather than pixel or intensity-based alignment due to the
+differences in lighting as well as possible occlusion among our
+images, both of which feature alignment is less sensitive to
+\cite{lowe1999object, mikolajczyk2005performance, szeliski2006image}.
+We use SiftGPU \cite{siftgpu} for its high performance on both feature
+detection as well as pairwise matching. These matches determine $d^x$
+and $d^y$ distances between each pair of features for two image
+projections, though these distances may not always be the same for
+different features. Since indoor environments often contain repetitive
+features such as floor tiles or doors, we need to ensure that
+SIFT-based distances are reliable. First, we only perform alignment on
+parts of images that overlap given the original noisy poses. Second,
+we discard feature matches that correspond to an image distance
+greater than 40 pixels from what the noisy poses estimate. In order to
+utilize the remaining feature matches robustly, RANSAC
+\cite{fischler1981random} is again used to estimate the optimal $d^x_{i,j}$
+and $d^y_{i,j}$ distances between two images $i$ and $j$. For this
+application, the RANSAC fitting function finds the average distance
+between selected matches in a pair of images, and the distance
+function for a pair of points is chosen to be the difference between
+those points' SIFT match distance and the average distance computed by
+the fitting function. We use a 10 pixel threshold, so that SIFT
+matches are labeled as outliers if their horizontal or vertical
+distances are not within 10 pixels of the average distance computed by
+the fitting function.
 
-As mentioned earlier, our approach is quite efficient. The top wall in
-Figure \ref{fig:results}(a) was generated with 7543 $\times$ 776
-pixels, and spans a 40-meter long wall. Given 41000 input images, a
-2.8GHz consumer-grade laptop takes approximately a minute to pick 36
-candidate images, followed by another minute to perform both image alignment and the shortest
-path texturing method, with the majority of computation time spent
-calculating SIFT matches within the SiftGPU framework. While not quite
-real-time visualization, the process is capable of generating quick
-updates after changes in various parameters or modifications to input
-data.
+We now use the RANSAC-calculated $d^x_{i,j}$ and $d^y_{i,j}$ distances
+between each pair of images to refine their positions using weighted
+linear least squares. There are a total of $M^{2}$ possible pairs of
+images, though we only generate distances between images with SIFT
+matches. Given these distances and the original image location
+estimates, we can solve a least squares problem
+($\textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $)
+to estimate the location of the images on the plane. The
+$M$-dimensional vector $\vec{\beta}$ represents the unknown $x$
+location of each image on the plane for $1 \dots M$. The optimal $x$
+and $y$ locations are obtained in the same way, so we only consider
+the $x$ locations here:
 
-In this paper, we have developed two approaches to texture map models
-with noisy camera localization data. We are able to refine image
-locations based on geometry references and feature matching, and
-robustly handle outliers. The tile-based mapping approach can be used
-to texture both simple rectangular walls as well as complex floor and
-ceiling geometry. We also developed a shortest path texturing method
-that produces seamless textures on planes where multiple head-on
-images are available. Both of these approaches are highly modular, and
-easily tunable for different environments and acquisition systems.
+\[\vec{\beta} =
+\begin{pmatrix}
+  x_1, & x_2, & x_3, & \cdots & x_{M-1}, & x_M
+\end{pmatrix}
+\]
 
-\begin{figure}
-  \centering
-  \subfloat[][]{\includegraphics[width=3in]{finalfloors.jpg}} ~~~~~~~~
-  \centering
-  \subfloat[][]{\includegraphics[width=3in]{finalceilings.jpg}}
+The $N \times M$ matrix $A$ is constructed with one row for each pair
+of images with measured distances produced by the SIFT matching
+stage. A row in the matrix has a $-1$ and $1$ in the columns
+corresponding to the two images in the pair. For example, the matrix
+below indicates a SIFT-based distance between images 1 and 2, images 1
+and 3, images 2 and 3, etc.
+\[
+A =
+\begin{pmatrix}
+  -1 & 1 & 0 & \cdots & 0 & 0\\
+  -1 & 0 & 1 & \cdots & 0 & 0\\
+  0 & -1 & 1 & \cdots & 0 & 0\\
+  \vdots  & \vdots & \vdots & \ddots & \vdots  & \vdots\\
+  0 & 0 & 0 & \cdots & 1 & 0 \\
+  0 & 0 & 0 & \cdots & -1 & 1 \\
+  1 & 0 & 0 & \cdots & 0 & 0\\
+\end{pmatrix}
+\]
+If only relative distances between images are included, the absolute
+location of the images can not be calculated, and the matrix is rank
+deficient. From Section \ref{sec:geometryAlignment}, a number of
+images are anchored to geometry points, in one or both dimensions, and
+thus their locations can be used to fix the rest in place. In case no
+anchor images exist, we simply arbitrarily pick an image, as we have
+no other reference points to work with. In the above matrix, the first
+image is set to be such an anchor, simply by placing a $1$ in its
+column.
 
-  \centering \subfloat[][]{
-    \includegraphics[height=2in, width=3in]{floorcropped.jpg} ~~~~~~~~
-    \includegraphics[width=3in]{pier15floor.jpg}
-  }
+The $N$-dimensional observation vector $\vec{\gamma}$ is constructed
+using the SIFT-based distances generated in the RANSAC matching
+stage. Elements in the observation vector corresponding to anchor
+images are simply their locations as determined by the original noisy
+localization. Thus a $\vec{\gamma}$ corresponding to the above matrix
+can be written as:
 
-  \centering{
-    \includegraphics[width=1.9in]{fullmodel.png}
-    \includegraphics[width=1.9in]{threestoryfull2.png}
-    \includegraphics[width=1.9in]{pier15.png} \\
-    \includegraphics[width=6in]{threestoryfull.png}
-  }
+\[
+\vec{\gamma}^T =
+\begin{pmatrix}
+  d_{1,2}, &d_{1,3}, &d_{2,3}, &\hdots &d_{N-2,N-1}, &d_{N-1,N}, &x_1
+\end{pmatrix}
+\]
 
-  \centering \subfloat[][]{ }
-  \caption{Examples of our final texture mapping output for (a) walls,
-    (b) ceilings, (c) floors, (d) full models.}
-  \label{fig:results}
-\end{figure}
+The $\vec{\beta}$ that minimizes $||A \vec{\beta} -
+\vec{\gamma}||_2^2$ results in a set of image locations on the plane
+that best honors all the SIFT-based distance measurements between
+images. This solution however does not make use of our noisy camera
+poses, and will fail when no SIFT matches are found between one
+segment of the plane and another. To account for this, we add rows to
+the $A$ matrix and observations to the $\vec{\gamma}$ vector
+corresponding to the original noisy distances. We then add weighting
+to our least squares problem where the SIFT distances and anchor
+values are given a high weight e.g. 1, while the noisy distances are
+given a smaller weight e.g. 0.01.
 
+After completing this same process for the $y$ dimension as well, and
+making the resultant shifts, our images overlap and match each other
+with far greater accuracy. Applying the simple mapping scheme in
+Section \ref{sec:tileBasedMapping} to the same wall used in that
+section results in Figure \ref{fig:compareAll}(b), which has far fewer
+discontinuities, though errors due to lighting differences and
+repeating features are still visible.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% References %%%%%
-
-\bibliography{report} %>>>> bibliography data in report.bib
-\bibliographystyle{spiebib} %>>>> makes bibtex use spiebib.bst
-
-\message{ !name(paper.tex) !offset(688) }
+\message{ !name(paper.tex) !offset(650) }
 
 \end{document} 

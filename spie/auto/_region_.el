@@ -1,10 +1,7 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
-    (LaTeX-add-bibliographies
-     "report")
     (LaTeX-add-labels
-     "sec:resultsAndConclusions"
-     "fig:results")
+     "sec:robustSIFTFeatureMatching")
     (TeX-run-style-hooks
      "hyperref"
      "amssymb"
