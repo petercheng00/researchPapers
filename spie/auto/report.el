@@ -11,6 +11,7 @@
      "sanchez2012point"
      "kua2012loopclosure"
      "rayintersection"
+     "panorama2d"
      "autostitch"
      "siftgpu")))
 

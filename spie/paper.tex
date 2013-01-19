@@ -113,13 +113,14 @@ adjustments alone.
 
 The remainder of the paper is organized as follows. Section
 \ref{sec:simpleTextureMapping} explains how images are projected onto
-our geometry and explains a simple approach towards texturing. Section
-\ref{sec:existingApproaches} covers more sophisticated existing
-approaches, and their performance on our datasets. Section
-\ref{sec:2dAlignment} contains our efficient approach towards image
-alignment, followed by Section \ref{sec:imageCompositing}, which
-describes our two methods of compositing images. Section
-\ref{sec:resultsAndConclusions} contains results and conclusions.
+our geometry and explains a simple approach towards selecting images
+for texturing. Section \ref{sec:existingApproaches} covers
+sophisticated existing approaches to image stitching, and their
+performance on our datasets. Section \ref{sec:2dAlignment} contains
+our efficient approach towards 2D image alignment, followed by Section
+\ref{sec:imageCompositing}, which describes our two methods of
+compositing images. Section \ref{sec:resultsAndConclusions} contains
+results and conclusions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -175,8 +176,8 @@ single continuous image.
 \label{sec:tileBasedMapping}
 Ignoring the fact that the camera matrices $P_{1..M}$ are inaccurate,
 a simple texturing approach can be performed by discretizing the
-target plane into small square tiles, in our case 5 pixels across, and
-choosing an image to texture each tile directly.
+target plane into small square tiles, and choosing an image to texture
+each tile directly.
 
 We choose to work with rectangular units to ensure that borders
 between any two distinct images in the final texture are either
@@ -285,10 +286,10 @@ drift.
 
 \begin{figure}
   \centering
-  \subfloat[][]{\includegraphics[width=6in]{autostitchResult.jpg}}
+  \subfloat[][]{\includegraphics[width=6in]{graphApproach.jpg}}
 
   \centering
-  \subfloat[][]{\includegraphics[width=6in]{graphApproach.jpg}}
+  \subfloat[][]{\includegraphics[width=6in]{autostitchResult.jpg}}
 
   \centering \subfloat[][]{\includegraphics[width=6in]{finalLong.jpg}}
 
@@ -303,19 +304,19 @@ Past work with our data acquisition backpack integrated image
 stitching with an iterative localization algorithm, and performed
 homography-based camera pose refinement. When run on long chains of
 images, especially where features are sparse, it produces distorted
-textures, as seen in Figure X, due to the problems described
-above. This approach is also WHATEVER NONLINEAR, and its iterative
-camera adjustment process over our large datasets is not guaranteed to
-SOMETHING, and leads to prohibitively long computation time.
+textures, as seen in Figure \ref{fig:mosaic3D}(a), due to the problems
+described above. This approach is also not closed-form, and its
+iterative camera adjustment process over our large datasets leads to
+prohibitively long computation time.
 
 The AutoStitch software package performs homography-based alignment as
-well, with additional provisions that attempt to reduce drift (cite
-X,X). Though AutoStitch also performs well in areas with dense
-features, it can not handle areas without features, and has trouble
-aligning wall sections with even short segments of bare texture. The
-example in Figure X was generated after manual tuning, and areas with
-fewer visual features or repeating texture patterns simply failed
-outright with AutoStitch.
+well, with additional provisions that attempt to reduce drift
+\cite{panorama2d, autostitch}. Though AutoStitch also performs well in
+areas with dense features, it can not handle areas without features,
+and has trouble aligning wall sections with even short segments of
+bare texture. The example in Figure \ref{fig:mosaic3D}(b) was
+generated after manual tuning, and areas with fewer visual features or
+repeating texture patterns simply failed outright with AutoStitch.
 
 
 
@@ -324,12 +325,12 @@ outright with AutoStitch.
 
 In this section, we describe our method of efficient and robust image
 alignment. Though state-of-the-art techniques towards image stitching
-work in 3D, we sacrifice THAT WORD for efficiency, and elect to
-perform image alignments entirely in 2D. Besides the reduced
-complexity, we have found 2D alignment to work well for two main
-reasons. First, because we have such a large number of images to
-choose from, we have found that the compositing approache in Section X
-is able to select a subset of images that align well, given only 2D
+work in 3D, we elect to perform image alignments entirely in
+2D. Besides the benifits of reduced complexity, we have found 2D
+alignment to work well for two main reasons. First, because we have
+such a large number of images to choose from, we have found that the
+compositing approaches in Section \ref{sec:imageCompositing} is able
+to select a subset of images that align well, given only 2D
 alignments. Furthermore, the nature of our input data is such that
 localization error chiefly occurs in two dimensions, in the same plane
 as the surface being projected onto. Recall that our data acquisition
@@ -345,10 +346,10 @@ operator's pitch, equivalent to rotation around the camera axes, as
 well as location along surfaces. These equate to 2D rotation and
 translation in a surface's plane.
 
-Our alignment procedure consists of three main parts. First, all
+Our 2D alignment procedure consists of three main parts. First, all
 images are projected onto the surface and lines within these
-projections are detected. These lines are then matched up with
-geometry-based lines comprising the surface's boundary and
+projections are detected. These lines are then rotated and shifted to
+match geometry-based lines comprising the surface's boundary and
 intersection with other surfaces. Second, occlusion checks are
 performed to remove invalid parts of each image for the target
 surface. These two steps are image-independent and performed in
@@ -365,8 +366,10 @@ and intuition show that walls in indoor environments often contain
 linear features that are either horizontal or vertical, corresponding
 to doors, windows, posters, etc. Thus, when texturing walls, we rotate
 images in 2D such that dominant lines are made to be horizontal or
-vertical. This can be further extrapolated by orienting lines with a
-wall's boundaries, for example in areas with a slanted roof.
+vertical. This can be further generalized by instead orienting lines
+to be parallel with a surface's boundaries, which makes it applicable
+to non-rectangular surfaces, such as ceilings, floors, or slanted
+walls.
 
 \begin{figure}
   \centering
@@ -374,43 +377,54 @@ wall's boundaries, for example in areas with a slanted roof.
   \subfloat[][]{\includegraphics[height=1.5in]{geomAlign}}
   \caption{(a) When texturing the red surface, it makes sense to align
     images to surface boundaries and intersections with other
-    surfaces. (b) The darker lines are geometry-based lines, while
-    lighter lines are lines detected in the image via Hough
-    transform. Above is the original projection using the input camera
-    poses, and below is the projection after rotation and translation
-    for alignment.}
+    surfaces. (b) In this example, we project two images at once for
+    the sake of demonstration, where the red lines are geometry-based
+    lines where surfaces intersect, and the green ines are lines
+    detected in the image via Hough transform. Above are the original
+    projections using input camera poses, and below are the
+    projections after rotation and translation for alignment.}
   \label{fig:geometryAlignment}
 \end{figure}
 
 
-At this point in time, image occlusions have not been accounted
-for. As a result, some image projections contain texture that should
-project to an adjacent surface, generally with a linear boundary where
-the two surfaces meet. If this linear boundary is detected by Hough
-transform, the image is rotated and shifted in 2D such that the visual
-boundary between two surfaces in an image projection matches the
-physical boundary in our digital model. An example of such an
-adjustment is in Figure \ref{fig:geometryAlignment}
+Furthermore, at this point in time, image occlusions have not been
+accounted for. As a result, some image projections contain texture
+that should project to an adjacent surface, sometimes with a visible
+linear boundary where the two surfaces meet. If this linear boundary
+is detected by Hough transform, the image is rotated and shifted in 2D
+such that the visual boundary between two surfaces in an image
+projection matches the physical boundary in our digital model. An
+example of such an adjustment is in Figure \ref{fig:geometryAlignment}
+
 
 To perform the rotation and alignment, we use the RANSAC
 \cite{fischler1981random} framework. RANSAC allows us to determine an
 optimal rotation and translation to match up two groups of line
-segments, while accounting for outliers. First, a rotation angle is
-computed by gathering all pairs of image line segments and geometry
-line segments with less than 20 degrees between them. We then run the
-RANSAC algorithm by sampling 4 of these angles at a time, and using
-their average as the fitting function. Angles over 2 degrees from this
-average are considered outliers. Once this 2d rotation angle is
-determined, it is applied to the image, and projections are
-re-calculated and image-based lines are re-detected. Now, all pairs of
-image line segments and geometry line segments with less than 0.2
-degree difference and less than 250 mm distance at their furthest
-points are gathered. RANSAC is then similarly employed to calculate
-optimal horizontal and vertical translations independently, by
-sampling 4 pairs at a time and considering an outlier threshold of 10
-mm. If a translation is applied, we indicate that the image was
-aligned to geometry in one or both dimensions, which will reduce
-further shifting in Section \ref{sec:robustSIFTFeatureMatching}.
+segments, while accounting for outliers. The parameters we specify
+were chosen after some tuning on our datasets, and are likely to vary
+based on input data. First, a rotation angle is computed by gathering
+all pairs of image line segments and geometry line segments with less
+than 20 degrees between them. We then run the RANSAC algorithm by
+sampling 4 of these angles at a time, and using their average as the
+fitting function. Angles over 1 degree from this average are
+considered outliers. Once a 2D rotation angle is determined, it is
+applied to the image, and image line segments with length below a
+certain threshold are discarded. Now, all pairs of image line segments
+and geometry line segments with less than 0.1 degree difference in
+orientation and less than 250 mm distance at their furthest points are
+gathered. RANSAC is then similarly employed to calculate a shift that maximizes matches among these pairs of lines. 
+
+In an ideal case, homography might be applied here, but poop
+In our datasets we have success sides for walls, floors and ceilings we have found often difficulty matching, so we often align only in X, and save this info later.
+For floors and ceilings, we have more success, and since images smaller upwards, only one match usually, and so we save the slope for later.
+
+
+optimal
+horizontal and vertical translations independently, by sampling 4
+pairs at a time and considering an outlier threshold of 10 mm. If a
+translation is applied, we indicate that the image was aligned to
+geometry in one or both dimensions, which will reduce further shifting
+in Section \ref{sec:robustSIFTFeatureMatching}.
 
 \subsection{Image Occlusion}
 \label{sec:imageOcclusion}
