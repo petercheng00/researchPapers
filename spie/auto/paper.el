@@ -4,8 +4,6 @@
      "report")
     (LaTeX-add-labels
      "sec:introduction"
-     "sec:background"
-     "sec:existingApproaches"
      "sec:simpleTextureMapping"
      "fig:projection"
      "fig:scoringFunction"

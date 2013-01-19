@@ -79,34 +79,79 @@ University of California, Berkeley\\
 \section{Introduction}
 \label{sec:introduction}
 Three-dimensional modeling of indoor environments has a variety of
-applications in fields such as architecture and simulation. Adding
-accurate textures to these models is important in adding context to
-digital visualizations, and allows for image-based analysis of
-environments.  In this paper, we work with a backpack-mounted system,
-carried by an ambulatory human. This backpack system contains a series
-of laser scanners and inertial measurement units, allowing it to solve
-the simultaneous localization and mapping (SLAM) problem, which
-produces backpack poses over time, and a point cloud representing its
-environment. For our environment geometry, we work with models
-obtained by fitting low-resolution planar surfaces to these point
-clouds.  While a human-carried system provides advantages over more
-common wheel-mounted systems in terms of agility and portability, it
-often leads to relatively high localization error even after applying
+applications in fields such as architecture, conservation, and
+simulation. Applying accurate textures to these models is important in
+adding context to digital visualizations, and allows for image-based
+analysis of environments. In this paper, we perform data acquisition
+with a backpack-mounted system carried by an ambulatory human. This
+backpack system contains a series of laser scanners and inertial
+measurement units, allowing it to solve the simultaneous localization
+and mapping (SLAM) problem, which produces backpack poses over time as
+well as a point cloud representing the surrounding environment. For
+environment geometry, we work with models obtained by fitting
+low-resolution planar surfaces to these point clouds.  While a
+human-carried system provides advantages over more common
+wheel-mounted systems in terms of agility and portability, it often
+leads to relatively high localization error even after applying
 sophisticated localization techniques. Furthermore, our model geometry
-often contains some error as well, and is often adjusted to ignore
-low-resolution features, such as small walls, furniture, and various
-small features commonly found in indoor environments. As a result,
-methods for texture mapping that rely on accurate camera poses
-generally produce poor results.
+usually contains some error as well, and is often tuned to ignore
+low-resolution features, such as small walls, furniture, and other
+small non-planar features commonly found in indoor environments. As a
+result, methods for texture mapping that rely on accurate camera poses
+and projection surfaces generally produce poor results.
 
 Our goal of texturing planar surfaces with misaligned camera poses
 straddles a number of highly-researched fields, including image
 stitching, panorama generation, and image-based localization
-algorithims. We will examine the results of existing approaches in
-Section X, and compare them with our approach, which utilizes several
-aspects of our modeling system and input data.
+algorithims. We will examine the results of two existing approaches
+from these fields of study in Section X, and compare them with our
+approach, which utilizes several unique aspects of our modeling system
+and input data.
 
-The remainder of the paper is organized as follows. Section X demonstrates 2 existing algorithms on our datasets and discusses unique aspects of our modeling system. Section X describes the basics of image projection, and a tile-based mapping approach and its shortcomings. Section X presents our approach towards image alignment, followed by Section X, which describes our two methods of compositing images. Section X contains results and conclusions.
+The remainder of the paper is organized as follows. Section X
+demonstrates 2 existing image stitching algorithms on our
+datasets. Section X explains how images are projected onto our
+geometry, and a simple approach towards texturing. Section X contains
+our approach towards image alignment, followed by Section X, which
+describes our two methods of compositing images. Section X contains
+results and conclusions.
+
+\section{Existing Approaches}
+Stitching together multiple images to produce a larger image is a
+commonly performed task, with many successful approaches over the past
+years. Generally, parts of images are first matched to eachother,
+usually through direct comparisons or feature detection and
+matching. Images are then transformed to maximize matches, often by
+calculating homographies between pairs of images, or by modifying
+camera poses in 1 to 6 degrees of freedom.
+
+Feature matching has a number of advantages over direct matching that
+make it more suitable for our data, which is X. Feature matching
+however, works best when multiple unique visual references exist in the
+environment that can be detected in multiple images. In contrast, our
+indoor environments have a high prevalence of bare surfaces, as well
+as repeating textures that cause difficulty in disambiguating
+features. This lack of reliable reference points often results in
+errors when matching images together.
+
+Additionally, our datasets often contain long chains of images, which
+leads to error accumulation when image correspondences are not
+exact. For example, when matching a long chain of images through
+homographies, a pixel in the $nth$ image is translated into the first
+image's coordinates by multiplying by the $3\times3$ matrices $H_1 H_2
+H_3 ... H_n$. Errors in any of these homography matrices are
+propagated to all further images, resulting in drift.
+
+Past work with our data acquisition backpack integrated image
+stitching with localization algorithms, and performed homography-based
+alignment. As described above, this often resulted in drift, as shown in Figure X. This approach is also tied into a localization
+algorithm, and its iterative camera adjustment process over our large
+datasets leads to prohibitively long runtime.
+
+Drift during image stitching can be combated using X. The AutoStitch software package
+contains X. Though AutoStitch performs well in areas with dense
+features, it can not handle even short segments of bare walls. The example in Figure X was generated after manual tuning, and areas with fewer visual
+features or repeating texture patterns simply failed outright with AutoStitch.
 
 
 
