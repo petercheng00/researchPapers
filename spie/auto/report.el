@@ -13,5 +13,6 @@
      "rayintersection"
      "panorama2d"
      "autostitch"
+     "openscenegraph"
      "siftgpu")))
 

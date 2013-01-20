@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2013.1.17)  17 JAN 2013 21:50
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2013.1.20)  20 JAN 2013 11:47
 entering extended mode
  %&-line parsing enabled.
 **&prv_paper _region_.tex
@@ -18,7 +18,7 @@ graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2009/08/28 v1.8 graphics configuration of TeX Live
-   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+  pdftex.def    2010/03/12 v0.04p Graphics/color for pdfTeX
   subfig.sty    2005/06/28 ver: 1.3 subfig package
  caption.sty    2009/10/09 v3.1k Customizing captions (AR)
 caption3.sty    2009/10/09 v3.1k caption3 kernel (AR)
@@ -53,8 +53,7 @@ ifluatex.sty    2009/04/17 v1.2 Provides the ifluatex switch (HO)
  ltxcmds.sty    2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO)
 
 atbegshi.sty    2008/07/31 v1.9 At begin shipout hook (HO)
-  hdvips.def    2009/10/09 v6.79a Hyperref driver for dvips
- pdfmark.def    2009/10/09 v6.79a Hyperref definitions for pdfmark specials
+ hpdftex.def    2009/10/09 v6.79a Hyperref driver for pdfTeX
     umsa.fd    2009/06/22 v3.00 AMS symbols A
     umsb.fd    2009/06/22 v3.00 AMS symbols B
         .
@@ -83,15 +82,28 @@ Package: preview 2010/02/14 CVS-1.126 (AUCTeX/preview-latex)
 No auxiliary output files.
 
 
-\hbadness=\count115
+\hbadness=\count116
 \hfuzz=\dimen125
 (/usr/local/share/texmf/tex/latex/preview/prauctex.cfg))
 (/usr/local/share/texmf/tex/latex/preview/prfootnotes.def)
-\pr@snippet=\count116
-\pr@box=\box29
-\pr@output=\toks24
+\pr@snippet=\count117
+\pr@box=\box28
+\pr@output=\toks21
 
 Preview: Fontsize 10pt
+Preview: PDFoutput 1
+) (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count118
+\scratchdimen=\dimen126
+\scratchbox=\box29
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen127
+\MPnumerator=\count122
+\everyMPtoPDFconversion=\toks23
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
@@ -115,16 +127,13 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count117
+\c@section@level=\count123
 )
 LaTeX Info: Redefining \ref on input line 52.
 LaTeX Info: Redefining \pageref on input line 52.
 \AtBeginShipoutBox=\box30
 
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
- !name(paper.tex) !offset(357) 
+ !name(paper.tex) !offset(374) 
 ! Preview: Snippet 1 started.
 <-><->
       
@@ -140,7 +149,7 @@ l.55 \subsection{2D Feature Alignment}
                                       
 Not a real error.
 
-[1
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 
@@ -194,30 +203,30 @@ LaTeX Warning: Citation `fischler1981random' on page 1 undefined on input line
 ! Preview: Snippet 4 started.
 <-><->
       
-l.75 ...m} is again used to estimate the optimal $
-                                                  d^x_{i,j}$
+l.76 $
+      d^x_{i,j}$ and $d^y_{i,j}$ distances between two images $i$ and
 Not a real error.
 
 ! Preview: Snippet 4 ended.(455111+259786x958314).
 <-><->
       
-l.75 ...n used to estimate the optimal $d^x_{i,j}$
-                                                  
+l.76 $d^x_{i,j}$
+                 and $d^y_{i,j}$ distances between two images $i$ and
 Not a real error.
 
 [4]
 ! Preview: Snippet 5 started.
 <-><->
       
-l.76 and $
-          d^y_{i,j}$ distances between two images $i$ and $j$. For this
+l.76 $d^x_{i,j}$ and $
+                      d^y_{i,j}$ distances between two images $i$ and
 Not a real error.
 
 ! Preview: Snippet 5 ended.(512453+271877x958314).
 <-><->
       
-l.76 and $d^y_{i,j}$
-                     distances between two images $i$ and $j$. For this
+l.76 $d^x_{i,j}$ and $d^y_{i,j}$
+                                 distances between two images $i$ and
 Not a real error.
 
 [5]
@@ -225,461 +234,337 @@ Not a real error.
 <-><->
       
 l.76 ...$d^y_{i,j}$ distances between two images $
-                                                  i$ and $j$. For this
+                                                  i$ and
 Not a real error.
 
 ! Preview: Snippet 6 ended.(432226+0x225780).
 <-><->
       
 l.76 ...^y_{i,j}$ distances between two images $i$
-                                                   and $j$. For this
+                                                   and
 Not a real error.
 
 [6]
 ! Preview: Snippet 7 started.
 <-><->
       
-l.76 ...j}$ distances between two images $i$ and $
-                                                  j$. For this
+l.77 $
+      j$. We use a 10 pixel threshold for RANSAC, so that SIFT matches are
 Not a real error.
 
 ! Preview: Snippet 7 ended.(432226+127431x307396).
 <-><->
       
-l.76 ...$ distances between two images $i$ and $j$
-                                                  . For this
+l.77 $j$
+        . We use a 10 pixel threshold for RANSAC, so that SIFT matches are
 Not a real error.
 
 [7]
 ! Preview: Snippet 8 started.
 <-><->
       
-l.86 We now use the RANSAC-calculated $
-                                       d^x_{i,j}$ and $d^y_{i,j}$ distances
+l.82 We now use the $
+                     d^x_{i,j}$ and $d^y_{i,j}$ distances between each pair
 Not a real error.
 
 ! Preview: Snippet 8 ended.(455111+259786x958314).
 <-><->
       
-l.86 We now use the RANSAC-calculated $d^x_{i,j}$
-                                                  and $d^y_{i,j}$ distances
+l.82 We now use the $d^x_{i,j}$
+                                and $d^y_{i,j}$ distances between each pair
 Not a real error.
 
 [8]
 ! Preview: Snippet 9 started.
 <-><->
       
-l.86 ...se the RANSAC-calculated $d^x_{i,j}$ and $
-                                                  d^y_{i,j}$ distances
+l.82 We now use the $d^x_{i,j}$ and $
+                                     d^y_{i,j}$ distances between each pair
 Not a real error.
 
 ! Preview: Snippet 9 ended.(512453+271877x958314).
 <-><->
       
-l.86 ...SAC-calculated $d^x_{i,j}$ and $d^y_{i,j}$
-                                                   distances
+l.82 We now use the $d^x_{i,j}$ and $d^y_{i,j}$
+                                                distances between each pair
 Not a real error.
 
 [9]
 ! Preview: Snippet 10 started.
 <-><->
       
-l.88 linear least squares. There are a total of $
-                                                 M^{2}$ possible pairs of
+l.84 ...e variables we wish to solve for are the $
+                                                  x$ and $y$
 Not a real error.
 
-! Preview: Snippet 10 ended.(533465+0x1001245).
+! Preview: Snippet 10 ended.(282168+0x374556).
 <-><->
       
-l.88 ...east squares. There are a total of $M^{2}$
-                                                   possible pairs of
+l.84 ...variables we wish to solve for are the $x$
+                                                   and $y$
 Not a real error.
 
 [10]
 ! Preview: Snippet 11 started.
 <-><->
       
-l.92 ($
-       \textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $)
+l.84 ...les we wish to solve for are the $x$ and $
+                                                  y$
 Not a real error.
 
-! Preview: Snippet 11 ended.(641161+314244x4541458).
+! Preview: Snippet 11 ended.(282168+127431x344824).
 <-><->
       
-l.92 ...a}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $
-                                                  )
+l.84 ...s we wish to solve for are the $x$ and $y$
+                                                  
 Not a real error.
 
 [11]
 ! Preview: Snippet 12 started.
 <-><->
       
-l.94 $
-      M$-dimensional vector $\vec{\beta}$ represents the unknown $x$
+l.89 $
+      \textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $
 Not a real error.
 
-! Preview: Snippet 12 ended.(447828+0x707242).
+! Preview: Snippet 12 ended.(641161+314244x4541458).
 <-><->
       
-l.94 $M$
-        -dimensional vector $\vec{\beta}$ represents the unknown $x$
+l.89 ...a}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $
+                                                  
 Not a real error.
 
 [12]
 ! Preview: Snippet 13 started.
 <-><->
       
-l.94 $M$-dimensional vector $
-                             \vec{\beta}$ represents the unknown $x$
+l.93 \[
+       
 Not a real error.
 
-! Preview: Snippet 13 ended.(641161+127431x405276).
+! Preview: Snippet 13 ended.(5505078+0x21005834).
 <-><->
       
-l.94 $M$-dimensional vector $\vec{\beta}$
-                                          represents the unknown $x$
+l.104 \]
+        
 Not a real error.
 
 [13]
 ! Preview: Snippet 14 started.
 <-><->
       
-l.94 ...tor $\vec{\beta}$ represents the unknown $
-                                                  x$
+l.106 \[
+        \vec{\beta} =
 Not a real error.
 
-! Preview: Snippet 14 ended.(282168+0x374556).
+! Preview: Snippet 14 ended.(870541+0x20944206).
 <-><->
       
-l.94 ...r $\vec{\beta}$ represents the unknown $x$
-                                                  
+l.110 \]
+        
 Not a real error.
 
 [14]
 ! Preview: Snippet 15 started.
 <-><->
       
-l.95 location of each image on the plane for $
-                                              1 \dots M$. The optimal $x$
+l.112 \[
+        
 Not a real error.
 
-! Preview: Snippet 15 ended.(447828+0x2017954).
+! Preview: Snippet 15 ended.(813454+0x25018748).
 <-><->
       
-l.95 ...of each image on the plane for $1 \dots M$
-                                                  . The optimal $x$
+l.118 \]
+        
 Not a real error.
 
 [15]
 ! Preview: Snippet 16 started.
 <-><->
       
-l.95 ...n the plane for $1 \dots M$. The optimal $
-                                                  x$
+l.121 In this scenario, a SIFT-based distance of $
+                                                  dx_{1,2}$, $dy_{1,2}$ was
 Not a real error.
 
-! Preview: Snippet 16 ended.(282168+0x374556).
+! Preview: Snippet 16 ended.(455111+187504x1426548).
 <-><->
       
-l.95 ...the plane for $1 \dots M$. The optimal $x$
-                                                  
+l.121 ...ario, a SIFT-based distance of $dx_{1,2}$
+                                                  , $dy_{1,2}$ was
 Not a real error.
 
 [16]
 ! Preview: Snippet 17 started.
 <-><->
       
-l.96 and $
-          y$ locations are obtained in the same way, so we only consider
+l.121 ...o, a SIFT-based distance of $dx_{1,2}$, $
+                                                  dy_{1,2}$ was
 Not a real error.
 
-! Preview: Snippet 17 ended.(282168+127431x344824).
+! Preview: Snippet 17 ended.(455111+187504x1373303).
 <-><->
       
-l.96 and $y$
-             locations are obtained in the same way, so we only consider
+l.121 ...-based distance of $dx_{1,2}$, $dy_{1,2}$
+                                                   was
 Not a real error.
 
 [17]
 ! Preview: Snippet 18 started.
 <-><->
       
-l.97 the $
-          x$ locations here:
+l.123 second of $
+                 A$, while the third and fourth row of $A$ represent the
 Not a real error.
 
-! Preview: Snippet 18 ended.(282168+0x374556).
+! Preview: Snippet 18 ended.(447828+0x491521).
 <-><->
       
-l.97 the $x$
-             locations here:
+l.123 second of $A$
+                   , while the third and fourth row of $A$ represent the
 Not a real error.
 
 [18]
 ! Preview: Snippet 19 started.
 <-><->
       
-l.99 \[
-       \vec{\beta} =
+l.123 ... $A$, while the third and fourth row of $
+                                                  A$ represent the
 Not a real error.
 
-! Preview: Snippet 19 ended.(870541+0x21658814).
+! Preview: Snippet 19 ended.(447828+0x491521).
 <-><->
       
-l.103 \]
-        
+l.123 ...A$, while the third and fourth row of $A$
+                                                   represent the
 Not a real error.
 
 [19]
 ! Preview: Snippet 20 started.
 <-><->
       
-l.105 The $
-           N \times M$ matrix $A$ is constructed with one row for each pair
+l.124 same for images 2 and 3. Rows 5 and 6 of $
+                                                A$ correspond to a fixed
 Not a real error.
 
-! Preview: Snippet 20 ended.(447828+54613x2106246).
+! Preview: Snippet 20 ended.(447828+0x491521).
 <-><->
       
-l.105 The $N \times M$
-                       matrix $A$ is constructed with one row for each pair
+l.124 same for images 2 and 3. Rows 5 and 6 of $A$
+                                                   correspond to a fixed
 Not a real error.
 
 [20]
 ! Preview: Snippet 21 started.
 <-><->
       
-l.105 The $N \times M$ matrix $
-                               A$ is constructed with one row for each pair
+l.125 location of $
+                   tx_1$, $ty_1$ for image 1, while Row 7 corresponds to a
 Not a real error.
 
-! Preview: Snippet 21 ended.(447828+0x491521).
+! Preview: Snippet 21 ended.(403098+98303x905217).
 <-><->
       
-l.105 The $N \times M$ matrix $A$
-                                  is constructed with one row for each pair
+l.125 location of $tx_1$
+                        , $ty_1$ for image 1, while Row 7 corresponds to a
 Not a real error.
 
 [21]
 ! Preview: Snippet 22 started.
 <-><->
       
-l.107 stage. A row in the matrix has a $
-                                        -1$ and $1$ in the columns
+l.125 location of $tx_1$, $
+                           ty_1$ for image 1, while Row 7 corresponds to a
 Not a real error.
 
-! Preview: Snippet 22 ended.(422343+54613x837407).
+! Preview: Snippet 22 ended.(403098+127431x851972).
 <-><->
       
-l.107 stage. A row in the matrix has a $-1$
-                                            and $1$ in the columns
+l.125 location of $tx_1$, $ty_1$
+                                 for image 1, while Row 7 corresponds to a
 Not a real error.
 
 [22]
 ! Preview: Snippet 23 started.
 <-><->
       
-l.107 stage. A row in the matrix has a $-1$ and $
-                                                 1$ in the columns
+l.126 constraint to a line of slope $
+                                     m$, with current location $tx_2$,
 Not a real error.
 
-! Preview: Snippet 23 ended.(422343+0x327681).
+! Preview: Snippet 23 ended.(282168+0x575415).
 <-><->
       
-l.107 ...e. A row in the matrix has a $-1$ and $1$
-                                                   in the columns
+l.126 constraint to a line of slope $m$
+                                       , with current location $tx_2$,
 Not a real error.
 
 [23]
 ! Preview: Snippet 24 started.
 <-><->
       
-l.111 \[
-        
+l.126 ...ine of slope $m$, with current location $
+                                                  tx_2$,
 Not a real error.
 
-! Preview: Snippet 24 ended.(5941204+0x20900167).
+! Preview: Snippet 24 ended.(403098+98303x905217).
 <-><->
       
-l.122 \]
-        
+l.126 ...f slope $m$, with current location $tx_2$
+                                                  ,
 Not a real error.
 
 [24]
-
-LaTeX Warning: Reference `sec:geometryAlignment' on page 1 undefined on input l
-ine 125.
-
 ! Preview: Snippet 25 started.
 <-><->
       
-l.130 ... be such an anchor, simply by placing a $
-                                                  1$ in its
+l.127 $
+       ty_2$, both results of the geometry alignment procedure in Section
 Not a real error.
 
-! Preview: Snippet 25 ended.(422343+0x327681).
+! Preview: Snippet 25 ended.(403098+127431x851972).
 <-><->
       
-l.130 ...e such an anchor, simply by placing a $1$
-                                                   in its
+l.127 $ty_2$
+            , both results of the geometry alignment procedure in Section
 Not a real error.
 
 [25]
-! Preview: Snippet 26 started.
-<-><->
-      
-l.133 The $
-           N$-dimensional observation vector $\vec{\gamma}$ is constructed
-Not a real error.
 
-! Preview: Snippet 26 ended.(447828+0x598014).
-<-><->
-      
-l.133 The $N$
-             -dimensional observation vector $\vec{\gamma}$ is constructed
-Not a real error.
+LaTeX Warning: Reference `sec:geometryAlignment' on page 1 undefined on input l
+ine 128.
 
-[26]
-! Preview: Snippet 27 started.
-<-><->
-      
-l.133 The $N$-dimensional observation vector $
-                                              \vec{\gamma}$ is constructed
-Not a real error.
-
-! Preview: Snippet 27 ended.(468218+127431x375708).
-<-><->
-      
-l.133 ...nsional observation vector $\vec{\gamma}$
-                                                   is constructed
-Not a real error.
-
-[27]
-! Preview: Snippet 28 started.
-<-><->
-      
-l.137 localization. Thus a $
-                            \vec{\gamma}$ corresponding to the above matrix
-Not a real error.
-
-! Preview: Snippet 28 ended.(468218+127431x375708).
-<-><->
-      
-l.137 localization. Thus a $\vec{\gamma}$
-                                          corresponding to the above matrix
-Not a real error.
-
-[28]
-! Preview: Snippet 29 started.
-<-><->
-      
-l.140 \[
-        
-Not a real error.
-
-! Preview: Snippet 29 ended.(813454+0x24296664).
-<-><->
-      
-l.145 \]
-        
-Not a real error.
-
-[29]
-! Preview: Snippet 30 started.
-<-><->
-      
-l.147 The $
-           \vec{\beta}$ that minimizes $||A \vec{\beta} -
-Not a real error.
-
-! Preview: Snippet 30 ended.(641161+127431x405276).
-<-><->
-      
-l.147 The $\vec{\beta}$
-                        that minimizes $||A \vec{\beta} -
-Not a real error.
-
-[30]
-! Preview: Snippet 31 started.
-<-><->
-      
-l.147 The $\vec{\beta}$ that minimizes $
-                                        ||A \vec{\beta} -
-Not a real error.
-
-! Preview: Snippet 31 ended.(641161+163840x3095678).
-<-><->
-      
-l.148 \vec{\gamma}||_2^2$
-                          results in a set of image locations on the plane
-Not a real error.
-
-[31]
-! Preview: Snippet 32 started.
-<-><->
-      
-l.153 the $
-           A$ matrix and observations to the $\vec{\gamma}$ vector
-Not a real error.
-
-! Preview: Snippet 32 ended.(447828+0x491521).
-<-><->
-      
-l.153 the $A$
-              matrix and observations to the $\vec{\gamma}$ vector
-Not a real error.
-
-[32]
-! Preview: Snippet 33 started.
-<-><->
-      
-l.153 the $A$ matrix and observations to the $
-                                              \vec{\gamma}$ vector
-Not a real error.
-
-! Preview: Snippet 33 ended.(468218+127431x375708).
-<-><->
-      
-l.153 ...ix and observations to the $\vec{\gamma}$
-                                                   vector
-Not a real error.
-
-[33]
-! Preview: Snippet 34 started.
-<-><->
-      
-l.159 After completing this same process for the $
-                                                  y$ dimension as well, and
-Not a real error.
-
-! Preview: Snippet 34 ended.(282168+127431x344824).
-<-><->
-      
-l.159 ... completing this same process for the $y$
-                                                   dimension as well, and
-Not a real error.
-
-[34]
 
 LaTeX Warning: Reference `sec:tileBasedMapping' on page 1 undefined on input li
-ne 162.
+ne 137.
 
 
-LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 163
+LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 138
 .
 
- !name(paper.tex) !offset(650) 
+ !name(paper.tex) !offset(667) 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 319 strings out of 489314
- 4934 string characters out of 1098929
- 173321 words of memory out of 3000000
- 9144 multiletter control sequences out of 15000+50000
+ 617 strings out of 489292
+ 8870 string characters out of 1098583
+ 168382 words of memory out of 3000000
+ 9458 multiletter control sequences out of 15000+50000
  8039 words of font info for 31 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 26i,11n,37p,167b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 23i,8n,37p,167b,325s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 
-Output written on _region_.dvi (34 pages, 7068 bytes).
+Output written on _region_.pdf (25 pages, 79648 bytes).
+PDF statistics:
+ 115 PDF objects out of 1000 (max. 8388607)
+ 1 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

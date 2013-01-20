@@ -51,7 +51,7 @@ University of California, Berkeley\\
  
 \begin{document}
 
-\message{ !name(paper.tex) !offset(357) }
+\message{ !name(paper.tex) !offset(374) }
 \subsection{2D Feature Alignment}
 \label{sec:robustSIFTFeatureMatching}
 Our next step is to align overlapping images by searching for
@@ -72,98 +72,73 @@ parts of images that overlap given the original noisy poses. Second,
 we discard feature matches that correspond to an image distance
 greater than 40 pixels from what the noisy poses estimate. In order to
 utilize the remaining feature matches robustly, RANSAC
-\cite{fischler1981random} is again used to estimate the optimal $d^x_{i,j}$
-and $d^y_{i,j}$ distances between two images $i$ and $j$. For this
-application, the RANSAC fitting function finds the average distance
-between selected matches in a pair of images, and the distance
-function for a pair of points is chosen to be the difference between
-those points' SIFT match distance and the average distance computed by
-the fitting function. We use a 10 pixel threshold, so that SIFT
-matches are labeled as outliers if their horizontal or vertical
-distances are not within 10 pixels of the average distance computed by
-the fitting function.
+\cite{fischler1981random} is again used to estimate the optimal
+$d^x_{i,j}$ and $d^y_{i,j}$ distances between two images $i$ and
+$j$. We use a 10 pixel threshold for RANSAC, so that SIFT matches are
+labeled as outliers if their distance is not within 10 pixels of the
+sampled average distance.
 
-We now use the RANSAC-calculated $d^x_{i,j}$ and $d^y_{i,j}$ distances
-between each pair of images to refine their positions using weighted
-linear least squares. There are a total of $M^{2}$ possible pairs of
-images, though we only generate distances between images with SIFT
-matches. Given these distances and the original image location
-estimates, we can solve a least squares problem
-($\textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $)
-to estimate the location of the images on the plane. The
-$M$-dimensional vector $\vec{\beta}$ represents the unknown $x$
-location of each image on the plane for $1 \dots M$. The optimal $x$
-and $y$ locations are obtained in the same way, so we only consider
-the $x$ locations here:
 
-\[\vec{\beta} =
-\begin{pmatrix}
-  x_1, & x_2, & x_3, & \cdots & x_{M-1}, & x_M
-\end{pmatrix}
-\]
+We now use the $d^x_{i,j}$ and $d^y_{i,j}$ distances between each pair
+of images to refine their positions using weighted linear least
+squares. The variables we wish to solve for are the $x$ and $y$
+positions of our images, while our equations are the SIFT-based
+distances between pairs of images, images fixed to geometry with 0 or
+1 degrees of freedom, and the original camera poses. Ignoring
+weighting for now, an example setup for solving
+$\textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $
+with 3 images is shown below.
 
-The $N \times M$ matrix $A$ is constructed with one row for each pair
-of images with measured distances produced by the SIFT matching
-stage. A row in the matrix has a $-1$ and $1$ in the columns
-corresponding to the two images in the pair. For example, the matrix
-below indicates a SIFT-based distance between images 1 and 2, images 1
-and 3, images 2 and 3, etc.
+
 \[
 A =
 \begin{pmatrix}
-  -1 & 1 & 0 & \cdots & 0 & 0\\
-  -1 & 0 & 1 & \cdots & 0 & 0\\
-  0 & -1 & 1 & \cdots & 0 & 0\\
-  \vdots  & \vdots & \vdots & \ddots & \vdots  & \vdots\\
-  0 & 0 & 0 & \cdots & 1 & 0 \\
-  0 & 0 & 0 & \cdots & -1 & 1 \\
-  1 & 0 & 0 & \cdots & 0 & 0\\
+  -1 & 1 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & -1 & 1 & 0\\
+  0 & -1 & 1 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & -1 & 1\\
+  1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 1 & 0 & 0\\
+  0 & -m & 0 & 0 & 1 & 0\\
 \end{pmatrix}
 \]
-If only relative distances between images are included, the absolute
-location of the images can not be calculated, and the matrix is rank
-deficient. From Section \ref{sec:geometryAlignment}, a number of
-images are anchored to geometry points, in one or both dimensions, and
-thus their locations can be used to fix the rest in place. In case no
-anchor images exist, we simply arbitrarily pick an image, as we have
-no other reference points to work with. In the above matrix, the first
-image is set to be such an anchor, simply by placing a $1$ in its
-column.
 
-The $N$-dimensional observation vector $\vec{\gamma}$ is constructed
-using the SIFT-based distances generated in the RANSAC matching
-stage. Elements in the observation vector corresponding to anchor
-images are simply their locations as determined by the original noisy
-localization. Thus a $\vec{\gamma}$ corresponding to the above matrix
-can be written as:
+\[\vec{\beta} =
+\begin{pmatrix}
+  x_1, & x_2, & x_3, & y_1, & y_2, & y_3
+\end{pmatrix}
+\]
 
 \[
 \vec{\gamma}^T =
 \begin{pmatrix}
-  d_{1,2}, &d_{1,3}, &d_{2,3}, &\hdots &d_{N-2,N-1}, &d_{N-1,N}, &x_1
+  dx_{1,2}, &dy_{1,2}, &dx_{2,3}, &dy_{2,3}, &t1_x, &t1_y, & -mx_2 +
+  ty_2
 \end{pmatrix}
 \]
 
-The $\vec{\beta}$ that minimizes $||A \vec{\beta} -
-\vec{\gamma}||_2^2$ results in a set of image locations on the plane
-that best honors all the SIFT-based distance measurements between
-images. This solution however does not make use of our noisy camera
-poses, and will fail when no SIFT matches are found between one
-segment of the plane and another. To account for this, we add rows to
-the $A$ matrix and observations to the $\vec{\gamma}$ vector
-corresponding to the original noisy distances. We then add weighting
-to our least squares problem where the SIFT distances and anchor
-values are given a high weight e.g. 1, while the noisy distances are
-given a smaller weight e.g. 0.01.
 
-After completing this same process for the $y$ dimension as well, and
-making the resultant shifts, our images overlap and match each other
+In this scenario, a SIFT-based distance of $dx_{1,2}$, $dy_{1,2}$ was
+calculated between images 1 and 2. This corresponds to the first and
+second of $A$, while the third and fourth row of $A$ represent the
+same for images 2 and 3. Rows 5 and 6 of $A$ correspond to a fixed
+location of $tx_1$, $ty_1$ for image 1, while Row 7 corresponds to a
+constraint to a line of slope $m$, with current location $tx_2$,
+$ty_2$, both results of the geometry alignment procedure in Section
+\ref{sec:geometryAlignment}. If we do not have enough SIFT matches, or
+lack images matched to geometry, our matrix becomes rank-deficient and
+our problem cannot be solved. As a result, we add rows for each image
+corresponding to the original noisy image locations, and downweight
+them heavily, e.g. with a weight of 0.01 versus 1.
+
+Because our problem is linear, it is quickly solved, and after
+applying the resulting shifts, our images overlap and match each other
 with far greater accuracy. Applying the simple mapping scheme in
 Section \ref{sec:tileBasedMapping} to the same wall used in that
 section results in Figure \ref{fig:compareAll}(b), which has far fewer
 discontinuities, though errors due to lighting differences and
 repeating features are still visible.
 
-\message{ !name(paper.tex) !offset(650) }
+\message{ !name(paper.tex) !offset(667) }
 
 \end{document} 

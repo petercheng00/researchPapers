@@ -83,18 +83,17 @@ Three-dimensional modeling of indoor environments has a variety of
 applications in fields such as architecture, conservation, and
 simulation. Applying accurate textures to these models is important to
 add context to digital visualizations, and allows for image-based
-analysis of environments.
-
-In this paper, we perform data acquisition with a backpack-mounted
-system carried by an ambulatory human \cite{liu2010indoor}. This
-backpack system contains a series of cameras, laser scanners, and
-inertial measurement units, used to solve the simultaneous
-localization and mapping (SLAM) problem, which produces backpack (and
-therefore camera) poses over time as well as a point cloud
-representing the surrounding environment \cite{chen2010indoor,
-  liu2010indoor, kua2012loopclosure}. For environment geometry, we
-work with models obtained by fitting low-resolution planar surfaces to
-these point clouds \cite{sanchez2012point}.
+analysis of environments. In this paper, we perform data acquisition
+with a backpack-mounted system carried by an ambulatory human
+\cite{liu2010indoor}. This backpack system contains a series of
+cameras, laser scanners, and inertial measurement units, used to solve
+the simultaneous localization and mapping (SLAM) problem, which
+produces backpack (and therefore camera) poses over time as well as a
+point cloud representing the surrounding environment
+\cite{chen2010indoor, liu2010indoor, kua2012loopclosure}. For
+environment geometry, we work with models obtained by fitting
+low-resolution planar surfaces to these point clouds
+\cite{sanchez2012point}.
 
 While a human-carried system provides advantages over more common
 wheeled systems in terms of agility and portability, it often leads to
@@ -114,10 +113,10 @@ adjustments alone.
 The remainder of the paper is organized as follows. Section
 \ref{sec:simpleTextureMapping} explains how images are projected onto
 our geometry and explains a simple approach towards selecting images
-for texturing. Section \ref{sec:existingApproaches} covers
-sophisticated existing approaches to image stitching, and their
-performance on our datasets. Section \ref{sec:2dAlignment} contains
-our efficient approach towards 2D image alignment, followed by Section
+for texturing. Section \ref{sec:existingApproaches} covers existing
+approaches to image stitching, and their performance on our
+datasets. Section \ref{sec:2dAlignment} contains our approach towards
+efficient 2D image alignment, followed by Section
 \ref{sec:imageCompositing}, which describes our two methods of
 compositing images. Section \ref{sec:resultsAndConclusions} contains
 results and conclusions.
@@ -132,8 +131,8 @@ results and conclusions.
 
 The geometry of the texture mapping process for a planar surface is
 shown in Figure \ref{fig:projection}.  We are provided with a set of
-$M$ images to texture a target plane. Each image has a camera matrix
-$P_i$ for $i=1..M$, which translates a 3D point in the world
+$M$ images to texture a target plane, where each image has a camera
+matrix $P_i$ for $i=1..M$, which translates a 3D point in the world
 coordinate system to a 2D point or pixel in image $i$'s coordinates. A
 camera matrix $P_i$ is composed of the camera's intrinsic parameters,
 containing focal length and image center, as well as extrinsic
@@ -143,7 +142,7 @@ taken. These extrinsic parameters are determined by the backpack
 hardware and localization algorithms \cite{chen2010indoor,
   liu2010indoor, kua2012loopclosure} and are substantially noisy.
 
-Because our backpack system takes photos at a rate of 5 Hz, thousands
+Because our backpack system takes photos at a rate of 5 Hz, hundreds
 of images are available for texturing each surface in our model. Our
 goal in designing a texture mapping process is to decide which of
 these images should be used, and where their contents should map onto
@@ -156,7 +155,7 @@ single continuous image.
     \centering
     \includegraphics[height=1.5in]{Projection.pdf}
     \caption{Surfaces to be textured are specified in 3D space by
-      corners $C_i$. Images are related to each plane through the
+      corners $C_i$. Images are related to each surface through the
       camera matrics $P_{1..m}$. }
     \label{fig:projection}
   \end{minipage}
@@ -256,6 +255,7 @@ alignment of our images.
 
 
 \section{Existing Approaches to Image Alignment}
+\label{sec:existingApproaches}
 Stitching together multiple images to produce a larger, seamless image
 is a commonly performed task, with many successful approaches over the
 past years. Generally, parts of images are matched to each other,
@@ -266,7 +266,7 @@ adjusting camera poses in 1 to 6 degrees of freedom.
 
 Feature matching has a number of advantages over direct matching that
 make it more suitable for our often non-planar data, and rotational
-differences, as covered in X. Feature matching however, works best
+differences \cite{szeliski2006image}. Feature matching however, works best
 when multiple unique visual references exist in the environment that
 can be detected in multiple images. In contrast, our indoor
 environments have a high prevalence of bare surfaces, as well as
@@ -328,23 +328,22 @@ alignment. Though state-of-the-art techniques towards image stitching
 work in 3D, we elect to perform image alignments entirely in
 2D. Besides the benifits of reduced complexity, we have found 2D
 alignment to work well for two main reasons. First, because we have
-such a large number of images to choose from, we have found that the
-compositing approaches in Section \ref{sec:imageCompositing} is able
-to select a subset of images that align well, given only 2D
-alignments. Furthermore, the nature of our input data is such that
-localization error chiefly occurs in two dimensions, in the same plane
-as the surface being projected onto. Recall that our data acquisition
-system is backpack-mounted, with cameras facing to the sides of the
-operator. The operator makes efforts to walk parallel to walls, and
-the localization and model-generation algorithms that provide our
-input conform the operator's path to be straight and parallel to
-detected surfaces \cite{kua2012loopclosure, sanchez2012point}. Since
-the operator walks in as upright a position as possible, errors in
-roll, yaw, and the operator's distance from parallel surfaces are
-minimal. Thus, our highest errors stem from uncertainty in the
-operator's pitch, equivalent to rotation around the camera axes, as
-well as location along surfaces. These equate to 2D rotation and
-translation in a surface's plane.
+such a large number of images to choose from, the compositing
+approaches in Section \ref{sec:imageCompositing} are able to select a
+subset of images that align well, given only 2D alignments. Second,
+the nature of our input data is such that localization error chiefly
+occurs in two dimensions, in the same plane as the surface being
+projected onto. Our data acquisition system contains cameras facing to
+the sides of the operator. The operator makes efforts to walk parallel
+to walls, and the localization and model-generation algorithms that
+provide our input conform the operator's path to be straight and
+parallel to detected surfaces \cite{kua2012loopclosure,
+  sanchez2012point}. Since the operator walks in as upright a position
+as possible, errors in roll, yaw, and the operator's distance from
+parallel surfaces are minimal. Thus, our highest errors stem from
+uncertainty in the operator's pitch, equivalent to rotation around the
+camera axes, as well as location along surfaces. These equate to 2D
+rotation and translation in a surface's plane.
 
 Our 2D alignment procedure consists of three main parts. First, all
 images are projected onto the surface and lines within these
@@ -354,22 +353,22 @@ intersection with other surfaces. Second, occlusion checks are
 performed to remove invalid parts of each image for the target
 surface. These two steps are image-independent and performed in
 parallel. Third, we detect SIFT feature matches between pairs of
-images and solve a linear least squares problem in 2D to maximize
-matches.
+images and solve a weighted linear least squares problem in 2D to
+maximize matches.
 
 \subsection{Geometry-based Alignment}
 \label{sec:geometryAlignment}
 After computing each image's projection onto the target surface, as
 described in Section \ref{sec:simpleTextureMapping}, we detect line
-segments in the image projections using Hough transforms. Experience
-and intuition show that walls in indoor environments often contain
-linear features that are either horizontal or vertical, corresponding
-to doors, windows, posters, etc. Thus, when texturing walls, we rotate
-images in 2D such that dominant lines are made to be horizontal or
-vertical. This can be further generalized by instead orienting lines
-to be parallel with a surface's boundaries, which makes it applicable
-to non-rectangular surfaces, such as ceilings, floors, or slanted
-walls.
+segments in the image projections using Hough transforms, as shown in
+Figure \ref{fig:geometryAlignment}(a). Experience and intuition show
+that walls in indoor environments often contain linear features that
+are either horizontal or vertical, corresponding to doors, windows,
+posters, etc. Thus, when texturing walls, we rotate images in 2D such
+that dominant lines are made to be horizontal or vertical. This can be
+further generalized by instead orienting lines to be parallel with a
+surface's boundaries, which makes it applicable to non-rectangular
+surfaces, such as ceilings, floors, or slanted walls.
 
 \begin{figure}
   \centering
@@ -391,40 +390,27 @@ Furthermore, at this point in time, image occlusions have not been
 accounted for. As a result, some image projections contain texture
 that should project to an adjacent surface, sometimes with a visible
 linear boundary where the two surfaces meet. If this linear boundary
-is detected by Hough transform, the image is rotated and shifted in 2D
-such that the visual boundary between two surfaces in an image
+can be detected by Hough transform, the image is rotated and shifted
+in 2D such that the visual boundary between two surfaces in an image
 projection matches the physical boundary in our digital model. An
-example of such an adjustment is in Figure \ref{fig:geometryAlignment}
+example of such an adjustment is in Figure
+\ref{fig:geometryAlignment}(b) and \ref{fig:geometryAlignment}(c).
 
+To perform rotation, we use a RANSAC \cite{fischler1981random}
+framework to determine an optimal rotation angle between lines in our
+image and lines in our geometry. RANSAC allows us to ignore erroneous
+lines in our image, such as the slanted lines corresponding to the
+ladder in Figure \ref{fig:geometryAlignment}(a). Once this rotation is
+discovered and applied, we gather all pairs of image line segments and
+geometry line segments with less than $0.1^\circ$ difference in
+orientation and less than 250 mm distance at their furthest points. If
+2 or more pairs exist, we select the 2 that contain the longest
+noncollinear image-based line segments, and perform the corresponding
+fixed translation to match them. If we only have 1 pair, we perform
+the minimal shift to match the lines of that pair, and make note of
+their orientation, for usage in Section
+\ref{robustSIFTFeatureMatching}.
 
-To perform the rotation and alignment, we use the RANSAC
-\cite{fischler1981random} framework. RANSAC allows us to determine an
-optimal rotation and translation to match up two groups of line
-segments, while accounting for outliers. The parameters we specify
-were chosen after some tuning on our datasets, and are likely to vary
-based on input data. First, a rotation angle is computed by gathering
-all pairs of image line segments and geometry line segments with less
-than 20 degrees between them. We then run the RANSAC algorithm by
-sampling 4 of these angles at a time, and using their average as the
-fitting function. Angles over 1 degree from this average are
-considered outliers. Once a 2D rotation angle is determined, it is
-applied to the image, and image line segments with length below a
-certain threshold are discarded. Now, all pairs of image line segments
-and geometry line segments with less than 0.1 degree difference in
-orientation and less than 250 mm distance at their furthest points are
-gathered. RANSAC is then similarly employed to calculate a shift that maximizes matches among these pairs of lines. 
-
-In an ideal case, homography might be applied here, but poop
-In our datasets we have success sides for walls, floors and ceilings we have found often difficulty matching, so we often align only in X, and save this info later.
-For floors and ceilings, we have more success, and since images smaller upwards, only one match usually, and so we save the slope for later.
-
-
-optimal
-horizontal and vertical translations independently, by sampling 4
-pairs at a time and considering an outlier threshold of 10 mm. If a
-translation is applied, we indicate that the image was aligned to
-geometry in one or both dimensions, which will reduce further shifting
-in Section \ref{sec:robustSIFTFeatureMatching}.
 
 \subsection{Image Occlusion}
 \label{sec:imageOcclusion}
@@ -433,9 +419,9 @@ perform a simple recursive occlusion procedure on each image. This is
 done by performing the intersection tests in section
 \ref{sec:simpleTextureMapping} in a regularly spaced grid. Where four
 corners of a rectangular region are occluded, texture is
-removed. Where no corners are occluded, nothing occurs. Where there is
-a mixture of both, the rectangular region is subdivided into four, and
-the same process is performed on each. By performing Section
+removed. Where no corners are occluded, the recursion stops. Where
+there is a mixture of both, the rectangular region is subdivided into
+four, and the same process is performed on each. By performing Section
 \ref{sec:geometryAlignment}'s alignment procedure before occlusion,
 texture belonging to other surfaces is accurately removed, which is
 necessary for the next section.
@@ -462,90 +448,65 @@ greater than 40 pixels from what the noisy poses estimate. In order to
 utilize the remaining feature matches robustly, RANSAC
 \cite{fischler1981random} is again used to estimate the optimal
 $d^x_{i,j}$ and $d^y_{i,j}$ distances between two images $i$ and
-$j$. For this application, the RANSAC fitting function finds the
-average distance between selected matches in a pair of images, and the
-distance function for a pair of points is chosen to be the difference
-between those points' SIFT match distance and the average distance
-computed by the fitting function. We use a 10 pixel threshold, so that
-SIFT matches are labeled as outliers if their horizontal or vertical
-distances are not within 10 pixels of the average distance computed by
-the fitting function.
+$j$. We use a 10 pixel threshold for RANSAC, so that SIFT matches are
+labeled as outliers if their distance is not within 10 pixels of the
+sampled average distance.
 
-We now use the RANSAC-calculated $d^x_{i,j}$ and $d^y_{i,j}$ distances
-between each pair of images to refine their positions using weighted
-linear least squares. There are a total of $M^{2}$ possible pairs of
-images, though we only generate distances between images with SIFT
-matches. Given these distances and the original image location
-estimates, we can solve a least squares problem
-($\textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $)
-to estimate the location of the images on the plane. The
-$M$-dimensional vector $\vec{\beta}$ represents the unknown $x$
-location of each image on the plane for $1 \dots M$. The optimal $x$
-and $y$ locations are obtained in the same way, so we only consider
-the $x$ locations here:
 
-\[\vec{\beta} =
-\begin{pmatrix}
-  x_1, & x_2, & x_3, & \cdots & x_{M-1}, & x_M
-\end{pmatrix}
-\]
+We now use the $d^x_{i,j}$ and $d^y_{i,j}$ distances between each pair
+of images to refine their positions using weighted linear least
+squares. The variables we wish to solve for are the $x$ and $y$
+positions of our images, while our equations are the SIFT-based
+distances between pairs of images, images fixed to geometry with 0 or
+1 degrees of freedom, and the original camera poses. Ignoring
+weighting for now, an example setup for solving
+$\textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $
+with 3 images is shown below.
 
-The $N \times M$ matrix $A$ is constructed with one row for each pair
-of images with measured distances produced by the SIFT matching
-stage. A row in the matrix has a $-1$ and $1$ in the columns
-corresponding to the two images in the pair. For example, the matrix
-below indicates a SIFT-based distance between images 1 and 2, images 1
-and 3, images 2 and 3, etc.
+
 \[
 A =
 \begin{pmatrix}
-  -1 & 1 & 0 & \cdots & 0 & 0\\
-  -1 & 0 & 1 & \cdots & 0 & 0\\
-  0 & -1 & 1 & \cdots & 0 & 0\\
-  \vdots  & \vdots & \vdots & \ddots & \vdots  & \vdots\\
-  0 & 0 & 0 & \cdots & 1 & 0 \\
-  0 & 0 & 0 & \cdots & -1 & 1 \\
-  1 & 0 & 0 & \cdots & 0 & 0\\
+  -1 & 1 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & -1 & 1 & 0\\
+  0 & -1 & 1 & 0 & 0 & 0\\
+  0 & 0 & 0 & 0 & -1 & 1\\
+  1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 1 & 0 & 0\\
+  0 & -m & 0 & 0 & 1 & 0\\
 \end{pmatrix}
 \]
-If only relative distances between images are included, the absolute
-location of the images can not be calculated, and the matrix is rank
-deficient. From Section \ref{sec:geometryAlignment}, a number of
-images are anchored to geometry points, in one or both dimensions, and
-thus their locations can be used to fix the rest in place. In case no
-anchor images exist, we simply arbitrarily pick an image, as we have
-no other reference points to work with. In the above matrix, the first
-image is set to be such an anchor, simply by placing a $1$ in its
-column.
 
-The $N$-dimensional observation vector $\vec{\gamma}$ is constructed
-using the SIFT-based distances generated in the RANSAC matching
-stage. Elements in the observation vector corresponding to anchor
-images are simply their locations as determined by the original noisy
-localization. Thus a $\vec{\gamma}$ corresponding to the above matrix
-can be written as:
+\[\vec{\beta} =
+\begin{pmatrix}
+  x_1, & x_2, & x_3, & y_1, & y_2, & y_3
+\end{pmatrix}
+\]
 
 \[
 \vec{\gamma}^T =
 \begin{pmatrix}
-  d_{1,2}, &d_{1,3}, &d_{2,3}, &\hdots &d_{N-2,N-1}, &d_{N-1,N}, &x_1
+  dx_{1,2}, &dy_{1,2}, &dx_{2,3}, &dy_{2,3}, &t1_x, &t1_y, & -mx_2 +
+  ty_2
 \end{pmatrix}
 \]
 
-The $\vec{\beta}$ that minimizes $||A \vec{\beta} -
-\vec{\gamma}||_2^2$ results in a set of image locations on the plane
-that best honors all the SIFT-based distance measurements between
-images. This solution however does not make use of our noisy camera
-poses, and will fail when no SIFT matches are found between one
-segment of the plane and another. To account for this, we add rows to
-the $A$ matrix and observations to the $\vec{\gamma}$ vector
-corresponding to the original noisy distances. We then add weighting
-to our least squares problem where the SIFT distances and anchor
-values are given a high weight e.g. 1, while the noisy distances are
-given a smaller weight e.g. 0.01.
 
-After completing this same process for the $y$ dimension as well, and
-making the resultant shifts, our images overlap and match each other
+In this scenario, a SIFT-based distance of $dx_{1,2}$, $dy_{1,2}$ was
+calculated between images 1 and 2. This corresponds to the first and
+second of $A$, while the third and fourth row of $A$ represent the
+same for images 2 and 3. Rows 5 and 6 of $A$ correspond to a fixed
+location of $tx_1$, $ty_1$ for image 1, while Row 7 corresponds to a
+constraint to a line of slope $m$, with current location $tx_2$,
+$ty_2$, both results of the geometry alignment procedure in Section
+\ref{sec:geometryAlignment}. If we do not have enough SIFT matches, or
+lack images matched to geometry, our matrix becomes rank-deficient and
+our problem cannot be solved. As a result, we add rows for each image
+corresponding to the original noisy image locations, and downweight
+them heavily, e.g. with a weight of 0.01 versus 1.
+
+Because our problem is linear, it is easily and quickly solved, and after
+applying the resulting shifts, our images overlap and match each other
 with far greater accuracy. Applying the simple mapping scheme in
 Section \ref{sec:tileBasedMapping} to the same wall used in that
 section results in Figure \ref{fig:compareAll}(b), which has far fewer
@@ -732,18 +693,16 @@ discontinuities than Figure \ref{fig:compareAll}(c) corresponding to
 the tile caching approach\footnote{In Figure \ref{fig:compareAll}(d),
   we arbitrarily chose one image for texturing where images overlap,
   as blending will be discussed in section \ref{sec:blending}.}. This
-is especially evident when comparing the posters in the images, as
-seen in Figures \ref{fig:compareAll}(e) and
-\ref{fig:compareAll}(f). This shortest path approach approach directly
-reduces the cost of each image boundary, while the tile caching method
-uses a scoring function that only approximates this
-effect. Furthermore, this approach guarantees the best selection of
-images to minimize seams, while the sequential tile caching method may
-select images early on that turn out to be poor choices once
-subsequent tiles have been processed. This shortest path approach is
-also far less intensive in terms of memory usage and runtime, both
-during texture generation and rendering, as it does not require
-discretizing planes or images.
+is especially evident when comparing the posters in the images. This
+shortest path approach approach directly reduces the cost of each
+image boundary, while the tile caching method uses a scoring function
+that only approximates this effect. Furthermore, this approach
+guarantees the best selection of images to minimize seams, while the
+sequential tile caching method may select images early on that turn
+out to be poor choices once subsequent tiles have been processed. This
+shortest path approach is also far less intensive in terms of memory
+usage and runtime, both during texture generation and rendering, as it
+does not require discretizing planes or images.
 
 When texturing an entire 3D planar model, we apply the shortest path
 method on walls, due to its superior output when provided with head-on
@@ -777,13 +736,13 @@ overlap in a region greater than the overlap distance, we only apply
 blending over an area equal to the overlap distance.
 
 After performing linear alpha blending across overlapping regions, our
-texture mapping process is complete. Figures \ref{fig:compareAll}(g)
-and \ref{fig:compareAll}(h) show the blended versions of Figures
-\ref{fig:compareAll}(c) and \ref{fig:compareAll}(d) respectively. It
-is clear that the shortest path approach exhibits much better
-alignment and fewer seams than the tile-caching method, as Figure
-\ref{fig:compareAll}(h) clearly has the best visual quality among the
-textures in Figure \ref{fig:compareAll}.
+texture mapping process is complete. Figures \ref{fig:compareAll}(e)
+and \ref{fig:compareAll}(f) show the blended versions of Figures
+\ref{fig:compareAll}(c) and \ref{fig:compareAll}(d) respectively. The
+remaining images in Figure \ref{fig:compareAll} highlight differences
+between the two methods, showing that Figure \ref{fig:compareAll}(f)
+clearly has the best visual quality and the best texturing approach
+among the textures in Figure \ref{fig:compareAll}.
 
 \section{Results and Conclusions}
 \label{sec:resultsAndConclusions}
@@ -804,7 +763,13 @@ that time is spent calculating SIFT matches within the SiftGPU
 framework. While not real-time, the process is capable of generating
 quick updates after changes in various parameters or modifications to
 input data, and if integrated directly into a modeling system, could
-provide live visualization as data is collected.
+provide live visualization as data is collected. Our full models
+consist of our input model file, textures that we generate, and a
+mapping of image points to model vertices. The models shown in Figure
+\ref{fig:results} are roughly 20 MB in size, and are visualized using
+the OpenSceneGraph toolkit \cite{openscenegraph}, which allows for export to many common
+model formats, as well as efficient visualization, even in web
+browsers or mobile devices.
 
 In this paper, we have developed an approach to texture mapping models
 with noisy camera localization data. We are able to refine image
@@ -814,7 +779,7 @@ can texture both simple rectangular walls as well as complex floor and
 ceiling geometry. We also implemented a shortest path texturing method
 that produces seamless textures on planes where multiple head-on
 images are available. Both of these approaches are highly modular, and
-easily tunable for different environments and acquisition systems.
+easily tunable for similar systems across multiple environments.
 
 \begin{figure}
   \centering

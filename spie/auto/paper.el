@@ -9,6 +9,7 @@
      "fig:scoringFunction"
      "sec:tileBasedMapping"
      "fig:compareAll"
+     "sec:existingApproaches"
      "fig:mosaic3D"
      "sec:2dAlignment"
      "sec:geometryAlignment"
