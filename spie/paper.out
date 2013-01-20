@@ -2,7 +2,7 @@
 \BOOKMARK [1][-]{section.2}{Simple Texture Mapping}{}
 \BOOKMARK [2][-]{subsection.2.1}{Tile-based Texture Mapping}{section.2}
 \BOOKMARK [1][-]{section.3}{Existing Approaches to Image Alignment}{}
-\BOOKMARK [1][-]{section.4}{2D Image Alignment with Geometry Information}{}
+\BOOKMARK [1][-]{section.4}{2D Image Alignment}{}
 \BOOKMARK [2][-]{subsection.4.1}{Geometry-based Alignment}{section.4}
 \BOOKMARK [2][-]{subsection.4.2}{Image Occlusion}{section.4}
 \BOOKMARK [2][-]{subsection.4.3}{2D Feature Alignment}{section.4}

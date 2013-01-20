@@ -241,17 +241,14 @@ respectively.
 \end{figure}
 
 
-As Figure \ref{fig:compareAll}(a) demonstrates, this approach seleccts
-images with high resolution, and handles parallax effects well, as
-seen with the table and the poster at the lower-right of the
-image. Obviously, there are many image boundaries with abrupt
-discontinuities between tiles, due to significant misalignment between
-images, though most of it appears to be reconcilable using 2d
-transforms. Given our high number of input images, a better image
-selection procedure will further improve results, as described in
-Section \ref{sec:imageCompositing}, but a more significant and
-reliable improvement can be found through first improving the
-alignment of our images.
+As Figure \ref{fig:compareAll}(a) demonstrates, there are many image
+boundaries with abrupt discontinuities between tiles, due to
+significant misalignment between images, though most of it appears to
+be reconcilable using 2D transforms. Given our high number of input
+images, a better image selection procedure will further improve
+results, as described in Section \ref{sec:imageCompositing}, but a
+more significant and reliable improvement can be found through first
+improving the alignment of our images.
 
 
 \section{Existing Approaches to Image Alignment}
@@ -266,9 +263,9 @@ adjusting camera poses in 1 to 6 degrees of freedom.
 
 Feature matching has a number of advantages over direct matching that
 make it more suitable for our often non-planar data, and rotational
-differences \cite{szeliski2006image}. Feature matching however, works best
-when multiple unique visual references exist in the environment that
-can be detected in multiple images. In contrast, our indoor
+differences \cite{szeliski2006image}. Feature matching however, works
+best when multiple unique visual references exist in the environment
+that can be detected in multiple images. In contrast, our indoor
 environments have a high prevalence of bare surfaces, as well as
 repeating textures, such as similar windows, doors, and wall-mounted
 decorations, that cause difficulty in disambiguating features. This
@@ -293,21 +290,21 @@ drift.
 
   \centering \subfloat[][]{\includegraphics[width=6in]{finalLong.jpg}}
 
-  \caption{Texture alignment via (a) image mosaicing, (b) the
-    graph-based localization refinement algorithm from
-    \cite{chen2010indoor}, and (c) the method proposed in this paper.}
+  \caption{Texture alignment via (a) the graph-based localization
+    refinement algorithm, (b) the AutoStitch software package, and (c)
+    our method.}
   \label{fig:mosaic3D}
 \end{figure}
 
 
 Past work with our data acquisition backpack integrated image
 stitching with an iterative localization algorithm, and performed
-homography-based camera pose refinement. When run on long chains of
-images, especially where features are sparse, it produces distorted
-textures, as seen in Figure \ref{fig:mosaic3D}(a), due to the problems
-described above. This approach is also not closed-form, and its
-iterative camera adjustment process over our large datasets leads to
-prohibitively long computation time.
+homography-based camera pose refinement \cite{liu2010indoor}. When run
+on long chains of images, especially where features are sparse, it
+produces distorted textures, as seen in Figure \ref{fig:mosaic3D}(a),
+due to the problems described above. This approach is also not
+closed-form, and its iterative camera adjustment process over our
+large datasets leads to prohibitively long computation time.
 
 The AutoStitch software package performs homography-based alignment as
 well, with additional provisions that attempt to reduce drift
@@ -320,7 +317,7 @@ repeating texture patterns simply failed outright with AutoStitch.
 
 
 
-\section{2D Image Alignment with Geometry Information}
+\section{2D Image Alignment}
 \label{sec:2dAlignment}
 
 In this section, we describe our method of efficient and robust image
@@ -338,17 +335,17 @@ the sides of the operator. The operator makes efforts to walk parallel
 to walls, and the localization and model-generation algorithms that
 provide our input conform the operator's path to be straight and
 parallel to detected surfaces \cite{kua2012loopclosure,
-  sanchez2012point}. Since the operator walks in as upright a position
-as possible, errors in roll, yaw, and the operator's distance from
-parallel surfaces are minimal. Thus, our highest errors stem from
-uncertainty in the operator's pitch, equivalent to rotation around the
-camera axes, as well as location along surfaces. These equate to 2D
-rotation and translation in a surface's plane.
+  sanchez2012point}. Since the operator also walks in a manner to keep
+the backpack balanced, errors in roll and yaw are minimal. Thus, our
+highest errors stem from uncertainty in the operator's pitch,
+equivalent to rotation around the camera axes, as well as location
+along surfaces. These equate to 2D rotation and translation in a
+surface's plane.
 
-Our 2D alignment procedure consists of three main parts. First, all
-images are projected onto the surface and lines within these
-projections are detected. These lines are then rotated and shifted to
-match geometry-based lines comprising the surface's boundary and
+Our 2D alignment procedure consists of three parts. First, all images
+are projected onto the surface and lines within these projections are
+detected. These lines are then rotated and shifted to match
+geometry-based lines comprising the surface's boundary and
 intersection with other surfaces. Second, occlusion checks are
 performed to remove invalid parts of each image for the target
 surface. These two steps are image-independent and performed in
@@ -409,14 +406,14 @@ noncollinear image-based line segments, and perform the corresponding
 fixed translation to match them. If we only have 1 pair, we perform
 the minimal shift to match the lines of that pair, and make note of
 their orientation, for usage in Section
-\ref{robustSIFTFeatureMatching}.
+\ref{sec:robustSIFTFeatureMatching}.
 
 
 \subsection{Image Occlusion}
 \label{sec:imageOcclusion}
 Now that images have been aligned to geometry where possible, we
 perform a simple recursive occlusion procedure on each image. This is
-done by performing the intersection tests in section
+done by performing the intersection tests in Section
 \ref{sec:simpleTextureMapping} in a regularly spaced grid. Where four
 corners of a rectangular region are occluded, texture is
 removed. Where no corners are occluded, the recursion stops. Where
@@ -428,40 +425,38 @@ necessary for the next section.
 
 \subsection{2D Feature Alignment}
 \label{sec:robustSIFTFeatureMatching}
-Our next step is to align overlapping images by searching for
-corresponding points between all pairs of overlapping images. We use
-SIFT features for their high detection rate, and choose to use feature
-alignment rather than pixel or intensity-based alignment due to the
-differences in lighting as well as possible occlusion among our
-images, both of which feature alignment is less sensitive to
-\cite{lowe1999object, mikolajczyk2005performance, szeliski2006image}.
-We use SiftGPU \cite{siftgpu} for its high performance on both feature
-detection as well as pairwise matching. These matches determine $d^x$
-and $d^y$ distances between each pair of features for two image
-projections, though these distances may not always be the same for
-different features. Since indoor environments often contain repetitive
-features such as floor tiles or doors, we need to ensure that
-SIFT-based distances are reliable. First, we only perform alignment on
-parts of images that overlap given the original noisy poses. Second,
-we discard feature matches that correspond to an image distance
-greater than 40 pixels from what the noisy poses estimate. In order to
-utilize the remaining feature matches robustly, RANSAC
-\cite{fischler1981random} is again used to estimate the optimal
-$d^x_{i,j}$ and $d^y_{i,j}$ distances between two images $i$ and
-$j$. We use a 10 pixel threshold for RANSAC, so that SIFT matches are
-labeled as outliers if their distance is not within 10 pixels of the
-sampled average distance.
+Our next step is to align images by searching for corresponding points
+between all pairs of overlapping images. We use feature alignment
+rather than pixel or intensity-based alignment due to the differences
+in lighting as well as possible occlusion among our images, both of
+which feature alignment is less sensitive to \cite{lowe1999object,
+  mikolajczyk2005performance, szeliski2006image}.  We use SiftGPU
+\cite{siftgpu} for its high performance on both feature detection as
+well as pairwise matching. These matches determine $dx$ and $dy$
+distances between each pair of features for two image projections,
+though these distances may not always be the same for different
+features. Since indoor environments often contain repetitive features
+such as floor tiles or doors, we need to ensure that SIFT-based
+distances are reliable. First, we only perform alignment on parts of
+images that overlap given the original noisy poses. Second, we discard
+feature matches that correspond to an image distance greater than 200
+mm from what the noisy poses estimate. In order to utilize the
+remaining feature matches robustly, RANSAC \cite{fischler1981random}
+is again used to estimate the optimal $dx_{i,j}$ and $dy_{i,j}$
+distances between two images $i$ and $j$. We use a 5 mm threshold for
+RANSAC, so that SIFT matches are labeled as outliers if their distance
+is not within 5 mm of the sampled average distance.
 
 
-We now use the $d^x_{i,j}$ and $d^y_{i,j}$ distances between each pair
+We now use the $dx_{i,j}$ and $dy_{i,j}$ distances between each pair
 of images to refine their positions using weighted linear least
-squares. The variables we wish to solve for are the $x$ and $y$
+squares. The variables we wish to solve for are the $_ix$ and $y_i$
 positions of our images, while our equations are the SIFT-based
 distances between pairs of images, images fixed to geometry with 0 or
 1 degrees of freedom, and the original camera poses. Ignoring
-weighting for now, an example setup for solving
-$\textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $
-with 3 images is shown below.
+weighting and the original camera poses for now, an example setup for
+solving $\textrm{min}_{\vec{\beta}} ||A \vec{\beta} -
+\vec{\gamma}||_2^2 $ with 3 images is shown below.
 
 
 \[
@@ -494,24 +489,25 @@ A =
 
 In this scenario, a SIFT-based distance of $dx_{1,2}$, $dy_{1,2}$ was
 calculated between images 1 and 2. This corresponds to the first and
-second of $A$, while the third and fourth row of $A$ represent the
+second row of $A$, while the third and fourth row of $A$ represent the
 same for images 2 and 3. Rows 5 and 6 of $A$ correspond to a fixed
 location of $tx_1$, $ty_1$ for image 1, while Row 7 corresponds to a
 constraint to a line of slope $m$, with current location $tx_2$,
-$ty_2$, both results of the geometry alignment procedure in Section
-\ref{sec:geometryAlignment}. If we do not have enough SIFT matches, or
-lack images matched to geometry, our matrix becomes rank-deficient and
-our problem cannot be solved. As a result, we add rows for each image
-corresponding to the original noisy image locations, and downweight
-them heavily, e.g. with a weight of 0.01 versus 1.
+$ty_2$, both possible results of the geometry alignment procedure in
+Section \ref{sec:geometryAlignment}. If we do not have enough SIFT
+matches, or lack images matched to geometry, our matrix becomes
+rank-deficient and our problem cannot be solved. As a result, we add
+rows for each image corresponding to the original noisy image
+locations, and downweight them heavily, e.g. with a weight of 0.01
+versus 1.
 
-Because our problem is linear, it is easily and quickly solved, and after
-applying the resulting shifts, our images overlap and match each other
-with far greater accuracy. Applying the simple mapping scheme in
+Because our problem is linear, it is easily and quickly solved, and
+after applying the resulting shifts, our images overlap and match each
+other with far greater accuracy. Applying the simple mapping scheme in
 Section \ref{sec:tileBasedMapping} to the same wall used in that
 section results in Figure \ref{fig:compareAll}(b), which has far fewer
 discontinuities, though errors due to lighting differences and
-repeating features are still visible.
+parallax effects are still visible.
 
 \section{Image Compositing}
 \label{sec:imageCompositing}
@@ -561,7 +557,7 @@ scoring function from Figure \ref{fig:scoringFunction}.
 The result of this caching approach is shown in Figure
 \ref{fig:compareAll}(c), where seams are now reduced as compared to
 Figure \ref{fig:compareAll}(b). However, some discontinuities are
-still present, as visible in the many posters on the wall with breaks
+still present, as visible in the posters on the wall with breaks
 in their borders.
 
 \begin{figure}
@@ -656,7 +652,7 @@ find an optimal subset of images with regard to the SSD cost function
 
 \begin{figure}
   \centering
-  \includegraphics[width=3in]{dagCreation.pdf}
+  \includegraphics[width=5in]{dagCreation.pdf}
   \caption{DAG construction for the image selection process. \\}
   \label{fig:dagCreation}
 \end{figure}
@@ -756,10 +752,10 @@ are available at
 As mentioned earlier, our approach is quite efficient. The top wall in
 Figure \ref{fig:results}(a) was generated with 7543 $\times$ 776
 pixels, and spans a 40-meter long wall. Given 41000 input images, a
-2.8GHz consumer-grade laptop takes approximately a minute to pick 36
-candidate images, followed by another minute to perform both image
-alignment and the shortest path texturing method, though over 75\% of
-that time is spent calculating SIFT matches within the SiftGPU
+2.8GHz dual-core consumer-grade laptop takes approximately a minute to
+pick 36 candidate images, followed by another minute to perform both
+image alignment and the shortest path texturing method, though over
+75\% of that time is spent calculating SIFT matches within the SiftGPU
 framework. While not real-time, the process is capable of generating
 quick updates after changes in various parameters or modifications to
 input data, and if integrated directly into a modeling system, could
@@ -767,9 +763,9 @@ provide live visualization as data is collected. Our full models
 consist of our input model file, textures that we generate, and a
 mapping of image points to model vertices. The models shown in Figure
 \ref{fig:results} are roughly 20 MB in size, and are visualized using
-the OpenSceneGraph toolkit \cite{openscenegraph}, which allows for export to many common
-model formats, as well as efficient visualization, even in web
-browsers or mobile devices.
+the OpenSceneGraph toolkit \cite{openscenegraph}, which allows for
+export to many common model formats, as well as efficient
+visualization, even in web browsers or mobile devices.
 
 In this paper, we have developed an approach to texture mapping models
 with noisy camera localization data. We are able to refine image
