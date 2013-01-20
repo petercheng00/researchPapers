@@ -51,43 +51,41 @@ University of California, Berkeley\\
  
 \begin{document}
 
-\message{ !name(paper.tex) !offset(374) }
+\message{ !name(paper.tex) !offset(371) }
 \subsection{2D Feature Alignment}
 \label{sec:robustSIFTFeatureMatching}
-Our next step is to align overlapping images by searching for
-corresponding points between all pairs of overlapping images. We use
-SIFT features for their high detection rate, and choose to use feature
-alignment rather than pixel or intensity-based alignment due to the
-differences in lighting as well as possible occlusion among our
-images, both of which feature alignment is less sensitive to
-\cite{lowe1999object, mikolajczyk2005performance, szeliski2006image}.
-We use SiftGPU \cite{siftgpu} for its high performance on both feature
-detection as well as pairwise matching. These matches determine $d^x$
-and $d^y$ distances between each pair of features for two image
-projections, though these distances may not always be the same for
-different features. Since indoor environments often contain repetitive
-features such as floor tiles or doors, we need to ensure that
-SIFT-based distances are reliable. First, we only perform alignment on
-parts of images that overlap given the original noisy poses. Second,
-we discard feature matches that correspond to an image distance
-greater than 40 pixels from what the noisy poses estimate. In order to
-utilize the remaining feature matches robustly, RANSAC
-\cite{fischler1981random} is again used to estimate the optimal
-$d^x_{i,j}$ and $d^y_{i,j}$ distances between two images $i$ and
-$j$. We use a 10 pixel threshold for RANSAC, so that SIFT matches are
-labeled as outliers if their distance is not within 10 pixels of the
-sampled average distance.
+Our next step is to align images by searching for corresponding points
+between all pairs of overlapping images. We use feature alignment
+rather than pixel or intensity-based alignment due to the differences
+in lighting as well as possible occlusion among our images, both of
+which feature alignment is less sensitive to \cite{lowe1999object,
+  mikolajczyk2005performance, szeliski2006image}.  We use SiftGPU
+\cite{siftgpu} for its high performance on both feature detection as
+well as pairwise matching. These matches determine $dx$ and $dy$
+distances between each pair of features for two image projections,
+though these distances may not always be the same for different
+features. Since indoor environments often contain repetitive features
+such as floor tiles or doors, we need to ensure that SIFT-based
+distances are reliable. First, we only perform alignment on parts of
+images that overlap given the original noisy poses. Second, we discard
+feature matches that correspond to an image distance greater than 200
+mm from what the noisy poses estimate. In order to utilize the
+remaining feature matches robustly, RANSAC \cite{fischler1981random}
+is again used to estimate the optimal $dx_{i,j}$ and $dy_{i,j}$
+distances between two images $i$ and $j$. We use a 5 mm threshold for
+RANSAC, so that SIFT matches are labeled as outliers if their distance
+is not within 5 mm of the sampled average distance.
 
 
-We now use the $d^x_{i,j}$ and $d^y_{i,j}$ distances between each pair
+We now use the $dx_{i,j}$ and $dy_{i,j}$ distances between each pair
 of images to refine their positions using weighted linear least
-squares. The variables we wish to solve for are the $x$ and $y$
+squares. The variables we wish to solve for are the $_ix$ and $y_i$
 positions of our images, while our equations are the SIFT-based
 distances between pairs of images, images fixed to geometry with 0 or
 1 degrees of freedom, and the original camera poses. Ignoring
-weighting for now, an example setup for solving
-$\textrm{min}_{\vec{\beta}} ||A \vec{\beta} - \vec{\gamma}||_2^2 $
-with 3 images is shown below.
+weighting and the original camera poses for now, an example setup for
+solving $\textrm{min}_{\vec{\beta}} ||A \vec{\beta} -
+\vec{\gamma}||_2^2 $ with 3 images is shown below.
 
 
 \[
@@ -100,19 +98,14 @@ A =
   1 & 0 & 0 & 0 & 0 & 0\\
   0 & 0 & 0 & 1 & 0 & 0\\
   0 & -m & 0 & 0 & 1 & 0\\
-\end{pmatrix}
-\]
-
-\[\vec{\beta} =
+\end{pmatrix}\quad
+\vec{\beta} =
 \begin{pmatrix}
-  x_1, & x_2, & x_3, & y_1, & y_2, & y_3
+  x_1, \\ x_2, \\ x_3, \\ y_1, \\ y_2, \\ y_3
 \end{pmatrix}
-\]
-
-\[
-\vec{\gamma}^T =
+\vec{\gamma} =
 \begin{pmatrix}
-  dx_{1,2}, &dy_{1,2}, &dx_{2,3}, &dy_{2,3}, &t1_x, &t1_y, & -mx_2 +
+  dx_{1,2}, \\ dy_{1,2}, \\ dx_{2,3}, \\ dy_{2,3}, \\ t1_x, \\ t1_y, \\ -mx_2 +
   ty_2
 \end{pmatrix}
 \]
@@ -120,25 +113,26 @@ A =
 
 In this scenario, a SIFT-based distance of $dx_{1,2}$, $dy_{1,2}$ was
 calculated between images 1 and 2. This corresponds to the first and
-second of $A$, while the third and fourth row of $A$ represent the
+second row of $A$, while the third and fourth row of $A$ represent the
 same for images 2 and 3. Rows 5 and 6 of $A$ correspond to a fixed
 location of $tx_1$, $ty_1$ for image 1, while Row 7 corresponds to a
 constraint to a line of slope $m$, with current location $tx_2$,
-$ty_2$, both results of the geometry alignment procedure in Section
-\ref{sec:geometryAlignment}. If we do not have enough SIFT matches, or
-lack images matched to geometry, our matrix becomes rank-deficient and
-our problem cannot be solved. As a result, we add rows for each image
-corresponding to the original noisy image locations, and downweight
-them heavily, e.g. with a weight of 0.01 versus 1.
+$ty_2$, both possible results of the geometry alignment procedure in
+Section \ref{sec:geometryAlignment}. If we do not have enough SIFT
+matches, or lack images matched to geometry, our matrix becomes
+rank-deficient and our problem cannot be solved. As a result, we add
+rows for each image corresponding to the original noisy image
+locations, and downweight them heavily, e.g. with a weight of 0.01
+versus 1.
 
-Because our problem is linear, it is quickly solved, and after
-applying the resulting shifts, our images overlap and match each other
-with far greater accuracy. Applying the simple mapping scheme in
+Because our problem is linear, it is easily and quickly solved, and
+after applying the resulting shifts, our images overlap and match each
+other with far greater accuracy. Applying the simple mapping scheme in
 Section \ref{sec:tileBasedMapping} to the same wall used in that
 section results in Figure \ref{fig:compareAll}(b), which has far fewer
 discontinuities, though errors due to lighting differences and
-repeating features are still visible.
+parallax effects are still visible.
 
-\message{ !name(paper.tex) !offset(667) }
+\message{ !name(paper.tex) !offset(668) }
 
 \end{document} 

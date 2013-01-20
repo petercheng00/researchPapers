@@ -369,16 +369,16 @@ surfaces, such as ceilings, floors, or slanted walls.
 
 \begin{figure}
   \centering
-  \subfloat[][]{\includegraphics[height=1.5in]{geometryAlign_planes.png}}
-  \subfloat[][]{\includegraphics[height=1.5in]{geomAlign}}
-  \caption{(a) When texturing the red surface, it makes sense to align
-    images to surface boundaries and intersections with other
-    surfaces. (b) In this example, we project two images at once for
-    the sake of demonstration, where the red lines are geometry-based
-    lines where surfaces intersect, and the green ines are lines
-    detected in the image via Hough transform. Above are the original
-    projections using input camera poses, and below are the
-    projections after rotation and translation for alignment.}
+  \subfloat[][]{\includegraphics[height=3in]{detectedLines.png}}
+  \hspace{0.4 cm}
+  \subfloat[][]{\includegraphics[height=3in, width=4in]{bothunalignedaligned.png}}
+  \caption{(a) Lines detected in image projections via Hough transform
+    (b) In this example, we project two images at once for the sake of
+    demonstration, where the red lines are geometry-based lines where
+    surfaces intersect, and the green ines are lines detected in the
+    image. Above are the original projections using input camera
+    poses, and below are the projections after rotation and
+    translation for alignment.}
   \label{fig:geometryAlignment}
 \end{figure}
 
@@ -469,19 +469,14 @@ A =
   1 & 0 & 0 & 0 & 0 & 0\\
   0 & 0 & 0 & 1 & 0 & 0\\
   0 & -m & 0 & 0 & 1 & 0\\
-\end{pmatrix}
-\]
-
-\[\vec{\beta} =
+\end{pmatrix}\quad
+\vec{\beta} =
 \begin{pmatrix}
-  x_1, & x_2, & x_3, & y_1, & y_2, & y_3
+  x_1, \\ x_2, \\ x_3, \\ y_1, \\ y_2, \\ y_3
 \end{pmatrix}
-\]
-
-\[
-\vec{\gamma}^T =
+\vec{\gamma} =
 \begin{pmatrix}
-  dx_{1,2}, &dy_{1,2}, &dx_{2,3}, &dy_{2,3}, &t1_x, &t1_y, & -mx_2 +
+  dx_{1,2}, \\ dy_{1,2}, \\ dx_{2,3}, \\ dy_{2,3}, \\ t1_x, \\ t1_y, \\ -mx_2 +
   ty_2
 \end{pmatrix}
 \]
