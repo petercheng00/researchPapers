@@ -26,7 +26,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hyperref}
-
+\usepackage{float}
 \title{Texture mapping 3D planar models of indoor environments with noisy camera poses} 
 
 %>>>> The author is responsible for formatting the 
@@ -153,16 +153,16 @@ single continuous image.
 \begin{figure}
   \begin{minipage}[b]{0.45\linewidth}
     \centering
-    \includegraphics[height=1.5in]{Projection.pdf}
+    \includegraphics[height=1.8in]{Projection.pdf}
     \caption{Surfaces to be textured are specified in 3D space by
       corners $C_i$. Images are related to each surface through the
-      camera matrics $P_{1..m}$. }
+      camera matrices $P_{1..m}$. }
     \label{fig:projection}
   \end{minipage}
   \hspace{0.5cm}
   \begin{minipage}[b]{0.45\linewidth}
     \centering
-    \includegraphics[height=1.125in]{scoringFunction.jpg}
+    \includegraphics[height=1.8in]{scoringFunction.jpg}
     \caption{We minimize camera angle $\alpha$ and distance $d$ by
       maximizing the scoring function $\frac{1}{d} (-1 \cdot \vec{c})
       \cdot \vec{n}$}
@@ -211,7 +211,17 @@ between the centers of a camera and a tile, and $\vec{n}$ and
 $\vec{c}$ are the directions of the plane's normal and the camera axis
 respectively.
 
-\begin{figure}
+
+As Figure \ref{fig:compareAll}(a) demonstrates, there are many image
+boundaries with abrupt discontinuities between tiles, due to
+significant misalignment between images, though most of it appears to
+be reconcilable using 2D transforms. Given our high number of input
+images, a better image selection procedure will further improve
+results, as described in Section \ref{sec:imageCompositing}, but a
+more significant and reliable improvement can be found through first
+improving the alignment of our images.
+
+\begin{figure}[H]
   \centering \subfloat[][]{\includegraphics[width=3.4in,
     height=1.2in]{wall2_naive.jpg}}
   \subfloat[][]{\includegraphics[width=3.4in,
@@ -223,32 +233,21 @@ respectively.
     height=1.2in]{wall2_shortest_shift.pdf}}
 
   \centering \subfloat[][]{\includegraphics[width=3.4in,
-    height=1.2in]{wall2_cache_shift_details.png}}
-  \subfloat[][]{\includegraphics[width=3.4in,
-    height=1.2in]{wall2_shortest_shift_details.png}}
-
-  \centering \subfloat[][]{\includegraphics[width=3.4in,
     height=1.2in]{wall2_cache_shift_blend.pdf}}
   \subfloat[][]{\includegraphics[width=3.4in,
     height=1.2in]{wall2_shortest_shift_blend.pdf}}
 
+  \centering \subfloat[][]{\includegraphics[width=3.4in,
+    height=3.4in]{wall2_cache_comparison.png}}
+  \subfloat[][]{\includegraphics[width=3.4in,
+    height=3.4in]{wall2_shortest_comparison.png}}
+
   \caption{(a): Tile-based texturing. (b): Tile-based texturing after
     image alignment. (c): Tile-based texturing after image alignment
     with caching. (d): Shortest path texturing after image
-    alignment). (e,f): Comparison of image artifacts in (c)
-    vs. (d). (g,h): Blending applied to (c) and (d).}
+    alignment). (e,f): Blending applied to (c) and (d). (g,h): Zoomed in views of discontinuities in (e) vs. in (f).}
   \label{fig:compareAll}
 \end{figure}
-
-
-As Figure \ref{fig:compareAll}(a) demonstrates, there are many image
-boundaries with abrupt discontinuities between tiles, due to
-significant misalignment between images, though most of it appears to
-be reconcilable using 2D transforms. Given our high number of input
-images, a better image selection procedure will further improve
-results, as described in Section \ref{sec:imageCompositing}, but a
-more significant and reliable improvement can be found through first
-improving the alignment of our images.
 
 
 \section{Existing Approaches to Image Alignment}
@@ -323,7 +322,7 @@ repeating texture patterns simply failed outright with AutoStitch.
 In this section, we describe our method of efficient and robust image
 alignment. Though state-of-the-art techniques towards image stitching
 work in 3D, we elect to perform image alignments entirely in
-2D. Besides the benifits of reduced complexity, we have found 2D
+2D. Besides the benefits of reduced complexity, we have found 2D
 alignment to work well for two main reasons. First, because we have
 such a large number of images to choose from, the compositing
 approaches in Section \ref{sec:imageCompositing} are able to select a
@@ -372,10 +371,10 @@ surfaces, such as ceilings, floors, or slanted walls.
   \subfloat[][]{\includegraphics[height=3in]{detectedLines.png}}
   \hspace{0.4 cm}
   \subfloat[][]{\includegraphics[height=3in, width=4in]{bothunalignedaligned.png}}
-  \caption{(a) Lines detected in image projections via Hough transform
+  \caption{(a) Lines detected in image projections via Hough transform.
     (b) In this example, we project two images at once for the sake of
     demonstration, where the red lines are geometry-based lines where
-    surfaces intersect, and the green ines are lines detected in the
+    surfaces intersect, and the green lines are lines detected in the
     image. Above are the original projections using input camera
     poses, and below are the projections after rotation and
     translation for alignment.}
@@ -721,7 +720,7 @@ $l_1 \times l_1$, we can associate it with a texture $(l_1 + l_2)
 provide a balance between blending and keeping features unblurred. For
 the shortest path method, we have already ensured overlap between
 images. To enforce consistent blending however, we add a minimum
-required overlap distance of 40 px while solving the shortest path
+required overlap distance of 200 mm while solving the shortest path
 problem in Section \ref{sec:shortestPath}. Additionally, if images
 overlap in a region greater than the overlap distance, we only apply
 blending over an area equal to the overlap distance.
@@ -771,6 +770,22 @@ ceiling geometry. We also implemented a shortest path texturing method
 that produces seamless textures on planes where multiple head-on
 images are available. Both of these approaches are highly modular, and
 easily tunable for similar systems across multiple environments.
+
+\subsection{Future Work}
+While our method works well on our datasets, it is heavily reliant on
+having a large number of input images, and minimal non-2D error. An
+approach towards resolving camera error in 3D that would mesh well
+with our approach is to perform matching between image lines and
+geometry in 3D, which can be done reasonably efficiently
+\cite{linebased, rectangularstructures}. Using linear features on top
+of our SIFT features is also likely to result in improved matches, as
+indoor scenes often have long, unbroken lines spanning multiple images
+\cite{linearposeestimation}. Finally, our blending approach is quite
+basic, and applying more sophisticated methods of blending as well as
+normalization would benefit our final visual quality, and more
+robustly handle motion-based or parallax errors.
+
+
 
 \begin{figure}
   \centering

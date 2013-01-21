@@ -66,4 +66,18 @@ Dijkstra, E., ``A note on two problems in connexion graphs,'' {\em Numerische
 \bibitem{openscenegraph}
 ``Openscenegraph.'' \url{http://www.openscenegraph.org/projects/osg}.
 
+\bibitem{linebased}
+Elqursh, A. and Elgammal, A., ``Line-based relative pose estimation,'' in [{\em
+  Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference
+  on}{\nolinebreak\hspace{0.1em}]},   3049 --3056 (june 2011).
+
+\bibitem{rectangularstructures}
+Košecká, J. and Zhang, W., ``Extraction, matching and pose recovery based on
+  dominant rectangular structures,'' (2005).
+
+\bibitem{linearposeestimation}
+Ansar, A. and Daniilidis, K., ``Linear pose estimation from points or lines,''
+  {\em Pattern Analysis and Machine Intelligence, IEEE Transactions on}~{\bf
+  25},  578 -- 589 (may 2003).
+
 \end{thebibliography}

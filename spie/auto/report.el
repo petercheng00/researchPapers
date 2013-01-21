@@ -14,5 +14,8 @@
      "panorama2d"
      "autostitch"
      "openscenegraph"
-     "siftgpu")))
+     "siftgpu"
+     "linebased"
+     "rectangularstructures"
+     "linearposeestimation")))
 

@@ -25,6 +25,7 @@
      "sec:resultsAndConclusions"
      "fig:results")
     (TeX-run-style-hooks
+     "float"
      "hyperref"
      "amssymb"
      "amsmath"
