@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2013.1.20)  20 JAN 2013 14:56
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2013.2.1)  1 FEB 2013 20:18
 entering extended mode
  %&-line parsing enabled.
 **&prv_paper _region_.tex
@@ -18,7 +18,7 @@ graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2009/08/28 v1.8 graphics configuration of TeX Live
-  pdftex.def    2010/03/12 v0.04p Graphics/color for pdfTeX
+   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
   subfig.sty    2005/06/28 ver: 1.3 subfig package
  caption.sty    2009/10/09 v3.1k Customizing captions (AR)
 caption3.sty    2009/10/09 v3.1k caption3 kernel (AR)
@@ -53,7 +53,9 @@ ifluatex.sty    2009/04/17 v1.2 Provides the ifluatex switch (HO)
  ltxcmds.sty    2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO)
 
 atbegshi.sty    2008/07/31 v1.9 At begin shipout hook (HO)
- hpdftex.def    2009/10/09 v6.79a Hyperref driver for pdfTeX
+  hdvips.def    2009/10/09 v6.79a Hyperref driver for dvips
+ pdfmark.def    2009/10/09 v6.79a Hyperref definitions for pdfmark specials
+   float.sty    2001/11/08 v1.3d Float enhancements (AL)
     umsa.fd    2009/06/22 v3.00 AMS symbols A
     umsb.fd    2009/06/22 v3.00 AMS symbols B
         .
@@ -87,23 +89,10 @@ No auxiliary output files.
 (/usr/local/share/texmf/tex/latex/preview/prauctex.cfg))
 (/usr/local/share/texmf/tex/latex/preview/prfootnotes.def)
 \pr@snippet=\count117
-\pr@box=\box28
-\pr@output=\toks21
+\pr@box=\box31
+\pr@output=\toks26
 
 Preview: Fontsize 10pt
-Preview: PDFoutput 1
-) (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count118
-\scratchdimen=\dimen126
-\scratchbox=\box29
-\nofMPsegments=\count119
-\nofMParguments=\count120
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count121
-\MPscratchDim=\dimen127
-\MPnumerator=\count122
-\everyMPtoPDFconversion=\toks23
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
@@ -118,6 +107,7 @@ Package caption Warning: \caption will not be redefined since it's already
 (caption)                unknown to the caption package.
 See the caption package documentation for explanation.
 
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 52.
@@ -127,13 +117,16 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count123
+\c@section@level=\count118
 )
 LaTeX Info: Redefining \ref on input line 52.
 LaTeX Info: Redefining \pageref on input line 52.
-\AtBeginShipoutBox=\box30
+\AtBeginShipoutBox=\box32
 
- !name(paper.tex) !offset(371) 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+ !name(paper.tex) !offset(376) 
 ! Preview: Snippet 1 started.
 <-><->
       
@@ -149,7 +142,7 @@ l.55 \subsection{2D Feature Alignment}
                                       
 Not a real error.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+[1
 
 ]
 
@@ -324,14 +317,14 @@ Not a real error.
 <-><->
       
 l.87 solving $
-              \textrm{min}_{\vec{\beta}} ||A \vec{\beta} -
+              \textrm{min}_{\vec{\beta}} ||W^\frac{1}{2}(A \vec{\beta} -
 Not a real error.
 
-! Preview: Snippet 12 ended.(641161+314244x4541458).
+! Preview: Snippet 12 ended.(641161+314244x6174220).
 <-><->
       
-l.88 \vec{\gamma}||_2^2 $
-                          with 3 images is shown below.
+l.88 \vec{\gamma})||_2^2 $
+                           with 3 images is shown below.
 Not a real error.
 
 [12]
@@ -342,10 +335,10 @@ l.91 \[
        
 Not a real error.
 
-! Preview: Snippet 13 ended.(5505078+0x25982552).
+! Preview: Snippet 13 ended.(7077958+0x28678857).
 <-><->
       
-l.111 \]
+l.119 \]
         
 Not a real error.
 
@@ -353,14 +346,14 @@ Not a real error.
 ! Preview: Snippet 14 started.
 <-><->
       
-l.114 In this scenario, a SIFT-based distance of $
+l.122 In this scenario, a SIFT-based distance of $
                                                   dx_{1,2}$, $dy_{1,2}$ was
 Not a real error.
 
 ! Preview: Snippet 14 ended.(455111+187504x1426548).
 <-><->
       
-l.114 ...ario, a SIFT-based distance of $dx_{1,2}$
+l.122 ...ario, a SIFT-based distance of $dx_{1,2}$
                                                   , $dy_{1,2}$ was
 Not a real error.
 
@@ -368,14 +361,14 @@ Not a real error.
 ! Preview: Snippet 15 started.
 <-><->
       
-l.114 ...o, a SIFT-based distance of $dx_{1,2}$, $
+l.122 ...o, a SIFT-based distance of $dx_{1,2}$, $
                                                   dy_{1,2}$ was
 Not a real error.
 
 ! Preview: Snippet 15 ended.(455111+187504x1373303).
 <-><->
       
-l.114 ...-based distance of $dx_{1,2}$, $dy_{1,2}$
+l.122 ...-based distance of $dx_{1,2}$, $dy_{1,2}$
                                                    was
 Not a real error.
 
@@ -383,14 +376,14 @@ Not a real error.
 ! Preview: Snippet 16 started.
 <-><->
       
-l.116 second row of $
+l.124 second row of $
                      A$, while the third and fourth row of $A$ represent the
 Not a real error.
 
 ! Preview: Snippet 16 ended.(447828+0x491521).
 <-><->
       
-l.116 second row of $A$
+l.124 second row of $A$
                        , while the third and fourth row of $A$ represent the
 Not a real error.
 
@@ -398,14 +391,14 @@ Not a real error.
 ! Preview: Snippet 17 started.
 <-><->
       
-l.116 ... $A$, while the third and fourth row of $
+l.124 ... $A$, while the third and fourth row of $
                                                   A$ represent the
 Not a real error.
 
 ! Preview: Snippet 17 ended.(447828+0x491521).
 <-><->
       
-l.116 ...A$, while the third and fourth row of $A$
+l.124 ...A$, while the third and fourth row of $A$
                                                    represent the
 Not a real error.
 
@@ -413,14 +406,14 @@ Not a real error.
 ! Preview: Snippet 18 started.
 <-><->
       
-l.117 same for images 2 and 3. Rows 5 and 6 of $
+l.125 same for images 2 and 3. Rows 5 and 6 of $
                                                 A$ correspond to a fixed
 Not a real error.
 
 ! Preview: Snippet 18 ended.(447828+0x491521).
 <-><->
       
-l.117 same for images 2 and 3. Rows 5 and 6 of $A$
+l.125 same for images 2 and 3. Rows 5 and 6 of $A$
                                                    correspond to a fixed
 Not a real error.
 
@@ -428,14 +421,14 @@ Not a real error.
 ! Preview: Snippet 19 started.
 <-><->
       
-l.118 location of $
+l.126 location of $
                    tx_1$, $ty_1$ for image 1, while Row 7 corresponds to a
 Not a real error.
 
 ! Preview: Snippet 19 ended.(403098+98303x905217).
 <-><->
       
-l.118 location of $tx_1$
+l.126 location of $tx_1$
                         , $ty_1$ for image 1, while Row 7 corresponds to a
 Not a real error.
 
@@ -443,14 +436,14 @@ Not a real error.
 ! Preview: Snippet 20 started.
 <-><->
       
-l.118 location of $tx_1$, $
+l.126 location of $tx_1$, $
                            ty_1$ for image 1, while Row 7 corresponds to a
 Not a real error.
 
 ! Preview: Snippet 20 ended.(403098+127431x851972).
 <-><->
       
-l.118 location of $tx_1$, $ty_1$
+l.126 location of $tx_1$, $ty_1$
                                  for image 1, while Row 7 corresponds to a
 Not a real error.
 
@@ -458,14 +451,14 @@ Not a real error.
 ! Preview: Snippet 21 started.
 <-><->
       
-l.119 constraint to a line of slope $
+l.127 constraint to a line of slope $
                                      m$, with current location $tx_2$,
 Not a real error.
 
 ! Preview: Snippet 21 ended.(282168+0x575415).
 <-><->
       
-l.119 constraint to a line of slope $m$
+l.127 constraint to a line of slope $m$
                                        , with current location $tx_2$,
 Not a real error.
 
@@ -473,14 +466,14 @@ Not a real error.
 ! Preview: Snippet 22 started.
 <-><->
       
-l.119 ...ine of slope $m$, with current location $
+l.127 ...ine of slope $m$, with current location $
                                                   tx_2$,
 Not a real error.
 
 ! Preview: Snippet 22 ended.(403098+98303x905217).
 <-><->
       
-l.119 ...f slope $m$, with current location $tx_2$
+l.127 ...f slope $m$, with current location $tx_2$
                                                   ,
 Not a real error.
 
@@ -488,53 +481,42 @@ Not a real error.
 ! Preview: Snippet 23 started.
 <-><->
       
-l.120 $
+l.128 $
        ty_2$, both possible results of the geometry alignment procedure in
 Not a real error.
 
 ! Preview: Snippet 23 ended.(403098+127431x851972).
 <-><->
       
-l.120 $ty_2$
+l.128 $ty_2$
             , both possible results of the geometry alignment procedure in
 Not a real error.
 
 [23]
 
 LaTeX Warning: Reference `sec:geometryAlignment' on page 1 undefined on input l
-ine 121.
+ine 129.
 
 
 LaTeX Warning: Reference `sec:tileBasedMapping' on page 1 undefined on input li
-ne 131.
+ne 139.
 
 
-LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 132
+LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 140
 .
 
- !name(paper.tex) !offset(668) 
+ !name(paper.tex) !offset(678) 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 617 strings out of 489292
- 8870 string characters out of 1098583
- 168382 words of memory out of 3000000
- 9458 multiletter control sequences out of 15000+50000
+ 318 strings out of 489269
+ 4933 string characters out of 1098337
+ 171321 words of memory out of 3000000
+ 9184 multiletter control sequences out of 15000+50000
  8039 words of font info for 31 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 23i,8n,37p,167b,325s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+ 26i,8n,37p,167b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on _region_.pdf (23 pages, 77819 bytes).
-PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 1 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+Output written on _region_.dvi (23 pages, 6548 bytes).

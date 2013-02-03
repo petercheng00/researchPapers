@@ -57,19 +57,22 @@ University of California, Berkeley\\
   Automated 3D modeling of building interiors is used in applications
   such as virtual reality and environment mapping. Texturing these
   models allows for photo-realistic visualizations of the data
-  collected by such modeling systems. We perform these tasks using a
-  backpack-mounted data acquisition system. Camera poses obtained by
-  this system and used for texturing often suffer from inaccuracies
-  however, resulting in visible discontinuities when successive images
+  collected by such modeling systems. While data acquisition times for mobile mapping systems are considerably shorter than for static ones, their recovered camera poses often suffer from inaccuracies, resulting in visible discontinuities when successive images
   are projected onto a surface for texturing. Existing methods to
   stitch images together are often computationally expensive and work
-  independently of pose estimates and geometry information. By
-  intelligently selecting images for texturing, we develop
-  an efficient method to adjust camera poses in 2D, followed by two
-  different methods to composite images together, based on the
-  geometry of surfaces being textured. The effectiveness of our
-  method is demonstrated on a number of different indoor
-  environments.
+  independently of pose estimates and geometry data. 
+
+The approach in this paper minimizes complexity by refining camera poses in 2D, which works well given our high amount of images and minimal 3D pose errors. We also align images to geometry as well as to each other, which produces visually consistent textures even in the presence of inaccurate surface geometry. We also present two different methods for selecting and compositing images into a single texture, depending on the geometry of surfaces being textured. The effectiveness of our method is demonstrated on a number of different indoor environments.
+
+
+By
+  intelligently selecting images for texturing, we develop an
+  efficient method to adjust camera poses in 2D, using linear features
+  to match images to geometry, and point features to match images
+  together. This is followed by two different methods to composite
+  images together, based on the geometry of surfaces being
+  textured. The effectiveness of our method is demonstrated on a
+  number of different indoor environments.
 \end{abstract}
 
 % >>>> Include a list of keywords after the abstract
@@ -85,12 +88,12 @@ simulation. Applying accurate textures to these models is important to
 add context to digital visualizations, and allows for image-based
 analysis of environments. In this paper, we perform data acquisition
 with a backpack-mounted system carried by an ambulatory human
-\cite{liu2010indoor}. This backpack system contains a series of
-cameras, laser scanners, and inertial measurement units, used to solve
-the simultaneous localization and mapping (SLAM) problem, which
-produces backpack (and therefore camera) poses over time as well as a
-point cloud representing the surrounding environment
-\cite{chen2010indoor, liu2010indoor, kua2012loopclosure}. For
+\cite{liu2010indoor}. This backpack system contains 2 fisheye cameras
+as well as laser scanners and inertial measurement units,
+used to solve the simultaneous localization and mapping (SLAM)
+problem, which produces backpack (and therefore camera) poses over
+time as well as a point cloud representing the surrounding environment
+\cite{chen2010indoor, liu2010indoor, kua2012loopclosure}. SHOW PICTURE OF BACKPACK. For
 environment geometry, we work with models obtained by fitting
 low-resolution planar surfaces to these point clouds
 \cite{sanchez2012point}.
@@ -245,7 +248,8 @@ improving the alignment of our images.
   \caption{(a): Tile-based texturing. (b): Tile-based texturing after
     image alignment. (c): Tile-based texturing after image alignment
     with caching. (d): Shortest path texturing after image
-    alignment). (e,f): Blending applied to (c) and (d). (g,h): Zoomed in views of discontinuities in (e) vs. in (f).}
+    alignment). (e,f): Blending applied to (c) and (d). (g,h): Zoomed
+    in views of discontinuities in (e) vs. in (f).}
   \label{fig:compareAll}
 \end{figure}
 
@@ -272,13 +276,10 @@ lack of reliable reference points often results in errors when
 matching images together.
 
 Additionally, our datasets often contain long chains of images, which
-leads to error accumulation when image correspondences are not exact
-and are compounded together. For example, when matching a long chain
-of images through homographies, a pixel in the $nth$ image is
-translated into the first image's coordinates by multiplying by the
-$3\times3$ matrices $H_1 H_2 H_3 ... H_n$. Errors in any of these
-homography matrices are propagated to all further images, resulting in
-drift.
+can lead to large overall error when images are matched together. For
+example, a slight error in image correspondences in the middle of a
+chain could lead to high global error at one or both ends of the
+chain.
 
 \begin{figure}
   \centering
@@ -303,20 +304,23 @@ on long chains of images, especially where features are sparse, it
 produces distorted textures, as seen in Figure \ref{fig:mosaic3D}(a),
 due to the problems described above. This approach is also not
 closed-form, and its iterative camera adjustment process over our
-large datasets leads to prohibitively long computation time.
+large datasets led to prohibitively long computation time.
 
 The AutoStitch software package performs homography-based alignment as
-well, with additional provisions that attempt to reduce drift
-\cite{panorama2d, autostitch}. Though AutoStitch also performs well in
-areas with dense features, it can not handle areas without features,
-and has trouble aligning wall sections with even short segments of
-bare texture. The example in Figure \ref{fig:mosaic3D}(b) was
-generated after manual tuning, and areas with fewer visual features or
-repeating texture patterns simply failed outright with AutoStitch.
+well, with additional provisions that attempt to reduce drift and
+increase efficiency \cite{panorama2d, autostitch}. Though AutoStitch
+also performs well in areas with dense features, it can not handle
+areas without features, and has trouble aligning wall sections with
+even short segments of bare texture. The example in Figure
+\ref{fig:mosaic3D}(b) was generated after manual tuning, and areas
+with fewer visual features or repeating texture patterns simply failed
+outright with AutoStitch.
+
+More importantly, neither approach 
 
 
 
-\section{2D Image Alignment}
+\section{2d Image Alignment}
 \label{sec:2dAlignment}
 
 In this section, we describe our method of efficient and robust image
@@ -362,22 +366,23 @@ that walls in indoor environments often contain linear features that
 are either horizontal or vertical, corresponding to doors, windows,
 posters, etc. Thus, when texturing walls, we rotate images in 2D such
 that dominant lines are made to be horizontal or vertical. This can be
-further generalized by instead orienting lines to be parallel with a
-surface's boundaries, which makes it applicable to non-rectangular
-surfaces, such as ceilings, floors, or slanted walls.
+further generalized by instead orienting lines to be parallel or
+perpendicular with a surface's boundaries, which makes it applicable
+to ceilings and floors, where inner walls and interior features tend
+to be parallel or perpendicular to outer walls.
 
 \begin{figure}
   \centering
   \subfloat[][]{\includegraphics[height=3in]{detectedLines.png}}
-  \hspace{0.4 cm}
-  \subfloat[][]{\includegraphics[height=3in, width=4in]{bothunalignedaligned.png}}
-  \caption{(a) Lines detected in image projections via Hough transform.
-    (b) In this example, we project two images at once for the sake of
-    demonstration, where the red lines are geometry-based lines where
-    surfaces intersect, and the green lines are lines detected in the
-    image. Above are the original projections using input camera
-    poses, and below are the projections after rotation and
-    translation for alignment.}
+  \hspace{0.4 cm} \subfloat[][]{\includegraphics[height=3in,
+    width=4in]{bothunalignedaligned.png}}
+  \caption{(a) Lines detected in image projections via Hough
+    transform.  (b) In this example, we project two images at once for
+    the sake of demonstration. Red line segments represent where
+    surfaces intersect, and green line segments are line segments
+    detected in the image. Above are the original projections using
+    input camera poses, and below are the projections after rotation
+    and translation for alignment.}
   \label{fig:geometryAlignment}
 \end{figure}
 
@@ -392,7 +397,10 @@ projection matches the physical boundary in our digital model. An
 example of such an adjustment is in Figure
 \ref{fig:geometryAlignment}(b) and \ref{fig:geometryAlignment}(c).
 
-To perform rotation, we use a RANSAC \cite{fischler1981random}
+
+
+
+To perform these alignments, we use a RANSAC \cite{fischler1981random}
 framework to determine an optimal rotation angle between lines in our
 image and lines in our geometry. RANSAC allows us to ignore erroneous
 lines in our image, such as the slanted lines corresponding to the
@@ -448,14 +456,13 @@ is not within 5 mm of the sampled average distance.
 
 
 We now use the $dx_{i,j}$ and $dy_{i,j}$ distances between each pair
-of images to refine their positions using weighted linear least
-squares. The variables we wish to solve for are the $_ix$ and $y_i$
+of images, as well as our previous geometry alignment results to refine their positions using weighted linear least
+squares. The variables we wish to solve for are the $x_i$ and $y_i$
 positions of our images, while our equations are the SIFT-based
 distances between pairs of images, images fixed to geometry with 0 or
-1 degrees of freedom, and the original camera poses. Ignoring
-weighting and the original camera poses for now, an example setup for
-solving $\textrm{min}_{\vec{\beta}} ||A \vec{\beta} -
-\vec{\gamma}||_2^2 $ with 3 images is shown below.
+1 degrees of freedom, and the original camera poses. An example setup for
+solving our weighted linear least squares problem $\textrm{min}_{\vec{\beta}} ||W^\frac{1}{2}(A \vec{\beta} -
+\vec{\gamma})||_2^2 $ with 3 images is shown below.
 
 
 \[
@@ -465,9 +472,12 @@ A =
   0 & 0 & 0 & -1 & 1 & 0\\
   0 & -1 & 1 & 0 & 0 & 0\\
   0 & 0 & 0 & 0 & -1 & 1\\
+  0 & -m_2 & 0 & 0 & 1 & 0\\
   1 & 0 & 0 & 0 & 0 & 0\\
   0 & 0 & 0 & 1 & 0 & 0\\
-  0 & -m & 0 & 0 & 1 & 0\\
+  1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 1 & 0 & 0\\
+
 \end{pmatrix}\quad
 \vec{\beta} =
 \begin{pmatrix}
@@ -475,8 +485,13 @@ A =
 \end{pmatrix}
 \vec{\gamma} =
 \begin{pmatrix}
-  dx_{1,2}, \\ dy_{1,2}, \\ dx_{2,3}, \\ dy_{2,3}, \\ t1_x, \\ t1_y, \\ -mx_2 +
-  ty_2
+  dx_{1,2}, \\ dy_{1,2}, \\ dx_{2,3}, \\ dy_{2,3}, \\ -m_2gx_2 + gy_2, 
+  \\ gx_1, \\ gy_1, \\ tx_1, \\ ty_1
+  
+\end{pmatrix}
+\vec{W} = 
+\begin{pmatrix}
+  1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 0.01, \\ 0.01
 \end{pmatrix}
 \]
 
@@ -484,7 +499,10 @@ A =
 In this scenario, a SIFT-based distance of $dx_{1,2}$, $dy_{1,2}$ was
 calculated between images 1 and 2. This corresponds to the first and
 second row of $A$, while the third and fourth row of $A$ represent the
-same for images 2 and 3. Rows 5 and 6 of $A$ correspond to a fixed
+same for images 2 and 3. Row 5 corresponds to a constraint of image 2's location to a line of slope $m_2$, passing through point $gx_2$, $gy_2$. 
+Row 6 and 7 do stuff and 8 and 9 ensure that we are not rank deficient in case of whatever.
+
+ Rows 5 and 6 of $A$ correspond to a fixed
 location of $tx_1$, $ty_1$ for image 1, while Row 7 corresponds to a
 constraint to a line of slope $m$, with current location $tx_2$,
 $ty_2$, both possible results of the geometry alignment procedure in
@@ -551,8 +569,8 @@ scoring function from Figure \ref{fig:scoringFunction}.
 The result of this caching approach is shown in Figure
 \ref{fig:compareAll}(c), where seams are now reduced as compared to
 Figure \ref{fig:compareAll}(b). However, some discontinuities are
-still present, as visible in the posters on the wall with breaks
-in their borders.
+still present, as visible in the posters on the wall with breaks in
+their borders.
 
 \begin{figure}
   \centering
@@ -614,35 +632,21 @@ selected by the tiling process in Section
 \ref{sec:tileBasedMapping}. Such a list of images is guaranteed to
 cover the entire wall, and consists of desired camera poses overall.
 
-To cover the entirety of a plane, our problem can be defined as
-minimally covering a polygon i.e. the planar surface, using other
-polygons of arbitrary geometry i.e. image projections, with the added
-constraint of minimizing the cost function between chosen images.
-This is a complex problem, though we can take a number of steps to
-simplify it.
-
-Given that wall-texture candidate images are taken from more or less
-head-on angles, and knowing that only minor rotations are made in
-Section \ref{sec:2dAlignment}, we can reason that their projections
-onto the plane are approximately rectangular. By cropping them all to
-be rectangular, as shown in Figure \ref{fig:projectionAngles}(c), our
-problem becomes the conceptually simpler one of filling a polygon with
-rectangles, such that the sum of all costs between each pair of
-rectangles is minimal. We thus also retain the advantages of working
-with rectangular units, as explained in Section
-\ref{sec:tileBasedMapping}.
-
-The operator's path, and the location and orientation of the cameras
-on the acquisition backpack is such that images nearly always contain
-the entirety of the floor to ceiling range of wall planes. Images
-therefore rarely need to be projected with one above another when
-texturing wall planes. In essence, we need only to ensure lateral
-coverage of wall planes, e.g. from left to right, as our images
-provide full vertical coverage themselves. We can thus construct a
-Directed Acyclic Graph (DAG) from the images, with edge costs defined
-by the SSD cost function, and solve a simple shortest path problem to
-find an optimal subset of images with regard to the SSD cost function
-\cite{dijkstra}.
+In the general case, our problem can be defined as minimally covering
+a polygon i.e. the planar surface, using other polygons of arbitrary
+geometry i.e. image projections, with the added constraint of
+minimizing the cost function between chosen images. Given that
+wall-texture candidate images are taken from more or less head-on
+angles, and knowing that only minor rotations are made in Section
+\ref{sec:2dAlignment}, we can crop our image projections to be
+rectangular with minimal texture loss. Furthermore, because our
+fisheye camera lenses have full floor-to-ceiling coverage of nearly
+all walls, and our backpack operator logically only moves
+horizontally, we only need to ensure lateral coverage of our wall
+planes. We can thus construct a Directed Acyclic Graph (DAG) from the
+images, with edge costs defined by the SSD cost function, and solve a
+simple shortest path problem to find an optimal subset of images with
+regard to the SSD cost function \cite{dijkstra}.
 
 \begin{figure}
   \centering
@@ -665,7 +669,7 @@ the shortest path problem from the start node to the end node. This
 results in a set of images completely covering the plane horizontally,
 while minimizing the cost of seams between images.
 
-In rare cases where the vertical dimension of the plane is not
+In very rare cases where the vertical dimension of the plane is not
 entirely covered by one or more chosen images, we are left with holes
 where no images are selected to texture. Since these holes are rare,
 and generally fairly small, we use a greedy approach, repeatedly
@@ -731,35 +735,38 @@ and \ref{fig:compareAll}(f) show the blended versions of Figures
 \ref{fig:compareAll}(c) and \ref{fig:compareAll}(d) respectively. The
 remaining images in Figure \ref{fig:compareAll} highlight differences
 between the two methods, showing that Figure \ref{fig:compareAll}(f)
-clearly has the best visual quality and the best texturing approach
-among the textures in Figure \ref{fig:compareAll}.
+has the best visual quality and the best texturing approach among the
+textures in Figure \ref{fig:compareAll}.
 
 \section{Results and Conclusions}
 \label{sec:resultsAndConclusions}
 Examples of ceilings and floors textured with the tile caching
 approach, and walls textured with the shortest path approach, are
-displayed in Figure \ref{fig:results}. High resolution colored texture
-comparisons, as well as further examples and interactive walkthroughs
-are available at
+displayed in Figure \ref{fig:results}. These results are as accurate
+and clean as the best results we obtained using the two algorithms
+mentioned in Section \ref{sec:existingApproaches}. High resolution
+colored texture comparisons, as well as video and interactive
+walkthroughs of full models are available at
 \footnote{\url{http://www.eecs.berkeley.edu/~pcheng/indoormapping}}.
 
 As mentioned earlier, our approach is quite efficient. The top wall in
 Figure \ref{fig:results}(a) was generated with 7543 $\times$ 776
-pixels, and spans a 40-meter long wall. Given 41000 input images, a
-2.8GHz dual-core consumer-grade laptop takes approximately a minute to
-pick 36 candidate images, followed by another minute to perform both
-image alignment and the shortest path texturing method, though over
-75\% of that time is spent calculating SIFT matches within the SiftGPU
-framework. While not real-time, the process is capable of generating
-quick updates after changes in various parameters or modifications to
-input data, and if integrated directly into a modeling system, could
-provide live visualization as data is collected. Our full models
-consist of our input model file, textures that we generate, and a
-mapping of image points to model vertices. The models shown in Figure
-\ref{fig:results} are roughly 20 MB in size, and are visualized using
-the OpenSceneGraph toolkit \cite{openscenegraph}, which allows for
-export to many common model formats, as well as efficient
-visualization, even in web browsers or mobile devices.
+pixels, and spans a 40-meter long wall. Given 41000 input images of
+the entire dataset, a 2.8GHz dual-core consumer-grade laptop takes
+approximately a minute to pick 36 candidate images, followed by under
+a minute to perform both image alignment and the shortest path
+texturing method, though over 75\% of that time is spent calculating
+SIFT matches within the SiftGPU framework. While not real-time, the
+process is capable of generating quick updates after changes in
+various parameters or modifications to input data, and if integrated
+directly into a modeling system, could provide live visualization as
+data is collected. Our full models consist of our input model file,
+textures that we generate, and a mapping of image points to model
+vertices. The models shown in Figure \ref{fig:results} are roughly 20
+MB in size, and are visualized using the OpenSceneGraph toolkit
+\cite{openscenegraph}, which allows for export to many common model
+formats, as well as efficient visualization, even in web browsers or
+mobile devices.
 
 In this paper, we have developed an approach to texture mapping models
 with noisy camera localization data. We are able to refine image
@@ -773,13 +780,13 @@ easily tunable for similar systems across multiple environments.
 
 \subsection{Future Work}
 While our method works well on our datasets, it is heavily reliant on
-having a large number of input images, and minimal non-2D error. An
-approach towards resolving camera error in 3D that would mesh well
-with our approach is to perform matching between image lines and
-geometry in 3D, which can be done reasonably efficiently
-\cite{linebased, rectangularstructures}. Using linear features on top
-of our SIFT features is also likely to result in improved matches, as
-indoor scenes often have long, unbroken lines spanning multiple images
+having a large number of input images, and minimal non-2D error. A
+technique for resolving camera error in 3D that would mesh well with
+our approach is to perform matching between image lines and geometry
+in 3D, which can be done reasonably efficiently \cite{linebased,
+  rectangularstructures}. Using linear features on top of our SIFT
+features is also likely to result in improved matches, as indoor
+scenes often have long, unbroken lines spanning multiple images
 \cite{linearposeestimation}. Finally, our blending approach is quite
 basic, and applying more sophisticated methods of blending as well as
 normalization would benefit our final visual quality, and more

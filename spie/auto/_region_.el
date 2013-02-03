@@ -3,6 +3,7 @@
     (LaTeX-add-labels
      "sec:robustSIFTFeatureMatching")
     (TeX-run-style-hooks
+     "float"
      "hyperref"
      "amssymb"
      "amsmath"

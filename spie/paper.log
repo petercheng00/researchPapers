@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  20 JAN 2013 16:25
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  1 FEB 2013 20:28
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -344,11 +344,11 @@ LaTeX Info: Redefining \pageref on input line 52.
 
 cmr-font_in_spiecls
 10pt
-LaTeX Font Info:    Try loading font information for U+msa on input line 88.
+LaTeX Font Info:    Try loading font information for U+msa on input line 89.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 88.
+LaTeX Font Info:    Try loading font information for U+msb on input line 89.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -369,7 +369,7 @@ File: wall2_naive.jpg Graphic file (type jpg)
 File: wall2_naive_shift.jpg Graphic file (type jpg)
 
 <use wall2_naive_shift.jpg>
-Overfull \hbox (3.57668pt too wide) in paragraph at lines 226--229
+Overfull \hbox (3.57668pt too wide) in paragraph at lines 227--230
  [][][][] 
  []
 
@@ -381,7 +381,7 @@ File: wall2_cache_shift.jpg Graphic file (type jpg)
 File: wall2_shortest_shift.pdf Graphic file (type pdf)
 
 <use wall2_shortest_shift.pdf>
-Overfull \hbox (3.59808pt too wide) in paragraph at lines 231--234
+Overfull \hbox (3.59808pt too wide) in paragraph at lines 232--235
  [][][][] 
  []
 
@@ -393,7 +393,7 @@ File: wall2_cache_shift_blend.pdf Graphic file (type pdf)
 File: wall2_shortest_shift_blend.pdf Graphic file (type pdf)
 
 <use wall2_shortest_shift_blend.pdf>
-Overfull \hbox (3.61949pt too wide) in paragraph at lines 236--239
+Overfull \hbox (3.61949pt too wide) in paragraph at lines 237--240
  [][][][] 
  []
 
@@ -405,7 +405,7 @@ File: wall2_cache_comparison.png Graphic file (type png)
 File: wall2_shortest_comparison.png Graphic file (type png)
 
 <use wall2_shortest_comparison.png>
-Overfull \hbox (3.61949pt too wide) in paragraph at lines 241--244
+Overfull \hbox (3.61949pt too wide) in paragraph at lines 242--245
  [][][][] 
  []
 
@@ -435,53 +435,53 @@ File: detectedLines.png Graphic file (type png)
 File: bothunalignedaligned.png Graphic file (type png)
 
 <use bothunalignedaligned.png> [5 <./detectedLines.png (PNG copy)> <./bothunali
-gnedaligned.png>] [6] <projectionWall.pdf, id=347, 312.16624pt x 304.13625pt>
+gnedaligned.png>] [6] <projectionWall.pdf, id=348, 312.16624pt x 304.13625pt>
 File: projectionWall.pdf Graphic file (type pdf)
 
 <use projectionWall.pdf>
-<projectionCeiling.pdf, id=349, 479.7925pt x 295.1025pt>
+<projectionCeiling.pdf, id=350, 479.7925pt x 295.1025pt>
 File: projectionCeiling.pdf Graphic file (type pdf)
 
 <use projectionCeiling.pdf>
-<projectionWallCrop.pdf, id=351, 272.01625pt x 287.0725pt>
+<projectionWallCrop.pdf, id=352, 272.01625pt x 287.0725pt>
 File: projectionWallCrop.pdf Graphic file (type pdf)
 
 <use projectionWallCrop.pdf> [7]
-<dagCreation.pdf, id=370, 481.8pt x 154.5775pt>
+<dagCreation.pdf, id=369, 481.8pt x 154.5775pt>
 File: dagCreation.pdf Graphic file (type pdf)
  <use dagCreation.pdf> [8 <./projectionWall.pdf> <./projectionCeiling.pdf> <./p
-rojectionWallCrop.pdf>] [9 <./dagCreation.pdf>] <finalfloors.jpg, id=449, 3792.
+rojectionWallCrop.pdf> <./dagCreation.pdf>] [9] <finalfloors.jpg, id=448, 3792.
 1675pt x 1441.385pt>
 File: finalfloors.jpg Graphic file (type jpg)
 
-<use finalfloors.jpg> <finalceilings.jpg, id=450, 2308.625pt x 1104.125pt>
+<use finalfloors.jpg> <finalceilings.jpg, id=449, 2308.625pt x 1104.125pt>
 File: finalceilings.jpg Graphic file (type jpg)
 
-<use finalceilings.jpg> <floorcropped.jpg, id=451, 2693.06125pt x 2148.025pt>
+<use finalceilings.jpg> <floorcropped.jpg, id=450, 2693.06125pt x 2148.025pt>
 File: floorcropped.jpg Graphic file (type jpg)
 
-<use floorcropped.jpg> <pier15floor.jpg, id=452, 3608.48125pt x 2465.21pt>
+<use floorcropped.jpg> <pier15floor.jpg, id=451, 3608.48125pt x 2465.21pt>
 File: pier15floor.jpg Graphic file (type jpg)
 
-<use pier15floor.jpg> <fullmodel.png, id=453, 1242.14063pt x 639.89063pt>
+<use pier15floor.jpg> <fullmodel.png, id=452, 1242.14063pt x 639.89063pt>
 File: fullmodel.png Graphic file (type png)
 
-<use fullmodel.png> <threestoryfull2.png, id=454, 1169.11781pt x 676.02562pt>
+<use fullmodel.png> <threestoryfull2.png, id=453, 1169.11781pt x 676.02562pt>
 File: threestoryfull2.png Graphic file (type png)
 
-<use threestoryfull2.png> <pier15.png, id=455, 768.62157pt x 389.20406pt>
+<use threestoryfull2.png> <pier15.png, id=454, 768.62157pt x 389.20406pt>
 File: pier15.png Graphic file (type png)
 
-<use pier15.png> <threestoryfull.png, id=456, 1028.34187pt x 588.69937pt>
+<use pier15.png> <threestoryfull.png, id=455, 1028.34187pt x 588.69937pt>
 File: threestoryfull.png Graphic file (type png)
 
 <use threestoryfull.png>
-Overfull \hbox (8.99992pt too wide) in paragraph at lines 808--808
+Overfull \hbox (8.99992pt too wide) in paragraph at lines 813--813
 []\OT1/cmr/m/n/9 (d)|| 
  []
 
 
-LaTeX Warning: Float too large for page by 39.77112pt on input line 812.
+LaTeX Warning: Float too large for page by 39.77112pt on input line 817.
 
 (./paper.bbl
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 31.
@@ -503,11 +503,11 @@ Missing character: There is no ¡ in font cmr10!
 Here is how much of TeX's memory you used:
  6555 strings out of 495061
  96238 string characters out of 1182621
- 181801 words of memory out of 3000000
+ 184796 words of memory out of 3000000
  9534 multiletter control sequences out of 15000+50000
  10643 words of font info for 42 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,45p,545b,401s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,45p,540b,401s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
@@ -522,9 +522,9 @@ ts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 /cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.
 pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on paper.pdf (12 pages, 16402914 bytes).
+Output written on paper.pdf (12 pages, 16402189 bytes).
 PDF statistics:
- 558 PDF objects out of 1000 (max. 8388607)
+ 557 PDF objects out of 1000 (max. 8388607)
  75 named destinations out of 1000 (max. 500000)
  248 words of extra memory for PDF output out of 10000 (max. 10000000)
 

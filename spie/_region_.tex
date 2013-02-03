@@ -26,7 +26,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hyperref}
-
+\usepackage{float}
 \title{Texture mapping 3D planar models of indoor environments with noisy camera poses} 
 
 %>>>> The author is responsible for formatting the 
@@ -51,7 +51,7 @@ University of California, Berkeley\\
  
 \begin{document}
 
-\message{ !name(paper.tex) !offset(371) }
+\message{ !name(paper.tex) !offset(376) }
 \subsection{2D Feature Alignment}
 \label{sec:robustSIFTFeatureMatching}
 Our next step is to align images by searching for corresponding points
@@ -84,8 +84,8 @@ positions of our images, while our equations are the SIFT-based
 distances between pairs of images, images fixed to geometry with 0 or
 1 degrees of freedom, and the original camera poses. Ignoring
 weighting and the original camera poses for now, an example setup for
-solving $\textrm{min}_{\vec{\beta}} ||A \vec{\beta} -
-\vec{\gamma}||_2^2 $ with 3 images is shown below.
+solving $\textrm{min}_{\vec{\beta}} ||W^\frac{1}{2}(A \vec{\beta} -
+\vec{\gamma})||_2^2 $ with 3 images is shown below.
 
 
 \[
@@ -95,9 +95,12 @@ A =
   0 & 0 & 0 & -1 & 1 & 0\\
   0 & -1 & 1 & 0 & 0 & 0\\
   0 & 0 & 0 & 0 & -1 & 1\\
+  0 & -m_2 & 0 & 0 & 1 & 0\\
   1 & 0 & 0 & 0 & 0 & 0\\
   0 & 0 & 0 & 1 & 0 & 0\\
-  0 & -m & 0 & 0 & 1 & 0\\
+  1 & 0 & 0 & 0 & 0 & 0\\
+  0 & 0 & 0 & 1 & 0 & 0\\
+
 \end{pmatrix}\quad
 \vec{\beta} =
 \begin{pmatrix}
@@ -105,8 +108,13 @@ A =
 \end{pmatrix}
 \vec{\gamma} =
 \begin{pmatrix}
-  dx_{1,2}, \\ dy_{1,2}, \\ dx_{2,3}, \\ dy_{2,3}, \\ t1_x, \\ t1_y, \\ -mx_2 +
-  ty_2
+  dx_{1,2}, \\ dy_{1,2}, \\ dx_{2,3}, \\ dy_{2,3}, \\ -m_2gx_2 + gy_2, 
+  \\ gx_1, \\ gy_1, \\ tx_1, \\ ty_1
+  
+\end{pmatrix}
+\vec{W} = 
+\begin{pmatrix}
+  1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 0.01, \\ 0.01
 \end{pmatrix}
 \]
 
@@ -133,6 +141,6 @@ section results in Figure \ref{fig:compareAll}(b), which has far fewer
 discontinuities, though errors due to lighting differences and
 parallax effects are still visible.
 
-\message{ !name(paper.tex) !offset(668) }
+\message{ !name(paper.tex) !offset(678) }
 
 \end{document} 
