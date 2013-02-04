@@ -7,7 +7,6 @@
      "sec:simpleTextureMapping"
      "fig:projection"
      "fig:scoringFunction"
-     "sec:tileBasedMapping"
      "fig:compareAll"
      "sec:existingApproaches"
      "fig:mosaic3D"
