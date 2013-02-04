@@ -1,21 +1,25 @@
 \begin{thebibliography}{10}
 
-\bibitem{liu2010indoor}
-Liu, T., Carlberg, M., Chen, G., Chen, J., Kua, J., and Zakhor, A., ``Indoor
-  localization and visualization using a human-operated backpack system,'' in
-  [{\em Indoor Positioning and Indoor Navigation (IPIN), 2010 International
-  Conference on}{\nolinebreak\hspace{0.1em}]},   1--10, IEEE (2010).
-
 \bibitem{chen2010indoor}
 Chen, G., Kua, J., Shum, S., Naikal, N., Carlberg, M., and Zakhor, A., ``Indoor
   localization algorithms for a human-operated backpack system,'' in [{\em Int.
   Symp. on 3D Data, Processing, Visualization and Transmission
   (3DPVT)}{\nolinebreak\hspace{0.1em}]},  (2010).
 
+\bibitem{hz}
+Hartley, R. and Zisserman, A.,  [{\em Multiple view geometry in computer
+  vision}{\nolinebreak\hspace{0.1em}]}, vol.~2, Cambridge Univ Press (2000).
+
 \bibitem{kua2012loopclosure}
 Kua, J., Corso, N., and Zakhor, A., ``Automatic loop closure detection using
   multiple cameras for 3d indoor localization,'' in [{\em IS\&T/SPIE Electronic
   Imaging}{\nolinebreak\hspace{0.1em}]},  (2012).
+
+\bibitem{liu2010indoor}
+Liu, T., Carlberg, M., Chen, G., Chen, J., Kua, J., and Zakhor, A., ``Indoor
+  localization and visualization using a human-operated backpack system,'' in
+  [{\em Indoor Positioning and Indoor Navigation (IPIN), 2010 International
+  Conference on}{\nolinebreak\hspace{0.1em}]},   1--10, IEEE (2010).
 
 \bibitem{sanchez2012point}
 Sanchez, V. and Zakhor, A., ``Planar 3d modeling of building interiors from

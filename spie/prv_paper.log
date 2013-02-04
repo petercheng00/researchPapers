@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.6.12)  1 FEB 2013 20:18
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  3 FEB 2013 21:36
 entering extended mode
  %&-line parsing enabled.
-**&latex prv_paper.ini \nonstopmode\nofiles\PassOptionsToPackage{active,tightpa
-ge,auctex}{preview}\AtBeginDocument{\ifx\ifPreview\undefined\RequirePackage[dis
-playmath,floats,graphics,textmath,sections,footnotes]{preview}[2004/11/05]\fi} 
-\input paper.tex
+**&pdflatex prv_paper.ini \nonstopmode\nofiles\PassOptionsToPackage{active,tigh
+tpage,auctex}{preview}\AtBeginDocument{\ifx\ifPreview\undefined\RequirePackage[
+displaymath,floats,graphics,textmath,sections,footnotes]{preview}[2004/11/05]\f
+i} \input paper.tex
 (./prv_paper.ini
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -60,10 +60,11 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/etc/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
@@ -95,19 +96,19 @@ p \sbox \@tempboxa {{\footnotesize #1.\ }{\footnotesize #2}}\ifdim \wd \@tempbo
 xa >\hsize {\footnotesize #1.\ }{\footnotesize #2 \par } \else \global \@minipa
 gefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }\fi \vskip \belowcaptionsk
 ip .
-\c@ContinuedFloat=\count88
+\c@ContinuedFloat=\count89
 )
-\c@KVtest=\count89
+\c@KVtest=\count90
 \sf@farskip=\skip43
 \sf@captopadj=\dimen111
 \sf@capskip=\skip44
 \sf@nearskip=\skip45
-\c@subfigure=\count90
-\c@subfigure@save=\count91
-\c@lofdepth=\count92
-\c@subtable=\count93
-\c@subtable@save=\count94
-\c@lotdepth=\count95
+\c@subfigure=\count91
+\c@subfigure@save=\count92
+\c@lofdepth=\count93
+\c@subtable=\count94
+\c@subtable@save=\count95
+\c@lotdepth=\count96
 \sf@top=\skip46
 \sf@bottom=\skip47
 ) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
@@ -130,13 +131,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count96
+\inf@bad=\count97
 LaTeX Info: Redefining \frac on input line 211.
-\uproot@=\count97
-\leftroot@=\count98
+\uproot@=\count98
+\leftroot@=\count99
 LaTeX Info: Redefining \overline on input line 307.
-\classnum@=\count99
-\DOTSCASE@=\count100
+\classnum@=\count100
+\DOTSCASE@=\count101
 LaTeX Info: Redefining \ldots on input line 379.
 LaTeX Info: Redefining \dots on input line 382.
 LaTeX Info: Redefining \cdots on input line 467.
@@ -145,15 +146,15 @@ LaTeX Info: Redefining \cdots on input line 467.
 \big@size=\dimen114
 LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
-\macc@depth=\count101
-\c@MaxMatrixCols=\count102
+\macc@depth=\count102
+\c@MaxMatrixCols=\count103
 \dotsspace@=\muskip10
-\c@parentequation=\count103
-\dspbrk@lvl=\count104
+\c@parentequation=\count104
+\dspbrk@lvl=\count105
 \tag@help=\toks16
-\row@=\count105
-\column@=\count106
-\maxfields@=\count107
+\row@=\count106
+\column@=\count107
+\maxfields@=\count108
 \andhelp@=\toks17
 \eqnshift@=\dimen115
 \alignsep@=\dimen116
@@ -183,7 +184,7 @@ Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode not detected.
+Package ifpdf Info: pdfTeX in pdf mode detected.
 )
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
@@ -200,8 +201,8 @@ O)
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen121
-\Hy@linkcounter=\count108
-\Hy@pagecounter=\count109
+\Hy@linkcounter=\count109
+\Hy@pagecounter=\count110
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -266,7 +267,7 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count110
+\Fld@menulength=\count111
 \Field@Width=\dimen122
 \Fld@charsize=\dimen123
 \Field@toks=\toks20
@@ -281,29 +282,22 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count111
-\c@Item=\count112
-\c@Hfootnote=\count113
+\Hy@abspage=\count112
+\c@Item=\count113
+\c@Hfootnote=\count114
 )
-*hyperref using default driver hdvips*
-(/usr/share/texmf-texlive/tex/latex/hyperref/hdvips.def
-File: hdvips.def 2009/10/09 v6.79a Hyperref driver for dvips
-
-(/usr/share/texmf-texlive/tex/latex/hyperref/pdfmark.def
-File: pdfmark.def 2009/10/09 v6.79a Hyperref definitions for pdfmark specials
-\pdf@docset=\toks21
-\pdf@box=\box28
-\pdf@toks=\toks22
-\pdf@defaulttoks=\toks23
-\Fld@listcount=\count114
-))
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count115
+)
 (/usr/share/texmf-texlive/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count115
-\float@exts=\toks24
-\float@box=\box29
-\@float@everytoks=\toks25
-\@floatcapt=\box30
+\c@float@type=\count116
+\float@exts=\toks21
+\float@box=\box28
+\@float@everytoks=\toks22
+\@floatcapt=\box29
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 52.
 
@@ -316,10 +310,10 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) )
 Beginning to dump on file prv_paper.fmt
- (format=prv_paper 2013.2.1)
-10731 strings of total length 151663
-161600 memory locations dumped; current usage is 277&153675
-8896 multiletter control sequences
+ (format=prv_paper 2013.2.3)
+10753 strings of total length 152009
+157169 memory locations dumped; current usage is 277&152838
+8919 multiletter control sequences
 \font\nullfont=nullfont
 \font\OMX/cmex/m/n/10=cmex10
 \font\tenln=line10
@@ -359,3 +353,8 @@ Hyphenation trie of length 9934 has 560 ops out of 35111
 0 words of pdfTeX memory
 0 indirect objects
 No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

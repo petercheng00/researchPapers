@@ -5,45 +5,45 @@ Database file #1: report.bib
 Warning--empty year in autostitch
 Warning--empty year in siftgpu
 Warning--empty year in openscenegraph
-You've used 17 entries,
+You've used 18 entries,
             1993 wiz_defined-function locations,
-            600 strings with 6262 characters,
-and the built_in function-call counts, 4120 in all, are:
-= -- 384
-> -- 140
+            605 strings with 6358 characters,
+and the built_in function-call counts, 4274 in all, are:
+= -- 395
+> -- 148
 < -- 0
-+ -- 54
-- -- 37
-* -- 328
-:= -- 531
-add.period$ -- 17
-call.type$ -- 17
++ -- 57
+- -- 39
+* -- 340
+:= -- 553
+add.period$ -- 18
+call.type$ -- 18
 change.case$ -- 16
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 189
-empty$ -- 433
-format.name$ -- 37
-if$ -- 1009
+cite$ -- 21
+duplicate$ -- 196
+empty$ -- 452
+format.name$ -- 39
+if$ -- 1046
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 14
-newline$ -- 54
-num.names$ -- 16
-pop$ -- 62
+int.to.str$ -- 18
+missing$ -- 16
+newline$ -- 57
+num.names$ -- 17
+pop$ -- 67
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 163
+skip$ -- 166
 stack$ -- 0
 substring$ -- 286
-swap$ -- 93
+swap$ -- 95
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 41
-width$ -- 19
-write$ -- 139
+while$ -- 42
+width$ -- 20
+write$ -- 148
 (There were 3 warnings)

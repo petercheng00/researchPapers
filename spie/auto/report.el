@@ -17,5 +17,6 @@
      "siftgpu"
      "linebased"
      "rectangularstructures"
-     "linearposeestimation")))
+     "linearposeestimation"
+     "hz")))
 

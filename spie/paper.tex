@@ -389,7 +389,12 @@ detected. These lines are then used to transform images such that they match geo
 
 \begin{figure}
   \centering
-  \caption{}
+  \subfloat[][]{\includegraphics[width=6in]{allunshifted.jpg}}
+
+  \centering
+  \subfloat[][]{\includegraphics[width=6in]{allshifted.jpg}}
+
+  \caption{Images projected onto a ceiling surface, where geometry-based lines corresponding to the ceiling's boundary are shown in red. Image-based lines detected by Hough transform in the image projections are shown in blue. (a) shows images projected with their original noisy camera poses, while (b) is after images have been aligned to maximize line matches between images and geometry.}
   \label{fig:geometryAlignment}
 \end{figure}
 
@@ -444,6 +449,15 @@ After these steps are performed, our image projections line up well with our tar
 
 \subsection{Image Occlusion}
 \label{sec:imageOcclusion}
+
+\begin{figure}
+  \centering
+  \subfloat[][]{\includegraphics[width=3in]{occlusiondiagram.jpg}}
+  \hspace{0.4cm} \subfloat[][]{\includegraphics[width=3in, height=1.8in]{occlusionimages.png}}
+  \caption{(a) The green image contains texture that belongs to the red surface, which should not be projected onto the blue target surface. (b) Above, without geometry alignment, texture to the left of the red line would be removed, which would leave some erroneous texture projected onto our target surface. Below, after geometry alignment, the correct amount of texture is removed.}
+  \label{fig:occlusion}
+\end{figure}
+
 In order to properly texture surfaces such as the one shown in Figure
 \ref{fig:occlusion}, it is important to detect when parts of image
 projections contain texture belonging to other surfaces and should

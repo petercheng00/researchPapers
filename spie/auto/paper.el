@@ -14,6 +14,7 @@
      "sec:geometryAlignment"
      "fig:geometryAlignment"
      "sec:imageOcclusion"
+     "fig:occlusion"
      "sec:robustSIFTFeatureMatching"
      "sec:imageCompositing"
      "sec:mappingWithCaching"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  1 FEB 2013 20:28
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  3 FEB 2013 22:17
 entering extended mode
  %&-line parsing enabled.
 **\input paper.tex
@@ -344,144 +344,160 @@ LaTeX Info: Redefining \pageref on input line 52.
 
 cmr-font_in_spiecls
 10pt
-LaTeX Font Info:    Try loading font information for U+msa on input line 89.
+LaTeX Font Info:    Try loading font information for U+msa on input line 96.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 89.
+LaTeX Font Info:    Try loading font information for U+msb on input line 96.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) [1
+)
+
+LaTeX Warning: Citation `hz' on page 1 undefined on input line 96.
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Projection.pdf, id=89, 371.72507pt x 334.35416pt>
+<Projection.pdf, id=93, 371.72507pt x 334.35416pt>
 File: Projection.pdf Graphic file (type pdf)
  <use Projection.pdf>
-<scoringFunction.jpg, id=90, 230.5413pt x 193.6836pt>
+<scoringFunction.jpg, id=94, 230.5413pt x 193.6836pt>
 File: scoringFunction.jpg Graphic file (type jpg)
 
-<use scoringFunction.jpg> <wall2_naive.jpg, id=95, 1403.2425pt x 587.19376pt>
+<use scoringFunction.jpg> [2 <./Projection.pdf> <./scoringFunction.jpg>]
+<wall2_naive.jpg, id=250, 1403.2425pt x 587.19376pt>
 File: wall2_naive.jpg Graphic file (type jpg)
-
-<use wall2_naive.jpg>
-<wall2_naive_shift.jpg, id=96, 1403.2425pt x 587.19376pt>
+ <use wall2_naive.jpg>
+<wall2_naive_shift.jpg, id=251, 1403.2425pt x 587.19376pt>
 File: wall2_naive_shift.jpg Graphic file (type jpg)
 
 <use wall2_naive_shift.jpg>
-Overfull \hbox (3.57668pt too wide) in paragraph at lines 227--230
+Overfull \hbox (3.57668pt too wide) in paragraph at lines 256--259
  [][][][] 
  []
 
-<wall2_cache_shift.jpg, id=97, 1403.2425pt x 587.19376pt>
+<wall2_cache_shift.jpg, id=252, 1403.2425pt x 587.19376pt>
 File: wall2_cache_shift.jpg Graphic file (type jpg)
 
 <use wall2_cache_shift.jpg>
-<wall2_shortest_shift.pdf, id=98, 701.62125pt x 294.09875pt>
+<wall2_shortest_shift.pdf, id=253, 701.62125pt x 294.09875pt>
 File: wall2_shortest_shift.pdf Graphic file (type pdf)
 
 <use wall2_shortest_shift.pdf>
-Overfull \hbox (3.59808pt too wide) in paragraph at lines 232--235
+Overfull \hbox (3.59808pt too wide) in paragraph at lines 261--264
  [][][][] 
  []
 
-<wall2_cache_shift_blend.pdf, id=99, 701.62125pt x 294.09875pt>
+<wall2_cache_shift_blend.pdf, id=254, 701.62125pt x 294.09875pt>
 File: wall2_cache_shift_blend.pdf Graphic file (type pdf)
 
 <use wall2_cache_shift_blend.pdf>
-<wall2_shortest_shift_blend.pdf, id=100, 701.62125pt x 294.09875pt>
+<wall2_shortest_shift_blend.pdf, id=255, 701.62125pt x 294.09875pt>
 File: wall2_shortest_shift_blend.pdf Graphic file (type pdf)
 
 <use wall2_shortest_shift_blend.pdf>
-Overfull \hbox (3.61949pt too wide) in paragraph at lines 237--240
+Overfull \hbox (3.61949pt too wide) in paragraph at lines 266--269
  [][][][] 
  []
 
-<wall2_cache_comparison.png, id=101, 701.62125pt x 701.62125pt>
+<wall2_cache_comparison.png, id=256, 701.62125pt x 701.62125pt>
 File: wall2_cache_comparison.png Graphic file (type png)
 
 <use wall2_cache_comparison.png>
-<wall2_shortest_comparison.png, id=102, 701.62125pt x 701.62125pt>
+<wall2_shortest_comparison.png, id=257, 701.62125pt x 701.62125pt>
 File: wall2_shortest_comparison.png Graphic file (type png)
 
 <use wall2_shortest_comparison.png>
-Overfull \hbox (3.61949pt too wide) in paragraph at lines 242--245
+Overfull \hbox (3.61949pt too wide) in paragraph at lines 271--274
  [][][][] 
  []
 
-[2 <./Projection.pdf> <./scoringFunction.jpg>]
+[3]
 Overfull \vbox (13.24808pt too high) has occurred while \output is active []
 
 
-[3 <./wall2_naive.jpg> <./wall2_naive_shift.jpg> <./wall2_cache_shift.jpg> <./w
+[4 <./wall2_naive.jpg> <./wall2_naive_shift.jpg> <./wall2_cache_shift.jpg> <./w
 all2_shortest_shift.pdf> <./wall2_cache_shift_blend.pdf> <./wall2_shortest_shif
 t_blend.pdf> <./wall2_cache_comparison.png (PNG copy)> <./wall2_shortest_compar
-ison.png (PNG copy)>] <graphApproach.jpg, id=279, 1535.7375pt x 150.5625pt>
+ison.png (PNG copy)>] <graphApproach.jpg, id=290, 1535.7375pt x 150.5625pt>
 File: graphApproach.jpg Graphic file (type jpg)
 
 <use graphApproach.jpg>
-<autostitchResult.jpg, id=280, 1375.1375pt x 150.5625pt>
+<autostitchResult.jpg, id=291, 1375.1375pt x 150.5625pt>
 File: autostitchResult.jpg Graphic file (type jpg)
 
-<use autostitchResult.jpg> <finalLong.jpg, id=281, 5977.33125pt x 577.15625pt>
+<use autostitchResult.jpg> <finalLong.jpg, id=292, 5977.33125pt x 577.15625pt>
 File: finalLong.jpg Graphic file (type jpg)
 
-<use finalLong.jpg> [4 <./graphApproach.jpg> <./autostitchResult.jpg> <./finalL
-ong.jpg>] <detectedLines.png, id=303, 850.17625pt x 1217.54875pt>
-File: detectedLines.png Graphic file (type png)
+<use finalLong.jpg> [5 <./graphApproach.jpg> <./autostitchResult.jpg> <./finalL
+ong.jpg>] <allunshifted.jpg, id=310, 5452.37pt x 1944.26375pt>
+File: allunshifted.jpg Graphic file (type jpg)
 
-<use detectedLines.png>
-<bothunalignedaligned.png, id=304, 1441.385pt x 1303.87125pt>
-File: bothunalignedaligned.png Graphic file (type png)
+<use allunshifted.jpg> <allshifted.jpg, id=311, 5452.37pt x 1944.26375pt>
+File: allshifted.jpg Graphic file (type jpg)
 
-<use bothunalignedaligned.png> [5 <./detectedLines.png (PNG copy)> <./bothunali
-gnedaligned.png>] [6] <projectionWall.pdf, id=348, 312.16624pt x 304.13625pt>
+<use allshifted.jpg> <occlusiondiagram.jpg, id=318, 703.12688pt x 411.78844pt>
+File: occlusiondiagram.jpg Graphic file (type jpg)
+
+<use occlusiondiagram.jpg>
+<occlusionimages.png, id=319, 686.565pt x 581.92406pt>
+File: occlusionimages.png Graphic file (type png)
+
+<use occlusionimages.png>
+
+LaTeX Warning: Reference `fig:occlusion' on page 6 undefined on input line 462.
+
+
+[6] [7 <./allunshifted.jpg> <./allshifted.jpg> <./occlusiondiagram.jpg> <./occl
+usionimages.png (PNG copy)>] [8]
+<projectionWall.pdf, id=363, 312.16624pt x 304.13625pt>
 File: projectionWall.pdf Graphic file (type pdf)
 
 <use projectionWall.pdf>
-<projectionCeiling.pdf, id=350, 479.7925pt x 295.1025pt>
+<projectionCeiling.pdf, id=365, 479.7925pt x 295.1025pt>
 File: projectionCeiling.pdf Graphic file (type pdf)
 
 <use projectionCeiling.pdf>
-<projectionWallCrop.pdf, id=352, 272.01625pt x 287.0725pt>
+<projectionWallCrop.pdf, id=367, 272.01625pt x 287.0725pt>
 File: projectionWallCrop.pdf Graphic file (type pdf)
 
-<use projectionWallCrop.pdf> [7]
-<dagCreation.pdf, id=369, 481.8pt x 154.5775pt>
+<use projectionWallCrop.pdf> [9 <./projectionWall.pdf> <./projectionCeiling.pdf
+> <./projectionWallCrop.pdf>] <dagCreation.pdf, id=410, 481.8pt x 154.5775pt>
 File: dagCreation.pdf Graphic file (type pdf)
- <use dagCreation.pdf> [8 <./projectionWall.pdf> <./projectionCeiling.pdf> <./p
-rojectionWallCrop.pdf> <./dagCreation.pdf>] [9] <finalfloors.jpg, id=448, 3792.
-1675pt x 1441.385pt>
+
+<use dagCreation.pdf> [10 <./dagCreation.pdf>] [11]
+<finalfloors.jpg, id=464, 3792.1675pt x 1441.385pt>
 File: finalfloors.jpg Graphic file (type jpg)
-
-<use finalfloors.jpg> <finalceilings.jpg, id=449, 2308.625pt x 1104.125pt>
+ <use finalfloors.jpg>
+<finalceilings.jpg, id=465, 2308.625pt x 1104.125pt>
 File: finalceilings.jpg Graphic file (type jpg)
-
-<use finalceilings.jpg> <floorcropped.jpg, id=450, 2693.06125pt x 2148.025pt>
+ <use finalceilings.jpg>
+<floorcropped.jpg, id=466, 2693.06125pt x 2148.025pt>
 File: floorcropped.jpg Graphic file (type jpg)
-
-<use floorcropped.jpg> <pier15floor.jpg, id=451, 3608.48125pt x 2465.21pt>
+ <use floorcropped.jpg>
+<pier15floor.jpg, id=467, 3608.48125pt x 2465.21pt>
 File: pier15floor.jpg Graphic file (type jpg)
-
-<use pier15floor.jpg> <fullmodel.png, id=452, 1242.14063pt x 639.89063pt>
+ <use pier15floor.jpg>
+<fullmodel.png, id=468, 1242.14063pt x 639.89063pt>
 File: fullmodel.png Graphic file (type png)
-
-<use fullmodel.png> <threestoryfull2.png, id=453, 1169.11781pt x 676.02562pt>
+ <use fullmodel.png>
+<threestoryfull2.png, id=470, 1169.11781pt x 676.02562pt>
 File: threestoryfull2.png Graphic file (type png)
 
-<use threestoryfull2.png> <pier15.png, id=454, 768.62157pt x 389.20406pt>
+<use threestoryfull2.png> <pier15.png, id=471, 768.62157pt x 389.20406pt>
 File: pier15.png Graphic file (type png)
 
-<use pier15.png> <threestoryfull.png, id=455, 1028.34187pt x 588.69937pt>
+<use pier15.png> <threestoryfull.png, id=472, 1028.34187pt x 588.69937pt>
 File: threestoryfull.png Graphic file (type png)
 
 <use threestoryfull.png>
-Overfull \hbox (8.99992pt too wide) in paragraph at lines 813--813
+Overfull \hbox (8.99992pt too wide) in paragraph at lines 860--860
 []\OT1/cmr/m/n/9 (d)|| 
  []
 
 
-LaTeX Warning: Float too large for page by 39.77112pt on input line 817.
+LaTeX Warning: Float too large for page by 39.77112pt on input line 864.
 
 (./paper.bbl
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 31.
@@ -492,39 +508,52 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 31.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 31.
- [10] [11 <./finalfloors.jpg> <./finalceilings.jpg> <./floorcropped.jpg> <./pie
-r15floor.jpg> <./fullmodel.png> <./threestoryfull2.png (PNG copy)> <./pier15.pn
-g (PNG copy)> <./threestoryfull.png (PNG copy)>]
 Missing character: There is no Å in font cmr10!
 Missing character: There is no ¡ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¡ in font cmr10!
-) [12] (./paper.aux) ) 
+) [12] [13 <./finalfloors.jpg> <./finalceilings.jpg> <./floorcropped.jpg> <./pi
+er15floor.jpg> <./fullmodel.png> <./threestoryfull2.png (PNG copy)> <./pier15.p
+ng (PNG copy)> <./threestoryfull.png (PNG copy)>] (./paper.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6555 strings out of 495061
- 96238 string characters out of 1182621
- 184796 words of memory out of 3000000
- 9534 multiletter control sequences out of 15000+50000
- 10643 words of font info for 42 fonts, out of 3000000 for 9000
+ 6574 strings out of 495061
+ 96515 string characters out of 1182621
+ 185796 words of memory out of 3000000
+ 9545 multiletter control sequences out of 15000+50000
+ 10953 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,45p,540b,401s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fon
-ts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
-/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on paper.pdf (12 pages, 16402189 bytes).
+ 44i,10n,45p,535b,378s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{subsection.6.1} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on paper.pdf (13 pages, 15229614 bytes).
 PDF statistics:
- 557 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
- 248 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 572 PDF objects out of 1000 (max. 8388607)
+ 80 named destinations out of 1000 (max. 500000)
+ 258 words of extra memory for PDF output out of 10000 (max. 10000000)
 
