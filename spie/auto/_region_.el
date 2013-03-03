@@ -1,8 +1,7 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
     (LaTeX-add-labels
-     "sec:imageOcclusion"
-     "fig:occlusion")
+     "sec:robustSIFTFeatureMatching")
     (TeX-run-style-hooks
      "float"
      "hyperref"

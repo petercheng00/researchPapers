@@ -4,12 +4,13 @@
      "report")
     (LaTeX-add-labels
      "sec:introduction"
+     "fig:flowchart"
+     "sec:existingApproaches"
+     "fig:mosaic3D"
      "sec:simpleTextureMapping"
      "fig:projection"
      "fig:scoringFunction"
      "fig:compareAll"
-     "sec:existingApproaches"
-     "fig:mosaic3D"
      "sec:2dAlignment"
      "sec:geometryAlignment"
      "fig:geometryAlignment"
@@ -22,7 +23,8 @@
      "sec:shortestPath"
      "fig:dagCreation"
      "sec:blending"
-     "sec:resultsAndConclusions"
+     "sec:results"
+     "sec:conclusion"
      "fig:results")
     (TeX-run-style-hooks
      "float"

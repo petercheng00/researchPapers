@@ -18,5 +18,10 @@
      "linebased"
      "rectangularstructures"
      "linearposeestimation"
-     "hz")))
+     "hz"
+     "agarwalapanoramas"
+     "wangmultipleviews"
+     "coorg1997matching"
+     "debevechybrid"
+     "bernardinimultiplescans")))
 

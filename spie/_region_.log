@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2013.2.3)  3 FEB 2013 22:16
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_paper 2013.3.3)  3 MAR 2013 00:14
 entering extended mode
  %&-line parsing enabled.
 **&prv_paper _region_.tex
@@ -18,7 +18,7 @@ graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2009/08/28 v1.8 graphics configuration of TeX Live
-  pdftex.def    2010/03/12 v0.04p Graphics/color for pdfTeX
+   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
   subfig.sty    2005/06/28 ver: 1.3 subfig package
  caption.sty    2009/10/09 v3.1k Customizing captions (AR)
 caption3.sty    2009/10/09 v3.1k caption3 kernel (AR)
@@ -53,7 +53,8 @@ ifluatex.sty    2009/04/17 v1.2 Provides the ifluatex switch (HO)
  ltxcmds.sty    2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO)
 
 atbegshi.sty    2008/07/31 v1.9 At begin shipout hook (HO)
- hpdftex.def    2009/10/09 v6.79a Hyperref driver for pdfTeX
+  hdvips.def    2009/10/09 v6.79a Hyperref driver for dvips
+ pdfmark.def    2009/10/09 v6.79a Hyperref definitions for pdfmark specials
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
     umsa.fd    2009/06/22 v3.00 AMS symbols A
     umsb.fd    2009/06/22 v3.00 AMS symbols B
@@ -83,28 +84,15 @@ Package: preview 2010/02/14 CVS-1.126 (AUCTeX/preview-latex)
 No auxiliary output files.
 
 
-\hbadness=\count117
+\hbadness=\count116
 \hfuzz=\dimen125
 (/usr/local/share/texmf/tex/latex/preview/prauctex.cfg))
 (/usr/local/share/texmf/tex/latex/preview/prfootnotes.def)
-\pr@snippet=\count118
-\pr@box=\box30
-\pr@output=\toks23
+\pr@snippet=\count117
+\pr@box=\box31
+\pr@output=\toks26
 
 Preview: Fontsize 10pt
-Preview: PDFoutput 1
-) (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count119
-\scratchdimen=\dimen126
-\scratchbox=\box31
-\nofMPsegments=\count120
-\nofMParguments=\count121
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count122
-\MPscratchDim=\dimen127
-\MPnumerator=\count123
-\everyMPtoPDFconversion=\toks25
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
@@ -129,94 +117,388 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count124
+\c@section@level=\count118
 )
 LaTeX Info: Redefining \ref on input line 52.
 LaTeX Info: Redefining \pageref on input line 52.
 \AtBeginShipoutBox=\box32
 
- !name(paper.tex) !offset(395) 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+ !name(paper.tex) !offset(467) 
 ! Preview: Snippet 1 started.
 <-><->
       
 l.55 \subsection
-                {Image Occlusion}
+                {2D Feature Alignment}
 Not a real error.
 
 Preview: Tightpage -32891 -32891 32891 32891
 ! Preview: Snippet 1 ended.(546132+152916x31969935).
 <-><->
       
-l.55 \subsection{Image Occlusion}
-                                 
+l.55 \subsection{2D Feature Alignment}
+                                      
 Not a real error.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+[1
 
 ]
+
+LaTeX Warning: Reference `sec:simpleTextureMapping' on page 1 undefined on inpu
+t line 58.
+
+
+LaTeX Warning: Citation `lowe1999object' on page 1 undefined on input line 64.
+
+
+LaTeX Warning: Citation `mikolajczyk2005performance' on page 1 undefined on inp
+ut line 64.
+
+
+LaTeX Warning: Citation `szeliski2006image' on page 1 undefined on input line 6
+4.
+
+
+LaTeX Warning: Citation `siftgpu' on page 1 undefined on input line 64.
+
 ! Preview: Snippet 2 started.
 <-><->
       
-l.58 \begin{figure}
-                   
+l.66 matching. These matches determine $
+                                        dx$ and $dy$ distances between each
 Not a real error.
 
-<occlusiondiagram.jpg, id=8, 703.12688pt x 411.78844pt>
-File: occlusiondiagram.jpg Graphic file (type jpg)
-
-<use occlusiondiagram.jpg>
-<occlusionimages.png, id=9, 686.565pt x 581.92406pt>
-File: occlusionimages.png Graphic file (type png)
- <use occlusionimages.png>
-! Preview: Snippet 2 ended.(13210989+0x31969935).
+! Preview: Snippet 2 ended.(455111+0x715662).
 <-><->
       
-l.64 \end{figure}
-                 
+l.66 matching. These matches determine $dx$
+                                            and $dy$ distances between each
 Not a real error.
 
-[2
+[2]
+! Preview: Snippet 3 started.
+<-><->
+      
+l.66 matching. These matches determine $dx$ and $
+                                                 dy$ distances between each
+Not a real error.
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
-s been already used, duplicate ignored
+! Preview: Snippet 3 ended.(455111+127431x685930).
+<-><->
+      
+l.66 ...ing. These matches determine $dx$ and $dy$
+                                                   distances between each
+Not a real error.
 
-\pr@endbox ...y \pr@markerbox }\else \box \pr@box 
-                                                  \fi }\global \advance \pr@...
-l.64 \end{figure}
-                 
+[3]
 
+LaTeX Warning: Citation `fischler1981random' on page 1 undefined on input line 
+75.
 
- <./occlusiondiagram.jpg> <./occlusionimages.png (PNG copy)>]
+! Preview: Snippet 4 started.
+<-><->
+      
+l.76 estimate the optimal $
+                           dx_{i,j}$ and $dy_{i,j}$ distances between two
+Not a real error.
 
-LaTeX Warning: Reference `fig:occlusion' on page 1 undefined on input line 67.
+! Preview: Snippet 4 ended.(455111+187504x1332870).
+<-><->
+      
+l.76 estimate the optimal $dx_{i,j}$
+                                     and $dy_{i,j}$ distances between two
+Not a real error.
 
+[4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.76 estimate the optimal $dx_{i,j}$ and $
+                                          dy_{i,j}$ distances between two
+Not a real error.
 
-LaTeX Warning: Citation `rayintersection' on page 1 undefined on input line 71.
+! Preview: Snippet 5 ended.(455111+187504x1279625).
+<-><->
+      
+l.76 ...mate the optimal $dx_{i,j}$ and $dy_{i,j}$
+                                                   distances between two
+Not a real error.
 
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.77 images $
+             i$ and $j$. We use a 5 mm threshold for RANSAC, so that SIFT
+Not a real error.
 
+! Preview: Snippet 6 ended.(432226+0x225780).
+<-><->
+      
+l.77 images $i$
+                and $j$. We use a 5 mm threshold for RANSAC, so that SIFT
+Not a real error.
+
+[6]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.77 images $i$ and $
+                     j$. We use a 5 mm threshold for RANSAC, so that SIFT
+Not a real error.
+
+! Preview: Snippet 7 ended.(432226+127431x307396).
+<-><->
+      
+l.77 images $i$ and $j$
+                       . We use a 5 mm threshold for RANSAC, so that SIFT
+Not a real error.
+
+[7]
 
 LaTeX Warning: Reference `sec:geometryAlignment' on page 1 undefined on input l
-ine 76.
+ine 84.
 
- !name(paper.tex) !offset(791) 
+! Preview: Snippet 8 started.
+<-><->
+      
+l.86 weighted linear least squares problem $
+                                            \textrm{min}_{\vec{\beta}}
+Not a real error.
+
+! Preview: Snippet 8 ended.(641161+314244x6174220).
+<-><->
+      
+l.87 ...}{2}(A \vec{\beta} - \vec{\gamma})||_2^2 $
+                                                   with 3 images is
+Not a real error.
+
+[8]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.90 \[
+       
+Not a real error.
+
+! Preview: Snippet 9 ended.(10223718+0x28678857).
+<-><->
+      
+l.125 \]
+        
+Not a real error.
+
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.128 The variables we wish to solve for are the $
+                                                  x_i$ and $y_i$ positions
+Not a real error.
+
+! Preview: Snippet 10 ended.(282168+98303x592744).
+<-><->
+      
+l.128 ...iables we wish to solve for are the $x_i$
+                                                   and $y_i$ positions
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.128 ... we wish to solve for are the $x_i$ and $
+                                                  y_i$ positions
+Not a real error.
+
+! Preview: Snippet 11 ended.(282168+127431x539499).
+<-><->
+      
+l.128 ...wish to solve for are the $x_i$ and $y_i$
+                                                   positions
+Not a real error.
+
+[11]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.132 feature-based distance of $
+                                 dx_{1,2}$, $dy_{1,2}$ was calculated
+Not a real error.
+
+! Preview: Snippet 12 ended.(455111+187504x1426548).
+<-><->
+      
+l.132 feature-based distance of $dx_{1,2}$
+                                          , $dy_{1,2}$ was calculated
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.132 feature-based distance of $dx_{1,2}$, $
+                                             dy_{1,2}$ was calculated
+Not a real error.
+
+! Preview: Snippet 13 ended.(455111+187504x1373303).
+<-><->
+      
+l.132 ...-based distance of $dx_{1,2}$, $dy_{1,2}$
+                                                   was calculated
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.134 of $
+          A$, while the third and fourth row of $A$ represent the same for
+Not a real error.
+
+! Preview: Snippet 14 ended.(447828+0x491521).
+<-><->
+      
+l.134 of $A$
+            , while the third and fourth row of $A$ represent the same for
+Not a real error.
+
+[14]
+! Preview: Snippet 15 started.
+<-><->
+      
+l.134 of $A$, while the third and fourth row of $
+                                                 A$ represent the same for
+Not a real error.
+
+! Preview: Snippet 15 ended.(447828+0x491521).
+<-><->
+      
+l.134 ...A$, while the third and fourth row of $A$
+                                                   represent the same for
+Not a real error.
+
+[15]
+
+LaTeX Warning: Reference `sec:geometryAlignment' on page 1 undefined on input l
+ine 137.
+
+! Preview: Snippet 16 started.
+<-><->
+      
+l.139 $
+       m_2$, passing through point $gx_2$, $gy_2$, while rows 6 and 7
+Not a real error.
+
+! Preview: Snippet 16 ended.(282168+98303x869418).
+<-><->
+      
+l.139 $m_2$
+           , passing through point $gx_2$, $gy_2$, while rows 6 and 7
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.139 $m_2$, passing through point $
+                                    gx_2$, $gy_2$, while rows 6 and 7
+Not a real error.
+
+! Preview: Snippet 17 ended.(282168+127431x1004658).
+<-><->
+      
+l.139 $m_2$, passing through point $gx_2$
+                                         , $gy_2$, while rows 6 and 7
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.139 $m_2$, passing through point $gx_2$, $
+                                            gy_2$, while rows 6 and 7
+Not a real error.
+
+! Preview: Snippet 18 ended.(282168+127431x951413).
+<-><->
+      
+l.139 $m_2$, passing through point $gx_2$, $gy_2$
+                                                 , while rows 6 and 7
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.142 each image ($
+                   tx_i,ty_i$).
+Not a real error.
+
+! Preview: Snippet 19 ended.(403098+127431x1896828).
+<-><->
+      
+l.142 each image ($tx_i,ty_i$
+                             ).
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.150 factor of $
+                 0.01$, while all other equations are weighted at $1$.
+Not a real error.
+
+! Preview: Snippet 20 ended.(422343+0x1165088).
+<-><->
+      
+l.150 factor of $0.01$
+                      , while all other equations are weighted at $1$.
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.150 ...ile all other equations are weighted at $
+                                                  1$.
+Not a real error.
+
+! Preview: Snippet 21 ended.(422343+0x327681).
+<-><->
+      
+l.150 ...e all other equations are weighted at $1$
+                                                  .
+Not a real error.
+
+[21]
+
+LaTeX Warning: Reference `sec:simpleTextureMapping' on page 1 undefined on inpu
+t line 156.
+
+
+LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 157
+.
+
+
+LaTeX Warning: Reference `fig:compareAll' on page 1 undefined on input line 158
+.
+
+ !name(paper.tex) !offset(767) 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 634 strings out of 489247
- 9182 string characters out of 1097991
- 164722 words of memory out of 3000000
- 9509 multiletter control sequences out of 15000+50000
+ 318 strings out of 489269
+ 4937 string characters out of 1098337
+ 173321 words of memory out of 3000000
+ 9184 multiletter control sequences out of 15000+50000
  8039 words of font info for 31 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 24i,10n,45p,444b,413s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on _region_.pdf (2 pages, 892085 bytes).
-PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
- 4 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26i,8n,37p,167b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+Output written on _region_.dvi (21 pages, 7012 bytes).
