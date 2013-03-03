@@ -51,114 +51,46 @@ University of California, Berkeley\\
  
 \begin{document}
 
-\message{ !name(paper.tex) !offset(467) }
-\subsection{2D Feature Alignment}
-\label{sec:robustSIFTFeatureMatching}
-The next step is to align the selected images from Section
-\ref{sec:simpleTextureMapping} for each surface to each other by
-searching for corresponding feature points between all pairs of
-overlapping images. We use feature alignment rather than pixel or
-intensity-based alignment due to the differences in lighting as well
-as possible occlusion among images, both of which feature alignment is
-less sensitive to \cite{lowe1999object, mikolajczyk2005performance,
-  szeliski2006image}. We use SiftGPU \cite{siftgpu} for its high
-performance on both feature detection as well as pairwise
-matching. These matches determine $dx$ and $dy$ distances between each
-pair of features for two image projections, though these distances may
-not always be the same for different features. Since indoor
-environments often contain repetitive features such as floor tiles or
-doors, we need to ensure that SIFT-based distances are
-reliable. First, we only align parts of images that overlap given the
-original noisy poses. Second, we discard feature matches that
-correspond to an image distance greater than 200 mm from what the
-noisy poses estimate. In order to utilize the remaining feature
-matches robustly, RANSAC \cite{fischler1981random} is again used to
-estimate the optimal $dx_{i,j}$ and $dy_{i,j}$ distances between two
-images $i$ and $j$. We use a 5 mm threshold for RANSAC, so that SIFT
-matches are labeled as outliers if their distance is not within 5 mm
-of the sampled average distance.
+\message{ !name(paper.tex) !offset(435) }
+\subsection{Image Occlusion}
+\label{sec:imageOcclusion}
 
-
-We now use the feature-based distances between each pair of images as
-well as geometry alignment results from Section
-\ref{sec:geometryAlignment} to refine all image positions using a
-weighted linear least squares approach. An example setup for a
-weighted linear least squares problem $\textrm{min}_{\vec{\beta}}
-||W^\frac{1}{2}(A \vec{\beta} - \vec{\gamma})||_2^2 $ with 3 images is
-as follows.
-
-\[
-A =
-\begin{pmatrix}
-  -1 & 1 & 0 & 0 & 0 & 0\\
-  0 & 0 & 0 & -1 & 1 & 0\\
-  0 & -1 & 1 & 0 & 0 & 0\\
-  0 & 0 & 0 & 0 & -1 & 1\\
-  0 & -m_2 & 0 & 0 & 1 & 0\\
-  1 & 0 & 0 & 0 & 0 & 0\\
-  0 & 0 & 0 & 1 & 0 & 0\\
-  1 & 0 & 0 & 0 & 0 & 0\\
-  0 & 0 & 0 & 1 & 0 & 0\\
-  0 & 1 & 0 & 0 & 0 & 0\\
-  0 & 0 & 0 & 0 & 1 & 0\\
-  0 & 0 & 1 & 0 & 0 & 0\\
-  0 & 0 & 0 & 0 & 0 & 1\\
-
-
-\end{pmatrix}\quad
-\vec{\beta} =
-\begin{pmatrix}
-  x_1, \\ x_2, \\ x_3, \\ y_1, \\ y_2, \\ y_3
-\end{pmatrix}
-\vec{\gamma} =
-\begin{pmatrix}
-  dx_{1,2}, \\ dy_{1,2}, \\ dx_{2,3}, \\ dy_{2,3}, \\ -m_2gx_2 + gy_2,
-  \\ gx_1, \\ gy_1, \\ tx_1, \\ ty_1, \\ tx_2, \\ ty_2, \\ tx_3, \\
-  ty_3
+\begin{figure}
+  \centering
+  \subfloat[][]{\includegraphics[width=3in]{occlusiondiagram.png}}
+   \subfloat[][]{\includegraphics[width=3in,
+    height=1.8in]{occlusionimagebad.png}}\\
+  \hspace{3in} 
+  \subfloat[][]{\includegraphics[width=3in,
+    height=1.8in]{occlusionimagegood.png}}
   
-\end{pmatrix}
-\vec{W} =
-\begin{pmatrix}
-  1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 1, \\ 0.01, \\ 0.01, \\ 0.01, \\
-  0.01, \\ 0.01, \\ 0.01
-\end{pmatrix}
-\]
+  \caption{(a) The image from the camera in this diagram contains
+    texture that belongs to the grey occluding surface, which should
+    not be projected onto the orange target surface; (b) without
+    geometry alignment, texture to the left of the red line would be
+    removed, which would leave some erroneous texture projected onto
+    our target surface; (c) after geometry alignment, the image is
+    shifted, resulting in the correct amount of texture being
+    removed.}
+  \label{fig:occlusion}
+\end{figure}
 
+In order to correctly texture surfaces, it is important to detect and
+remove parts of image projections containing texture for occluding
+surfaces. For instance, in Figure \ref{fig:occlusion}(a), an image
+used to texture the orange target surface also contains part of a grey
+occluding surface. We remove this incorrect texture by recursively
+performing ray-polygon intersection tests between the camera location
+and other surfaces \cite{rayintersection}. These intersection tests
+are performed at the corners of a grid overlaid upon the target
+surface. Where all four corners of a grid section are occluded,
+texture is removed. Where one or more corners are occluded, the grid
+is subdivided into four, and the process repeats. Occlusion checking
+works entirely with geometry, so by ensuring that images match
+geometry using \ref{sec:geometryAlignment}'s alignment procedure,
+texture belonging to other surfaces is accurately removed, as seen in
+Figure \ref{fig:occlusion}(b).
 
-The variables we wish to solve for are the $x_i$ and $y_i$ positions
-of images, while equations are the feature-based distances between
-pairs of images, images fixed to geometry with 0 or 1 degrees of
-freedom, and the original noisy camera poses. In this scenario, a
-feature-based distance of $dx_{1,2}$, $dy_{1,2}$ was calculated
-between images 1 and 2. This corresponds to the first and second row
-of $A$, while the third and fourth row of $A$ represent the same for
-images 2 and 3. Rows 5 through 7 correspond to results of the geometry
-alignment procedure in Section
-\ref{sec:geometryAlignment}. Specifically, row 5 corresponds to a
-geometry-based constraint of image 2's location to a line of slope
-$m_2$, passing through point $gx_2$, $gy_2$, while rows 6 and 7
-correspond to a fixed location for image 1 without any degrees of
-freedom. Rows 8 through 13 correspond to the original camera poses for
-each image ($tx_i,ty_i$).
-
-
-
-The original camera poses are needed because we sometimes are not able
-to detect feature matches in all of our images, or we lack enough
-geometry alignment results to generate a single solution. Since we
-want to minimally use our original poses, we give them a weighting
-factor of $0.01$, while all other equations are weighted at $1$.
-
-
-Since this problem is linear, it can be solved efficiently; after
-applying the resulting shifts, images overlap and match each other
-with far greater accuracy. Using the simple tile-based texturing
-scheme from Section \ref{sec:simpleTextureMapping} on these adjusted
-images results in Figure \ref{fig:compareAll}(b), which has far fewer
-discontinuities than in \ref{fig:compareAll}(a), though some 3d error
-as well as lighting differences and parallax effects are still
-visible.
-
-\message{ !name(paper.tex) !offset(767) }
+\message{ !name(paper.tex) !offset(852) }
 
 \end{document} 

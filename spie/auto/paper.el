@@ -27,6 +27,7 @@
      "sec:conclusion"
      "fig:results")
     (TeX-run-style-hooks
+     "multirow"
      "float"
      "hyperref"
      "amssymb"

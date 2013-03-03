@@ -27,6 +27,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{multirow}
 \title{Texture mapping 3D planar models of indoor environments with noisy camera poses} 
 
 %>>>> The author is responsible for formatting the 
@@ -122,8 +123,7 @@ poses, can be considered the input to our texture mapping problem.
 
 \begin{figure}
   \centering
-  \includegraphics[trim=0cm 3cm 0cm 0cm, clip=true,
-  width=6in]{flowchart.jpg}
+  \includegraphics[width=6in]{flowchart.jpg}
   \caption{The proposed texture mapping procedure\\}
   \label{fig:flowchart}
 \end{figure}
@@ -180,7 +180,7 @@ multiple unique visual references exist in the environment that can be
 detected in multiple images. In contrast, indoor environments have a
 high prevalence of bare surfaces, as well as repeating textures, such
 as similar windows, doors, and wall-mounted decorations, that are
-difficulte to disambiguate. This lack of reliable reference points
+difficult to disambiguate. This lack of reliable reference points
 often results in errors when matching images together.
 
 Additionally, our datasets often contain long chains of images,
@@ -324,7 +324,7 @@ Section \ref{sec:2dAlignment}. For our datasets, this process
 generally selects around 10\% of all the images that could be used for
 texturing the surface. This roughly 10:1 subsampling not only reduces
 computational complexity of the remaining steps, but also selects the
-most preomising images for the remaining steps.
+most promising images for the remaining steps.
 
 Given the large number of input images, it is possible to develop a
 more sophisticated image selection procedure, as described in Section
@@ -390,10 +390,11 @@ means that 3D misalignment is not likely to visually make a
 difference, beyond what can be done in 2D.
 
 
-Our proposed 2D alignment procedure consists of three parts. First,
-images are projected onto the surface and lines within these projected
-images are detected. Images are then transformed such that these lines
-match geometric lines composing the boundaries of the surface being
+Our proposed 2D alignment procedure consists of three parts, as shown
+in the diagram in Figure \ref{fig:flowchart}. First, images are
+projected onto the surface and lines within these projected images are
+detected. Images are then transformed such that these lines match
+geometric lines composing the boundaries of the surface being
 textured. Second, occlusion checks are performed to remove invalid
 parts of each image for the target surface. Third, SIFT feature
 matches are detected between pairs of images, and a weighted linear
@@ -412,8 +413,8 @@ geometry-based alignments. Each step will now be explained in detail.
   \centering
   \subfloat[][]{\includegraphics[width=6in]{allshifted.jpg}}
 
-  \centering \subfloat[][]{\includegraphics[trim=0cm 3cm 0cm 0cm,
-    clip=true, width=5in]{matchlines.jpg}}
+  \centering \subfloat[][]{\includegraphics[trim=0cm 2cm 0cm 0cm,
+    clip=true, width=5in]{matchLines.jpg}}
 
   \caption{Images projected onto a ceiling surface, where
     geometry-based lines corresponding to the ceiling's boundary are
@@ -454,18 +455,21 @@ pair with the longest image-based line become parallel. We then find a
 translation such that the lines in that same pair overlap. This
 translation has ambiguity in the dimension along the matched lines,
 which is resolved by matching the midpoint of the image-based line in
-the second pair to its corresponding geometry-based line. Thus, with 2
-or more pairs, it is possible to obtain a fixed rotation and
-translation, which are saved for usage in Section
-\ref{sec:robustSIFTFeatureMatching}.
+the second pair to its corresponding geometry-based line. This
+corresponds to case (1) of Figure
+\ref{fig:geometryAlignment}(c). Thus, with 2 or more pairs, it is
+possible to obtain a fixed rotation and translation, which are saved
+for usage in Section \ref{sec:robustSIFTFeatureMatching}.
 
 If there are not 2 or more pairs with similar angular differences, we
 select the pair with the longest image-based line and apply a rotation
 and the minimal translation to match its lines. This translation's
 ambiguity however, can not be resolved, but is also saved to be used
-in Section \ref{sec:robustSIFTFeatureMatching}. Finally, in the case
-where there are no line pairs, we can still rotate images in order to
-exploit patterns in indoor environments. For instance, doors, windows,
+in Section \ref{sec:robustSIFTFeatureMatching}. This corresponds to
+case (2) of Figure \ref{fig:geometryAlignment}(c). Finally, in the
+case where there are no line pairs, we can still rotate images in
+order to exploit patterns in indoor environments (case (3) of Figure
+\ref{fig:geometryAlignment}(c)). For instance, doors, windows,
 furniture, etc. tend to have linear edges that are parallel to the
 edges of the surfaces they are on. Similarly, lights, visible interior
 walls, etc. which are visible in floor and ceiling images, tend to be
@@ -475,13 +479,12 @@ image-based lines and geometry-based lines. We use the RANSAC
 framework, with an inlier difference of $0.5^\circ$ in order to
 successfully ignore outliers \cite{fischler1981random}.
 
-After these steps, image projections line up well with
-target surfaces, as shown in Figure \ref{fig:geometryAlignment}(b),
-which is considerably more aligned than Figure
-\ref{fig:geometryAlignment}(a) is. This procedure reconciles both
-errors in camera poses as well as in geometry, and results in sharp,
-continuous borders across images, which is crucial when checking for
-occlusion.
+After these steps, image projections line up well with target
+surfaces, as shown in Figure \ref{fig:geometryAlignment}(b), which is
+considerably more aligned than Figure \ref{fig:geometryAlignment}(a)
+is. This procedure reconciles both errors in camera poses as well as
+in geometry, and results in sharp, continuous borders across images,
+which is crucial when checking for occlusion.
 
 
 \subsection{Image Occlusion}
@@ -489,24 +492,32 @@ occlusion.
 
 \begin{figure}
   \centering
-  \subfloat[][]{\includegraphics[width=3in]{occlusiondiagram.png}}
-  \hspace{0.4cm} \subfloat[][]{\includegraphics[width=3in,
-    height=1.8in]{occlusionimages.png}}
-  \caption{(a) The image from the camera in this diagram contains
-    texture that belongs to the grey occluding surface, which should
-    not be projected onto the orange target surface; (b) without
-    geometry alignment, texture to the left of the red line would be
-    removed, which would leave some erroneous texture projected onto
-    our target surface; (c) after geometry alignment, the image is
-    shifted, resulting in the correct amount of texture being
-    removed.}
-  \label{fig:occlusion}
+  \begin{tabular}{cc}
+    \subfloat[][]{\raisebox{-1in}{\includegraphics[width=3in]{occlusiondiagram.png}}} &
+ 
+  \begin{tabular}{c}
+    \subfloat[][]{\includegraphics[trim=0cm 0cm 1.3cm 0cm,
+    clip=true, width=3in,
+      height=0.9in]{occlusionimagebad.png}} \\
+    \subfloat[][]{\includegraphics[trim=1.3cm 0cm 0cm 0cm,
+    clip=true, width=3in,
+      height=0.9in]{occlusionimagegood.png}}
+  \end{tabular}
+\end{tabular}
+\caption{(a) The image from the camera in this diagram contains
+  texture that belongs to the gray occluding surface, which should not
+  be projected onto the orange target surface; (b) without geometry
+  alignment, texture to the left of the red line would be removed,
+  which would leave some erroneous texture projected onto our target
+  surface; (c) after geometry alignment, the image is shifted,
+  resulting in the correct amount of texture being removed.}
+\label{fig:occlusion}
 \end{figure}
 
 In order to correctly texture surfaces, it is important to detect and
 remove parts of image projections containing texture for occluding
 surfaces. For instance, in Figure \ref{fig:occlusion}(a), an image
-used to texture the orange target surface also contains part of a grey
+used to texture the orange target surface also contains part of a gray
 occluding surface. We remove this incorrect texture by recursively
 performing ray-polygon intersection tests between the camera location
 and other surfaces \cite{rayintersection}. These intersection tests
@@ -634,7 +645,9 @@ as walls, floors, and ceilings. For special cases where images have
 consistently perpendicular viewing angles to the surfaces under
 consideration, such as walls, it is possible to develop an alternative
 method in Section \ref{sec:shortestPath} to further reduce visual
-artifacts.
+artifacts. Both of these approaches are followed by a blending step in
+order to produce final textures for each surface, as shown in Figure
+\ref{fig:flowchart}.
 
 \subsection{Tile-Mapping with Caching}
 \label{sec:mappingWithCaching}
@@ -787,28 +800,31 @@ solution would be, but it is a fast approximation, and adequately
 handles the few holes encountered.
 
 We have now mapped every location on the plane to at least one image,
-and have decreased the number of images, generally retaining around 20\% of the image subset obtained in Section \ref{sec:simpleTextureMapping}, as
-well as the discontinuities at each image border. As seen in Figure
-\ref{fig:compareAll}(d), this shortest path method has fewer visible
-discontinuities than Figure \ref{fig:compareAll}(c) corresponding to
-the tile caching approach\footnote{In Figure \ref{fig:compareAll}(d),
-  we arbitrarily chose one image for texturing where images overlap,
-  as blending will be discussed in section \ref{sec:blending}.}. This
-is especially evident when comparing the posters in the images. This
-shortest path approach approach directly reduces the cost of each
-image boundary, while the tile caching method uses a scoring function
-that only approximates this effect. Furthermore, this approach
-guarantees the best selection of images to minimize seams, while the
-sequential tile caching method may select images early on that turn
-out to be poor choices once subsequent tiles have been processed. This
-shortest path approach is also far less intensive in terms of memory
-usage and runtime, both during texture generation and rendering, as it
-does not require discretizing planes or images.
+and have decreased the number of images, generally retaining around
+20\% of the image subset obtained in Section
+\ref{sec:simpleTextureMapping}, as well as the discontinuities at each
+image border. As seen in Figure \ref{fig:compareAll}(d), this shortest
+path method has fewer visible discontinuities than Figure
+\ref{fig:compareAll}(c) corresponding to the tile caching
+approach\footnote{In Figure \ref{fig:compareAll}(d), we arbitrarily
+  chose one image for texturing where images overlap, as blending will
+  be discussed in section \ref{sec:blending}.}. This is especially
+evident when comparing the posters in the images. This shortest path
+approach approach directly reduces the cost of each image boundary,
+while the tile caching method uses a scoring function that only
+approximates this effect. Furthermore, this approach guarantees the
+best selection of images to minimize seams, while the sequential tile
+caching method may select images early on that turn out to be poor
+choices once subsequent tiles have been processed. This shortest path
+approach is also far less intensive in terms of memory usage and
+runtime, both during texture generation and rendering, as it does not
+require discretizing planes or images.
 
 When texturing an entire 3D planar model, we apply the shortest path
 method on walls, due to its superior results when provided with
 head-on images. Floors and ceilings however, given their many images
-taken at oblique angles, are textured using the tile caching method of Section \ref{sec:mappingWithCaching}.
+taken at oblique angles, are textured using the tile caching method of
+Section \ref{sec:mappingWithCaching}.
 
 
 \subsection{Blending}
@@ -825,20 +841,22 @@ rectangularly-cropped images or rectangular tiles, we can apply the
 same blending procedure, as long as there is a guaranteed overlap
 between units to blend over.
 
-For the tile caching method of Section \ref{sec:mappingWithCaching}, we can ensure overlap by texturing a
-larger tile than needed for display. For example, for a rendered tile
-$l_1 \times l_1$, we can associate it with a texture $(l_1 + l_2)
-\times (l_1 + l_2)$ in size.  We have found $l_2 = \frac{l_1}{2}$ to
-provide a balance between blending and keeping features unblurred. For
-the shortest path method, we have already ensured overlap between
-images. To enforce consistent blending however, we add a minimum
-required overlap of images of 200 mm while solving the shortest path
-problem in Section \ref{sec:shortestPath}. Additionally, if images
-overlap in a region greater than the overlap distance, we only apply
-blending over an area equal to the overlap distance.
+For the tile caching method of Section \ref{sec:mappingWithCaching},
+we can ensure overlap by texturing a larger tile than needed for
+display. For example, for a rendered tile $l_1 \times l_1$, we can
+associate it with a texture $(l_1 + l_2) \times (l_1 + l_2)$ in size.
+We have found $l_2 = \frac{l_1}{2}$ to provide a balance between
+blending and keeping features unblurred. For the shortest path method,
+we have already ensured overlap between images. To enforce consistent
+blending however, we add a minimum required overlap of images of 200
+mm while solving the shortest path problem in Section
+\ref{sec:shortestPath}. Additionally, if images overlap in a region
+greater than the overlap distance, we only apply blending over an area
+equal to the overlap distance.
 
-After linear alpha blending across overlapping regions, the texture mapping process is complete. Figures \ref{fig:compareAll}(e)
-and \ref{fig:compareAll}(f) show the blended versions of Figures
+After linear alpha blending across overlapping regions, the texture
+mapping process is complete. Figures \ref{fig:compareAll}(e) and
+\ref{fig:compareAll}(f) show the blended versions of Figures
 \ref{fig:compareAll}(c) and \ref{fig:compareAll}(d) respectively. The
 remaining images in Figure \ref{fig:compareAll} highlight differences
 between the two methods, showing that Figure \ref{fig:compareAll}(f)
