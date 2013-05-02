@@ -1,0 +1,115 @@
+\begin{thebibliography}{10}
+
+\bibitem{chen2010indoor}
+Chen, G., Kua, J., Shum, S., Naikal, N., Carlberg, M., and Zakhor, A., ``Indoor
+  localization algorithms for a human-operated backpack system,'' in [{\em Int.
+  Symp. on 3D Data, Processing, Visualization and Transmission
+  (3DPVT)}{\nolinebreak\hspace{0.1em}]},  (2010).
+
+\bibitem{hz}
+Hartley, R. and Zisserman, A.,  [{\em Multiple view geometry in computer
+  vision}{\nolinebreak\hspace{0.1em}]}, vol.~2, Cambridge Univ Press (2000).
+
+\bibitem{kua2012loopclosure}
+Kua, J., Corso, N., and Zakhor, A., ``Automatic loop closure detection using
+  multiple cameras for 3d indoor localization,'' in [{\em IS\&T/SPIE Electronic
+  Imaging}{\nolinebreak\hspace{0.1em}]},  (2012).
+
+\bibitem{liu2010indoor}
+Liu, T., Carlberg, M., Chen, G., Chen, J., Kua, J., and Zakhor, A., ``Indoor
+  localization and visualization using a human-operated backpack system,'' in
+  [{\em Indoor Positioning and Indoor Navigation (IPIN), 2010 International
+  Conference on}{\nolinebreak\hspace{0.1em}]},   1--10, IEEE (2010).
+
+\bibitem{sanchez2012point}
+Sanchez, V. and Zakhor, A., ``Planar 3d modeling of building interiors from
+  point cloud data,'' in [{\em Internation Conference on Image
+  Processing}{\nolinebreak\hspace{0.1em}]},  (2012).
+
+\bibitem{szeliski2006image}
+Szeliski, R., ``Image alignment and stitching: A tutorial,'' {\em Foundations
+  and Trends{\textregistered} in Computer Graphics and Vision}~{\bf 2}(1),
+  1--104 (2006).
+
+\bibitem{agarwalapanoramas}
+Agarwala, A., Agrawala, M., Cohen, M., Salesin, D., and Szeliski, R.,
+  ``Photographing long scenes with multi-viewpoint panoramas,'' in [{\em ACM
+  Transactions on Graphics (TOG)}{\nolinebreak\hspace{0.1em}]},   {\bf 25},
+  853--861, ACM (2006).
+
+\bibitem{wangmultipleviews}
+Wang, L., Kang, S., Szeliski, R., and Shum, H., ``Optimal texture map
+  reconstruction from multiple views,'' in [{\em Computer Vision and Pattern
+  Recognition, 2001. CVPR 2001. Proceedings of the 2001 IEEE Computer Society
+  Conference on}{\nolinebreak\hspace{0.1em}]},   {\bf 1},  I--347, IEEE (2001).
+
+\bibitem{coorg1997matching}
+Coorg, S. and Teller, S., ``Matching and pose refinement with camera pose
+  estimates,'' in [{\em Proceedings of the 1997 Image Understanding
+  Workshop}{\nolinebreak\hspace{0.1em}]},  (1997).
+
+\bibitem{debevechybrid}
+Debevec, P., Taylor, C., and Malik, J., ``Modeling and rendering architecture
+  from photographs: A hybrid geometry-and image-based approach,'' in [{\em
+  Proceedings of the 23rd annual conference on Computer graphics and
+  interactive techniques}{\nolinebreak\hspace{0.1em}]},   11--20, ACM (1996).
+
+\bibitem{bernardinimultiplescans}
+Bernardini, F., Martin, I., and Rushmeier, H., ``High-quality texture
+  reconstruction from multiple scans,'' {\em Visualization and Computer
+  Graphics, IEEE Transactions on}~{\bf 7}(4),  318--332 (2001).
+
+\bibitem{panorama2d}
+Brown, M. and Lowe, D.~G., ``Automatic panoramic image stitching using
+  invariant features,'' {\em Int. J. Comput. Vision}~{\bf 74},  59--73 (Aug.
+  2007).
+
+\bibitem{autostitch}
+Brown, M. and Lowe, D., ``Autostitch.''
+  \url{http://www.cs.bath.ac.uk/brown/autostitch/autostitch.html}.
+
+\bibitem{rayintersection}
+Glassner, A.~S.,  [{\em An introduction to ray
+  tracing}{\nolinebreak\hspace{0.1em}]}, Academic Press (1989).
+
+\bibitem{fischler1981random}
+Fischler, M. and Bolles, R., ``Random sample consensus: a paradigm for model
+  fitting with applications to image analysis and automated cartography,'' {\em
+  Communications of the ACM}~{\bf 24}(6),  381--395 (1981).
+
+\bibitem{lowe1999object}
+Lowe, D., ``Object recognition from local scale-invariant features,'' in [{\em
+  Computer Vision, 1999. The Proceedings of the Seventh IEEE International
+  Conference on}{\nolinebreak\hspace{0.1em}]},   {\bf 2},  1150--1157, Ieee
+  (1999).
+
+\bibitem{mikolajczyk2005performance}
+Mikolajczyk, K. and Schmid, C., ``A performance evaluation of local
+  descriptors,'' {\em Pattern Analysis and Machine Intelligence, IEEE
+  Transactions on}~{\bf 27}(10),  1615--1630 (2005).
+
+\bibitem{siftgpu}
+Wu, C., ``Siftgpu.'' \url{http://www.cs.unc.edu/~ccwu/siftgpu/}.
+
+\bibitem{dijkstra}
+Dijkstra, E., ``A note on two problems in connexion graphs,'' {\em Numerische
+  Mathematik}~{\bf 1},  269--271 (1959).
+
+\bibitem{openscenegraph}
+``Openscenegraph.'' \url{http://www.openscenegraph.org/projects/osg}.
+
+\bibitem{linebased}
+Elqursh, A. and Elgammal, A., ``Line-based relative pose estimation,'' in [{\em
+  Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference
+  on}{\nolinebreak\hspace{0.1em}]},   3049 --3056 (june 2011).
+
+\bibitem{rectangularstructures}
+Košecká, J. and Zhang, W., ``Extraction, matching and pose recovery based on
+  dominant rectangular structures,'' (2005).
+
+\bibitem{linearposeestimation}
+Ansar, A. and Daniilidis, K., ``Linear pose estimation from points or lines,''
+  {\em Pattern Analysis and Machine Intelligence, IEEE Transactions on}~{\bf
+  25},  578 -- 589 (may 2003).
+
+\end{thebibliography}

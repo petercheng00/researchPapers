@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [1][-]{section.2}{Data Acquisition}{}
+\BOOKMARK [2][-]{subsection.2.1}{Geometry Partitioning}{section.2}
+\BOOKMARK [1][-]{section.3}{Related Work}{}
+\BOOKMARK [1][-]{section.4}{Image Selection}{}
+\BOOKMARK [1][-]{section.5}{2D Image Alignment}{}
+\BOOKMARK [2][-]{subsection.5.1}{Geometry-based Alignment}{section.5}
+\BOOKMARK [2][-]{subsection.5.2}{Image Occlusion}{section.5}
+\BOOKMARK [2][-]{subsection.5.3}{2D Feature Alignment}{section.5}
+\BOOKMARK [1][-]{section.6}{Image Compositing}{}
+\BOOKMARK [2][-]{subsection.6.1}{Tile-Mapping with Caching}{section.6}
+\BOOKMARK [2][-]{subsection.6.2}{Shortest Path Texturing}{section.6}
+\BOOKMARK [2][-]{subsection.6.3}{Blending}{section.6}
+\BOOKMARK [1][-]{section.7}{Visualization}{}
+\BOOKMARK [1][-]{section.8}{Results}{}
+\BOOKMARK [1][-]{section.9}{Conclusion}{}

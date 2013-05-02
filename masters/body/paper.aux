@@ -1,0 +1,105 @@
+\relax 
+\ifx\hyper@anchor\@undefined
+\global \let \oldcontentsline\contentsline
+\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global \let \oldnewlabel\newlabel
+\gdef \newlabel#1#2{\newlabelxx{#1}#2}
+\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\let \contentsline\oldcontentsline
+\let \newlabel\oldnewlabel}
+\else
+\global \let \hyper@last\relax 
+\fi
+
+\citation{chen2010indoor,hz,kua2012loopclosure,liu2010indoor}
+\citation{liu2010indoor}
+\citation{liu2010indoor}
+\citation{chen2010indoor,kua2012loopclosure,liu2010indoor}
+\citation{sanchez2012point}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}}
+\newlabel{sec:introduction}{{1}{1}{Introduction\relax }{section.1}{}}
+\citation{szeliski2006image,agarwalapanoramas,wangmultipleviews,coorg1997matching,debevechybrid,bernardinimultiplescans}
+\citation{szeliski2006image}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The proposed texture mapping procedure \relax }}{2}{figure.caption.2}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:flowchart}{{1}{2}{The proposed texture mapping procedure\\\relax \relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Existing Approaches to Image Alignment}{2}{section.2}}
+\newlabel{sec:existingApproaches}{{2}{2}{Existing Approaches to Image Alignment\relax }{section.2}{}}
+\citation{liu2010indoor}
+\citation{panorama2d,autostitch}
+\citation{chen2010indoor,liu2010indoor,kua2012loopclosure}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Texture alignment via (a) the graph-based localization refinement algorithm, (b) the AutoStitch software package, and (c) the proposed method.\relax }}{3}{figure.caption.3}}
+\newlabel{fig:mosaic3D}{{2}{3}{Texture alignment via (a) the graph-based localization refinement algorithm, (b) the AutoStitch software package, and (c) the proposed method.\relax \relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Image Selection}{3}{section.3}}
+\newlabel{sec:simpleTextureMapping}{{3}{3}{Image Selection\relax }{section.3}{}}
+\citation{rayintersection}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Surfaces to be textured are specified in 3D space by corners $C_i$. Images are related to each surface through the camera matrices $P_{1..m}$. \relax }}{4}{figure.caption.4}}
+\newlabel{fig:projection}{{3}{4}{Surfaces to be textured are specified in 3D space by corners $C_i$. Images are related to each surface through the camera matrices $P_{1..m}$. \relax \relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces We minimize camera angle $\alpha $ and distance $d$ by maximizing the scoring function $\frac  {1}{d} (-1 \cdot \mathaccentV {vec}17E{c}) \cdot \mathaccentV {vec}17E{n}$\relax }}{4}{figure.caption.4}}
+\newlabel{fig:scoringFunction}{{4}{4}{We minimize camera angle $\alpha $ and distance $d$ by maximizing the scoring function $\frac {1}{d} (-1 \cdot \vec {c}) \cdot \vec {n}$\relax \relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}2D Image Alignment}{4}{section.4}}
+\newlabel{sec:2dAlignment}{{4}{4}{2D Image Alignment\relax }{section.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces (a) Tile-based texturing; (b) Tile-based texturing after image alignment; (c) Tile-based texturing after image alignment with caching; (d) Shortest path texturing after image alignment; (e,f) Blending applied to (c) and (d); (g,h) Zoomed in views of discontinuities in (e) vs. in (f).\relax }}{5}{figure.caption.5}}
+\newlabel{fig:compareAll}{{5}{5}{(a) Tile-based texturing; (b) Tile-based texturing after image alignment; (c) Tile-based texturing after image alignment with caching; (d) Shortest path texturing after image alignment; (e,f) Blending applied to (c) and (d); (g,h) Zoomed in views of discontinuities in (e) vs. in (f).\relax \relax }{figure.caption.5}{}}
+\citation{fischler1981random}
+\citation{rayintersection}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Geometry-based Alignment}{6}{subsection.4.1}}
+\newlabel{sec:geometryAlignment}{{4.1}{6}{Geometry-based Alignment\relax }{subsection.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Images projected onto a ceiling surface, where geometry-based lines corresponding to the ceiling's boundary are shown in red. Image-based lines detected by Hough transform in the image projections are shown in blue; (a) images projected with their original noisy camera poses; (b) after image alignment to maximize line matches between images and geometry; (c) examples of matching lines in cases with $\geq $ 2 line pairs, 1 line pair, and zero line pairs, from top to bottom.\relax }}{7}{figure.caption.6}}
+\newlabel{fig:geometryAlignment}{{6}{7}{Images projected onto a ceiling surface, where geometry-based lines corresponding to the ceiling's boundary are shown in red. Image-based lines detected by Hough transform in the image projections are shown in blue; (a) images projected with their original noisy camera poses; (b) after image alignment to maximize line matches between images and geometry; (c) examples of matching lines in cases with $\geq $ 2 line pairs, 1 line pair, and zero line pairs, from top to bottom.\relax \relax }{figure.caption.6}{}}
+\citation{lowe1999object,mikolajczyk2005performance,szeliski2006image}
+\citation{siftgpu}
+\citation{fischler1981random}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces (a) The image from the camera in this diagram contains texture that belongs to the gray occluding surface, which should not be projected onto the orange target surface; (b) without geometry alignment, texture to the left of the red line would be removed, which would leave some erroneous texture projected onto our target surface; (c) after geometry alignment, the image is shifted, resulting in the correct amount of texture being removed.\relax }}{8}{figure.caption.7}}
+\newlabel{fig:occlusion}{{7}{8}{(a) The image from the camera in this diagram contains texture that belongs to the gray occluding surface, which should not be projected onto the orange target surface; (b) without geometry alignment, texture to the left of the red line would be removed, which would leave some erroneous texture projected onto our target surface; (c) after geometry alignment, the image is shifted, resulting in the correct amount of texture being removed.\relax \relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Image Occlusion}{8}{subsection.4.2}}
+\newlabel{sec:imageOcclusion}{{4.2}{8}{Image Occlusion\relax }{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}2D Feature Alignment}{8}{subsection.4.3}}
+\newlabel{sec:robustSIFTFeatureMatching}{{4.3}{8}{2D Feature Alignment\relax }{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Image Compositing}{9}{section.5}}
+\newlabel{sec:imageCompositing}{{5}{9}{Image Compositing\relax }{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Tile-Mapping with Caching}{9}{subsection.5.1}}
+\newlabel{sec:mappingWithCaching}{{5.1}{9}{Tile-Mapping with Caching\relax }{subsection.5.1}{}}
+\citation{dijkstra}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces (a) Images for vertical planes are tilted, but their camera axes are more or less normal to their respective planes. (b) Camera axes for ceiling images are at large angles with respect to plane normals. (c) Wall images are cropped to be rectangular.\relax }}{10}{figure.caption.8}}
+\newlabel{fig:projectionAngles}{{8}{10}{(a) Images for vertical planes are tilted, but their camera axes are more or less normal to their respective planes. (b) Camera axes for ceiling images are at large angles with respect to plane normals. (c) Wall images are cropped to be rectangular.\relax \relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Shortest Path Texturing}{10}{subsection.5.2}}
+\newlabel{sec:shortestPath}{{5.2}{10}{Shortest Path Texturing\relax }{subsection.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces DAG construction for the image selection process.  \relax }}{11}{figure.caption.9}}
+\newlabel{fig:dagCreation}{{9}{11}{DAG construction for the image selection process. \\\relax \relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Blending}{11}{subsection.5.3}}
+\newlabel{sec:blending}{{5.3}{11}{Blending\relax }{subsection.5.3}{}}
+\citation{openscenegraph}
+\citation{linebased,rectangularstructures}
+\citation{linearposeestimation}
+\bibdata{report}
+\bibcite{chen2010indoor}{1}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results}{12}{section.6}}
+\newlabel{sec:results}{{6}{12}{Results\relax }{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{12}{section.7}}
+\newlabel{sec:conclusion}{{7}{12}{Conclusion\relax }{section.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Examples of our final texture mapping output for (a) walls, (b) ceilings, (c) floors, (d) full models.\relax }}{13}{figure.caption.10}}
+\newlabel{fig:results}{{10}{13}{Examples of our final texture mapping output for (a) walls, (b) ceilings, (c) floors, (d) full models.\relax \relax }{figure.caption.10}{}}
+\bibcite{hz}{2}
+\bibcite{kua2012loopclosure}{3}
+\bibcite{liu2010indoor}{4}
+\bibcite{sanchez2012point}{5}
+\bibcite{szeliski2006image}{6}
+\bibcite{agarwalapanoramas}{7}
+\bibcite{wangmultipleviews}{8}
+\bibcite{coorg1997matching}{9}
+\bibcite{debevechybrid}{10}
+\bibcite{bernardinimultiplescans}{11}
+\bibcite{panorama2d}{12}
+\bibcite{autostitch}{13}
+\bibcite{rayintersection}{14}
+\bibcite{fischler1981random}{15}
+\bibcite{lowe1999object}{16}
+\bibcite{mikolajczyk2005performance}{17}
+\bibcite{siftgpu}{18}
+\bibcite{dijkstra}{19}
+\bibcite{openscenegraph}{20}
+\bibcite{linebased}{21}
+\bibcite{rectangularstructures}{22}
+\bibcite{linearposeestimation}{23}
+\bibstyle{spiebib}

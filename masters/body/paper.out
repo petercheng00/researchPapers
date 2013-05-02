@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [1][-]{section.2}{Existing Approaches to Image Alignment}{}
+\BOOKMARK [1][-]{section.3}{Image Selection}{}
+\BOOKMARK [1][-]{section.4}{2D Image Alignment}{}
+\BOOKMARK [2][-]{subsection.4.1}{Geometry-based Alignment}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Image Occlusion}{section.4}
+\BOOKMARK [2][-]{subsection.4.3}{2D Feature Alignment}{section.4}
+\BOOKMARK [1][-]{section.5}{Image Compositing}{}
+\BOOKMARK [2][-]{subsection.5.1}{Tile-Mapping with Caching}{section.5}
+\BOOKMARK [2][-]{subsection.5.2}{Shortest Path Texturing}{section.5}
+\BOOKMARK [2][-]{subsection.5.3}{Blending}{section.5}
+\BOOKMARK [1][-]{section.6}{Results}{}
+\BOOKMARK [1][-]{section.7}{Conclusion}{}

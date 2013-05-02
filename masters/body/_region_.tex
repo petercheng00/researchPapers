@@ -1,0 +1,74 @@
+\message{ !name(masters.tex)}\documentclass[]{spie}  %>>> use for US letter paper
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{multirow}
+
+\title{Texture Mapping 3D Models of Indoor Environments with Noisy Camera Poses} 
+
+\author{Peter Cheng
+\skiplinehalf
+University of California, Berkeley\\
+}
+
+\begin{document}
+
+\message{ !name(masters.tex) !offset(135) }
+\subsection{Geometry Partitioning}
+\label{sec:geometryPartioning}
+In order to effectively texture a 3D model, we first divide the model
+into a set of regions, each to be textured independently. The purpose
+of this is to ensure texture continuity along large uniform areas,
+while allowing texture boundaries to fall along natural environmental
+boundaries. Because textures may not match at such boundaries where
+two regions meet, it is important to minimize the visibility of
+boundaries. This is done by encouraging region boundaries to occur at
+large sharp corners, where texture continuity is less important.
+
+When working with low-resolution models, where surfaces generally
+correspond to large planar features such as walls, ceilings, or
+floors, and often meet at right angles, each planar surface in the
+model is directly treated as a distinct region and textured
+separately.
+
+When working with a high-resolution model however, geometry often
+represents large features as well as small details found in furniture,
+plants, and other miscellaneous objects. For instance, in Figure
+\ref{fig:deskGeom}, the geometry modeling the desk and binders
+consists of many small triangles at various orientations. Texturing
+each of these triangles independently makes little sense, as the
+textures applied to each should match up well with the textures of its
+neighbors in order to avoid any breaks in the overall image of the
+desk and binders. On the other hand, the textures for the triangles
+belonging to the wall behind need not match up with the textures on
+the desk and binders, and so each group of triangles should be
+designated to separate regions. This region grouping is performed by designating all contiguous coplanar groups of triangles as different regions. Any region that is less than $1 m^2$ in size is joined to its largest neighboring region, such that the angle between them is under $90^{\circ}$.
+
+Because a texture is 2D, and the region to be textured may not be
+flat, a mapping needs to be defined. We first fit a plane to each
+region for the purposes of texturing. This can be accomplished via a
+least squares plane-fitting through each triangle vertex, though in
+practice we simply use the plane equation of the largest contiguous
+section of coplanar triangles, as most regions are characterized by
+small outcroppings from a largely planar surface, such as objects on a
+table or features protruding from a wall. The 3d vertices within a
+region are then projected onto its calculated plane, and the
+rectangular bounding box for these projected vertices is
+calculated. This bounding box corresponds to the 2D image that will be
+created to texture the region.
+
+Of course, the area encompassed by the bounding box is larger than the
+corresponding 2d area of the projected geometry, which itself is not
+as accurate as the original 3d geometry. Thus, we also create a k-d
+tree consisting of the triangle primitives from the original
+mesh. Though we generate texture for the 2d bounding box surface, we
+will reference the original 3D geometry to ensure accuracy when
+texturing.
+
+\message{ !name(masters.tex) !offset(944) }
+
+\end{document} 
