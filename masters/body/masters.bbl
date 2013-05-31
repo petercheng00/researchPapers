@@ -26,6 +26,11 @@ Sanchez, V. and Zakhor, A., ``Planar 3d modeling of building interiors from
   point cloud data,'' in [{\em International Conference on Image
   Processing}{\nolinebreak\hspace{0.1em}]},  (2012).
 
+\bibitem{turnerfloorplan}
+Turner, E. and Zakhor, A., ``Watertight as-built architectural floor plans
+  generated from laser range data,'' in [{\em
+  3DIMPVT}{\nolinebreak\hspace{0.1em}]},  (2012).
+
 \bibitem{turnerwatertight}
 Turner, E. and Zakhor, A., ``Watertight planar surface meshing of indoor
   point-clouds with voxel carving,'' in [{\em

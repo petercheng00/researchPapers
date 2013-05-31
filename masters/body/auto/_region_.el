@@ -1,7 +1,10 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
     (LaTeX-add-labels
-     "sec:geometryPartioning")
+     "sec:examples"
+     "fig:modelcomparisons"
+     "fig:lowresmodels"
+     "fig:2dvs3d")
     (TeX-run-style-hooks
      "multirow"
      "float"

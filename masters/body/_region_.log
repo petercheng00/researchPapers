@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_masters 2013.5.1)  1 MAY 2013 21:50
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_masters 2013.5.31)  31 MAY 2013 02:15
 entering extended mode
  %&-line parsing enabled.
 **&prv_masters _region_.tex
@@ -142,80 +142,402 @@ LaTeX Info: Redefining \ref on input line 18.
 LaTeX Info: Redefining \pageref on input line 18.
 \AtBeginShipoutBox=\box32
 
- !name(masters.tex) !offset(135) 
+ !name(masters.tex) !offset(938) 
 ! Preview: Snippet 1 started.
 <-><->
       
 l.21 \subsection
-                {Geometry Partitioning}
+                {Examples}
 Not a real error.
 
 Preview: Tightpage -32891 -32891 32891 32891
 ! Preview: Snippet 1 ended.(546132+152916x31969935).
 <-><->
       
-l.21 \subsection{Geometry Partitioning}
-                                       
+l.21 \subsection{Examples}
+                          
 Not a real error.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 
-LaTeX Warning: Reference `fig:deskGeom' on page 1 undefined on input line 41.
+LaTeX Warning: Reference `sec:dataAcquisition' on page 1 undefined on input lin
+e 23.
+
+
+LaTeX Warning: Reference `sec:geometryPartitioning' on page 1 undefined on inpu
+t line 31.
 
 ! Preview: Snippet 2 started.
 <-><->
       
-l.49 ...nt regions. Any region that is less than $
-                                                  1 m^2$ in size is joined t...
-
+l.36 \begin{figure}
+                   
 Not a real error.
 
-! Preview: Snippet 2 ended.(533465+0x1197099).
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_3_v.jpg, id=8, --32768.0pt x 0.0pt>
+File: results_swarm_3_v.jpg Graphic file (type jpg)
+ <use results_swarm_3_v.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.42   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.42   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_3_2d.jpg, id=9, --32768.0pt x 0.0pt>
+File: results_swarm_3_2d.jpg Graphic file (type jpg)
+
+<use results_swarm_3_2d.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.42   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.42   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_3_3d.jpg, id=10, --32768.0pt x 0.0pt>
+File: results_swarm_3_3d.jpg Graphic file (type jpg)
+
+<use results_swarm_3_3d.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.42   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.42   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_2_v.jpg, id=11, --32768.0pt x 0.0pt>
+File: results_swarm_2_v.jpg Graphic file (type jpg)
+
+<use results_swarm_2_v.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.47   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.47   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_2_2d.jpg, id=12, --32768.0pt x 0.0pt>
+File: results_swarm_2_2d.jpg Graphic file (type jpg)
+
+<use results_swarm_2_2d.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.47   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.47   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_2_3d.jpg, id=13, --32768.0pt x 0.0pt>
+File: results_swarm_2_3d.jpg Graphic file (type jpg)
+
+<use results_swarm_2_3d.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.47   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.47   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_5_v.jpg, id=14, --32768.0pt x 0.0pt>
+File: results_swarm_5_v.jpg Graphic file (type jpg)
+
+<use results_swarm_5_v.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.52   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.52   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_5_2d.jpg, id=15, --32768.0pt x 0.0pt>
+File: results_swarm_5_2d.jpg Graphic file (type jpg)
+
+<use results_swarm_5_2d.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.52   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.52   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+
+
+pdfTeX warning: pdflatex: arithmetic: number too big
+<results_swarm_5_3d.jpg, id=16, --32768.0pt x 0.0pt>
+File: results_swarm_5_3d.jpg Graphic file (type jpg)
+
+<use results_swarm_5_3d.jpg>
+! Dimension too large.
+\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
+                                                  {\kern -#1\wd \z@ \box \tw...
+l.52   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Dimension too large.
+\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
+                                                  \box \tw@ \hss }\else \wd ...
+l.52   }
+        
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
+
+! Preview: Snippet 2 ended.(3112959+0x31969935).
 <-><->
       
-l.49 ...ions. Any region that is less than $1 m^2$
-                                                   in size is joined to its ...
-
+l.59 \end{figure}
+                 
 Not a real error.
 
-[2]
+[2
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+
+\pr@endbox ...y \pr@markerbox }\else \box \pr@box 
+                                                  \fi }\global \advance \pr@...
+l.59 \end{figure}
+                 
+
+
+ <./results_swarm_3_v.jpg> <./results_swarm_3_2d.jpg> <./results_swarm_3_3d.jpg
+> <./results_swarm_2_v.jpg> <./results_swarm_2_2d.jpg> <./results_swarm_2_3d.jp
+g> <./results_swarm_5_v.jpg> <./results_swarm_5_2d.jpg> <./results_swarm_5_3d.j
+pg>]
+
+LaTeX Warning: Citation `sanchez2012point' on page 1 undefined on input line 62
+.
+
+
+LaTeX Warning: Citation `turnerfloorplan' on page 1 undefined on input line 63.
+
+
+
+LaTeX Warning: Citation `turnerwatertight' on page 1 undefined on input line 64
+.
+
+
+LaTeX Warning: Reference `fig:modelcomparisons' on page 1 undefined on input li
+ne 70.
+
 ! Preview: Snippet 3 started.
 <-><->
       
-l.49 ...uch that the angle between them is under $
-                                                  90^{\circ}$.
+l.72 \begin{figure}
+                   
 Not a real error.
 
-! Preview: Snippet 3 ended.(451272+0x956646).
+! Preview: Snippet 3 ended.(786432+0x31969935).
 <-><->
       
-l.49 ...e angle between them is under $90^{\circ}$
-                                                  .
+l.76 \end{figure}
+                 
 Not a real error.
 
-[3]  !name(masters.tex) !offset(944) 
+[3
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+
+\pr@endbox ...y \pr@markerbox }\else \box \pr@box 
+                                                  \fi }\global \advance \pr@...
+l.76 \end{figure}
+                 
+
+]
+
+LaTeX Warning: Reference `fig:lowresmodels' on page 1 undefined on input line 7
+9.
+
+! Preview: Snippet 4 started.
+<-><->
+      
+l.94 \begin{figure}
+                   
+Not a real error.
+
+! Preview: Snippet 4 ended.(786432+0x31969935).
+<-><->
+      
+l.97 \end{figure}
+                 
+Not a real error.
+
+[4
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+
+\pr@endbox ...y \pr@markerbox }\else \box \pr@box 
+                                                  \fi }\global \advance \pr@...
+l.97 \end{figure}
+                 
+
+]
+
+LaTeX Warning: Reference `sec:geometryPartitioning' on page 1 undefined on inpu
+t line 102.
+
+
+LaTeX Warning: Reference `sec:geometryAlignment' on page 1 undefined on input l
+ine 113.
+
+
+LaTeX Warning: Reference `sec:imageCompositing' on page 1 undefined on input li
+ne 115.
+
+
+LaTeX Warning: Reference `fig:2dvs3d' on page 1 undefined on input line 119.
+
+
+LaTeX Warning: Reference `fig:2dvs3d' on page 1 undefined on input line 123.
+
+ !name(masters.tex) !offset(1065) 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 607 strings out of 488022
- 8711 string characters out of 1067914
- 170849 words of memory out of 3000000
- 9597 multiletter control sequences out of 15000+50000
- 7729 words of font info for 30 fonts, out of 3000000 for 9000
+ 678 strings out of 488022
+ 10262 string characters out of 1067913
+ 173849 words of memory out of 3000000
+ 9651 multiletter control sequences out of 15000+50000
+ 8039 words of font info for 31 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 23i,5n,37p,336b,325s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 24i,10n,45p,169b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmsy7.pfb>
-Output written on _region_.pdf (3 pages, 44303 bytes).
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+Output written on _region_.pdf (4 pages, 2179334 bytes).
 PDF statistics:
- 36 PDF objects out of 1000 (max. 8388607)
- 1 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 48 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
