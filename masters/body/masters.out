@@ -11,7 +11,8 @@
 \BOOKMARK [1][-]{section.6}{Image Compositing}{}
 \BOOKMARK [2][-]{subsection.6.1}{Tile-Mapping with Caching}{section.6}
 \BOOKMARK [2][-]{subsection.6.2}{Shortest Path Texturing}{section.6}
-\BOOKMARK [2][-]{subsection.6.3}{Blending}{section.6}
+\BOOKMARK [2][-]{subsection.6.3}{Exposure Compensation}{section.6}
+\BOOKMARK [2][-]{subsection.6.4}{Blending}{section.6}
 \BOOKMARK [1][-]{section.7}{Results}{}
 \BOOKMARK [2][-]{subsection.7.1}{Examples}{section.7}
 \BOOKMARK [2][-]{subsection.7.2}{Runtime}{section.7}

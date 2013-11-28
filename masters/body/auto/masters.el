@@ -26,6 +26,8 @@
      "fig:projectionAngles"
      "sec:shortestPath"
      "fig:dagCreation"
+     "sec:exposureCompensation"
+     "fig:exposureDiff"
      "sec:blending"
      "sec:results"
      "sec:examples"
@@ -42,8 +44,7 @@
      "fig:e2d4"
      "fig:e3d1"
      "fig:e3d2"
-     "fig:e3d3"
-     "fig:e3d4")
+     "fig:e3d3")
     (TeX-run-style-hooks
      "multirow"
      "float"

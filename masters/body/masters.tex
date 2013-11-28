@@ -908,20 +908,99 @@ furniture, given their many images taken at oblique angles, are
 textured using the tile caching method of Section
 \ref{sec:mappingWithCaching}.
 
+\subsection{Exposure Compensation}
+\label{sec:exposureCompensation}
+
+\begin{figure}
+  \centering
+  \subfloat[][]{\includegraphics[width=3.3in]{exposureDiff1.png}}
+  \subfloat[][]{\includegraphics[width=3.3in]{exposureDiff2.png}}
+  \caption{(a) A ceiling texture composed of images taken with varying
+    exposures, with significant brightness differences. (b) Exposure
+    compensation applied to the same set of images from (a) by
+    applying computed gains to each image}
+  \label{fig:exposureDiff}
+\end{figure}
+
+
+Before blending images together, exposure compensation is applied to
+equalize brightness among neighboring images. For the images in this
+report, cameras are set to have automatic exposure, which means that
+images of the same object may have different brightness levels. While
+successful image alignment and blending can reduce sharp seams between
+adjacent images, there may still be noticeable brightness gradients
+between images, particularly in areas near light sources. This can be
+seen in Figure \ref{fig:exposureDiff}(a), where the ceiling texture
+has patches of clearly differing brightness. To diminish this effect,
+a gain can be computed and applied to each image, with the effect of
+linearly scaling the brightness of each image. The goal is to compute
+a gain for each image, such that the brightness of an area is
+consistent across image boundaries.
+
+Similar to the image position refinement procedure in Section
+\ref{sec:robustSIFTFeatureMatching}, exposure compensation is
+performed simulatenously across all images present in a single
+region. As before, this is solved as a least-squares optimization
+problem with pair-wise observations. In this case, observations do not
+need to be weighted, and so the formulation is
+$\textrm{min}_{\vec{\beta}} ||(A \vec{\beta} - \vec{\gamma})||_2^2
+$. An example setup for 3 images, each with 2 overlapping pixels, is
+shown below.
+\[
+A =
+\begin{pmatrix}
+  P_{11} & -P_{12} & 0\\
+  P_{21} & -P_{12} & 0\\
+  0 & P_{32} & -P_{33}\\
+  0 & P_{42} & -P_{43}\\
+  1 & 1 & 1\\
+
+\end{pmatrix}\quad
+\vec{\beta} =
+\begin{pmatrix}
+  G_1, \\ G_2, \\ G_3
+\end{pmatrix}
+\vec{\gamma} =
+\begin{pmatrix}
+  0, \\ 0, \\ 0, \\ 0, \\ 3
+\end{pmatrix}
+\]
+
+In this problem, $\beta$ is the vector of gains $G_i$ to be solved
+for.  The observations, represented by $A$ and $\gamma$, correspond to
+equalizing the brightness for each pixel present in two images. For
+instance, for pixel $P_x$ which is present in two overlapping images
+$I_i$ and $I_j$, the goal is to find gains $G_i$ and $G_j$ such that
+$G_iP_{xi} - G_jP_{xj} = 0$, where $P_{xy}$ is the value of pixel
+$P_x$ in image $I_y$. Thus, $\gamma$ contains all zeros, while each
+row of $A$ contains a $P_{xi}$ value in the $ith$ column and a
+$-P_{xj}$ value in the $jth$ column, and zeros elsewhere. This problem
+is not constrained, as it allows all computed gains to be scaled by
+any amount. To keep gains at reasonable values, a final observation is
+added: $\Sigma G_i = N$, where $N$ is the number of images. This has
+the effect of setting the average of all gains to 1, and is
+represented by adding a row of ones to $A$, and a corresponding $N$
+value to $\gamma$.
+
+The result of computing and applying gains for each image can be seen
+for the same ceiling location in Figure \ref{fig:exposureDiff}(b). As
+compared to Figure \ref{fig:exposureDiff}(a), the effect is clear, as
+dark/bright patches are no longer present, and the overall brightness
+of the image has not changed significantly.
 
 \subsection{Blending}
 \label{sec:blending}
 We now apply a blending procedure to the texturing methods in Sections
 \ref{sec:mappingWithCaching} and \ref{sec:shortestPath}. Although the
-image alignment steps and image selection in both methods attempt to
-minimize all mismatches between images, there are occasional
-unavoidable discontinuities in the final texture due to different
-lighting conditions or inaccuracies in model geometry. These can
-however be treated and smoothed over by applying alpha blending over
-image seams.  Whether the units to be blended are
-rectangularly-cropped images or rectangular tiles, we can apply the
-same blending procedure, as long as there is a guaranteed overlap
-between units to blend over.
+image alignment and selection steps in both methods attempt to
+minimize all mismatches between images, and exposure compensation
+minimizes brightness differences, there are occasional unavoidable
+discontinuities in the final texture due to parallax effects or
+inaccuracies in model geometry. These can however be treated and
+smoothed over by applying alpha blending over image seams.  Whether
+the units to be blended are rectangularly-cropped images or
+rectangular tiles, we can apply the same blending procedure, as long
+as there is a guaranteed overlap between units to blend over.
 
 For the tile caching method of Section \ref{sec:mappingWithCaching},
 we can ensure overlap by texturing a larger tile than needed for

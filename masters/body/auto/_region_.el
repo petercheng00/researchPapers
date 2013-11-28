@@ -1,10 +1,8 @@
 (TeX-add-style-hook "_region_"
  (lambda ()
     (LaTeX-add-labels
-     "sec:examples"
-     "fig:modelcomparisons"
-     "fig:lowresmodels"
-     "fig:2dvs3d")
+     "sec:exposureCompensation"
+     "fig:exposureDiff")
     (TeX-run-style-hooks
      "multirow"
      "float"

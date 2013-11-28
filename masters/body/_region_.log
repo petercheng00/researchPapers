@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_masters 2013.5.31)  31 MAY 2013 02:15
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=prv_masters 2013.11.10)  12 NOV 2013 22:40
 entering extended mode
  %&-line parsing enabled.
 **&prv_masters _region_.tex
@@ -142,277 +142,42 @@ LaTeX Info: Redefining \ref on input line 18.
 LaTeX Info: Redefining \pageref on input line 18.
 \AtBeginShipoutBox=\box32
 
- !name(masters.tex) !offset(938) 
+ !name(masters.tex) !offset(890) 
 ! Preview: Snippet 1 started.
 <-><->
       
 l.21 \subsection
-                {Examples}
+                {Exposure Compensation}
 Not a real error.
 
 Preview: Tightpage -32891 -32891 32891 32891
 ! Preview: Snippet 1 ended.(546132+152916x31969935).
 <-><->
       
-l.21 \subsection{Examples}
-                          
+l.21 \subsection{Exposure Compensation}
+                                       
 Not a real error.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-
-LaTeX Warning: Reference `sec:dataAcquisition' on page 1 undefined on input lin
-e 23.
-
-
-LaTeX Warning: Reference `sec:geometryPartitioning' on page 1 undefined on inpu
-t line 31.
-
 ! Preview: Snippet 2 started.
 <-><->
       
-l.36 \begin{figure}
+l.24 \begin{figure}
                    
 Not a real error.
 
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_3_v.jpg, id=8, --32768.0pt x 0.0pt>
-File: results_swarm_3_v.jpg Graphic file (type jpg)
- <use results_swarm_3_v.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.42   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.42   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_3_2d.jpg, id=9, --32768.0pt x 0.0pt>
-File: results_swarm_3_2d.jpg Graphic file (type jpg)
-
-<use results_swarm_3_2d.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.42   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.42   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_3_3d.jpg, id=10, --32768.0pt x 0.0pt>
-File: results_swarm_3_3d.jpg Graphic file (type jpg)
-
-<use results_swarm_3_3d.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.42   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.42   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_2_v.jpg, id=11, --32768.0pt x 0.0pt>
-File: results_swarm_2_v.jpg Graphic file (type jpg)
-
-<use results_swarm_2_v.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.47   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.47   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_2_2d.jpg, id=12, --32768.0pt x 0.0pt>
-File: results_swarm_2_2d.jpg Graphic file (type jpg)
-
-<use results_swarm_2_2d.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.47   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.47   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_2_3d.jpg, id=13, --32768.0pt x 0.0pt>
-File: results_swarm_2_3d.jpg Graphic file (type jpg)
-
-<use results_swarm_2_3d.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.47   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.47   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_5_v.jpg, id=14, --32768.0pt x 0.0pt>
-File: results_swarm_5_v.jpg Graphic file (type jpg)
-
-<use results_swarm_5_v.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.52   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.52   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_5_2d.jpg, id=15, --32768.0pt x 0.0pt>
-File: results_swarm_5_2d.jpg Graphic file (type jpg)
-
-<use results_swarm_5_2d.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.52   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.52   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-
-
-pdfTeX warning: pdflatex: arithmetic: number too big
-<results_swarm_5_3d.jpg, id=16, --32768.0pt x 0.0pt>
-File: results_swarm_5_3d.jpg Graphic file (type jpg)
-
-<use results_swarm_5_3d.jpg>
-! Dimension too large.
-\Gscale@box ...fdim #1\p@ <\z@ \hb@xt@ -#1\wd \z@ 
-                                                  {\kern -#1\wd \z@ \box \tw...
-l.52   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Dimension too large.
-\Gscale@box ...b@xt@ -#1\wd \z@ {\kern -#1\wd \z@ 
-                                                  \box \tw@ \hss }\else \wd ...
-l.52   }
-        
-I can't work with sizes bigger than about 19 feet.
-Continue and I'll use the largest value I can.
-
-! Preview: Snippet 2 ended.(3112959+0x31969935).
+<exposureDiff1.png, id=8, 1589.94pt x 758.835pt>
+File: exposureDiff1.png Graphic file (type png)
+ <use exposureDiff1.png>
+<exposureDiff2.png, id=10, 1589.94pt x 758.835pt>
+File: exposureDiff2.png Graphic file (type png)
+ <use exposureDiff2.png>
+! Preview: Snippet 2 ended.(11358720+0x31969935).
 <-><->
       
-l.59 \end{figure}
+l.33 \end{figure}
                  
 Not a real error.
 
@@ -423,121 +188,391 @@ s been already used, duplicate ignored
 
 \pr@endbox ...y \pr@markerbox }\else \box \pr@box 
                                                   \fi }\global \advance \pr@...
-l.59 \end{figure}
+l.33 \end{figure}
                  
 
 
- <./results_swarm_3_v.jpg> <./results_swarm_3_2d.jpg> <./results_swarm_3_3d.jpg
-> <./results_swarm_2_v.jpg> <./results_swarm_2_2d.jpg> <./results_swarm_2_3d.jp
-g> <./results_swarm_5_v.jpg> <./results_swarm_5_2d.jpg> <./results_swarm_5_3d.j
-pg>]
+ <./exposureDiff1.png> <./exposureDiff2.png>]
 
-LaTeX Warning: Citation `sanchez2012point' on page 1 undefined on input line 62
-.
+LaTeX Warning: Reference `fig:exposureDiff' on page 1 undefined on input line 4
+3.
 
 
-LaTeX Warning: Citation `turnerfloorplan' on page 1 undefined on input line 63.
-
-
-
-LaTeX Warning: Citation `turnerwatertight' on page 1 undefined on input line 64
-.
-
-
-LaTeX Warning: Reference `fig:modelcomparisons' on page 1 undefined on input li
-ne 70.
+LaTeX Warning: Reference `sec:robustSIFTFeatureMatching' on page 1 undefined on
+ input line 52.
 
 ! Preview: Snippet 3 started.
 <-><->
       
-l.72 \begin{figure}
-                   
+l.55 and so the formulation is $
+                                \textrm{min}_{\vec{\beta}} ||(A \vec{\beta}
 Not a real error.
 
-! Preview: Snippet 3 ended.(786432+0x31969935).
+! Preview: Snippet 3 ended.(641161+314244x5051184).
 <-><->
       
-l.76 \end{figure}
-                 
+l.56 - \vec{\gamma})||_2^2 $
+                            . An example setup for 3 images, each with 2
 Not a real error.
 
-[3
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
-s been already used, duplicate ignored
-
-\pr@endbox ...y \pr@markerbox }\else \box \pr@box 
-                                                  \fi }\global \advance \pr@...
-l.76 \end{figure}
-                 
-
-]
-
-LaTeX Warning: Reference `fig:lowresmodels' on page 1 undefined on input line 7
-9.
-
+[3]
 ! Preview: Snippet 4 started.
 <-><->
       
-l.94 \begin{figure}
-                   
+l.58 \[
+       
 Not a real error.
 
-! Preview: Snippet 4 ended.(786432+0x31969935).
+! Preview: Snippet 4 ended.(3932198+0x23468750).
 <-><->
       
-l.97 \end{figure}
-                 
+l.76 \]
+       
 Not a real error.
 
-[4
+[4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.78 In this problem, $
+                       \beta$ is the vector of gains $G_i$ to be solved
+Not a real error.
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
-s been already used, duplicate ignored
+! Preview: Snippet 5 ended.(455111+127431x405276).
+<-><->
+      
+l.78 In this problem, $\beta$
+                              is the vector of gains $G_i$ to be solved
+Not a real error.
 
-\pr@endbox ...y \pr@markerbox }\else \box \pr@box 
-                                                  \fi }\global \advance \pr@...
-l.97 \end{figure}
-                 
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.78 ... problem, $\beta$ is the vector of gains $
+                                                  G_i$ to be solved
+Not a real error.
 
-]
+! Preview: Snippet 6 ended.(447828+98303x733464).
+<-><->
+      
+l.78 ...blem, $\beta$ is the vector of gains $G_i$
+                                                   to be solved
+Not a real error.
 
-LaTeX Warning: Reference `sec:geometryPartitioning' on page 1 undefined on inpu
-t line 102.
+[6]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.79 for.  The observations, represented by $
+                                             A$ and $\gamma$, correspond to
+Not a real error.
 
+! Preview: Snippet 7 ended.(447828+0x491521).
+<-><->
+      
+l.79 for.  The observations, represented by $A$
+                                                and $\gamma$, correspond to
+Not a real error.
 
-LaTeX Warning: Reference `sec:geometryAlignment' on page 1 undefined on input l
-ine 113.
+[7]
+! Preview: Snippet 8 started.
+<-><->
+      
+l.79 ...The observations, represented by $A$ and $
+                                                  \gamma$, correspond to
+Not a real error.
 
+! Preview: Snippet 8 ended.(282168+127431x375708).
+<-><->
+      
+l.79 ...ervations, represented by $A$ and $\gamma$
+                                                  , correspond to
+Not a real error.
 
-LaTeX Warning: Reference `sec:imageCompositing' on page 1 undefined on input li
-ne 115.
+[8]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.81 instance, for pixel $
+                          P_x$ which is present in two overlapping images
+Not a real error.
 
+! Preview: Snippet 9 ended.(447828+98303x750706).
+<-><->
+      
+l.81 instance, for pixel $P_x$
+                               which is present in two overlapping images
+Not a real error.
 
-LaTeX Warning: Reference `fig:2dvs3d' on page 1 undefined on input line 119.
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.82 $
+      I_i$ and $I_j$, the goal is to find gains $G_i$ and $G_j$ such that
+Not a real error.
 
+! Preview: Snippet 10 ended.(447828+98303x506274).
+<-><->
+      
+l.82 $I_i$
+           and $I_j$, the goal is to find gains $G_i$ and $G_j$ such that
+Not a real error.
 
-LaTeX Warning: Reference `fig:2dvs3d' on page 1 undefined on input line 123.
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.82 $I_i$ and $
+                I_j$, the goal is to find gains $G_i$ and $G_j$ such that
+Not a real error.
 
- !name(masters.tex) !offset(1065) 
+! Preview: Snippet 11 ended.(447828+187504x564226).
+<-><->
+      
+l.82 $I_i$ and $I_j$
+                    , the goal is to find gains $G_i$ and $G_j$ such that
+Not a real error.
+
+[11]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.82 $I_i$ and $I_j$, the goal is to find gains $
+                                                 G_i$ and $G_j$ such that
+Not a real error.
+
+! Preview: Snippet 12 ended.(447828+98303x733464).
+<-><->
+      
+l.82 ...and $I_j$, the goal is to find gains $G_i$
+                                                   and $G_j$ such that
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.82 ..._j$, the goal is to find gains $G_i$ and $
+                                                  G_j$ such that
+Not a real error.
+
+! Preview: Snippet 13 ended.(447828+187504x791416).
+<-><->
+      
+l.82 ... the goal is to find gains $G_i$ and $G_j$
+                                                   such that
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.83 $
+      G_iP_{xi} - G_jP_{xj} = 0$, where $P_{xy}$ is the value of pixel
+Not a real error.
+
+! Preview: Snippet 14 ended.(447828+187504x5457561).
+<-><->
+      
+l.83 $G_iP_{xi} - G_jP_{xj} = 0$
+                                , where $P_{xy}$ is the value of pixel
+Not a real error.
+
+[14]
+! Preview: Snippet 15 started.
+<-><->
+      
+l.83 $G_iP_{xi} - G_jP_{xj} = 0$, where $
+                                         P_{xy}$ is the value of pixel
+Not a real error.
+
+! Preview: Snippet 15 ended.(447828+187504x1032953).
+<-><->
+      
+l.83 $G_iP_{xi} - G_jP_{xj} = 0$, where $P_{xy}$
+                                                 is the value of pixel
+Not a real error.
+
+[15]
+! Preview: Snippet 16 started.
+<-><->
+      
+l.84 $
+      P_x$ in image $I_y$. Thus, $\gamma$ contains all zeros, while each
+Not a real error.
+
+! Preview: Snippet 16 ended.(447828+98303x750706).
+<-><->
+      
+l.84 $P_x$
+           in image $I_y$. Thus, $\gamma$ contains all zeros, while each
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.84 $P_x$ in image $
+                     I_y$. Thus, $\gamma$ contains all zeros, while each
+Not a real error.
+
+! Preview: Snippet 17 ended.(447828+187504x603101).
+<-><->
+      
+l.84 $P_x$ in image $I_y$
+                         . Thus, $\gamma$ contains all zeros, while each
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.84 $P_x$ in image $I_y$. Thus, $
+                                  \gamma$ contains all zeros, while each
+Not a real error.
+
+! Preview: Snippet 18 ended.(282168+127431x375708).
+<-><->
+      
+l.84 $P_x$ in image $I_y$. Thus, $\gamma$
+                                          contains all zeros, while each
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.85 row of $
+             A$ contains a $P_i$ value in the $ith$ column and a $-P_j$
+Not a real error.
+
+! Preview: Snippet 19 ended.(447828+0x491521).
+<-><->
+      
+l.85 row of $A$
+                contains a $P_i$ value in the $ith$ column and a $-P_j$
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.85 row of $A$ contains a $
+                            P_i$ value in the $ith$ column and a $-P_j$
+Not a real error.
+
+! Preview: Snippet 20 ended.(447828+98303x638938).
+<-><->
+      
+l.85 row of $A$ contains a $P_i$
+                                 value in the $ith$ column and a $-P_j$
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.85 row of $A$ contains a $P_i$ value in the $
+                                               ith$ column and a $-P_j$
+Not a real error.
+
+! Preview: Snippet 21 ended.(455111+0x840029).
+<-><->
+      
+l.85 ...of $A$ contains a $P_i$ value in the $ith$
+                                                   column and a $-P_j$
+Not a real error.
+
+[21]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.85 ... a $P_i$ value in the $ith$ column and a $
+                                                  -P_j$
+Not a real error.
+
+! Preview: Snippet 22 ended.(447828+187504x1206616).
+<-><->
+      
+l.85 ..._i$ value in the $ith$ column and a $-P_j$
+                                                  
+Not a real error.
+
+[22]
+! Preview: Snippet 23 started.
+<-><->
+      
+l.86 value in the $
+                   jth$ column, and zeros elsewhere. The number of
+Not a real error.
+
+! Preview: Snippet 23 ended.(455111+127431x921645).
+<-><->
+      
+l.86 value in the $jth$
+                        column, and zeros elsewhere. The number of
+Not a real error.
+
+[23]
+! Preview: Snippet 24 started.
+<-><->
+      
+l.90 values, a final observation is added: $
+                                            \Sigma G_i = N$, where $N$ is
+Not a real error.
+
+! Preview: Snippet 24 ended.(447828+98303x2678600).
+<-><->
+      
+l.90 ...nal observation is added: $\Sigma G_i = N$
+                                                  , where $N$ is
+Not a real error.
+
+[24]
+! Preview: Snippet 25 started.
+<-><->
+      
+l.90 ...vation is added: $\Sigma G_i = N$, where $
+                                                  N$ is
+Not a real error.
+
+! Preview: Snippet 25 ended.(447828+0x598014).
+<-><->
+      
+l.90 ...tion is added: $\Sigma G_i = N$, where $N$
+                                                   is
+Not a real error.
+
+[25]
+
+LaTeX Warning: Reference `fig:exposureDiff' on page 1 undefined on input line 9
+4.
+
+ !name(masters.tex) !offset(1248) 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 678 strings out of 488022
- 10262 string characters out of 1067913
- 173849 words of memory out of 3000000
- 9651 multiletter control sequences out of 15000+50000
- 8039 words of font info for 31 fonts, out of 3000000 for 9000
+ 630 strings out of 488022
+ 9128 string characters out of 1067912
+ 169849 words of memory out of 3000000
+ 9614 multiletter control sequences out of 15000+50000
+ 7729 words of font info for 30 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  24i,10n,45p,169b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on _region_.pdf (4 pages, 2179334 bytes).
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on _region_.pdf (25 pages, 4080398 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 127 PDF objects out of 1000 (max. 8388607)
+ 4 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

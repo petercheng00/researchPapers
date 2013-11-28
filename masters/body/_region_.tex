@@ -17,121 +17,84 @@ University of California, Berkeley\\
 
 \begin{document}
 
-\message{ !name(masters.tex) !offset(938) }
-\subsection{Examples}
-\label{sec:examples}
-As mentioned in Section \ref{sec:dataAcquisition}, the texture mapping
-procedure in this thesis can be applied both to low-resolution and
-high-resolution models. Low resolution models have an advantage in
-their simplicity, and in that only important environmental features
-are represented. As a result, images are generated for large sections
-of buildings, and boundaries between each texture are minimally
-visible. High resolution models have an obvious advantage in terms of
-the amount of detail that can be reconstructed, but with poor region
-partitioning, as described in Section \ref{sec:geometryPartitioning},
-or with high camera pose or geometry reconstruction error, 3D elements
-in the environment geometry may not match up well with their imaged
-counterparts.
+\message{ !name(masters.tex) !offset(890) }
+\subsection{Exposure Compensation}
+\label{sec:exposureCompensation}
 
 \begin{figure}
   \centering
-  \subfloat[][]{
-    \includegraphics[width=2in]{results_swarm_3_v.jpg}
-    \includegraphics[width=2in]{results_swarm_3_2d.jpg}
-    \includegraphics[width=2in]{results_swarm_3_3d.jpg}
-  }
-  \subfloat[][]{
-    \includegraphics[width=2in]{results_swarm_2_v.jpg}
-    \includegraphics[width=2in]{results_swarm_2_2d.jpg}
-    \includegraphics[width=2in]{results_swarm_2_3d.jpg}
-  }
-  \subfloat[][]{
-    \includegraphics[width=2in]{results_swarm_5_v.jpg}
-    \includegraphics[width=2in]{results_swarm_5_2d.jpg}
-    \includegraphics[width=2in]{results_swarm_5_3d.jpg}
-  }
-
-  \caption{The same indoor environment, as generated using (a) PCA
-    plane-fitting, (b) Floor plan extrusion, (c) Watertight mesh
-    generation. The first two are low-resolution models, while the
-    third is high-resolution}
-  \label{fig:modelcomparisons}
+  \subfloat[][]{\includegraphics[width=3.3in]{exposureDiff1.png}}
+  \subfloat[][]{\includegraphics[width=3.3in]{exposureDiff2.png}}
+  \caption{(a) A ceiling texture composed of images taken with varying
+    exposures, with significant brightness differences. (b) Exposure
+    compensation applied to the same set of images from (a) by
+    applying computed gains to each image}
+  \label{fig:exposureDiff}
 \end{figure}
 
-Our approach was tested with three different geometry-reconstruction
-methods, a PCA-based plane-fitting method \cite{sanchez2012point}, a
-floor plan extrusion method \cite{turnerfloorplan}, and a
-voxel-carving mesh generation method \cite{turnerwatertight}. The
-first two methods generate lower-resolution models, containing only
-major walls, ceilings and floors. The third method generates
-high-resolution models, and attempts to reconstruct all scanned
-objects in the environment. A comparison of all three methods as
-applied to the same dataset is shown in Figure
-\ref{fig:modelcomparisons}
 
-\begin{figure}
-  \centering
-  \caption{low resolution stuff. (a) is not watertight}
-  \label{fig:lowresmodels}
-\end{figure}
+Before blending images together, exposure compensation is applied to
+equalize brightness among neighboring images. For the images in this
+report, cameras are set to have automatic exposure, which means that
+images of the same object may have different brightness levels. While
+successful image alignment and blending can reduce sharp seams between
+adjacent images, there may still be noticeable brightness gradients
+between images, particularly in areas near light sources. This can be
+seen in Figure \ref{fig:exposureDiff}(a), where the ceiling texture
+has patches of clearly differing brightness, most noticeably around
+light sources. To diminish this effect, a gain can be computed and
+applied to each image, with the effect of linearly scaling the
+brightness of an image. The goal is to compute a gain for each image,
+such that the brightness of an area is consistent across image
+boundaries.
 
-The PCA and floor plan methods produce models at a similar level of
-detail. As visible in Figure \ref{fig:lowresmodels}(a), the PCA method
-is not watertight, while the floor plan method is. As a result, the
-PCA-generated model contains holes where surfaces were not adequately
-scanned. On the other hand, the watertight floor plan model sometimes
-must make assumptions about the location of surfaces that were not
-adequately scanned, in order to maintain watertightness. Because
-buildings generally follow straight lines and right angle corners
-however, such assumptions tend to be correct. Additionally, the
-floor-plan method is generally superior at reconstructing smaller
-surfaces, such as small walls, or to approximate curved surfaces,
-while the PCA method only fits large planes, and fails in both
-cases. As a result, the floor-plan method usually produces more
-visually pleasing low-resolution models, and is the method of choice
-for generating textured low-resolution models.
+Similar to the image location adjustment procedure in Section
+\ref{sec:robustSIFTFeatureMatching}, exposure compensation can be
+neatly formed as a least-squares optimization problem with pair-wise
+observations. In this case, observations do not need to be weighted,
+and so the formulation is $\textrm{min}_{\vec{\beta}} ||(A \vec{\beta}
+- \vec{\gamma})||_2^2 $. An example setup for 3 images, each with 2
+overlapping pixels is shown below.
+\[
+A =
+\begin{pmatrix}
+  P_{11} & -P_{12} & 0\\
+  P_{21} & -P_{12} & 0\\
+  0 & P_{32} & -P_{33}\\
+  0 & P_{42} & -P_{43}\\
+  1 & 1 & 1\\
 
-\begin{figure}
-  \caption{2d vs 3d}
-  \label{fig:2dvs3d}
-\end{figure}
+\end{pmatrix}\quad
+\vec{\beta} =
+\begin{pmatrix}
+  G_1, \\ G_2, \\ G_3
+\end{pmatrix}
+\vec{\gamma} =
+\begin{pmatrix}
+  0, \\ 0, \\ 0, \\ 0, \\ 3
+\end{pmatrix}
+\]
 
-High-resolution models, as generated by the voxel-carving method, can
-produce more accurate reconstructions of environment geometry. With
-such models, region partitioning, as described in Section
-\ref{sec:geometryPartitioning}, plays an important factor in the
-quality of generated textures. If regions are small, boundaries
-between adjacent textures become visible, and since each region is
-processed independently, image alignment procedures are performed
-across smaller areas. If regions are large, then the difference
-between the 3D surface geometry and the approximated 2D texturing
-surface become large as well, introducing greater texture projection
-error. Additionally, in areas where pose error or surface
-reconstruction error is high, 3D objects in images do not get
-accurately projected onto their modeled counterparts. While large
-objects can be aligned to geometry via the methods in Section
-\ref{sec:geometryAlignment}, smaller objects such as plants or
-computers are difficult to line up to geometry references. While the
-compositing techniques is Section \ref{sec:imageCompositing} can
-ensure that textures for small objects appear seamless, such textures
-may not map accurately upon their corresponding geometry, leading to
-visually obvious discrepancies in the textured model. Figure
-\ref{fig:2dvs3d} demonstrates this by showcasing the low-resolution
-floor plan approach alongside the high-resolution voxel-carving
-approach.
+In this problem, $\beta$ is the vector of gains $G_i$ to be solved
+for.  The observations, represented by $A$ and $\gamma$, correspond to
+equalizing the brightness for each pixel present in two images. For
+instance, for pixel $P_x$ which is present in two overlapping images
+$I_i$ and $I_j$, the goal is to find gains $G_i$ and $G_j$ such that
+$G_iP_{xi} - G_jP_{xj} = 0$, where $P_{xy}$ is the value of pixel
+$P_x$ in image $I_y$. Thus, $\gamma$ contains all zeros, while each
+row of $A$ contains a $P_i$ value in the $ith$ column and a $-P_j$
+value in the $jth$ column, and zeros elsewhere. The number of
+observations is thus equal to the number of pixels that occur in two
+distinct images.  This problem is not constrained, as it allows all
+computed gains to be scaled by any amount. To keep gains at reasonable
+values, a final observation is added: $\Sigma G_i = N$, where $N$ is
+the number of images. This has the effect of averaging all gains to 1.
 
-As visible in Figure \ref{fig:2dvs3d} and other images in this
-section, 2D models using the floor plan approach are generally
-preferred, as they provide enough detail in geometry to reconstruct
-the basic layout of an environment, while textures can be used to
-visualize smaller details. On the other hand, for applications where
-furniture and smaller interior details are important, applying
-textures to the 3D voxel-carved models provides useful image-based
-context for visualizing indoor areas. Figures 1-3 demonstrate further
-interior and exterior views of a number of 2D models, while Figures
-4-6 demonstrate interior and exterior views of 3D models.
+The result of computing gains and equalizing exposure can be seen for
+the same ceiling location in Figure \ref{fig:exposureDiff}(b). The
+effect is clear, as dark/bright patches are no longer present, and the
+overall brightness of the image has not changed significantly.
 
-
-\message{ !name(masters.tex) !offset(1065) }
+\message{ !name(masters.tex) !offset(1248) }
 
 \end{document} 
