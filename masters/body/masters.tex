@@ -940,53 +940,67 @@ consistent across image boundaries.
 Similar to the image position refinement procedure in Section
 \ref{sec:robustSIFTFeatureMatching}, exposure compensation is
 performed simulatenously across all images present in a single
-region. As before, this is solved as a least-squares optimization
-problem with pair-wise observations. In this case, observations do not
-need to be weighted, and so the formulation is
-$\textrm{min}_{\vec{\beta}} ||(A \vec{\beta} - \vec{\gamma})||_2^2
-$. An example setup for 3 images, each with 2 overlapping pixels, is
-shown below.
+region. To begin, a relative gain $R_{ij}$ is computed for each pair
+of overlapping images $I_i$ and $I_j$, which have a set of pixels
+common to both images, labeled as $P_{ij}$. The relative gain $R_{ij}$
+is then obtained by calculating the scaling factor between the average
+intensity of $P_{ij}$ in $I_i$ and the average intensity of $P_{ij}$
+in $I_j$.
+
+As before, these pair-wise observations can be combined and solved as
+a least-squares optimization problem. In this case, observations do
+not need to be weighted, and so the formulation is
+$\textrm{min}_{\vec{b}} ||(X \vec{b} - \vec{a})||_2^2 $. An example
+setup for 3 images, where each image overlaps with both of the other
+images, is shown below.
 \[
-A =
+X =
 \begin{pmatrix}
-  P_{11} & -P_{12} & 0\\
-  P_{21} & -P_{12} & 0\\
-  0 & P_{32} & -P_{33}\\
-  0 & P_{42} & -P_{43}\\
+  R_{12} & -1 & 0\\
+  R_{13} & 0 & -1\\
+  0 & R_{23} & -1\\
   1 & 1 & 1\\
 
 \end{pmatrix}\quad
-\vec{\beta} =
+\vec{b} =
 \begin{pmatrix}
   G_1, \\ G_2, \\ G_3
 \end{pmatrix}
-\vec{\gamma} =
+\vec{a} =
 \begin{pmatrix}
-  0, \\ 0, \\ 0, \\ 0, \\ 3
+  0, \\ 0, \\ 0, \\ 3
 \end{pmatrix}
 \]
 
-In this problem, $\beta$ is the vector of gains $G_i$ to be solved
-for.  The observations, represented by $A$ and $\gamma$, correspond to
-equalizing the brightness for each pixel present in two images. For
-instance, for pixel $P_x$ which is present in two overlapping images
-$I_i$ and $I_j$, the goal is to find gains $G_i$ and $G_j$ such that
-$G_iP_{xi} - G_jP_{xj} = 0$, where $P_{xy}$ is the value of pixel
-$P_x$ in image $I_y$. Thus, $\gamma$ contains all zeros, while each
-row of $A$ contains a $P_{xi}$ value in the $ith$ column and a
-$-P_{xj}$ value in the $jth$ column, and zeros elsewhere. This problem
-is not constrained, as it allows all computed gains to be scaled by
-any amount. To keep gains at reasonable values, a final observation is
-added: $\Sigma G_i = N$, where $N$ is the number of images. This has
-the effect of setting the average of all gains to 1, and is
-represented by adding a row of ones to $A$, and a corresponding $N$
-value to $\gamma$.
+In this problem, $\vec{b}$ is the $N\times1$ vector of gains $G_i$ to
+be solved for, where $N$ is the number of images.  Matrix $X$ is an
+observation matrix corresponding to the relative intensities of
+overlapping images. In particular, the number of rows of $X$ is one
+plus the number of unique pairs of overlapping images, and the number
+of columns of $X$ is equal to $N$. Each row of $X$, except the last
+one, contains an $R_{ij}$ value which is placed in column $i$, as well
+as a $-1$ value in column $j$, with zeroes elsewhere. As explained
+above, $R_{ij}$ is the relative gain between images $i$ and $j$, and
+therefore $G_iR_{ij} - G_j = 0$.  Thus, all values of $\vec{a}$, which
+is a vector with size equal to the number of rows of $X$, are set to
+$0$, except for the last one.
 
-The result of computing and applying gains for each image can be seen
-for the same ceiling location in Figure \ref{fig:exposureDiff}(b). As
-compared to Figure \ref{fig:exposureDiff}(a), the effect is clear, as
-dark/bright patches are no longer present, and the overall brightness
-of the image has not changed significantly.
+The last row of $X$ and corresponding last entry of $\vec{a}$ are used
+to constrain the problem, as without them, all computed gains would be
+allowed to scale by any amount. To keep gains at reasonable values,
+the final observation is used: $\Sigma G_i = N$, where $N$ is the
+number of images. This has the effect of setting the average of all
+gains to 1, and is represented by the final row of ones in $X$, and
+the corresponding $N$ value in $\vec{a}$.
+
+For the 81 source images that compose the ceiling location in Figure
+\ref{fig:exposureDiff}, the corresponding $X$ matrix has 1343 rows,
+and the optimization problem takes under a second to solve, on a 2.8
+GHz dual core machine.  The result of computing and applying gains can
+be seen in Figure \ref{fig:exposureDiff}(b). As compared to Figure
+\ref{fig:exposureDiff}(a), the effect is clear, as dark/bright patches
+are no longer present, and the overall brightness of the image has not
+changed significantly.
 
 \subsection{Blending}
 \label{sec:blending}
@@ -1183,7 +1197,7 @@ high-resolution models.
 As mentioned earlier, our approach is quite efficient. The top wall in
 Figure \ref{fig:indivPlanes}(a) was generated with 7543 $\times$ 776
 pixels, and spans a 40-meter long wall. Given 41000 input images in
-the entire dataset, a 2.8GHz dual-core consumer-grade laptop takes
+the entire dataset, a 2.8 GHz dual-core consumer-grade laptop takes
 under a second to choose 36 candidate images, followed by a minute to
 perform image projections, image alignment, and the shortest path
 texturing method. The tile-caching approach takes roughly comparable
@@ -1272,8 +1286,8 @@ parallax errors.
 \begin{figure}
   \centering{
     \includegraphics[width=6.2in,height=3in]{houston2d1.png} \\
-    \includegraphics[width=6.2in,height=3in]{houston2d2.png} \\
-    \includegraphics[width=6.2in,height=3in]{houston3.png}
+    \includegraphics[width=6.2in,height=3in]{houston2d2_2.png} \\
+    \includegraphics[width=6.2in,height=3in]{houston3_2.png}
   }
   \caption{A textured low-resolution model from the floor plan extrusion approach.}
   \label{fig:e2d1}
