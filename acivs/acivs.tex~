@@ -1,0 +1,140 @@
+% This is LLNCS.DEM the demonstration file of
+% the LaTeX macro package from Springer-Verlag
+% for Lecture Notes in Computer Science,
+% version 2.4 for LaTeX2e as of 16. April 2010
+%
+\documentclass{llncs}
+%
+\usepackage{makeidx}  % allows for indexgeneration
+%
+\begin{document}
+%
+\frontmatter % for the preliminaries
+%
+\pagestyle{headings} % switches on printing of running heads
+\addtocmark{Hamiltonian Mechanics} % additional mark in the TOC
+%
+%
+\mainmatter % start of the contributions
+%
+\title{Texture Mapping 3D Models of Indoor Environments}
+%
+% \toctitle is used
+%
+\author{Peter Cheng \and Michael Anderson \and Stewart He \and Avideh
+  Zakhor}
+%
+\institute{University of California at Berkeley, Berkeley CA 97420,
+  USA}
+\maketitle % typeset the title of the contribution
+
+\begin{abstract}
+  Automated 3D modeling of building interiors is used in applications
+  such as virtual reality and environment mapping. Texturing these
+  models allows for photo-realistic visualizations of the data
+  collected by such modeling systems. While data acquisition times for
+  mobile mapping systems are considerably shorter than for static
+  ones, their recovered camera poses often suffer from inaccuracies,
+  resulting in visible discontinuities when successive images are
+  projected onto a surface for texturing. We present a method for
+  texture mapping that starts by selecting images whose camera poses
+  are well-aligned in two dimensions. We then align images to geometry
+  as well as to each other, producing visually consistent textures
+  even in the presence of inaccurate surface geometry and noisy camera
+  poses. These aligned images are then composited into a final texture
+  mosaic. The effectiveness of the proposed method is demonstrated on
+  a number of different indoor environments.
+  
+  \keywords{Texture Mapping, Reconstruction, Image Stitching, Mosaicing}
+
+\end{abstract}
+%
+
+
+\section{Introduction}
+\label{sec:introduction}
+Three-dimensional modeling of indoor environments has a variety of
+applications such as training and simulation for disaster management,
+virtual heritage conservation, and mapping of hazardous sites. Manual
+construction of these digital models can be time consuming, and as
+such, automated 3D site modeling has garnered much interest in recent
+years.
+
+The first step in automated 3D modeling is the physical scanning of
+the environment's geometry. An indoor modeling system must be able to
+recover its pose within an environment while simultaneously
+reconstructing the 3D structure of the environment itself
+\cite{chen2010indoor, hz, kua2012loopclosure, liu2010indoor}. This is
+known as the simultaneous localization and mapping (SLAM) problem, and
+is generally solved by taking readings from laser range scanners,
+cameras, and inertial measurement units (IMUs) at multiple locations
+within the environment. Mounting such devices on a platform carried by
+an ambulatory human provides unique advantages over vehicular-based
+systems on wheels in terms of agility and portability, but can also
+result in larger localization error \cite{liu2010indoor}. As a result,
+common methods for texture mapping generally produce poor results.
+
+In this paper, we present an approach to texture mapping 3D models of
+indoor environments in the presence of
+uncertainty and noise in camera poses. In particular, we consider data
+obtained from a human-operated backpack system with a number of laser
+range scanners as well as 2 cameras facing left and right, each
+equipped with fisheye lenses reaching an approximately 180$^{\circ}$
+field of view and taking photos at a rate of 5 Hz
+\cite{liu2010indoor}. Applying multiple localization and loop-closure
+algorithms on the raw data collected by the onboard sensors
+\cite{chen2010indoor, kua2012loopclosure, liu2010indoor}, the backpack
+is localized\footnote{In this paper, we use the terms localization and
+  pose recovery interchangeably, in that they both refer to recovering
+  position and orientation.}  over its data collection period. This
+involves recovering the 6 degrees of freedom for the backpack itself
+as well as the cameras rigidly mounted on it. Once this is complete,
+the data from the laser range scanners is used to generate a 3D point
+cloud of the surrounding environment, from which a 3D  is
+created \cite{sanchez2012point}. This model, consisting of 2D
+polygonal planes in 3D space, along with the set of images captured by
+the backpack's cameras and their noisy 3D poses, can be considered the
+input to our texture mapping problem.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=6in]{flowchart.jpg}
+  \caption{The proposed texture mapping procedure\\}
+  \label{fig:flowchart}
+\end{figure}
+
+
+The overall block diagram for the proposed texture mapping procedure
+is shown in Figure \ref{fig:flowchart}, where the number attached
+attached to each box indicates the section in which the concept in the
+box is explained in this paper. We texture map each planar surface
+independently and in parallel. For each surface, we begin by selecting
+a set of images that spans the entire surface with high resolution
+imagery. We then use our noisy camera poses to project these selected
+images onto the surface. These projections are then refined in 2D, in
+order to maximally align them with the surface's geometry, as well as
+to each other, allowing us to handle both errors in geometry as well
+as camera poses. For surfaces and camera poses at arbitrary locations
+or orientations, generally ceilings and floors, we propose a
+tile-based approach for sampling high-resolution portions of images
+and compositing them into a texture. In cases where cameras have
+consistently perpendicular viewing angles to the surfaces under
+consideration, generally walls, we demonstrate a superior approach
+that leads to more seamless textures.
+
+The remainder of the paper is organized as follows. Section
+\ref{sec:existingApproaches} covers existing approaches to image
+stitching, and their performance on our datasets. Section
+\ref{sec:simpleTextureMapping} explains how to downsample the set of
+available images by selecting those with the best orientation and
+distance from surfaces under consideration. Section
+\ref{sec:2dAlignment} contains our approach towards 2D image
+alignment, followed by Section \ref{sec:imageCompositing}, which
+describes two methods of selecting and compositing images to create
+the final texture. Sections \ref{sec:results} and \ref{sec:conclusion}
+contain results and conclusions.
+
+
+\bibliography{report} %>>>> bibliography data in report.bib
+
+\end{document}

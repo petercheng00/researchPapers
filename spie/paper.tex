@@ -106,20 +106,21 @@ uncertainty and noise in camera poses. In particular, we consider data
 obtained from a human-operated backpack system with a number of laser
 range scanners as well as 2 cameras facing left and right, each
 equipped with fisheye lenses reaching an approximately 180$^{\circ}$
-field of view and taking photos at a rate of 5 Hz. Applying multiple
-localization and loop-closure algorithms on the raw data collected by
-the onboard sensors \cite{chen2010indoor, kua2012loopclosure,
-  liu2010indoor}, the backpack is localized\footnote{In this paper, we
-  use the terms localization and pose recovery interchangeably, in
-  that they both refer to recovering position and orientation.}  over
-its data collection period. This requires recovering the 6 degrees of
-freedom for the backpack itself as well as the cameras rigidly mounted
-on it. Once this is complete, the data from the laser range scanners
-is used to generate a 3D point cloud of the surrounding environment,
-from which a 3D planar model is created \cite{sanchez2012point}. This
-model, consisting of 2D polygonal planes in 3D space, along with the
-set of images captured by the backpack's cameras and their noisy 3D
-poses, can be considered the input to our texture mapping problem.
+field of view and taking photos at a rate of 5 Hz
+\cite{liu2010indoor}. Applying multiple localization and loop-closure
+algorithms on the raw data collected by the onboard sensors
+\cite{chen2010indoor, kua2012loopclosure, liu2010indoor}, the backpack
+is localized\footnote{In this paper, we use the terms localization and
+  pose recovery interchangeably, in that they both refer to recovering
+  position and orientation.}  over its data collection period. This
+involves recovering the 6 degrees of freedom for the backpack itself
+as well as the cameras rigidly mounted on it. Once this is complete,
+the data from the laser range scanners is used to generate a 3D point
+cloud of the surrounding environment, from which a 3D planar model is
+created \cite{sanchez2012point}. This model, consisting of 2D
+polygonal planes in 3D space, along with the set of images captured by
+the backpack's cameras and their noisy 3D poses, can be considered the
+input to our texture mapping problem.
 
 \begin{figure}
   \centering
@@ -130,18 +131,20 @@ poses, can be considered the input to our texture mapping problem.
 
 
 The overall block diagram for the proposed texture mapping procedure
-is shown in Figure \ref{fig:flowchart}. We texture map each planar
-surface independently and in parallel. For each surface, we begin by
-obtaining a set of images that spans the entire surface with high
-resolution imagery. We then use our noisy camera poses to project
-these selected images onto the surface. These projections are then
-refined in 2D, in order to maximally align them with the surface's
-geometry, as well as to each other, allowing us to handle both errors
-in geometry as well as camera poses. For surfaces and camera poses at
-arbitrary locations or orientations, generally ceilings and floors, we
-propose a tile-based approach for sampling high-resolution portions of
-images and compositing them into a texture. In cases where cameras
-have consistently perpendicular viewing angles to the surfaces under
+is shown in Figure \ref{fig:flowchart}, where the number attached
+attached to each box indicates the section in which the concept in the
+box is explained in this paper. We texture map each planar surface
+independently and in parallel. For each surface, we begin by selecting
+a set of images that spans the entire surface with high resolution
+imagery. We then use our noisy camera poses to project these selected
+images onto the surface. These projections are then refined in 2D, in
+order to maximally align them with the surface's geometry, as well as
+to each other, allowing us to handle both errors in geometry as well
+as camera poses. For surfaces and camera poses at arbitrary locations
+or orientations, generally ceilings and floors, we propose a
+tile-based approach for sampling high-resolution portions of images
+and compositing them into a texture. In cases where cameras have
+consistently perpendicular viewing angles to the surfaces under
 consideration, generally walls, we demonstrate a superior approach
 that leads to more seamless textures.
 
@@ -217,7 +220,7 @@ degrees of freedom of the backpack acquisition system
 where features are sparse, this approach produces distorted textures,
 as seen in Figure \ref{fig:mosaic3D}(a). Furthermore, this approach is
 not closed-form, and its iterative camera adjustment process over
-large datasets led to prohibitively long computation time.
+large datasets leads to prohibitively long computation time.
 
 The AutoStitch software package performs homography-based alignment as
 well, with additional provisions that attempt to reduce drift and
@@ -326,12 +329,6 @@ texturing the surface. This roughly 10:1 subsampling not only reduces
 computational complexity of the remaining steps, but also selects the
 most promising images for the remaining steps.
 
-Given the large number of input images, it is possible to develop a
-more sophisticated image selection procedure, as described in Section
-\ref{sec:imageCompositing}, however, a more significant and reliable
-improvement can be found through first improving the alignment of the
-images as shown in the next section.
-
 \begin{figure}
   \centering \subfloat[][]{\includegraphics[width=3.4in,
     height=1.2in]{wall2_naive.jpg}}
@@ -431,16 +428,20 @@ geometry-based alignments. Each step will now be explained in detail.
 After computing each image's projection onto the target surface, as
 described in Section \ref{sec:simpleTextureMapping}, we obtain a set
 of image-based line segments by using Hough transforms to detect lines
-in the image projections. We then gather a set of geometry-based
-lines, which correspond to the lines comprising the target surface's
-border, as well as lines formed where other surfaces intersect the
-target surface. An example of these lines is shown in red for a
-ceiling surface in Figure \ref{fig:geometryAlignment}(a). Ideally, for
-perfect camera poses and surface geometry, the lines in images
-corresponding to corners between surfaces should match up exactly with
-corners in the 3D model. By inducing such lines to match, we fit
-camera poses more accurately to the surface, and to each other as
-well.
+in the image projections. These lines are detected in the image
+projections rather than the original images, as the varying
+orientation and distances of camera poses relative to surfaces results
+in high variance of line lengths and strengths for real-world linear
+features across the original images. We also gather a set of
+geometry-based lines, which correspond to the lines comprising the
+target surface's border, as well as lines formed where other surfaces
+intersect the target surface. An example of these lines is shown in
+red for a ceiling surface in Figure
+\ref{fig:geometryAlignment}(a). Ideally, for perfect camera poses and
+surface geometry, the lines in images corresponding to corners between
+surfaces should match up exactly with corners in the 3D model. By
+inducing such lines to match, we fit camera poses more accurately to
+the surface, and to each other as well.
 
 To align images to surface geometry, we collect pairs of image-based
 and geometry-based line segments, which are within a distance and
@@ -455,21 +456,21 @@ pair with the longest image-based line become parallel. We then find a
 translation such that the lines in that same pair overlap. This
 translation has ambiguity in the dimension along the matched lines,
 which is resolved by matching the midpoint of the image-based line in
-the second pair to its corresponding geometry-based line. This
-corresponds to case (1) of Figure
-\ref{fig:geometryAlignment}(c). Thus, with 2 or more pairs, it is
-possible to obtain a fixed rotation and translation, which are saved
-for usage in Section \ref{sec:robustSIFTFeatureMatching}.
+the second pair to its corresponding geometry-based line. This is
+shown in case (1) of Figure \ref{fig:geometryAlignment}(c). Thus, with
+2 or more pairs, it is possible to obtain a fixed rotation and
+translation, which are saved for usage in Section
+\ref{sec:robustSIFTFeatureMatching}.
 
 If there are not 2 or more pairs with similar angular differences, we
 select the pair with the longest image-based line and apply a rotation
 and the minimal translation to match its lines. This translation's
 ambiguity however, can not be resolved, but is also saved to be used
-in Section \ref{sec:robustSIFTFeatureMatching}. This corresponds to
-case (2) of Figure \ref{fig:geometryAlignment}(c). Finally, in the
-case where there are no line pairs, we can still rotate images in
-order to exploit patterns in indoor environments (case (3) of Figure
-\ref{fig:geometryAlignment}(c)). For instance, doors, windows,
+in Section \ref{sec:robustSIFTFeatureMatching}. This is shown in case
+(2) of Figure \ref{fig:geometryAlignment}(c). Finally, in the case
+where there are no line pairs, we can still rotate images in order to
+exploit patterns in indoor environments, as shown in case (3) of
+Figure \ref{fig:geometryAlignment}(c). For instance, doors, windows,
 furniture, etc. tend to have linear edges that are parallel to the
 edges of the surfaces they are on. Similarly, lights, visible interior
 walls, etc. which are visible in floor and ceiling images, tend to be
@@ -481,10 +482,11 @@ successfully ignore outliers \cite{fischler1981random}.
 
 After these steps, image projections line up well with target
 surfaces, as shown in Figure \ref{fig:geometryAlignment}(b), which is
-considerably more aligned than Figure \ref{fig:geometryAlignment}(a)
-is. This procedure reconciles both errors in camera poses as well as
-in geometry, and results in sharp, continuous borders across images,
-which is crucial when checking for occlusion.
+considerably more aligned than Figure
+\ref{fig:geometryAlignment}(a). This procedure reconciles both errors
+in camera poses as well as in geometry, and results in sharp,
+continuous borders across images, which is crucial when checking for
+occlusion.
 
 
 \subsection{Image Occlusion}
@@ -497,10 +499,10 @@ which is crucial when checking for occlusion.
  
   \begin{tabular}{c}
     \subfloat[][]{\includegraphics[trim=0cm 0cm 1.3cm 0cm,
-    clip=true, width=3in,
+      clip=true, width=3in,
       height=0.9in]{occlusionimagebad.png}} \\
     \subfloat[][]{\includegraphics[trim=1.3cm 0cm 0cm 0cm,
-    clip=true, width=3in,
+      clip=true, width=3in,
       height=0.9in]{occlusionimagegood.png}}
   \end{tabular}
 \end{tabular}
@@ -520,15 +522,16 @@ surfaces. For instance, in Figure \ref{fig:occlusion}(a), an image
 used to texture the orange target surface also contains part of a gray
 occluding surface. We remove this incorrect texture by recursively
 performing ray-polygon intersection tests between the camera location
-and other surfaces \cite{rayintersection}. These intersection tests
-are performed at the corners of a grid overlaid upon the target
-surface. Where all four corners of a grid section are occluded,
-texture is removed. Where one or more corners are occluded, the grid
-is subdivided into four, and the process repeats. Occlusion checking
-works entirely with geometry, so by ensuring that images match
-geometry using \ref{sec:geometryAlignment}'s alignment procedure,
-texture belonging to other surfaces is accurately removed, as seen in
-Figure \ref{fig:occlusion}(b).
+and every surface in our model except the target surface
+\cite{rayintersection}. These intersection tests are performed at the
+corners of a grid overlaid upon the target surface. Where all four
+corners of a grid section are occluded, texture is removed. Where one
+or more corners are occluded, the grid is subdivided into four, and
+the process repeats. Occlusion checking works entirely with geometry,
+so by ensuring that images match geometry using
+\ref{sec:geometryAlignment}'s alignment procedure, texture belonging
+to other surfaces is accurately removed, as seen in Figure
+\ref{fig:occlusion}(b).
 
 \subsection{2D Feature Alignment}
 \label{sec:robustSIFTFeatureMatching}
@@ -637,16 +640,22 @@ visible.
 
 \section{Image Compositing}
 \label{sec:imageCompositing}
-In Section \ref{sec:mappingWithCaching}, we refine the tile-based
-texturing approach from Section \ref{sec:simpleTextureMapping}, with
-an added caching mechanism to reduce image boundaries. This method is
-general and works well given arbitrary camera poses and surfaces such
-as walls, floors, and ceilings. For special cases where images have
-consistently perpendicular viewing angles to the surfaces under
-consideration, such as walls, it is possible to develop an alternative
-method in Section \ref{sec:shortestPath} to further reduce visual
-artifacts. Both of these approaches are followed by a blending step in
-order to produce final textures for each surface, as shown in Figure
+In Section \ref{sec:simpleTextureMapping} we described an image
+selection method that reduces the list of candidate images for
+texturing by a factor of 10. In this section we go one step further to
+choose a subset of the above candidates in order to further reduce
+visual artifacts and discontinuities across textured
+surfaces. Specifically, in Section \ref{sec:mappingWithCaching}, we
+refine the tile-based texturing approach from Section
+\ref{sec:simpleTextureMapping}, with an added caching mechanism to
+reduce image boundaries. This method is general and works well given
+arbitrary camera poses and surfaces such as walls, floors, and
+ceilings. For special cases where images have consistently
+perpendicular viewing angles to the surfaces under consideration, such
+as walls, it is possible to develop an alternative method in Section
+\ref{sec:shortestPath} to further reduce visual artifacts. Both of
+these approaches are followed by a blending step in order to produce
+final textures for each surface, as shown in Figure
 \ref{fig:flowchart}.
 
 \subsection{Tile-Mapping with Caching}
@@ -680,14 +689,14 @@ projection, with $\alpha$ as the camera angle as shown in Figure
 If no satisfactory image is found in the first subset, we check a
 second subset of images, consisting of those taken near the ones in
 the first subset, both spatially and temporally. We use the noisy
-camera poses to determine priority. These images are not the same as
-the ones used for neighboring tiles, but are taken at a similar
-location and time, suggesting that their localization and projection
-are quite similar, and thus likely match more seamlessly. If no viable
-image is found according to the $\alpha < 45^\circ$ criteria, we
-search the entire set of candidate images from Section
-\ref{sec:simpleTextureMapping}, selecting based on the same scoring
-function from Figure \ref{fig:scoringFunction}.
+camera poses to determine spatial proximity. These images are not the
+same as the ones used for neighboring tiles, but are taken at a
+similar location and time, suggesting that their localization and
+projection are quite similar, and thus likely match more
+seamlessly. If no viable image is found according to the $\alpha <
+45^\circ$ criteria, we search the entire set of candidate images from
+Section \ref{sec:simpleTextureMapping}, selecting based on the same
+scoring function from Figure \ref{fig:scoringFunction}.
 
 The result of applying this caching approach to the images for the
 surface in Figure \ref{fig:compareAll}(a) is shown in Figure
@@ -743,13 +752,13 @@ conceivable to devise a different texturing strategy to directly
 minimize visible seams when texturing them. This is done by choosing
 the smallest possible subset of images from the set selected in
 Section \ref{sec:simpleTextureMapping} and aligned in Section
-\ref{sec:robustSIFTFeatureMatching} such that it (a) covers the entire
-plane and (b) minimizes the visibility of borders between the
-images. A straightforward cost function that accomplishes the latter
-is the sum of squared differences (SSD) of pixels in overlapping
-regions between all pairs of images. Minimizing this cost function
-encourages image boundaries to occur either in featureless areas, such
-as bare walls, or in areas where images match extremely well.
+\ref{sec:2dAlignment} such that it (a) covers the entire plane and (b)
+minimizes the visibility of borders between the images. A
+straightforward cost function that accomplishes the latter is the sum
+of squared differences (SSD) of pixels in overlapping regions between
+all pairs of images. Minimizing this cost function encourages image
+boundaries to occur either in featureless areas, such as bare walls,
+or in areas where images match extremely well.
 
 In its most general form, our problem can be defined as minimally
 covering a polygon i.e. the planar surface, using other polygons of
@@ -799,18 +808,18 @@ blending region around the hole, as discussed in Section
 solution would be, but it is a fast approximation, and adequately
 handles the few holes encountered.
 
-We have now mapped every location on the plane to at least one image,
-and have decreased the number of images, generally retaining around
-20\% of the image subset obtained in Section
-\ref{sec:simpleTextureMapping}, as well as the discontinuities at each
-image border. As seen in Figure \ref{fig:compareAll}(d), this shortest
-path method has fewer visible discontinuities than Figure
+We have now (a) mapped every location on the plane to at least one
+image, (b) decreased the number of texturing images, generally
+retaining around 20\% of the image subset obtained in Section
+\ref{sec:simpleTextureMapping}, and (c) decreased the discontinuities
+at each image border. As seen in Figure \ref{fig:compareAll}(d), this
+shortest path method has fewer visible discontinuities than Figure
 \ref{fig:compareAll}(c) corresponding to the tile caching
 approach\footnote{In Figure \ref{fig:compareAll}(d), we arbitrarily
   chose one image for texturing where images overlap, as blending will
   be discussed in section \ref{sec:blending}.}. This is especially
 evident when comparing the posters in the images. This shortest path
-approach approach directly reduces the cost of each image boundary,
+approach directly reduces the cost of each image boundary,
 while the tile caching method uses a scoring function that only
 approximates this effect. Furthermore, this approach guarantees the
 best selection of images to minimize seams, while the sequential tile
