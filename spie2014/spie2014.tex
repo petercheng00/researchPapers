@@ -76,7 +76,7 @@ obtained from a human-operated backpack system, detailed in Section
 
 \begin{figure}
   \centering
-  \includegraphics[width=6in]{flowchart.jpg}
+  \includegraphics[width=4in]{flowchart.jpg}
   \caption{The proposed texture mapping procedure\\}
   \label{fig:flowchart}
 \end{figure}
@@ -93,14 +93,11 @@ imagery. We then use recovered noisy camera poses to project these
 selected images onto the surface. These projections are rotated and
 translated in 2D, in order to maximally align them with the surface's
 geometry, as well as to each other, allowing us to handle both errors
-in geometry as well as camera poses. For surfaces and camera poses at
-arbitrary locations or orientations, generally horizontal surfaces, we
-propose a tile-based approach for sampling high-resolution portions of
-images and compositing them into a texture. In cases where cameras
-have consistently perpendicular viewing angles to the surfaces under
-consideration, generally vertical surfaces, we demonstrate a superior
-approach based on a shortest-path computation that leads to more
-seamless textures.
+in geometry as well as camera poses. Finally, we demonstrate a
+tile-based as well as a shortest-path-based approach for compositing
+images, where the latter produces superior textures, but is only
+applicable for surfaces with optimal camera poses and lateral image
+coverage.
 
 The remainder of the paper is organized as follows. Section
 \ref{sec:dataAcquisition} provides background on the data acquisition
@@ -119,13 +116,6 @@ contain results and conclusions.
 \section{Data Acquisition}
 \label{sec:dataAcquisition}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=3in]{backpackCAD.png}
-  \caption{CAD model of the backpack system.}
-  \label{fig:backpack}
-\end{figure}
-
 This section contains background information describing the
 backpack-mounted system and its operation. The hardware and operation
 of the backpack system, as well as the postprocessing of acquired
@@ -136,43 +126,40 @@ geometry, respectively.
 
 \subsection{Acquisition Hardware}
 
-A CAD model of the backpack-mounted system is shown in Figure
-\ref{fig:backpack}. This backpack system has a number of laser range
-scanners as well as 2 cameras facing left and right, each equipped
-with fisheye lenses reaching an approximately 180$^{\circ}$ field of
-view each and taking photos at a rate of 5 Hz \cite{liu2010indoor}. In
-order to collect data, an operator wears the backpack system and
-traverses the environment to be scanned, walking in straight lines at
-a standard pace and making an effort to walk parallel to all walls in
-the area. Multiple localization and loop-closure algorithms are then
-applied to the raw data collected by the onboard sensors
-\cite{chen2010indoor, kua2012loopclosure, liu2010indoor}, and the
-backpack is localized\footnote{In this paper, we use the terms
-  localization and pose recovery interchangeably, in that they both
-  refer to recovering position and orientation.}  over its data
-collection period. This involves recovering the 6 degrees of freedom
-for the backpack itself as well as the cameras rigidly mounted on it.
-These results are noisy, which motivates the approaches in this
-paper. Once this is complete, the data from the laser range scanners
-is used to generate a 3D point cloud of the surrounding
-environment. This point cloud is used to construct either a
-low-resolution planar model, such as for usage in basic navigation or
-energy analysis \cite{sanchez2012point, turnerfloorplan}, or a
-high-resolution, detailed mesh, for applications such as accurate
-remodeling or virtual walkthroughs \cite{turnerwatertight}.
-Regardless of resolution, size, or detail, the model, consisting of
-geometric surfaces in 3D space, along with the set of images captured
-by the backpack's cameras and their noisy 3D poses, are the input to
-the texture mapping problem.
+The backpack system used in this paper has a number of laser range
+scanners as well as side-facing cameras taking photos at a rate of 5
+Hz \cite{liu2010indoor}. In order to collect data, an operator wears
+the backpack system and traverses the environment to be scanned,
+walking in straight lines at a standard pace and making an effort to
+walk parallel to all walls in the area. Multiple localization and
+loop-closure algorithms are then applied to the raw data collected by
+the onboard sensors \cite{chen2010indoor, kua2012loopclosure,
+  liu2010indoor}, and the backpack is localized\footnote{In this
+  paper, we use the terms localization and pose recovery
+  interchangeably, in that they both refer to recovering position and
+  orientation.}  over its data collection period. This involves
+recovering the 6 degrees of freedom for the backpack itself as well as
+the cameras rigidly mounted on it. These results are noisy, which
+motivates the approaches in this paper. Once this is complete, the
+data from the laser range scanners is used to generate a 3D point
+cloud of the surrounding environment. This point cloud is used to
+construct simple, coarse models \cite{sanchez2012point,
+  turnerfloorplan}, as well as highly detailed models
+\cite{turnerwatertight}.  Regardless of resolution, size, or detail,
+the model, consisting of geometric surfaces in 3D space, along with
+the set of images captured by the backpack's cameras and their noisy
+3D poses, are the input to the texture mapping problem.
 
 \subsection{Geometry Partitioning}
 \label{sec:geometryPartitioning}
 
 \begin{figure}
   \centering
-  \subfloat[][]{\includegraphics[width=2.2in]{geomdeskwire_crop.png}}
-  \subfloat[][]{\includegraphics[width=2.2in]{geomdeskregions_crop.png}}
-  \subfloat[][]{\includegraphics[width=2.2in]{geomdesktexturetris_crop.png}}
+  \subfloat[][]{\includegraphics[width=1.5in]{geomdeskwire_crop.png}}
+  \hspace{0.5in}
+  \subfloat[][]{\includegraphics[width=1.5in]{geomdeskregions_crop.png}}
+  \hspace{0.5in}
+  \subfloat[][]{\includegraphics[width=1.5in]{geomdesktexturetris_crop.png}}
   \caption{(a) Part of a model representing a desk and miscellaneous
     objects on top of the desk. (b) Triangles grouped into regions for
     texturing. (c) Final textured output.}
@@ -187,34 +174,17 @@ while allowing texture boundaries to fall along natural environmental
 boundaries. Because textures may not match at such boundaries where
 two regions meet, it is important to minimize the visibility of
 boundaries. This is done by encouraging region boundaries to occur at
-large sharp corners, where texture continuity is not important. When
-working with lower-resolution models, where surfaces generally
-correspond to large planar features such as walls, ceilings, or
-floors, and often meet at right angles, each planar surface in the
-model can simply be treated as a distinct region and textured
-separately.
-
-With high-resolution models however, geometry often represents large
-features as well as small details found in furniture, plants, and
-other miscellaneous objects. For instance, in Figure
-\ref{fig:deskGeom}(a), the geometry modeling each side of a desk as
-well as objects on top of it consists of many small triangles at
-various orientations. It is important that triangles belonging to the
-same object or surface are textured together, as texturing them
-independently might lead to visible misalignment between the textures
-of each triangle, resulting in poor visualizations. On the other hand,
-triangles belonging to different objects, such as the wall vs. objects
-on the desk need not be textured together, as texture alignment
-between the two is not important in terms of overall visual quality of
-the scene. Thus, in this example, the triangles comprising each side
-of the desk, objects on top of the desk, and the wall behind, should
-all be grouped into separate regions. This region grouping is done by
+sharp corners in the model geometry, where texture continuity is not
+important. For instance, in Figure \ref{fig:deskGeom}(a), each side of
+the desk, objects on top of the desk, and the wall behind, should be
+textured separately. This is done by grouping the triangles comprising
+each such area into separate regions. Region grouping is performed by
 first designating all contiguous coplanar groups of triangles as
 different regions. Any regions that are less than $1 m^2$ in size are
-then joined to their largest neighboring regions, as long as the angle
-between them is under $90^{\circ}$. An example of such a grouping is
-shown in Figure \ref{fig:deskGeom}(b). The same area with textures
-successfully applied to each region is shown in Figure
+then repeatedly joined to their largest neighboring regions, as long
+as the angle between them is under $90^{\circ}$. An example of such a
+grouping is shown in Figure \ref{fig:deskGeom}(b). The same area with
+textures successfully applied to each region is shown in Figure
 \ref{fig:deskGeom}(c).
 
 Though some of these regions from high-resolution models are not
@@ -340,13 +310,12 @@ contents should map onto the final texture, in order to minimize any
 visual discontinuities or seams that would suggest that the plane's
 texture is not composed of a single continuous image. In the remainder
 of this section, we propose an image subsampling procedure to obtain a
-set of images for all further steps, and use it to derive a simple
-tile-based texture mapping procedure.
+set of images for use in all further steps.
 
 \begin{figure}
   \begin{minipage}[b]{0.45\linewidth}
     \centering
-    \includegraphics[height=1.8in]{Projection.pdf}
+    \includegraphics[height=1.5in]{Projection.pdf}
     \caption{Images are related to each surface through the camera
       matrices $P_{1..m}$. }
     \label{fig:projection}
@@ -354,7 +323,7 @@ tile-based texture mapping procedure.
   \hspace{0.5cm}
   \begin{minipage}[b]{0.45\linewidth}
     \centering
-    \includegraphics[height=1.8in]{scoringFunction.jpg}
+    \includegraphics[height=1.5in]{scoringFunction.jpg}
     \caption{Camera angle $\alpha$ and distance $d$ are minimized by
       maximizing the scoring function $\frac{1}{d} (-1 \cdot \vec{c})
       \cdot \vec{n}$}
@@ -454,18 +423,17 @@ subset of images in 2D; this subset corresponds to the images selected
 by the image selection procedure described in Section
 \ref{sec:imageSelection}.
 
-Applying 2D alignments to this set of images works well for a number
-of reasons. First, the nature of our input data and the selected
-images is such that localization error chiefly occurs in two
+Applying 2D alignments to this set of images works well for the
+following reasons. First, the nature of our input data and the
+selected images is such that localization error chiefly occurs in two
 dimensions, which correspond to the plane of most surfaces being
-projected onto. This is because the backpack operator, during data
-acquisition, makes efforts to walk within a few meters of, and
-parallel to all walls being scanned. Furthermore, the backpack system
-maintains a fairly consistent distance from floors and ceilings during
-data collection. As a result, the translational error of camera poses
-is quite minimal in dimensions perpendicular to most surfaces being
-textured, corresponding to, or parallel to walls, ceilings and
-floors. 
+projected onto. This is because the backpack operator, while scanning
+an environment, generally walks parallel to walls. Furthermore, the
+backpack system maintains a consistent distance from floors and
+ceilings during data collection. As a result, the translational error
+of camera poses is quite minimal in dimensions perpendicular to walls,
+ceilings and floors, which comprise the majority of surfaces being
+textured.
 
 Our proposed 2D alignment procedure consists of three parts, as shown
 in the diagram in Figure \ref{fig:flowchart}. First, images are
@@ -476,23 +444,25 @@ textured. Second, occlusion checks are performed to remove invalid
 parts of each image for the target surface. Third, SIFT feature
 matches are detected between pairs of images, and a weighted linear
 least squares problem is solved in order to maximize all image and
-geometry-based alignments. Each step will now be explained in detail.
+geometry-based alignments.
 
 
 \subsection{Geometry-based Alignment}
 \label{sec:geometryAlignment}
 
-
 \begin{figure}
   \centering
-  \subfloat[][]{\includegraphics[width=6in]{allunshifted.jpg}}
-
-  \centering
-  \subfloat[][]{\includegraphics[width=6in]{allshifted.jpg}}
-
-  \centering \subfloat[][]{\includegraphics[trim=0cm 2cm 0cm 0cm,
-    clip=true, width=5in]{matchLines.jpg}}
-
+  \begin{tabular}{cc}
+    \begin{tabular}{c}
+      \subfloat[][]{\includegraphics[trim=0cm 0cm 1.3cm 0cm,
+        clip=true, width=3in,
+        height=0.9in]{allunshifted.jpg}} \\
+      \subfloat[][]{\includegraphics[trim=1.3cm 0cm 0cm 0cm,
+        clip=true, width=3in,
+        height=0.9in]{allshifted.jpg}}
+    \end{tabular} &
+    \subfloat[][]{\raisebox{-1in}{\includegraphics[width=3in]{matchLines.jpg}}} 
+  \end{tabular}
   \caption{Images projected onto a ceiling surface, where
     geometry-based lines corresponding to the ceiling's boundary are
     shown in red. Image-based lines detected by Hough transform in the
@@ -508,39 +478,34 @@ geometry-based alignments. Each step will now be explained in detail.
 After computing each image's projection onto the target surface, as
 described in Section \ref{sec:imageSelection}, we can obtain a set of
 image-based line segments by using Hough transforms to detect lines in
-the image projections. These lines are detected in the image
-projections rather than the original images, as the varying
-orientation and distances of camera poses relative to surfaces results
-in high variance of line lengths and strengths for real-world linear
-features across the original images. We also gather a set of
-geometry-based lines, which correspond to the lines comprising the
-target surface's border, as well as lines formed where other surfaces
-intersect the target surface. An example of these lines is shown in
-red for a ceiling surface in Figure
-\ref{fig:geometryAlignment}(a). Ideally, for perfect camera poses and
-surface geometry, the lines in images corresponding to corners between
-surfaces should match up exactly with corners in the 3D model. By
-inducing such lines to match, we fit camera poses more accurately to
-the surface, and to each other as well.
+the image projections. We also gather a set of geometry-based lines,
+which correspond to the lines comprising the target surface's border,
+as well as lines formed where other surfaces intersect the target
+surface. An example of these lines is shown in red for a ceiling
+surface in Figure \ref{fig:geometryAlignment}(a). Given perfect camera
+poses and surface geometry, the lines in images corresponding to
+corners between surfaces should match up exactly with corners in the
+3D model. By inducing such lines to match, we can fit camera poses
+more accurately to the surface, and therefore to each other as well.
 
 To align images to surface geometry, we collect pairs of image-based
-and geometry-based line segments, which are within a distance and
-angular difference threshold of each other. We have found a distance
-threshold of 250 mm and an orientation difference threshold of
-$10^\circ$ to work well for our datasets. For each pair of lines, we
-compute the angular difference between the pair's image and geometry
-lines. If there are 2 or more pairs with angular differences within
-$1^\circ$, we select the two pairs with the longest noncollinear
-image-based lines, and rotate the image such that the lines in the
-pair with the longest image-based line become parallel. We then find a
-translation such that the lines in that same pair overlap. This
-translation has ambiguity in the dimension along the matched lines,
-which is resolved by matching the midpoint of the image-based line in
-the second pair to its corresponding geometry-based line. This is
-shown in case (1) of Figure \ref{fig:geometryAlignment}(c). Thus, with
-2 or more pairs, it is possible to obtain a fixed rotation and
-translation for geometry alignment, which are saved for usage in
-Section \ref{sec:robustSIFTFeatureMatching}.
+and geometry-based line segments, which are within distance and
+angular thresholds of each other. We have found a distance threshold
+of 250 mm and an angular difference threshold of $10^\circ$ to work
+well for our datasets. For each pair of lines, we compute the angular
+difference between the pair's image and geometry lines. If there are 2
+or more pairs with angular differences within $1^\circ$, we select the
+two pairs with the longest noncollinear image-based lines, and rotate
+the image such that the lines in the pair with the longest image-based
+line become parallel. We then find a translation such that the lines
+in that same pair overlap. This translation has ambiguity in the
+dimension along the matched lines, which is resolved by matching the
+midpoint of the image-based line in the second pair to its
+corresponding geometry-based line. This is shown in case (1) of Figure
+\ref{fig:geometryAlignment}(c). Thus, with 2 or more pairs, it is
+possible to obtain a fixed rotation and translation for geometry
+alignment, which are saved for usage in Section
+\ref{sec:robustSIFTFeatureMatching}.
 
 If there are not 2 or more pairs with similar angular differences, we
 select the pair with the longest image-based line, which corresponds
@@ -552,15 +517,12 @@ in Section \ref{sec:robustSIFTFeatureMatching}. This is shown in case
 where there are no line pairs, we can still rotate images in order to
 exploit patterns in indoor environments, as shown in case (3) of
 Figure \ref{fig:geometryAlignment}(c). For instance, doors, windows,
-furniture, etc. tend to have linear edges that are parallel to the
-edges of the surfaces they are on. Similarly, lights, visible interior
-walls, etc. which are visible in floor and ceiling images, tend to be
-parallel to interior and exterior walls, corresponding to the
-intersection lines and edges of ceiling and floor surfaces
-respectively. Thus, we choose to minimize the angle between
-image-based lines and geometry-based lines regardless of distance. We
-use the RANSAC framework to compute a rotation angle that best
-accomplishes this while ignoring outliers. \cite{fischler1981random}.
+furniture, ceiling lights, etc. tend to have linear edges that are
+parallel to the edges of the surfaces they are on. Thus, we choose to
+minimize the angle between image-based lines and geometry-based lines
+regardless of distance. We use the RANSAC framework to compute a
+rotation angle that best accomplishes this while ignoring
+outliers. \cite{fischler1981random}.
 
 After these steps, image projections line up well with target
 surfaces, as shown in Figure \ref{fig:geometryAlignment}(b), which is
@@ -602,17 +564,15 @@ In order to correctly texture surfaces, it is important to detect and
 remove parts of image projections containing texture for occluding
 surfaces. For instance, in Figure \ref{fig:occlusion}(a), an image
 used to texture the orange target surface also contains part of a gray
-occluding surface. We remove this incorrect texture by recursively
-performing ray-polygon intersection tests between the camera location
-and every surface in our model except the target surface
+occluding surface. We remove this incorrect texture by performing
+ray-polygon intersection tests between the camera location and every
+surface in our model except the target surface
 \cite{rayintersection}. If using planar approximations for regions, as
 explained in Section \ref{sec:geometryPartitioning}, the k-d tree is
-used instead. These intersection tests are performed at the corners of
-a grid overlaid upon the target surface. Where all four corners of a
-grid section are occluded, texture is removed. Where one or more
-corners are occluded, the grid is subdivided into four, and the
-process repeats. Occlusion checking works entirely with geometry, so
-by ensuring that images match geometry using
+used instead. These intersection tests are performed repeatedly in a
+recursive grid, until all occlusions are detected and corresponding
+occluded texture is removed. Occlusion checking works entirely with
+geometry, so by ensuring that images match geometry using
 \ref{sec:geometryAlignment}'s alignment procedure, texture belonging
 to other surfaces is accurately removed, as seen in Figure
 \ref{fig:occlusion}(b) vs. \ref{fig:occlusion}(c).
@@ -636,18 +596,13 @@ doors, we need to ensure that SIFT-based distances are
 reliable. First, we only align parts of images that overlap given the
 original noisy poses. Second, we discard feature matches that
 correspond to an image distance greater than 200 mm from what the
-noisy poses estimate. In order to utilize the remaining feature
-matches robustly, RANSAC \cite{fischler1981random} is again used to
-estimate the optimal $dx_{i,j}$ and $dy_{i,j}$ distances between two
-images $i$ and $j$. We use a 5 mm threshold for RANSAC, so that SIFT
-matches are labeled as outliers if their distance is not within 5 mm
-of the sampled average distance.
+noisy poses estimate. RANSAC \cite{fischler1981random} is then used to
+obtain a consensus from the the remaining feature matches.
 
 We now use the feature-based distances between each pair of images as
 well as geometry alignment results from Section
 \ref{sec:geometryAlignment} to refine all image positions using a
-weighted linear least squares approach. An example setup for a
-weighted linear least squares problem $\textrm{min}_{\vec{\beta}}
+weighted linear least squares approach. An example setup for such a problem $\textrm{min}_{\vec{\beta}}
 ||W^\frac{1}{2}(A \vec{\beta} - \vec{\gamma})||_2^2 $ with 3 images is
 as follows.
 
@@ -689,7 +644,7 @@ A =
 \]
 
 
-The variables we wish to solve for are the $x_i$ and $y_i$ positions
+The variables to solve for are the $x_i$ and $y_i$ positions
 of images, while equations are the feature-based distances between
 pairs of images, images fixed to geometry with 0 or 1 degrees of
 freedom, and the original noisy camera poses. In this scenario, a
@@ -723,38 +678,31 @@ visible.
 \section{Image Compositing}
 \label{sec:imageCompositing}
 In Section \ref{sec:imageSelection} we described an image selection
-method that reduces the list of candidate images for texturing by a
-factor of 10. In this section we go one step further to choose a
-subset of the above candidates in order to further reduce visual
-artifacts and discontinuities across textured surfaces. Specifically,
-in Section \ref{sec:mappingWithCaching}, we refine the tile-based
-texturing approach from Section \ref{sec:imageSelection}, with an
-added caching mechanism to reduce image boundaries. This method is
-general and works well given arbitrary camera poses and surfaces,
-whether large planar surfaces or small geometric interior
-features. For special cases where images have consistently
-perpendicular viewing angles to the surfaces under consideration, such
-as walls, it is possible to develop an alternative method in Section
-\ref{sec:shortestPath} to further reduce visual artifacts. Both of
-these approaches are followed by a blending step in order to produce
-final textures for each surface, as shown in Figure
-\ref{fig:flowchart}.
+method, that when used to create a texture, resulted in many visible
+discontinuities. In Section \ref{sec:mappingWithCaching}, we will
+refine that approach with an added caching mechanism to improve
+texture continuity. This method works well for all arbitrary camera
+poses and surfaces. However, for cases where images have consistently
+perpendicular viewing angles to surfaces under consideration, such as
+walls, we develop an alternative method in Section
+\ref{sec:shortestPath} which further reduces visual artifacts. Both of
+these approaches are then combined with an exposure compensation and
+blending scheme in order to produce final textures for each surface.
 
 \subsection{Tile-Mapping with Caching}
 \label{sec:mappingWithCaching}
-For the simple texture mapping method described in Section
+For the simple texturing method described in Section
 \ref{sec:imageSelection}, discontinuities occur where adjacent tiles
 are textured by different images. Though Section
 \ref{sec:2dAlignment}'s image alignment removes many such
 discontinuities, there are still cases where seams are visible due to
-imprecise matching or other factors such as model-based errors as
-shown in Figure \ref{fig:compareAll}(b). To reduce this, it is
-desirable to develop a spatiotemporal caching mechanism to take into
-account image selections made by neighboring tiles while texture
+imprecise matching or other factors such as model-based errors. To
+reduce this, we implement a spatiotemporal caching mechanism to take
+into account image selections made by neighboring tiles while texture
 mapping a given tile. By using the same image across tile boundaries,
 it is possible to eliminate a discontinuity altogether. If a tile is
 not visible in images used by neighboring tiles, using similar images
-across tile boundaries also leads to less noticeable discontinuities.
+across tile boundaries still leads to less noticeable discontinuities.
 
 The best image for a tile $t$ is selected by searching through two
 subsets of images for a viable candidate, before searching through the
@@ -787,34 +735,37 @@ compared to Figure \ref{fig:compareAll}(b). However, some
 discontinuities are still present, as visible in the posters on the
 wall with breaks in their borders.
 
-\begin{figure}
-  \centering
-  \subfloat[][]{\includegraphics[width=1.5in]{projectionWall.pdf}}
-  \hspace{0.51in} \centering
-  \subfloat[][]{\includegraphics[width=1.5in]{projectionCeiling.pdf}}
-  \centering \hspace{0.5in}
-  \subfloat[][]{\includegraphics[width=1.5in]{projectionWallCrop.pdf}}
-  \caption{(a) Images for vertical planes are tilted, but their camera
-    axes are more or less normal to their respective planes. (b)
-    Camera axes for ceiling images are at large angles with respect to
-    plane normals. (c) Wall images are cropped to be rectangular.}
-  \label{fig:projectionAngles}
-\end{figure}
 
 \subsection{Shortest Path Texturing}
 \label{sec:shortestPath}
 
+\begin{figure}
+  \centering
+  \begin{minipage}{3in}
+    \centering
+    \includegraphics[width=1.5in]{projectionCeiling.pdf}
+    \captionof{figure}{Camera axes for horizontal surfaces are at
+      large angles with respect to plane normals.}
+    \label{fig:projectionCeiling}
+  \end{minipage}%
+  \hspace{0.5in}
+  \begin{minipage}{3in}
+    \centering
+    \includegraphics[width=3in]{dagCreation.pdf}
+    \captionof{figure}{DAG construction for the image selection
+      process.}
+    \label{fig:dagCreation}
+  \end{minipage}
+\end{figure}
+
 As mentioned earlier, our data comes from a mobile backpack system
-carried by am ambulatory human operator, typically bent forwards at 15
-to 20 degrees with respect to the vertical direction. As a result,
-cameras facing sideways are head on with respect to vertical surfaces,
-as shown in Figure \ref{fig:projectionAngles}(a), while cameras
-oriented towards the top or bottom of the backpack are at an angle
-with respect to floors, ceilings and other horizontal surfaces, as
-shown in Figure \ref{fig:projectionAngles}(b). These oblique camera
-angles for horizontal surfaces translate into textures that span large
-areas once projected, as shown in Figure
-\ref{fig:projectionAngles}(b). Using the tile-based texture mapping
+with side-facing cameras. While these cameras have a wide-angle field
+of view,they are often pointed directly at vertical surfaces during
+data acquisition. This means that image projections on vertical
+surfaces tend to have higher, and more consistent resolution, while
+the more oblique projections onto horizontal surfaces result in
+textures spanning large areas, such as in Figure
+\ref{fig:projectionCeiling}. Using the tile-based texture mapping
 criteria from Figure \ref{fig:scoringFunction}, such projections have
 highly varying scores depending on the location of a tile on the
 plane. Thus, the tiling approach in Section
@@ -822,50 +773,35 @@ plane. Thus, the tiling approach in Section
 horizontal surfaces, as it uses the parts of image projections that
 maximize resolution for their respective plane locations, e.g. areas
 near point A and not near point B, in Figure
-\ref{fig:projectionAngles}(b).
+\ref{fig:projectionCeiling}.
 
 For vertical surfaces however, which make up a large portion of most
 models, images are usually taken from close distances and head-on
-angles, resulting in high resolution fronto-parallel projections. As a
+angles, resulting in high resolution rectangular projections. As a
 result, for each tile on a wall plane, the scoring function of Figure
 \ref{fig:scoringFunction} is relatively flat with respect to candidate
 images, as they are all more or less head on. Since the scoring
-function is less discriminative for walls, it is conceivable to devise
-a different texturing strategy to directly minimize visible seams when
-texturing them. This is done by choosing the smallest possible subset
-of images from the set selected in Section \ref{sec:imageSelection}
-and aligned in Section \ref{sec:2dAlignment} such that it (a) covers
-the entire plane and (b) minimizes the visibility of borders between
-the images. A straightforward cost function that accomplishes the
-latter is the sum of squared differences (SSD) of pixels in
-overlapping regions between all pairs of images. Minimizing this cost
-function encourages image boundaries to occur either in featureless
-areas, such as bare walls, or in areas where images match extremely
-well.
+function is less discriminative for walls, we devise a different
+texturing strategy to directly minimize visible seams when texturing
+them. This is done by choosing a subset of images such that their
+projections (a) cover the entire plane and (b) have minimal
+differences in overlapping regions. A straightforward cost function
+that accomplishes the latter is the sum of squared differences (SSD)
+of pixels in overlapping regions between all pairs of
+images. Minimizing this cost function encourages image boundaries to
+occur either in featureless areas, such as bare walls, or in areas
+where images match extremely well.
 
-In its most general form, our problem can be defined as minimally
-covering a polygon i.e. the planar surface, using other polygons of
-arbitrary geometry i.e. image projections, with the added constraint
-of minimizing the cost function between chosen images. Given that
-wall-texture candidate images are taken from more or less head-on
-angles, and knowing that only minor rotations are made in Section
-\ref{sec:2dAlignment}, we can crop our image projections to be
-rectangular with minimal texture loss as shown in Figure
-\ref{fig:projectionAngles}(c). Furthermore, because the fisheye camera
-lenses have full floor-to-ceiling coverage of nearly all walls, and
-the backpack operator logically only moves horizontally, we only need
-to ensure lateral coverage of our wall planes. We can thus construct a
-Directed Acyclic Graph (DAG) from the images, with edge costs defined
-by the SSD cost function, and solve a simple shortest path problem to
-find an optimal subset of images with regard to the SSD cost function
-\cite{dijkstra}.
+To find the subset of images that covers the plane with minimal cost,
+we form a shortest path problem. This can be done because the
+wide-angle cameras have full floor-to-ceiling coverage of walls, and
+the backpack operator logically only moves horizontally. We thus are
+only concerned with lateral coverage when working with wall
+surfaces. We can therefore construct a horizontal Directed Acyclic
+Graph (DAG) from the images, with edge costs defined by the SSD cost
+function, and solve a simple shortest path problem to find an optimal
+subset of images with regard to the SSD cost function \cite{dijkstra}.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=4in]{dagCreation.pdf}
-  \caption{DAG construction for the image selection process. \\}
-  \label{fig:dagCreation}
-\end{figure}
 
 Figure \ref{fig:dagCreation} demonstrates the construction of a DAG
 from overlapping images of a hallway wall. Images are sorted by
@@ -902,11 +838,11 @@ approach is also far less intensive in terms of memory usage and
 runtime, both during texture generation and rendering, as it does not
 require discretizing planes or images.
 
-When texturing a model, we apply the shortest path method on vertical
-surfaces, due to its superior results when provided with head-on
-images. Floors, ceilings, and smaller complex objects such as
-furniture, given their many images taken at oblique angles, are
-textured using the tile caching method of Section
+When texturing our models, we apply the shortest path method on
+surfaces where images are taken at optimal angles and provide full
+coverage along one dimension. Floors, ceilings, and smaller complex
+objects such as furniture, given their many images taken at oblique
+angles, are textured using the tile caching method of Section
 \ref{sec:mappingWithCaching}.
 
 \subsection{Exposure Compensation}
@@ -1052,27 +988,12 @@ walkthroughs can also be found at
 
 \subsection{Examples}
 \label{sec:examples}
-As mentioned in Section \ref{sec:dataAcquisition}, the texture mapping
-procedure in this paper can be applied both to low-resolution and
-high-resolution models. Low resolution models have an advantage in
-their simplicity, and in that only important environmental features
-are represented. As a result, images are generated for large sections
-of buildings, and texture continuity is maintained over large
-areas. High resolution models have an obvious advantage in terms of
-the amount of detail that can be reconstructed, but with poor region
-partitioning, as described in Section \ref{sec:geometryPartitioning},
-or with high camera pose or geometry reconstruction error, 3D elements
-in the environment geometry may not match up well with their imaged
-counterparts.
 
 \begin{figure}
   \centering
   \includegraphics[width=2.2in,height=1.5in]{results_swarm_3_v.png}
   \includegraphics[width=2.2in,height=1.5in]{results_swarm_3_2d.png}
   \includegraphics[width=2.2in,height=1.5in]{results_swarm_3_3d.png}\\
-  \includegraphics[width=2.1in,height=1.5in]{results_swarm_2_v.png}
-  \includegraphics[width=2.1in,height=1.5in]{results_swarm_2_2d.png}
-  \includegraphics[width=2.1in,height=1.5in]{results_swarm_2_3d.png}\\
   \subfloat[][]{
     \includegraphics[width=2.1in,height=2in]{results_swarm_5_v.png}
   } \subfloat[][]{
@@ -1082,58 +1003,12 @@ counterparts.
   }
   \caption{The same indoor environments, as generated using (a) PCA
     plane-fitting, (b) Floor plan extrusion, (c) Voxel carving. The
-    first two are low-resolution models, while the third is
-    high-resolution. The PCA method is not watertight, and contains
-    some holes (white). It also has the lowest level of detail in its
-    geometry. The floor plan method is slightly more detailed, and is
-    watertight as well. The voxel carving method also produces
-    watertight meshes, and reconstructs smaller features, such as the
-    bench and the ladder in the lower two images.}
+    first two are lower-resolution models, while the third is
+    higher-resolution, and reconstructs significantly more features,
+    such as the ladder in the lower image.}
   \label{fig:modelcomparisons}
 \end{figure}
-
-Our approach was tested with three different geometry-reconstruction
-methods, a PCA-based plane-fitting method \cite{sanchez2012point}, a
-floor plan extrusion method \cite{turnerfloorplan}, and a
-voxel-carving mesh generation method \cite{turnerwatertight}. The
-first two methods generate lower-resolution models, containing only
-major walls, ceilings and floors. The third method generates
-high-resolution models, and attempts to reconstruct all scanned
-objects in the environment. Images illustrating the differences
-between the three methods are in Figure \ref{fig:modelcomparisons}
-
 \begin{figure}
-  \centering \subfloat[][]{
-    \includegraphics[width=3in]{results_p15_v.png}
-  } \subfloat[][]{
-    \includegraphics[width=3in]{results_p15_2d.png}
-  }
-  \caption{(a) A model generated by the PCA method with many missing
-    surfaces. (b) A watertight model generated by the floor plan
-    extrusion method.}
-  \label{fig:lowresmodels}
-\end{figure}
-
-The PCA and floor plan methods produce models at a similar level of
-detail. As visible in Figure \ref{fig:lowresmodels}, the PCA method is
-not watertight, while the floor plan method is. As a result, the
-PCA-generated model contains holes where surfaces were not adequately
-scanned. On the other hand, the watertight floor plan model sometimes
-must make assumptions about the location of surfaces that were not
-adequately scanned, in order to maintain watertightness. Because
-buildings generally follow straight lines and right angle corners
-however, such assumptions tend to be correct. Additionally, the
-floor-plan method is generally superior at reconstructing smaller
-surfaces, such as small walls, or to approximate curved surfaces,
-while the PCA method only fits large planes, and fails in both
-cases. As a result, the floor-plan method usually produces more
-visually pleasing low-resolution models, and is the method of choice
-for generating textured low-resolution models.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=3.1in]{results_houston_1_2d.png}
-  \includegraphics[width=3.1in]{results_houston_1_3d.png}\\
   \includegraphics[width=3.1in]{results_houston_2_2d.png}
   \includegraphics[width=3.1in]{results_houston_2_3d.png}\\
   \subfloat[][]{
@@ -1151,47 +1026,20 @@ for generating textured low-resolution models.
   \label{fig:2dvs3d}
 \end{figure}
 
-High-resolution models, as generated by the voxel-carving method, can
-produce more accurate reconstructions of environment geometry. With
-such models, region partitioning, as described in Section
-\ref{sec:geometryPartitioning}, plays an important factor in the
-quality of generated textures. If regions are small, boundaries
-between adjacent textures become visible, and since each region is
-processed independently, image alignment procedures are performed
-across smaller areas. If regions are large, then the difference
-between the 3D surface geometry and the approximated 2D texturing
-surface become large as well, introducing greater texture projection
-error. Additionally, in areas where pose error or surface
-reconstruction error is high, 3D objects in images do not get
-accurately projected onto their modeled counterparts. While large
-objects can be aligned to geometry via the methods in Section
-\ref{sec:geometryAlignment}, smaller objects such as plants or
-computers are difficult to line up to geometry references. While the
-compositing techniques is Section \ref{sec:imageCompositing} can
-ensure that textures for small objects appear seamless, such textures
-may not map accurately upon their corresponding geometry, leading to
-visually obvious discrepancies in the textured model. Figure
-\ref{fig:2dvs3d} contains textured examples from the low-resolution
-floor plan approach alongside examples from the high-resolution
-voxel-carving approach. As evident in the image comparisons, the 3D
-models may be more accurate, but the 2D models often allow for a
-cleaner visualization, with larger regions over which images are
-successfully composited together.
 
-As visible in Figure \ref{fig:2dvs3d} and other images in this
-section, 2D models using the floor plan approach are generally
-preferred, as they provide enough detail in geometry to reconstruct
-the basic layout of an environment, while textures can be used to
-visualize smaller details. On the other hand, for applications where
-furniture and smaller interior details are important, applying
-textures to the 3D voxel-carved models provides useful image-based
-context for visualizing indoor areas. Further examples of
-texture-mapped models are contained at the end of this
-document. Figure \ref{fig:indivPlanes} contains textured surfaces
-alone. Figures \ref{fig:victor1}-\ref{fig:e2d4} contain interior and
-exterior views of low-resolution models. Figures
-\ref{fig:e3d1}-\ref{fig:e3d3} contain interior and exterior views of
-high-resolution models.
+
+The texture mapping procedure in this paper was tested with three
+different geometry-reconstruction methods, a PCA-based plane-fitting
+method \cite{sanchez2012point}, a floor plan extrusion method
+\cite{turnerfloorplan}, and a voxel-carving mesh generation method
+\cite{turnerwatertight}. The first two methods generate very similar
+low-resolution models, containing only major walls, ceilings and
+floors. The third method generates high-resolution models, and
+attempts to reconstruct all scanned objects in the environment. A
+comparison of the three model types is in Figure
+\ref{fig:modelcomparisons}, while Figure \ref{fig:2dvs3d} compares the
+latter 2 types for a closer comparison of a low-resolution model vs a
+high-resolution model. 
 
 
 \subsection{Runtime}
@@ -1224,9 +1072,9 @@ browsers or mobile devices.
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this paper, we have developed an approach to texture mapping
-models of indoor environments with noisy camera localization data. We
-are able to refine image locations based on geometry references and
+In this paper, we have developed an approach to texture mapping models
+of indoor environments with noisy camera localization data. We are
+able to refine image locations based on geometry references and
 feature matching, and robustly handle outliers. Using the tile-based
 mapping approach, we can texture both large planar features as well as
 smaller, more complex surfaces. We also implemented a shortest path
@@ -1243,119 +1091,9 @@ which can be done reasonably efficiently \cite{linebased,
 features is also likely to result in improved matches, as indoor
 scenes often have long, unbroken lines spanning multiple images
 \cite{linearposeestimation}. Finally, the blending procedure is quite
-basic, and applying more sophisticated methods of blending,
-normalization, as well as image boundary selection would benefit the
-final visual quality, and more robustly handle motion-based or
-parallax errors.
-
-
-
-\begin{figure}
-  \centering
-  \subfloat[][]{\includegraphics[width=6in]{finalfloors.jpg}} ~~~~~~~~
-  \\
-  \centering
-  \subfloat[][]{\includegraphics[width=6in]{finalceilings.jpg}}
-
-  \centering \subfloat[][]{
-    \includegraphics[height=2in, width=3in]{floorcropped.jpg} ~~~~~~~~
-    \includegraphics[width=3in]{pier15floor.jpg}
-  }
-  \caption{Examples of our final texture mapping output for (a) walls,
-    (b) ceilings, (c) floors}
-  \label{fig:indivPlanes}
-\end{figure}
-
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in]{threestoryfull2.png} \\
-    \includegraphics[width=6.2in]{threestoryfull.png}
-  }
-  \caption{Textured low-resolution models from the PCA-based approach.}
-  \label{fig:victor1}
-\end{figure}
-
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in]{fullmodel.png} \\
-    \includegraphics[width=6.2in]{pier15.png} \\
-  }
-  \caption{Textured low-resolution models from the PCA-based approach.}
-  \label{fig:victor2}
-\end{figure}
-
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in,height=3in]{houston2d1.png} \\
-    \includegraphics[width=6.2in,height=3in]{houston2d2_2.png} \\
-    \includegraphics[width=6.2in,height=3in]{houston3_2.png}
-  }
-  \caption{A textured low-resolution model from the floor plan extrusion approach.}
-  \label{fig:e2d1}
-\end{figure}
-
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in,height=3in]{coryf2.jpg} \\
-    \includegraphics[width=6.2in,height=3in]{coryf2_2d_1.png} \\
-    \includegraphics[width=6.2in,height=3in]{coryf2_2d_2.png}
-  }
-  \caption{A textured low-resolution model from the floor plan extrusion approach.}
-  \label{fig:e2d2}
-\end{figure}
-
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in,height=3in]{office.png} \\
-    \includegraphics[width=6.2in,height=3in]{office1.png} \\
-    \includegraphics[width=6.2in,height=3in]{office2.png}
-  }
-  \caption{A textured low-resolution model from the floor plan extrusion approach.}
-  \label{fig:e2d3}
-\end{figure}
-
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in,height=3in]{bhh1.png} \\
-    \includegraphics[width=6.2in,height=3in]{bhh2.png} \\
-    \includegraphics[width=6.2in,height=3in]{bhh3.png}
-  }
-  \caption{A textured low-resolution model from the floor plan extrusion approach.}
-  \label{fig:e2d4}
-\end{figure}
-
-
-
-
-
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in,height=3in]{houston1.jpg} \\
-    \includegraphics[width=6.2in,height=3in]{houston2.jpg} \\
-    \includegraphics[width=6.2in,height=3in]{houston3d2.png}
-  }
-  \caption{A textured high-resolution model from the voxel-carving approach.}
-  \label{fig:e3d1}
-\end{figure}
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in,height=3in]{coryf2_3d_4.png} \\
-    \includegraphics[width=6.2in,height=3in]{coryf2_3d_2.png} \\
-    \includegraphics[width=6.2in,height=3in]{coryf2_3d_3.png}
-  }
-  \caption{A textured high-resolution model from the voxel-carving approach.}
-  \label{fig:e3d2}
-\end{figure}
-\begin{figure}
-  \centering{
-    \includegraphics[width=6.2in,height=3in]{bhh3d1.png} \\
-    \includegraphics[width=6.2in,height=3in]{bhh3d2.png} \\
-    \includegraphics[width=6.2in,height=3in]{bhh3d3.png}
-  }
-  \caption{A textured high-resolution model from the voxel-carving approach.}
-  \label{fig:e3d3}
-\end{figure}
-
+basic, and applying more sophisticated methods of blending as well as
+image boundary selection would benefit the final visual quality, and
+more robustly handle motion-based or parallax errors.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% References %%%%%
