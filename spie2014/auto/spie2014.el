@@ -30,6 +30,7 @@
      "sec:blending"
      "sec:results"
      "sec:examples"
+     "fig:indivPlanes"
      "fig:pcaModels"
      "fig:fpModels"
      "fig:voxelModels"
