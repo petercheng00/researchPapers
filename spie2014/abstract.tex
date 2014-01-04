@@ -1,0 +1,45 @@
+\documentclass[]{spie}  %>>> use for US letter paper
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{multirow}
+
+\title{Texture Mapping 3D Models of Indoor Environments with Noisy Camera Poses} 
+
+\author{Peter Cheng
+\skiplinehalf
+University of California, Berkeley\\
+}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{abstract}
+  Automated 3D modeling of building interiors is used in applications
+  such as virtual reality and environment mapping. Texturing these
+  models allows for photo-realistic visualizations of the data
+  collected by such modeling systems. While data acquisition times for
+  mobile mapping systems are considerably shorter than for static
+  ones, their recovered camera poses often suffer from inaccuracies,
+  resulting in visible discontinuities when successive images are
+  projected onto a surface for texturing. We present a method for
+  texture mapping models of indoor environments that starts by
+  selecting images whose camera poses are well-aligned in two
+  dimensions. We then align images to geometry as well as to each
+  other, producing visually consistent textures even in the presence
+  of inaccurate surface geometry and noisy camera poses. Images are
+  then composited into a final texture mosaic and projected onto
+  surface geometry for visualization. The effectiveness of the
+  proposed method is demonstrated on a number of different indoor
+  environments.
+\end{abstract}
+
+% >>>> Include a list of keywords after the abstract
+
+\keywords{Texture Mapping, Reconstruction, Image Stitching, Mosaicing}
+\end{document}

@@ -1,0 +1,214 @@
+@inproceedings{liu2010indoor,
+  title={Indoor localization and visualization using a human-operated backpack system},
+  author={Liu, T. and Carlberg, M. and Chen, G. and Chen, J. and Kua, J. and Zakhor, A.},
+  booktitle={Indoor Positioning and Indoor Navigation (IPIN), 2010 International Conference on},
+  pages={1--10},
+  year={2010},
+  organization={IEEE}
+}
+
+@inproceedings{lowe1999object,
+  title={Object recognition from local scale-invariant features},
+  author={Lowe, D.G.},
+  booktitle={Computer Vision, 1999. The Proceedings of the Seventh IEEE International Conference on},
+  volume={2},
+  pages={1150--1157},
+  year={1999},
+  organization={Ieee}
+}
+
+@article{mikolajczyk2005performance,
+  title={A performance evaluation of local descriptors},
+  author={Mikolajczyk, K. and Schmid, C.},
+  journal={Pattern Analysis and Machine Intelligence, IEEE Transactions on},
+  volume={27},
+  number={10},
+  pages={1615--1630},
+  year={2005},
+  publisher={IEEE}
+}
+
+@article{szeliski2006image,
+  title={Image alignment and stitching: A tutorial},
+  author={Szeliski, R.},
+  journal={Foundations and Trends{\textregistered} in Computer Graphics and Vision},
+  volume={2},
+  number={1},
+  pages={1--104},
+  year={2006},
+  publisher={Now Publishers Inc.}
+}
+
+@inproceedings{chen2010indoor,
+  title={Indoor localization algorithms for a human-operated backpack system},
+  author={Chen, G. and Kua, J. and Shum, S. and Naikal, N. and Carlberg, M. and Zakhor, A.},
+  booktitle={Int. Symp. on 3D Data, Processing, Visualization and Transmission (3DPVT)},
+  year={2010},
+}
+
+@article{fischler1981random,
+  title={Random sample consensus: a paradigm for model fitting with applications to image analysis and automated cartography},
+  author={Fischler, M.A. and Bolles, R.C.},
+  journal={Communications of the ACM},
+  volume={24},
+  number={6},
+  pages={381--395},
+  year={1981},
+  publisher={ACM}
+}
+
+@article{dijkstra,
+  title={A note on two problems in connexion graphs},
+  author={Dijkstra, E.W.},
+  journal={Numerische Mathematik},
+  volume={1},
+  pages={269--271},
+  year={1959},
+}
+
+@inproceedings{sanchez2012point,
+  title={Planar 3D Modeling of Building Interiors from Point Cloud Data},
+  author={Sanchez, V. and Zakhor, A.},
+  booktitle={Internation Conference on Image Processing},
+  year={2012}
+}
+
+
+@inproceedings{kua2012loopclosure,
+  title={Automatic Loop Closure Detection Using Multiple Cameras for 3D Indoor Localization},
+  author={Kua, J. and Corso, N. and Zakhor, A.},
+  booktitle={IS\&T/SPIE Electronic Imaging},
+  year={2012}
+}
+
+@book{rayintersection,
+  title={An introduction to ray tracing},
+  author={Glassner, Andrew S.},
+  year={1989},
+  publisher={Academic Press}
+}
+
+@article{panorama2d,
+ author = {Brown, Matthew and Lowe, David G.},
+ title = {Automatic Panoramic Image Stitching using Invariant Features},
+ journal = {Int. J. Comput. Vision},
+ issue_date = {August    2007},
+ volume = {74},
+ number = {1},
+ month = aug,
+ year = {2007},
+ issn = {0920-5691},
+ pages = {59--73},
+ numpages = {15},
+ url = {http://dx.doi.org/10.1007/s11263-006-0002-3},
+ doi = {10.1007/s11263-006-0002-3},
+ acmid = {1265141},
+ publisher = {Kluwer Academic Publishers},
+ address = {Hingham, MA, USA},
+ keywords = {multi-image matching, recognition, stitching},
+} 
+
+
+@misc{autostitch,
+  title={AutoStitch},
+  author={Brown, M. and Lowe, D.},
+  howpublished={\url{http://www.cs.bath.ac.uk/brown/autostitch/autostitch.html}}}
+
+@misc{openscenegraph,
+  title={OpenSceneGraph},
+  howpublished={\url{http://www.openscenegraph.org/projects/osg}}
+}
+
+@misc{siftgpu,
+  title={SiftGPU},
+  author={Wu, C.},
+  howpublished={\url{http://www.cs.unc.edu/~ccwu/siftgpu/}}
+}
+
+@INPROCEEDINGS{linebased, 
+author={Elqursh, A. and Elgammal, A.}, 
+booktitle={Computer Vision and Pattern Recognition (CVPR), 2011 IEEE Conference on}, title={Line-based relative pose estimation}, 
+year={2011}, 
+month={june}, 
+volume={}, 
+number={}, 
+pages={3049 -3056}, 
+keywords={Cameras;Equations;Estimation;Image reconstruction;Null space;Robustness;Three dimensional displays;calibration;cameras;pose estimation;statistical analysis;RANSAC;calibrated camera relative pose estimation;intersection points;line-based relative pose estimation;relative rotation;relative translation;robust hypothesize-and-test frameworks;}, 
+doi={10.1109/CVPR.2011.5995512}, 
+ISSN={1063-6919},}
+
+@MISC{rectangularstructures,
+    author = {Jana Košecká and Wei Zhang},
+    title = {Extraction, matching and pose recovery based on dominant rectangular structures},
+    year = {2005}
+}
+
+@ARTICLE{linearposeestimation, 
+author={Ansar, A. and Daniilidis, K.}, 
+journal={Pattern Analysis and Machine Intelligence, IEEE Transactions on}, title={Linear pose estimation from points or lines}, 
+year={2003}, 
+month={may}, 
+volume={25}, 
+number={5}, 
+pages={ 578 - 589}, 
+keywords={Algorithm design and analysis;Application software;Cameras;Closed-form solution;Computer vision;Constraint optimization;Image analysis;Iterative algorithms;Iterative methods;Sensitivity analysis; augmented reality; computational geometry; computer vision; real-time systems; sensitivity analysis; augmented reality; camera pose; computer vision; error; geometric constraint; image noise; iterative approaches; linear algorithms; linear pose estimation; nonlinear optimization; real-time applications; sensitivity analysis; simulations;}, 
+doi={10.1109/TPAMI.2003.1195992}, 
+ISSN={0162-8828},}
+
+@book{hz,
+  title={Multiple view geometry in computer vision},
+  author={Hartley, R. and Zisserman, A.},
+  volume={2},
+  year={2000},
+  publisher={Cambridge Univ Press}
+}
+
+
+
+@inproceedings{agarwalapanoramas,
+  title={Photographing long scenes with multi-viewpoint panoramas},
+  author={Agarwala, A. and Agrawala, M. and Cohen, M. and Salesin, D. and Szeliski, R.},
+  booktitle={ACM Transactions on Graphics (TOG)},
+  volume={25},
+  pages={853--861},
+  year={2006},
+  organization={ACM}
+}
+
+
+@inproceedings{wangmultipleviews,
+  title={Optimal texture map reconstruction from multiple views},
+  author={Wang, L. and Kang, S.B. and Szeliski, R. and Shum, H.Y.},
+  booktitle={Computer Vision and Pattern Recognition, 2001. CVPR 2001. Proceedings of the 2001 IEEE Computer Society Conference on},
+  volume={1},
+  pages={I--347},
+  year={2001},
+  organization={IEEE}
+}
+
+@inproceedings{coorg1997matching,
+  title={Matching and pose refinement with camera pose estimates},
+  author={Coorg, S. and Teller, S.},
+  booktitle={Proceedings of the 1997 Image Understanding Workshop},
+  year={1997}
+}
+
+@inproceedings{debevechybrid,
+  title={Modeling and rendering architecture from photographs: A hybrid geometry-and image-based approach},
+  author={Debevec, P.E. and Taylor, C.J. and Malik, J.},
+  booktitle={Proceedings of the 23rd annual conference on Computer graphics and interactive techniques},
+  pages={11--20},
+  year={1996},
+  organization={ACM}
+}
+
+@article{bernardinimultiplescans,
+  title={High-quality texture reconstruction from multiple scans},
+  author={Bernardini, F. and Martin, I.M. and Rushmeier, H.},
+  journal={Visualization and Computer Graphics, IEEE Transactions on},
+  volume={7},
+  number={4},
+  pages={318--332},
+  year={2001},
+  publisher={IEEE}
+}
