@@ -188,20 +188,20 @@ textures successfully applied to each region is shown in Figure
 \ref{fig:deskGeom}(c).
 
 For the purposes of texturing, it is convenient to treat each region
-as planar. To accomplish this, a plane is fitted to each region. This
-plane corresponds to the largest contiguous section of coplanar
-triangles, as most regions are characterized by small outcroppings
-from a largely planar surface, such as objects on a table or features
-protruding from a wall. The 3D surface composing a region is then
-projected onto its calculated plane, and the resulting 2D planar
-polygon is used as the texturing surface. This 2D planar approximation
-provides a simple, yet approximately accurate surface onto which
-images can be projected in order to generate textures. However, 3D
-surfaces are still retained in order to achieve accurate results when
-performing occlusion checks, and of course are used to generate the
-final textured model. Each region now has a set of triangles
-representing the original model geometry, as well as a planar
-approximation. The task now is to generate a texture for each region.
+as planar, and fit a plane to each region. This plane corresponds to
+the largest contiguous section of coplanar triangles in the region, as
+most regions are characterized by small outcroppings from a largely
+planar surface, such as objects on a table or features protruding from
+a wall. The 3D surface composing a region is then projected onto its
+calculated plane, and the resulting 2D planar polygon is used as the
+texturing surface. This 2D planar approximation provides a simple, yet
+approximately accurate surface onto which images can be projected in
+order to generate textures. However, 3D surfaces are still retained in
+order to achieve accurate results when performing occlusion checks,
+and of course are used to project the final textures upon. Each region
+now has a set of triangles representing the original model geometry,
+as well as a planar approximation. The task now is to generate a
+texture for each region.
 
 \section{Related Work}
 \label{sec:relatedWork}
@@ -227,7 +227,7 @@ images to produce a larger, seamless image \cite{szeliski2006image,
   agarwalapanoramas, wangmultipleviews, coorg1997matching,
   debevechybrid, bernardinimultiplescans}. Generally, parts of images
 are matched to each other, by detecting feature points and identifying
-matches. Images are then transformed to maximizally align matches,
+matches. Images are then transformed to maximally align matches,
 often by computing homographies between pairs of images, or by
 iteratively adjusting camera poses in 1 to 6 degrees of freedom.
 
@@ -320,8 +320,7 @@ by projecting $t$ into each image using the $P_i$ camera
 matrices. Furthermore, each candidate image must have been taken at a
 time when its camera had a clear line-of-sight to $t$, which can be
 determined using standard ray-polygon intersection tests between the
-camera location, $t$, and every other surface, or via the k-d tree
-from Section \ref{sec:geometryPartitioning} if present
+camera location, $t$, and the rest of the model's geometry.
 \cite{rayintersection}.
 
 Once we have a list of candidate images for $t$, we define a scoring
@@ -362,7 +361,7 @@ also selects the most promising images for the remaining steps.
   \subfloat[][]{\includegraphics[width=0.33\textwidth,
     height=0.8in]{wall2_naive_shift.jpg}}
   \subfloat[][]{\includegraphics[trim=1.2cm 0cm 0cm 0cm,
-        clip=true,width=0.33\textwidth,
+    clip=true,width=0.33\textwidth,
     height=0.8in]{wall2_cache_shift.jpg}}
 
   \centering \subfloat[][]{\includegraphics[width=0.33\textwidth,
@@ -533,9 +532,7 @@ used to texture the orange target surface also contains part of a gray
 occluding surface. We remove this incorrect texture by performing
 ray-polygon intersection tests between the camera location and every
 surface in our model except the target surface
-\cite{rayintersection}. If using planar approximations for regions, as
-explained in Section \ref{sec:geometryPartitioning}, the k-d tree is
-used instead. These intersection tests are performed repeatedly in a
+\cite{rayintersection}. These intersection tests are performed repeatedly in a
 recursive grid, until all occlusions are detected and corresponding
 occluded texture is removed. Occlusion checking works entirely with
 geometry, so by ensuring that images match geometry using
@@ -766,7 +763,7 @@ only concerned with lateral coverage when working with wall
 surfaces. We can therefore construct a horizontal Directed Acyclic
 Graph (DAG) from the images, with edge costs defined by the SSD cost
 function, and solve a simple shortest path problem to find an optimal
-subset of images with regard to the SSD cost function \cite{dijkstra}.
+subset of images with which to texture the surface \cite{dijkstra}.
 
 
 Figure \ref{fig:dagCreation} demonstrates the construction of a DAG
@@ -806,7 +803,8 @@ require discretizing planes or images.
 
 When texturing our models, we apply the shortest path method on
 surfaces where images are taken at optimal angles and provide full
-coverage along one dimension. Floors, ceilings, and smaller complex
+coverage along one dimension. This generally includes all walls and
+most other vertical surfaces. Floors, ceilings, and smaller complex
 objects such as furniture, given their many images taken at oblique
 angles, are textured using the tile caching method of Section
 \ref{sec:mappingWithCaching}.
@@ -843,7 +841,7 @@ consistent across image boundaries.
 
 Similar to the image position refinement procedure in Section
 \ref{sec:robustSIFTFeatureMatching}, exposure compensation is
-performed simulatenously across all images present in a single
+performed simultaneously across all images present in a single
 region. To begin, a relative gain $R_{ij}$ is computed for each pair
 of overlapping images $I_i$ and $I_j$, which have a set of pixels
 common to both images, labeled as $P_{ij}$. The relative gain $R_{ij}$
@@ -961,7 +959,7 @@ walkthroughs can also be found at
   \subfloat[][]{\includegraphics[width=3in]{finalceilings.jpg}} \\
 
   \centering \subfloat[][]{
-    \includegraphics[height=2in, width=3in]{floorcropped.jpg} 
+    \includegraphics[height=2in, width=3in]{floorcropped.jpg}
     \includegraphics[width=3in]{pier15floor.jpg}
   }
   \caption{Examples of our final texture mapping output for (a) walls,
@@ -1009,24 +1007,24 @@ The texture mapping procedure in this paper was tested with three
 different geometry-reconstruction methods, a PCA-based plane-fitting
 method \cite{sanchez2012point}, a floor plan extrusion method
 \cite{turnerfloorplan}, and a voxel-carving mesh generation method
-\cite{turnerwatertight}. The first two methods generate very similar
-low-resolution models, containing only major walls, ceilings and
-floors. The third method generates high-resolution models, and
-attempts to reconstruct all scanned objects in the
-environment. Examples of individually textured regions are shown in
-Figure \ref{fig:indivPlanes}, while fully texture mapped models
-generated by the PCA-based, floor plan extrusion, and voxel-carving
-approaches, can be seen in Figures \ref{fig:pcaModels},
-\ref{fig:fpModels}, and \ref{fig:voxelModels} respectively.
+\cite{turnerwatertight}. The first two methods generate low-resolution
+models containing only major walls, ceilings and floors. The third
+method generates high-resolution models, and attempts to reconstruct
+all scanned objects in the environment. Examples of individually
+textured regions are shown in Figure \ref{fig:indivPlanes}, while
+fully texture mapped models generated by the PCA-based, floor plan
+extrusion, and voxel-carving approaches, can be seen in Figures
+\ref{fig:pcaModels}, \ref{fig:fpModels}, and \ref{fig:voxelModels}
+respectively.
 
 \subsection{Runtime}
 As mentioned earlier, our approach is quite efficient. The top wall in
 Figure \ref{fig:indivPlanes}(a) is a single region, and its texture
 was generated with 7543 $\times$ 776 pixels, spanning a 40 meter long
 wall. Given 41000 input images in the dataset, a 2.8 GHz dual-core
-machine takes under 10 seconds to choose 36 candidate images and
+machine takes under 30 seconds to choose 36 candidate images and
 perform the full texturing process. The tile-caching approach takes a
-similar amount of time as well, with the much larger floor textures in
+similar amount of time as well, with the larger floor textures in
 Figure \ref{fig:indivPlanes}(c) taking 5-10 minutes to generate.
 While not real-time, our process is capable of generating fast updates
 after changes in various parameters or modifications to input data,
@@ -1047,16 +1045,16 @@ browsers or mobile devices.
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this paper, we have developed an approach to texture mapping models
+In this paper, we have developed a method for texture mapping models
 of indoor environments with noisy camera localization data. We are
-able to refine image locations based on geometry references and
-feature matching, and robustly handle outliers. Using the tile-based
-mapping approach, we can texture both large planar features as well as
-smaller, more complex surfaces. We also implemented a shortest path
-texturing method that produces seamless textures on planes where
-multiple head-on images are available. Both of these approaches are
-highly modular, and easily tunable for similar systems across multiple
-environments.
+able to refine image locations based on geometry references as well as
+feature matching, while robustly handling environments with repeating
+or sparse details. Using the tile-based mapping approach, we can
+texture both large planar features as well as smaller, more complex
+surfaces. We also implemented a shortest path texturing method that
+produces seamless textures on planes where multiple head-on images are
+available. Both of these approaches are highly modular, and easily
+tunable for similar systems across multiple environments.
 
 Our method is likely to fail however in scenarios where 3D error is
 large. A logical progression of our approach to resolve camera error
@@ -1067,7 +1065,7 @@ features is also likely to result in improved matches, as indoor
 scenes often have long, unbroken lines spanning multiple images
 \cite{linearposeestimation}. Finally, the blending procedure is quite
 basic, and applying more sophisticated methods of blending as well as
-image boundary selection would benefit the final visual quality, and
+image boundary selection would benefit texture visual quality, and
 more robustly handle motion-based or parallax errors.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
