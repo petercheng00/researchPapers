@@ -30,8 +30,9 @@
      "sec:blending"
      "sec:results"
      "sec:examples"
-     "fig:modelcomparisons"
-     "fig:2dvs3d"
+     "fig:pcaModels"
+     "fig:fpModels"
+     "fig:voxelModels"
      "sec:conclusion")
     (TeX-run-style-hooks
      "multirow"
