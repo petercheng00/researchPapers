@@ -145,7 +145,7 @@ data from the laser range scanners is used to generate a 3D point
 cloud of the surrounding environment. This point cloud is used to
 construct simple, coarse models \cite{sanchez2012point,
   turnerfloorplan}, as well as highly detailed models
-\cite{turnerwatertight}.  Regardless of resolution, size, or detail,
+\cite{turnerwatertight}.  Regardless of resolution or size,
 the model, consisting of geometric surfaces in 3D space, along with
 the set of images captured by the backpack's cameras and their noisy
 3D poses, are the input to the texture mapping problem.
@@ -187,61 +187,24 @@ grouping is shown in Figure \ref{fig:deskGeom}(b). The same area with
 textures successfully applied to each region is shown in Figure
 \ref{fig:deskGeom}(c).
 
-Though some of these regions from high-resolution models are not
-completely flat, a plane is fitted to each region for the purposes of
-texturing. This plane corresponds to the largest contiguous section of
-coplanar triangles, as most regions are characterized by small
-outcroppings from a largely planar surface, such as objects on a table
-or features protruding from a wall. The 3D surface composing a region
-is then projected onto its calculated plane, and the resulting 2D
-planar polygon is used as the texturing surface. This 2D planar
-approximation provides a simple, yet approximately accurate surface
-onto which images can be projected in order to generate
-textures. However, 3D surfaces are still retained in order to achieve
-more accurate results when performing occlusion checks during the
-texturing process. To improve runtime during such occlusion checks,
-the triangles within all 3D surfaces are also loaded into a k-d tree
-for quick lookup. Thus, for high-resolution models, each region has
-both 3D geometry stored in a k-d tree for occlusion purposes, and an
-approximate 2D representation stored as the texturing surface.
-
-At this point, we either have a series of planar regions from a low
-resolution model, or a set of planar approximations for regions as
-well as an associated k-d tree from a high resolution model. The task
-now is to generate a texture for each region.
+For the purposes of texturing, it is convenient to treat each region
+as planar. To accomplish this, a plane is fitted to each region. This
+plane corresponds to the largest contiguous section of coplanar
+triangles, as most regions are characterized by small outcroppings
+from a largely planar surface, such as objects on a table or features
+protruding from a wall. The 3D surface composing a region is then
+projected onto its calculated plane, and the resulting 2D planar
+polygon is used as the texturing surface. This 2D planar approximation
+provides a simple, yet approximately accurate surface onto which
+images can be projected in order to generate textures. However, 3D
+surfaces are still retained in order to achieve accurate results when
+performing occlusion checks, and of course are used to generate the
+final textured model. Each region now has a set of triangles
+representing the original model geometry, as well as a planar
+approximation. The task now is to generate a texture for each region.
 
 \section{Related Work}
 \label{sec:relatedWork}
-There are many existing approaches to stitching together multiple
-images to produce a larger, seamless image \cite{szeliski2006image,
-  agarwalapanoramas, wangmultipleviews, coorg1997matching,
-  debevechybrid, bernardinimultiplescans}. Generally, parts of images
-are matched to each other, either through direct comparisons at a
-pixel level, or through feature detection and matching. Images are
-then transformed to maximize matches, often by computing homographies
-between pairs of images, or by iteratively adjusting camera poses in 1
-to 6 degrees of freedom.
-
-Feature matching has a number of advantages over direct matching that
-make it more suitable for our often non-planar environments, and
-rotational differences between camera poses
-\cite{szeliski2006image}. Feature matching however, works best when
-multiple unique visual references exist in the environment that can be
-detected in multiple images. In contrast, indoor environments have a
-high prevalence of bare surfaces, as well as repeating textures, such
-as similar windows, doors, and wall-mounted decorations, that are
-difficult to disambiguate. This lack of reliable reference points
-often results in errors when matching images together.
-
-Additionally, our datasets often contain long chains of images,
-corresponding to long hallways and corridors as shown in Figure
-\ref{fig:mosaic3D}, which leads to error accumulation when image
-correspondences are not accurate. For example, when matching a long
-chain of images through homography, a pixel in the $nth$ image must be
-translated into the first image's coordinates by multiplying by the
-$3\times3$ matrix $H_1 H_2 H_3 ... H_n$. Any error in one of these
-homography matrices is propagated to all further images, resulting in
-drift.
 
 \begin{figure}
   \centering \subfloat[][]{\includegraphics[trim=0cm 0cm 20cm 0cm,
@@ -259,31 +222,40 @@ drift.
   \label{fig:mosaic3D}
 \end{figure}
 
+There are many existing approaches to stitching together multiple
+images to produce a larger, seamless image \cite{szeliski2006image,
+  agarwalapanoramas, wangmultipleviews, coorg1997matching,
+  debevechybrid, bernardinimultiplescans}. Generally, parts of images
+are matched to each other, by detecting feature points and identifying
+matches. Images are then transformed to maximizally align matches,
+often by computing homographies between pairs of images, or by
+iteratively adjusting camera poses in 1 to 6 degrees of freedom.
 
-In prior work, we have experimented with integrating image stitching
-with the iterative global localization algorithm used to recover the 6
-degrees of freedom of the backpack acquisition system detailed in
-Section \ref{sec:dataAcquisition} \cite{liu2010indoor}. When run on
-long chains of images however, especially where features are sparse,
-this approach produces distorted textures, as seen in Figure
-\ref{fig:mosaic3D}(a). Furthermore, this approach is not closed-form,
-and its iterative camera adjustment process over large datasets leads
-to prohibitively long computation time.
+Feature matching works best when unique visual references exist in the
+environment that can be detected in multiple images. Unfortunately,
+many indoor environments have a high prevalence of bare surfaces as
+well as repeating textures, such as with windows and
+doors. Additionally, our datasets often contain long 1-dimensional
+chains of images, such as in Figure \ref{fig:mosaic3D}, which often
+leads to error accumulation. For example, when matching a long chain
+of images via homography matrices, a pixel in the $nth$ image must be
+translated into the first image's coordinates by multiplying by the
+$3\times3$ matrix $H_1 H_2 H_3 ... H_n$. Errors in each of these
+homography matrices is propagated to all further images, resulting in
+drift.
 
-The AutoStitch software package, based on research in the related area
-of panorama genoration, also performs homography-based alignment, with
-additional provisions that attempt to reduce drift and increase
-overall efficiency \cite{panorama2d, autostitch}. Though AutoStitch
-performs well in small areas, it often induces drift in images,
-such that global alignment to the environment geometry is
-lost. Furthermore, its performance relies on the presence of a dense
-set of features, and it has trouble aligning wall sections with even
-short segments of bare texture. The example in Figure
-\ref{fig:mosaic3D}(b) was generated after many rounds of manual
-tuning; we have empirically found that areas with fewer visual
-features or repeating texture patterns simply failed outright with
-AutoStitch.
-
+Two methods based on feature matching and homography calculation are
+shown in Figure \ref{fig:mosaic3D}. Figure \ref{fig:mosaic3D}(a)
+depicts an attempt at integrating image stitching with the iterative
+global localization algorithm used to localize the backpack system
+detailed in Section \ref{sec:dataAcquisition}
+\cite{liu2010indoor}. Figure \ref{fig:mosaic3D}(b) depicts an output
+image from AutoStitch, which is software based on research in the
+related area of panorama generation \cite{panorama2d,
+  autostitch}. Both methods were thoroughly tuned for the shown
+example, but due to the factors mentioned in the previous paragraph,
+they still show significant amounts of drift and distortion, as well
+as loss of alignment to the environment geometry.
 
 \section{Image Selection}
 \label{sec:imageSelection}
@@ -385,31 +357,25 @@ also selects the most promising images for the remaining steps.
 
 
 \begin{figure}
-  \centering \subfloat[][]{\includegraphics[width=3.4in,
-    height=1.2in]{wall2_naive.jpg}}
-  \subfloat[][]{\includegraphics[width=3.4in,
-    height=1.2in]{wall2_naive_shift.jpg}}
+  \centering \subfloat[][]{\includegraphics[width=0.33\textwidth,
+    height=0.8in]{wall2_naive.jpg}}
+  \subfloat[][]{\includegraphics[width=0.33\textwidth,
+    height=0.8in]{wall2_naive_shift.jpg}}
+  \subfloat[][]{\includegraphics[trim=1.2cm 0cm 0cm 0cm,
+        clip=true,width=0.33\textwidth,
+    height=0.8in]{wall2_cache_shift.jpg}}
 
-  \centering \subfloat[][]{\includegraphics[width=3.4in,
-    height=1.2in]{wall2_cache_shift.jpg}}
-  \subfloat[][]{\includegraphics[width=3.4in,
-    height=1.2in]{wall2_shortest_shift.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3.4in,
-    height=1.2in]{wall2_cache_shift_blend.pdf}}
-  \subfloat[][]{\includegraphics[width=3.4in,
-    height=1.2in]{wall2_shortest_shift_blend.pdf}}
-
-  \centering \subfloat[][]{\includegraphics[width=3.4in,
-    height=3.4in]{wall2_cache_comparison.png}}
-  \subfloat[][]{\includegraphics[width=3.4in,
-    height=3.4in]{wall2_shortest_comparison.png}}
+  \centering \subfloat[][]{\includegraphics[width=0.33\textwidth,
+    height=0.8in]{wall2_shortest_shift.pdf}}
+  \subfloat[][]{\includegraphics[width=0.33\textwidth,
+    height=0.8in]{wall2_cache_shift_blend.pdf}}
+  \subfloat[][]{\includegraphics[width=0.33\textwidth,
+    height=0.8in]{wall2_shortest_shift_blend.pdf}}
 
   \caption{(a) Tile-based texturing; (b) Tile-based texturing after
     image alignment; (c) Tile-based texturing after image alignment
     with caching; (d) Shortest path texturing after image alignment;
-    (e,f) Blending applied to (c) and (d); (g,h) Zoomed in views of
-    discontinuities in (e) vs. in (f).}
+    (e,f) Blending applied to (c) and (d).}
   \label{fig:compareAll}
 \end{figure}
 
@@ -850,8 +816,9 @@ angles, are textured using the tile caching method of Section
 
 \begin{figure}
   \centering
-  \subfloat[][]{\includegraphics[width=3.3in]{exposureDiff1.png}}
-  \subfloat[][]{\includegraphics[width=3.3in]{exposureDiff2.png}}
+  \subfloat[][]{\includegraphics[width=2.5in, height=0.9in]{exposureDiff1.png}}
+  \hspace{0.5in}
+  \subfloat[][]{\includegraphics[width=2.5in, height=0.9in]{exposureDiff2.png}}
   \caption{(a) A ceiling texture composed of images taken with varying
     exposures, with significant brightness differences. (b) Exposure
     compensation applied to the same set of images from (a) by
@@ -969,9 +936,8 @@ only apply blending over an area equal to the overlap distance.
 After linear alpha blending across overlapping regions, the texture
 mapping process is complete. Figures \ref{fig:compareAll}(e) and
 \ref{fig:compareAll}(f) show the blended versions of Figures
-\ref{fig:compareAll}(c) and \ref{fig:compareAll}(d) respectively. The
-remaining images in Figure \ref{fig:compareAll} highlight differences
-between the two methods, showing that Figure \ref{fig:compareAll}(f)
+\ref{fig:compareAll}(c) and \ref{fig:compareAll}(d) respectively. By
+comparing all images, it is clear that Figure \ref{fig:compareAll}(f)
 has the best visual quality and the best texturing approach among the
 textures in Figure \ref{fig:compareAll}.
 
