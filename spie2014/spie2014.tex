@@ -196,12 +196,12 @@ a wall. The 3D surface composing a region is then projected onto its
 calculated plane, and the resulting 2D planar polygon is used as the
 texturing surface. This 2D planar approximation provides a simple, yet
 approximately accurate surface onto which images can be projected in
-order to generate textures. However, 3D surfaces are still retained in
-order to achieve accurate results when performing occlusion checks,
-and of course are used to project the final textures upon. Each region
-now has a set of triangles representing the original model geometry,
-as well as a planar approximation. The task now is to generate a
-texture for each region.
+order to generate textures. However, the original 3D surfaces are
+still retained in order to achieve accurate results when performing
+occlusion checks, and are used to project the final generated textures
+upon for 3D visualization. Each region now has a set of triangles
+representing the original model geometry, as well as a planar
+approximation. The task now is to generate a texture for each region.
 
 \section{Related Work}
 \label{sec:relatedWork}
@@ -356,20 +356,21 @@ also selects the most promising images for the remaining steps.
 
 
 \begin{figure}
-  \centering \subfloat[][]{\includegraphics[width=0.33\textwidth,
-    height=0.8in]{wall2_naive.jpg}}
-  \subfloat[][]{\includegraphics[width=0.33\textwidth,
-    height=0.8in]{wall2_naive_shift.jpg}}
-  \subfloat[][]{\includegraphics[trim=1.2cm 0cm 0cm 0cm,
-    clip=true,width=0.33\textwidth,
-    height=0.8in]{wall2_cache_shift.jpg}}
+  \centering \subfloat[][]{\includegraphics[width=0.4\textwidth,
+    height=0.81in]{wall2_naive.jpg}} \hspace{0.4in}
+  \subfloat[][]{\includegraphics[width=0.4\textwidth,
+    height=0.81in]{wall2_naive_shift.jpg}}
 
-  \centering \subfloat[][]{\includegraphics[width=0.33\textwidth,
-    height=0.8in]{wall2_shortest_shift.pdf}}
-  \subfloat[][]{\includegraphics[width=0.33\textwidth,
-    height=0.8in]{wall2_cache_shift_blend.pdf}}
-  \subfloat[][]{\includegraphics[width=0.33\textwidth,
-    height=0.8in]{wall2_shortest_shift_blend.pdf}}
+  \centering \subfloat[][]{\includegraphics[trim=1.2cm 0cm 0cm 0cm,
+    clip=true,width=0.4\textwidth,
+    height=0.81in]{wall2_cache_shift.jpg}} \hspace{0.4in}
+  \subfloat[][]{\includegraphics[width=0.4\textwidth,
+    height=0.81in]{wall2_shortest_shift.pdf}}
+
+  \centering \subfloat[][]{\includegraphics[width=0.4\textwidth,
+    height=0.81in]{wall2_cache_shift_blend.pdf}} \hspace{0.4in}
+  \subfloat[][]{\includegraphics[width=0.4\textwidth,
+    height=0.81in]{wall2_shortest_shift_blend.pdf}}
 
   \caption{(a) Tile-based texturing; (b) Tile-based texturing after
     image alignment; (c) Tile-based texturing after image alignment
@@ -531,11 +532,11 @@ surfaces. For instance, in Figure \ref{fig:occlusion}(a), an image
 used to texture the orange target surface also contains part of a gray
 occluding surface. We remove this incorrect texture by performing
 ray-polygon intersection tests between the camera location and every
-surface in our model except the target surface
-\cite{rayintersection}. These intersection tests are performed repeatedly in a
-recursive grid, until all occlusions are detected and corresponding
-occluded texture is removed. Occlusion checking works entirely with
-geometry, so by ensuring that images match geometry using
+other surface in our model \cite{rayintersection}. These intersection
+tests are performed repeatedly in a recursive grid, until all
+occlusions are detected and corresponding occluded texture is
+removed. Occlusion checking works entirely with geometry, so by
+ensuring that images match geometry using
 \ref{sec:geometryAlignment}'s alignment procedure, texture belonging
 to other surfaces is accurately removed, as seen in Figure
 \ref{fig:occlusion}(b) vs. \ref{fig:occlusion}(c).
@@ -760,10 +761,16 @@ we form a shortest path problem. This can be done because the
 wide-angle cameras have full floor-to-ceiling coverage of walls, and
 the backpack operator logically only moves horizontally. We thus are
 only concerned with lateral coverage when working with wall
-surfaces. We can therefore construct a horizontal Directed Acyclic
-Graph (DAG) from the images, with edge costs defined by the SSD cost
-function, and solve a simple shortest path problem to find an optimal
-subset of images with which to texture the surface \cite{dijkstra}.
+surfaces. We first crop each image projection to be rectangular, while
+maintaining full vertical coverage. This makes it easy to determine
+which images overlap, and has the benefit of enforcing image
+boundaries to be vertical and thus less noticeable, as vertical
+boundaries will minimally intersect the typically rectangular features
+in indoor environments. We then construct a horizontal Directed
+Acyclic Graph (DAG) from the images, with edge costs defined by the
+SSD cost function, and solve a simple shortest path problem to find an
+optimal subset of images with which to texture the surface
+\cite{dijkstra}.
 
 
 Figure \ref{fig:dagCreation} demonstrates the construction of a DAG
@@ -813,10 +820,10 @@ angles, are textured using the tile caching method of Section
 \label{sec:exposureCompensation}
 
 \begin{figure}
-  \centering
-  \subfloat[][]{\includegraphics[width=2.5in, height=0.9in]{exposureDiff1.png}}
-  \hspace{0.5in}
-  \subfloat[][]{\includegraphics[width=2.5in, height=0.9in]{exposureDiff2.png}}
+  \centering \subfloat[][]{\includegraphics[width=2.5in,
+    height=0.9in]{exposureDiff1.png}} \hspace{0.5in}
+  \subfloat[][]{\includegraphics[width=2.5in,
+    height=0.9in]{exposureDiff2.png}}
   \caption{(a) A ceiling texture composed of images taken with varying
     exposures, with significant brightness differences. (b) Exposure
     compensation applied to the same set of images from (a) by
@@ -890,10 +897,10 @@ $0$, except for the last one.
 The last row of $X$ and corresponding last entry of $\vec{a}$ are used
 to constrain the problem, as without them, all computed gains would be
 allowed to scale by any amount. To keep gains at reasonable values,
-the final observation is used: $\Sigma G_i = N$, where $N$ is the
-number of images. This has the effect of setting the average of all
-gains to 1, and is represented by the final row of ones in $X$, and
-the corresponding $N$ value in $\vec{a}$.
+the final observation is used: $\Sigma G_i = N$. This has the effect
+of setting the average of all gains to 1, and is represented by the
+final row of ones in $X$, and the corresponding $N$ value in
+$\vec{a}$.
 
 For the 81 source images that compose the ceiling location in Figure
 \ref{fig:exposureDiff}, the corresponding $X$ matrix has 1343 rows,
@@ -1024,7 +1031,7 @@ was generated with 7543 $\times$ 776 pixels, spanning a 40 meter long
 wall. Given 41000 input images in the dataset, a 2.8 GHz dual-core
 machine takes under 30 seconds to choose 36 candidate images and
 perform the full texturing process. The tile-caching approach takes a
-similar amount of time as well, with the larger floor textures in
+similar amount of time as well, with the large floor textures in
 Figure \ref{fig:indivPlanes}(c) taking 5-10 minutes to generate.
 While not real-time, our process is capable of generating fast updates
 after changes in various parameters or modifications to input data,
@@ -1052,7 +1059,7 @@ feature matching, while robustly handling environments with repeating
 or sparse details. Using the tile-based mapping approach, we can
 texture both large planar features as well as smaller, more complex
 surfaces. We also implemented a shortest path texturing method that
-produces seamless textures on planes where multiple head-on images are
+produces seamless textures on surfaces where multiple head-on images are
 available. Both of these approaches are highly modular, and easily
 tunable for similar systems across multiple environments.
 
